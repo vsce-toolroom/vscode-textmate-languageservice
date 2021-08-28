@@ -1,0 +1,40 @@
+{
+  "name": "vscode-textmate-languageservice",
+  "description": "Textmate language service for Visual Studio Code.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "SNDST00M",
+    "email": "sndst00m@outlook.com",
+    "url": "https://github.com/SNDST00M/"
+  },
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "homepage": "https://github.com/SNDST00M/vscode-textmate-languageservice/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SNDST00M/vscode-textmate-languageservice.git"
+  },
+  "main": "./out/src/index.js",
+  "types": "./src/index",
+  "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.43",
+    "@types/vscode": "^1.51.0",
+    "typescript": "^4.3.5",
+    "vscode-test": "^1.5.2"
+  },
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "jsonc-parser": "^3.0.0",
+    "pkg-dir": "^5.0.0",
+    "vscode-oniguruma": "^1.5.1",
+    "vscode-test": "^1.5.2",
+    "vscode-textmate": "^5.4.0"
+  }
+}
