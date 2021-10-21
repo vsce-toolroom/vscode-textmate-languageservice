@@ -2,9 +2,7 @@
 
 import * as pkgDir from 'pkg-dir';
 import * as path from 'path';
-import * as JSONC from 'jsonc-parser';
 import { IOnigLib } from 'vscode-textmate';
-import * as vscode from 'vscode';
 import * as vscodeOnigurumaModule from 'vscode-oniguruma';
 import * as fs from 'fs';
 

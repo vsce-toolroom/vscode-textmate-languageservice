@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as pkgDir from 'pkg-dir';
-import * as JSONC from 'jsonc-parser';
+import * as delay from 'delay';
 import { IGrammar, INITIAL, IToken, ITokenizeLineResult, Registry, StackElement } from 'vscode-textmate';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
 import { getOniguruma } from './util/onigLibs';
@@ -71,6 +71,8 @@ export class TextmateEngine {
 		stack: 0
 	};
 
+	private _queue: Record<string, boolean> = {};
+
 	private _cache: Record<string, ITextmateToken[] | undefined> = {};
 
 	private _grammars?: IGrammar[] = [];
@@ -85,11 +87,16 @@ export class TextmateEngine {
 		const text = document.getText();
 		const tokens: ITextmateToken[] = [];
 
-		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
-			if (this._cache[text]) {
-				return this._cache[text];
+		if (this._queue[text]) {
+			while (!this._cache[text]) {
+				await delay(100);
 			}
+			return this._cache[text];
+		} else {
+			this._queue[text] = true;
+		}
 
+		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
 			let line: SkinnyTextLine = document.lineAt(lineNumber);
 			const lineTokens = grammar.tokenizeLine(line.text, this._state.rule) as ITextmateTokenizeLineResult;
 
