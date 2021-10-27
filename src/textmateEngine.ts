@@ -26,7 +26,9 @@ export interface SkinnyTextDocument {
 	getText(): string;
 }
 
-type Mutable<T> = { -readonly[P in keyof T]: T[P] };
+type Mutable<T> = {
+	-readonly[P in keyof T]: T[P]
+};
 
 export interface ITextmateToken extends Mutable<IToken> {
 	level: number;
