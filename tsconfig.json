@@ -4,8 +4,8 @@
 		"target": "es6",
 		"outDir": "out",
 		"moduleResolution": "node",
-		"lib": ["es6", "es2016", "dom"],
-		"sourceMap": true,
+		"lib": ["es6", "es2016"],
+		"sourceMap": false,
 		"rootDir": "."
 	},
 	"exclude": ["node_modules", ".vscode-test"]

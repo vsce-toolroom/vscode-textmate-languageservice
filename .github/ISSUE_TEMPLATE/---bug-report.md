@@ -39,6 +39,12 @@ REPL or a link to your sample code if applicable.
 <!-- Use https://stackoverflow.com/a/49398449 to grab the extension list. -->
 - VSC version:
 - Extensions:
+  <details>
+  <summary><code>code --list-extensions</code></summary>
+
+  ```
+
+  ```
 - OS version:
 
 <!-- Checklist -->

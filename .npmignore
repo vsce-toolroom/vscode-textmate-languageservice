@@ -6,5 +6,7 @@ test/
 .gitignore
 .travis.yml
 .eslintrc.json
-gulpfile.js
 .mocharc.json
+gulpfile.js
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md

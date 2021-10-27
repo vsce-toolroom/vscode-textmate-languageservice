@@ -166,6 +166,25 @@ An example configuration file that targets Lua:
 }
 ```
 
+## Usage
+
+```typescript
+import * as vsctmls from 'vscode-textmate-languageservice';
+export async function activate(context: vscode.ExtensionContext) {
+	const selector: vscode.DocumentSelector = { language: 'custom', scheme: 'file' };
+	const engine = new vsctmls.textmateEngine.TextmateEngine('custom', 'source.custom');
+	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(engine);
+	const foldingProvider = new vsctmls.folding.FoldingProvider(engine);
+	const workspaceSymbolProvider = new vsctmls.workspaceSymbols.WorkspaceSymbolProvider('custom', documentSymbolProvider);
+	const peekFileDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
+
+	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(selector, documentSymbolProvider));
+	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingProvider));
+	context.subscriptions.push(vscode.languages.registerWorkspaceSymbolProvider(workspaceSymbolProvider));
+	context.subscriptions.push(vscode.languages.registerDefinitionProvider(['custom'], peekFileDefinitionProvider));
+}
+```
+
 <!-- Configuration -->
 [vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
 [vscode-api-symbolkind]: https://code.visualstudio.com/api/references/vscode-api#SymbolKind

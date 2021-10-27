@@ -30,6 +30,7 @@
     "vscode-test": "^1.5.2"
   },
   "dependencies": {
+    "delay": "^5.0.0",
     "iconv-lite": "^0.4.19",
     "jsonc-parser": "^3.0.0",
     "pkg-dir": "^5.0.0",
