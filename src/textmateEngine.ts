@@ -7,6 +7,7 @@ import * as pkgDir from 'pkg-dir';
 import * as delay from 'delay';
 import { IGrammar, INITIAL, IToken, ITokenizeLineResult, Registry, StackElement } from 'vscode-textmate';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
+import { createMatchers, MatcherWithPriority, nameMatcher } from './util/matcher';
 import { getOniguruma } from './util/onigLibs';
 
 export const extensionPath = pkgDir.sync(path.dirname(pkgDir.sync(__dirname)));
@@ -44,7 +45,7 @@ export interface ITextmateTokenizeLineResult extends ITokenizeLineResult {
 
 interface ITextmateTokenizerState {
 	context: boolean;
-	continuation:	boolean;
+	continuation: boolean;
 	declaration: boolean;
 	line: number;
 	rule: StackElement;
@@ -108,44 +109,52 @@ export class TextmateEngine {
 				token.line = lineNumber;
 			}
 
+			const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
+			const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
+			const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
+
 			for (let i = 0; i < (lineTokens.tokens.length - 1); i++) {
 				const token = lineTokens.tokens[i];
 				const nextToken = lineTokens.tokens[i + 1];
 
-				if (
-					configurationData.assignment
-					&& (
+				if (typeof configurationData.assignment === "object") {
+					if (
 						(
-							token.scopes.includes(configurationData.assignment.single)
-							&& nextToken.scopes.includes(configurationData.assignment.single)
+							singleAssignmentSelector.match(token.scopes)
+							&& singleAssignmentSelector.match(nextToken.scopes)
 						)
 						|| (
-							token.scopes.includes(configurationData.assignment.multiple)
-							&& nextToken.scopes.includes(configurationData.assignment.multiple)
-							&& nextToken.type !== configurationData.assignment.separator
+							multipleAssignmentSelector.match(token.scopes)
+							&& multipleAssignmentSelector.match(nextToken.scopes)
+							&& !assignmentSeparatorSelector.match(nextToken.scopes)
 						)
-					)
-				) {
+					) {
 						token.endIndex = nextToken.endIndex;
 						token.text += nextToken.text;
 						lineTokens.tokens.splice(i + 1, 1);
 						i--;
+					}
 				}
 			}
 
+			const continuationSelector = new TextmateScopeSelector(configurationData.punctuation.continuaton);
+			const indentationSelectorMap = new TextmateScopeSelectorMap(configurationData.indentation);
+			const dedentationSelector = new TextmateScopeSelector(configurationData.dedentation);
+
 			for (const token of lineTokens.tokens) {
-				this._state.declaration =
-					configurationData.indentation[token.type] === 1
-					|| configurationData.dedentation.includes(token.type)
-					|| this._state.declaration;
+				this._state.declaration = (
+					indentationSelectorMap.value(token.scopes) === 1
+					|| dedentationSelector.match(token.scopes)
+					|| this._state.declaration
+				);
 
 				if (this._state.declaration) {
-					if (token.type === configurationData.punctuation.continuaton) {
+					if (continuationSelector.match(token.scopes)) {
 						this._state.continuation = true;
 					}
 
 					if (
-						!configurationData.indentation.hasOwnProperty(token.type)
+						!indentationSelectorMap.has(token.scopes)
 						&& !this._state.continuation
 						&& lineNumber > this._state.line
 					) {
@@ -155,10 +164,10 @@ export class TextmateEngine {
 				}
 
 				if (
-					configurationData.indentation.hasOwnProperty(token.type)
-					&& (!this._state.declaration || configurationData.dedentation.includes(token.type))
+					indentationSelectorMap.has(token.scopes)
+					&& (!this._state.declaration || dedentationSelector.match(token.scopes))
 				) {
-					this._state.stack += configurationData.indentation[token.type];
+					this._state.stack += indentationSelectorMap.value(token.scopes);
 				}
 
 				token.level = this._state.stack;
@@ -170,6 +179,7 @@ export class TextmateEngine {
 		}
 
 		this._cache[text] = tokens;
+		console.log(tokens.slice(0, 100))
 		return tokens;
 	}
 
@@ -182,5 +192,68 @@ export class TextmateEngine {
 		const registry = new Registry(resolver);
 		this._grammars.push(await registry.loadGrammar(grammar.scopeName));
 		this.scopes.push(scope);
+	}
+}
+
+export class TextmateScopeSelector {
+	matchers?: MatcherWithPriority<string[]>[][];
+	matcher?: MatcherWithPriority<string[]>[];
+	constructor(selector: string[] | string) {
+		if (Array.isArray(selector)) {
+			this.matchers = selector.map(function(s) {
+				return createMatchers(s, nameMatcher);
+			});
+		} else {
+			this.matcher = createMatchers(selector, nameMatcher);
+		}
+	}
+	match(scopes: string[]): boolean {
+		if (!this.matchers && !this.matcher) {
+			return false;
+		}
+		if (this.matchers) {
+			return this.matchers.some(function(m) {
+				return m.some(function(n) {
+					return n.matcher(scopes);
+				});
+			});
+		}
+		if (this.matcher) {
+			return this.matcher.some(function(m) {
+				return m.matcher(scopes);
+			});
+		}
+	}
+	include(scopes: string[][]): boolean {
+		if (!this.matchers && !this.matcher) {
+			return false;
+		}
+		return scopes.some(this.match.bind(this));
+	}
+}
+
+export class TextmateScopeSelectorMap {
+	selectors: object;
+	constructor(selectors: Record<string, number>) {
+		if (typeof selectors === "object" && selectors) {
+			this.selectors = selectors;
+		}
+	}
+	key(scopes: string[]): string {
+		if (!this.selectors) {
+			return;
+		}
+		return Object.keys(this.selectors).filter(function(s) {
+			return new TextmateScopeSelector(s).match(scopes);
+		})[0];
+	}
+	has(scopes: string[]): boolean {
+		return typeof this.key(scopes) === "string";
+	}
+	value(scopes: string[]): number {
+		if (!this.selectors) {
+			return;
+		}
+		return this.selectors[this.key(scopes)];
 	}
 }

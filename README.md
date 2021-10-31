@@ -28,18 +28,18 @@ Textmate configuration fields:
 - **`grammar`** - required (`object`)<br/>
   Grammar contribution as defined by the extension in the manifest.
 - **`assignment`** - optional (`object`)<br/>
-  Textmate tokens for variable assignment scopes when including variable symbols:<br/>
+  Collection of Textmate scope selectors for variable assignment scopes when including variable symbols:<br/>
   **Properties:**
-  - `separator`: Token (`string`)
-  - `single`: (`string`)
-  - `multiple`: (`string`)
+  - `separator`: Token to separate multiple assignments (`string`)
+  - `single`: Token to match single variable assignment. (`string`)
+  - `multiple`: Token to match multiple variable assignment. (`string`)
 - **`comments`** - optional (`object`)<br/>
-  Textmate tokens for comments:<br/>
+  Collection of Textmate tokens for comments:<br/>
   **Properties:**
   - `lineComment`: Token for line comment text (to use in region matching). (`string`)
   - `blockComment`: Map of block comment start and end token names. (`[string,string]`)
 - **`declarations`** -optional (`array`)<br/>
-  List of stringified regular expression patterns for Textmate declaration token scopes.
+  List of Textmate scope selectors for declaration token scopes.
 - **`dedentation`** - optional (`array`)<br/>
   List of Textmate tokens for dedented code block declarations (e.g. `ELSE`, `ELSEIF`).<br/>
   Tokens still need to be listed in `indentation` with the decrementing value `-1`.
@@ -48,14 +48,17 @@ Textmate configuration fields:
 - **`indentation`** - optional (`object`)<br/>
   Indentation level offset for Textmate token types (used to implement folding).
 - **`punctuation`** - optional (`object`)<br/>
-  Punctuation tokens with a significant effect on syntax providers.
+  Collection of punctuation tokens with a significant effect on syntax providers.
   **Properties:**
-  - `continuation`: Token for line continuation (to use in region matching). (`string`)
+  - `continuation`: Token scope selector for line continuation (to use in region matching). (`string`)
 - **`markers`** - optional (`object`)<br/>
   Stringified regular expression patterns for folding region comments.
+  - `start`: Escaped regular expression for start region marker. (`string`)
+  - `end`: Escaped regular expression for end region marker. (`string`)
+  **Properties:**
 - **`symbols`** - optional (`object`)<br/>
   Map of document symbol tokens to their symbol kind ([`vscode.SymbolKind`][vscode-api-symbolkind] value).
-  
+
 ### Configuration examples
 
 Template for `textmate-configuration.json` file:
@@ -63,7 +66,7 @@ Template for `textmate-configuration.json` file:
 ```jsonc
 {
   "language": {
-    "id": "",  
+    "id": "",
     "aliases": [],
     "extensions": []
   },
@@ -115,7 +118,7 @@ An example configuration file that targets Lua:
 ```jsonc
 {
   "language": {
-    "id": "lua",  
+    "id": "lua",
     "aliases": [
       "Lua"
     ],
@@ -140,9 +143,9 @@ An example configuration file that targets Lua:
       "punctuation.definition.comment.end.lua"
     ]
   },
-  "declarations": [ 
-    " meta\\.([\\w-]+)\\.declaration\\.lua entity\\.name(\\.type)?\\.\\1",
-    " meta\\.assignment\\.definition\\.([\\w-]+)\\.lua entity\\.name(\\.type)?\\.\\1"
+  "declarations": [
+    "meta.declaration.lua entity.name",
+    "meta.assignment.definition.lua entity.name"
   ],
   "dedentation": [
     "keyword.control.elseif.lua",

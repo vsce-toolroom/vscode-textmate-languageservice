@@ -1,7 +1,11 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { SkinnyTextDocument, TextmateEngine, configurationData, ITextmateToken } from './textmateEngine';
+import { SkinnyTextDocument, TextmateEngine, configurationData, ITextmateToken, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
+
+const symbolSelectorMap = new TextmateScopeSelectorMap(configurationData.symbols);
+const declarationSelector = new TextmateScopeSelector(configurationData.declarations);
+const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
 
 export interface TocEntry {
 	readonly level: number;
@@ -53,7 +57,7 @@ export class TableOfContentsProvider {
 				),
 				text: this.getText(entry),
 				token: entry.type,
-				type: configurationData.symbols[entry.type]
+				type: symbolSelectorMap.value(entry.scopes)
 			});
 		}
 
@@ -80,17 +84,16 @@ export class TableOfContentsProvider {
 	}
 
 	private isSymbolToken(token: ITextmateToken): boolean {
+		const isEntity = new TextmateScopeSelector('entity').match(token.scopes);
 		return (
-			configurationData.symbols[token.type]
-			&& (
-				!token.type.startsWith('entity')
-				|| configurationData.declarations.some((d: string) => new RegExp(d).test(token.scopes.join(' ')))
-			)
+			symbolSelectorMap.has(token.scopes)
+			&& (!isEntity || declarationSelector.match(token.scopes))
+			&& (!assignmentSeparatorSelector || !assignmentSeparatorSelector.match(token.scopes))
 		);
 	}
 
 	private getText(entry: ITextmateToken): string {
-		switch (configurationData.symbols[entry.type]) {
+		switch (symbolSelectorMap.value(entry.scopes)) {
 			case vscode.SymbolKind.String:
 				return `%% ${entry.text}`;
 				break;

@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^7.0.43",
     "@types/vscode": "^1.51.0",
+    "node-fetch": "^3.0.0",
     "typescript": "^4.3.5",
     "vscode-test": "^1.5.2"
   },
