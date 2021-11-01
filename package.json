@@ -21,7 +21,7 @@
   "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
     "compile": "tsc -p ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "npm run compile"
   },
   "devDependencies": {
     "@types/node": "^7.0.43",
