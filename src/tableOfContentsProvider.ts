@@ -20,14 +20,13 @@ export class TableOfContentsProvider {
 	private toc?: TocEntry[];
 
 	public constructor(
-		private _document: SkinnyTextDocument,
 		private _engine: TextmateEngine
 	) { }
 
-	public async getToc(): Promise<TocEntry[]> {
+	public async getToc(document: SkinnyTextDocument): Promise<TocEntry[]> {
 		if (!this.toc) {
 			try {
-				this.toc = await this.buildToc(this._document);
+				this.toc = await this.buildToc(document);
 			} catch (e) {
 				this.toc = [];
 			}
@@ -35,8 +34,8 @@ export class TableOfContentsProvider {
 		return this.toc;
 	}
 
-	public async lookup(text: string): Promise<TocEntry | undefined> {
-		const toc = await this.getToc();
+	public async lookup(document: SkinnyTextDocument, text: string): Promise<TocEntry | undefined> {
+		const toc = await this.getToc(document);
 		return toc.find(entry => entry.text === text);
 	}
 

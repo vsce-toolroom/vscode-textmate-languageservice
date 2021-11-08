@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/mocharc",
+  "color": true,
+  "ui": "tdd",
+  "timeout": 30000
+}

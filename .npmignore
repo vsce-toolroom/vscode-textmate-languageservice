@@ -3,10 +3,11 @@
 build/
 src/
 test/
+*.tgz
+*.vsix
 .gitignore
 .travis.yml
 .eslintrc.json
 .mocharc.json
-gulpfile.js
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md

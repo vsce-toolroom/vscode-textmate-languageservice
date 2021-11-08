@@ -6,8 +6,13 @@
 		"moduleResolution": "node",
 		"lib": ["es6", "es2016", "dom"],
 		"sourceMap": false,
+		"resolveJsonModule": true,
 		"rootDir": ".",
-		"types": ["node", "node-fetch"]
+		"types": ["node", "node-fetch", "mocha"]
 	},
-	"exclude": ["node_modules", ".vscode-test"]
+	"exclude": [
+		"node_modules",
+		".vscode-test",
+		"test/vscode-matlab"
+	]
 }

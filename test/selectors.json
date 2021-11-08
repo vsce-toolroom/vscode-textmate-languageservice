@@ -1,0 +1,147 @@
+{
+	"simple": [
+		{
+			"selector": "foo0",
+			"input": ["foo0"],
+			"expected": true
+		},
+		{
+			"selector": "foo1",
+			"input": ["bar1"],
+			"expected": false
+		},
+		{
+			"selector": "bar2 foo2",
+			"input": ["foo2"],
+			"expected": false
+		},
+		{
+			"selector": "bar3 foo3",
+			"input": ["bar3"],
+			"expected": false
+		}
+	],
+	"negated": [
+		{
+			"selector": "- foo4",
+			"input": ["foo4"],
+			"expected": false
+		},
+		{
+			"selector": "- foo5",
+			"input": ["bar5"],
+			"expected": true
+		},
+		{
+			"selector": "- - foo6",
+			"input": ["bar6"],
+			"expected": false
+		},
+		{
+			"selector": "bar7 foo7",
+			"input": ["bar7", "foo7"],
+			"expected": true
+		},
+		{
+			"selector": "bar8 - foo8",
+			"input": ["bar"],
+			"expected": true
+		},
+		{
+			"selector": "bar9 - foo9",
+			"input": ["foo9", "bar9"],
+			"expected": false
+		},
+		{
+			"selector": "bar10 - foo10",
+			"input": ["foo10"],
+			"expected": false
+		}
+	],
+	"combined": [
+		{
+			"selector": "bar11, foo11",
+			"input": ["foo11"],
+			"expected": true
+		},
+		{
+			"selector": "bar12, foo12",
+			"input": ["bar12"],
+			"expected": true
+		},
+		{
+			"selector": "bar13, foo13",
+			"input": ["bar13", "foo13"],
+			"expected": true
+		},
+		{
+			"selector": "bar14, -foo14",
+			"input": ["bar14", "foo14"],
+			"expected": true
+		},
+		{
+			"selector": "bar15, -foo15",
+			"input": ["yo15"],
+			"expected": true
+		},
+		{
+			"selector": "bar16, -foo16",
+			"input": ["foo16"],
+			"expected": false
+		}
+	],
+	"expressions": [
+		{
+			"selector": "(foo17)",
+			"input": ["foo17"],
+			"expected": true
+		},
+		{
+			"selector": "(foo18 - bar18)",
+			"input": ["foo18"],
+			"expected": true
+		},
+		{
+			"selector": "(foo19 - bar19)",
+			"input": ["foo19", "bar19"],
+			"expected": false
+		},
+		{
+			"selector": "foo20 bar20 - (yo20 man20)",
+			"input": ["foo20", "bar20"],
+			"expected": true
+		},
+		{
+			"selector": "foo21 bar21 - (yo21 man21)",
+			"input": ["foo21", "bar21", "yo21"],
+			"expected": true
+		},
+		{
+			"selector": "foo22 bar22 - (yo22 man22)",
+			"input": ["foo22", "bar22", "yo22", "man22"],
+			"expected": false
+		},
+		{
+			"selector": "foo23 bar23 - (yo23 | man23)",
+			"input": ["foo23", "bar23", "yo23", "man23"],
+			"expected": false
+		},
+		{
+			"selector": "foo24 bar24 - (yo24 | man24)",
+			"input": ["foo24", "bar24", "yo24"],
+			"expected": false
+		}
+	],
+	"injections": [
+		{
+			"selector": "R:text.html - (comment.block, text.html source)",
+			"input": ["text.html", "bar", "source.css"],
+			"expected": false
+		},
+		{
+			"selector": "text.html.php - (meta.embedded | meta.tag), L:text.html.php meta.tag, L:source.js.embedded.html",
+			"input": ["text.html.php", "bar", "source.js"],
+			"expected": true
+		}
+	]
+}

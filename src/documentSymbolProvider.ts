@@ -17,12 +17,12 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 	) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
-		const toc = await new TableOfContentsProvider(document, this._engine).getToc();
+		const toc = await new TableOfContentsProvider(this._engine).getToc(document);
 		return toc.map(entry => this.toSymbolInformation(entry));
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
-		const toc = await new TableOfContentsProvider(document, this._engine).getToc();
+		const toc = await new TableOfContentsProvider(this._engine).getToc(document);
 		const root: LanguageSymbol = {
 			level: -Infinity,
 			children: [],

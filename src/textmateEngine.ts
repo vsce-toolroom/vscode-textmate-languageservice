@@ -12,7 +12,8 @@ import { getOniguruma } from './util/onigLibs';
 
 export const extensionPath = pkgDir.sync(path.dirname(pkgDir.sync(__dirname)));
 
-export const configurationData = require(path.resolve(extensionPath, './textmate-configuration.json'));
+const configurationDataPath = path.resolve(extensionPath, './textmate-configuration.json');
+export const configurationData = JSON.parse(fs.readFileSync(configurationDataPath).toString());
 
 export interface SkinnyTextLine {
 	text: string;
@@ -117,7 +118,7 @@ export class TextmateEngine {
 				const token = lineTokens.tokens[i];
 				const nextToken = lineTokens.tokens[i + 1];
 
-				if (typeof configurationData.assignment === "object") {
+				if (typeof configurationData.assignment === 'object') {
 					if (
 						(
 							singleAssignmentSelector.match(token.scopes)
@@ -179,7 +180,6 @@ export class TextmateEngine {
 		}
 
 		this._cache[text] = tokens;
-		console.log(tokens.slice(0, 100))
 		return tokens;
 	}
 
@@ -235,7 +235,7 @@ export class TextmateScopeSelector {
 export class TextmateScopeSelectorMap {
 	selectors: object;
 	constructor(selectors: Record<string, number>) {
-		if (typeof selectors === "object" && selectors) {
+		if (typeof selectors === 'object' && selectors) {
 			this.selectors = selectors;
 		}
 	}
@@ -248,7 +248,7 @@ export class TextmateScopeSelectorMap {
 		})[0];
 	}
 	has(scopes: string[]): boolean {
-		return typeof this.key(scopes) === "string";
+		return typeof this.key(scopes) === 'string';
 	}
 	value(scopes: string[]): number {
 		if (!this.selectors) {

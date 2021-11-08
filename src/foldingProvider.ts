@@ -54,8 +54,8 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 	}
 
 	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
-		const tocProvider = new TableOfContentsProvider(document, this._engine);
-		const toc = await tocProvider.getToc();
+		const tocProvider = new TableOfContentsProvider(this._engine);
+		const toc = await tocProvider.getToc(document);
 		const sections = toc.filter(isSectionHeader);
 		return sections.map((section, i) => {
 			let endLine = sections.hasOwnProperty(i + 1)

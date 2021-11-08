@@ -5,14 +5,13 @@ import { Disposable } from './util/dispose';
 import { Lazy, lazy } from './util/lazy';
 import { DocumentSymbolProvider } from './documentSymbolProvider';
 import { SkinnyTextDocument, SkinnyTextLine, configurationData } from './textmateEngine';
-import { isLanguageFile } from './util/file';
 
 const extensions = configurationData.language.extensions.length === 1
-	? `{${configurationData.language.extensions.map((e: string) => e.substring(2)).join(',')}}`
+	? `.{${configurationData.language.extensions.map((e: string) => e.substring(1)).join(',')}}`
 	: configurationData.language.extensions[0];
 const include = `**/*${extensions}`;
 
-export interface WorkspaceDocumentProvider {
+export interface IWorkspaceDocumentProvider {
 	readonly _language: string;
 
 	getAllDocuments(): Thenable<Iterable<SkinnyTextDocument>>;
@@ -23,7 +22,7 @@ export interface WorkspaceDocumentProvider {
 	readonly onDidDeleteDocument: vscode.Event<vscode.Uri>;
 }
 
-class VSCodeWorkspaceDocumentProvider extends Disposable implements WorkspaceDocumentProvider {
+export class WorkspaceDocumentProvider extends Disposable implements IWorkspaceDocumentProvider {
 	constructor(
 		readonly _language: string
 	) {
@@ -43,7 +42,7 @@ class VSCodeWorkspaceDocumentProvider extends Disposable implements WorkspaceDoc
 		return docs.filter(doc => !!doc) as SkinnyTextDocument[];
 	}
 
-		async getDocument(resource: vscode.Uri): Promise<SkinnyTextDocument | undefined> {
+	async getDocument(resource: vscode.Uri): Promise<SkinnyTextDocument | undefined> {
 		const matchingDocuments = vscode.workspace.textDocuments.filter((doc) => doc.uri.toString() === resource.toString());
 		if (matchingDocuments.length !== 0) {
 			return matchingDocuments[0];
@@ -117,10 +116,14 @@ class VSCodeWorkspaceDocumentProvider extends Disposable implements WorkspaceDoc
 		}, null, this._disposables);
 
 		vscode.workspace.onDidChangeTextDocument(e => {
-			if (isLanguageFile.call(this, e)) {
+			if (this.isLanguageFile(e.document)) {
 				this._onDidChangeDocumentEmitter.fire(e.document);
 			}
 		}, this, this._disposables);
+	}
+
+	public isLanguageFile(document: vscode.TextDocument) {
+		return document.languageId === this._language;
 	}
 }
 
@@ -131,7 +134,7 @@ export class WorkspaceSymbolProvider extends Disposable implements vscode.Worksp
 	public constructor(
 		private _language: string,
 		private _symbolProvider: DocumentSymbolProvider,
-		private _workspaceDocumentProvider: WorkspaceDocumentProvider = new VSCodeWorkspaceDocumentProvider(_language)
+		private _workspaceDocumentProvider: WorkspaceDocumentProvider = new WorkspaceDocumentProvider(_language)
 	) {
 		super();
 	}

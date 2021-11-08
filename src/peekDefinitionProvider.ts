@@ -4,6 +4,10 @@ import * as vscode from 'vscode';
 import { configurationData } from './textmateEngine';
 import { DocumentSymbolProvider } from './documentSymbolProvider';
 
+const extensions = configurationData.language.extensions.length === 1
+	? `.{${configurationData.language.extensions.map((e: string) => e.substring(1)).join(',')}}`
+	: configurationData.language.extensions[0];
+
 export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 
 	constructor(
@@ -15,7 +19,7 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 		const selection = doc.getWordRangeAtPosition(position);
 		const selectedText = doc.getText(selection);
 		let possibleFileNames = [];
-		possibleFileNames.push(selectedText + this._symbolProvider._engine);
+		possibleFileNames.push(selectedText + extensions);
 		return possibleFileNames;
 	}
 
@@ -32,7 +36,6 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 			if (
 				!doc.lineAt(lineNumber).isEmptyOrWhitespace
 				&& selectedText === this._symbolProvider.getEntryText(symbol)
-				&& (position.line === lineNumber && position.character === columnNumber)
 			) {
 				return [lineNumber, columnNumber];
 			}
@@ -53,7 +56,6 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 		return searchPromises.then((paths) => {
 			filePaths = [].concat.apply([], paths);
 			if (filePaths.length) {
-				console.log(posInFile)
 				let allPaths = [];
 				filePaths.forEach(filePath => {
 					allPaths.push(new vscode.Location(vscode.Uri.file(`${filePath.path}`), new vscode.Position(0,1) ))

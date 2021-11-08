@@ -179,12 +179,12 @@ export async function activate(context: vscode.ExtensionContext) {
 	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(engine);
 	const foldingProvider = new vsctmls.folding.FoldingProvider(engine);
 	const workspaceSymbolProvider = new vsctmls.workspaceSymbols.WorkspaceSymbolProvider('custom', documentSymbolProvider);
-	const peekFileDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
+	const peekDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
 
 	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(selector, documentSymbolProvider));
 	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingProvider));
 	context.subscriptions.push(vscode.languages.registerWorkspaceSymbolProvider(workspaceSymbolProvider));
-	context.subscriptions.push(vscode.languages.registerDefinitionProvider(['custom'], peekFileDefinitionProvider));
+	context.subscriptions.push(vscode.languages.registerDefinitionProvider(['custom'], peekDefinitionProvider));
 }
 ```
 
