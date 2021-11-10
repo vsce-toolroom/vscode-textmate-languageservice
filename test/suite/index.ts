@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as Mocha from 'mocha';
 import * as glob from 'glob';
+import * as vscode from 'vscode';
 
 export function run(): Promise<void> {
 	// Create the mocha test
@@ -21,6 +22,7 @@ export function run(): Promise<void> {
 				return mocha.addFile(path.resolve(testsRoot, f));
 			});
 			try {
+				vscode.window.showInformationMessage('Start all tests.');
 				mocha.run(function(failures) {
 					if (failures > 0) {
 						e(new Error(`${failures} tests failed.`));
