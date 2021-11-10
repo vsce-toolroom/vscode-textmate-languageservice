@@ -15,6 +15,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: recursive
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
