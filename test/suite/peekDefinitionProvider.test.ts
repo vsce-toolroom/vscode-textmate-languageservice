@@ -1,13 +1,14 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as glob from 'glob';
-import * as fs from 'fs';
 import * as assert from 'assert';
-import { TextmateEngine } from '../src/textmateEngine';
-import { DocumentSymbolProvider } from '../src/documentSymbolProvider';
-import { WorkspaceDocumentProvider } from '../src/workspaceSymbolProvider';
-import { PeekDefinitionProvider } from '../src/peekDefinitionProvider';
-import { TableOfContentsProvider } from '../src/tableOfContentsProvider';
+import * as writeJsonFile from 'write-json-file';
+import * as loadJsonFile from 'load-json-file';
+import { TextmateEngine } from '../../src/textmateEngine';
+import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
+import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
+import { PeekDefinitionProvider } from '../../src/peekDefinitionProvider';
+import { TableOfContentsProvider } from '../../src/tableOfContentsProvider';
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const tableOfContentsProvider = new TableOfContentsProvider(engine);
@@ -52,14 +53,14 @@ suite('src/tableOfContentsProvider.ts', function() {
 									}
 								}
 							}
-						});
+						})
 					});
 				});
 				const p = path.resolve(__dirname, 'data/peekDefinitionProvider', path.basename(file));
 				if (process.env.UPDATE) {
-					fs.writeFileSync(p, JSON.stringify(definitions, null, '  '));
+					writeJsonFile.sync(p, definitions, { indent: '  ' });
 				} else {
-					assert.deepEqual(JSON.parse(fs.readFileSync(p).toString()), definitions);
+					assert.deepEqual(loadJsonFile.sync(p), definitions);
 				}
 			}
 		});

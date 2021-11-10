@@ -44,7 +44,7 @@
 		},
 		{
 			"selector": "bar8 - foo8",
-			"input": ["bar"],
+			"input": ["bar8"],
 			"expected": true
 		},
 		{

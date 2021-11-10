@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as glob from 'glob';
-import * as fs from 'fs';
 import * as assert from 'assert';
-import { TextmateEngine } from '../src/textmateEngine';
-import { DocumentSymbolProvider } from '../src/documentSymbolProvider';
-import { WorkspaceDocumentProvider, WorkspaceSymbolProvider } from '../src/workspaceSymbolProvider';
+import * as writeJsonFile from 'write-json-file';
+import * as loadJsonFile from 'load-json-file';
+import { TextmateEngine } from '../../src/textmateEngine';
+import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
+import { WorkspaceDocumentProvider, WorkspaceSymbolProvider } from '../../src/workspaceSymbolProvider';
 
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 const engine = new TextmateEngine('matlab', 'source.matlab');
@@ -37,13 +38,13 @@ suite('src/foldingProvider.ts', function() {
 			}
 			for (const file of files) {
 				const resource = vscode.Uri.file(file);
-				const textDocument = await vscode.workspace.openTextDocument(resource);
+				await vscode.workspace.openTextDocument(resource);
 				const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 				const p = path.resolve(__dirname, 'data/workspaceSymbolProvider', path.basename(file));
 				if (process.env.UPDATE) {
-					fs.writeFileSync(p, JSON.stringify(symbols, null, '  '));
+					writeJsonFile.sync(p, symbols, { indent: '  ' });
 				} else {
-					assert.deepEqual(JSON.parse(fs.readFileSync(p).toString()), symbols);
+					assert.deepEqual(loadJsonFile.sync(p), symbols);
 				}
 			}
 		});

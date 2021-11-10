@@ -1,0 +1,37 @@
+import * as path from 'path';
+import * as Mocha from 'mocha';
+import * as glob from 'glob';
+
+export function run(): Promise<void> {
+	// Create the mocha test
+	const mocha = new Mocha({
+		ui: 'tdd',
+		color: true,
+		timeout: 30000
+	});
+
+	const testsRoot = path.resolve(__dirname, '..');
+
+	return new Promise(function(c, e) {
+		glob('**/**.test.js', { cwd: testsRoot }, function(err, files) {
+			if (err) {
+				return e(err);
+			}
+			files.forEach(function(f) {
+				return mocha.addFile(path.resolve(testsRoot, f));
+			});
+			try {
+				mocha.run(function(failures) {
+					if (failures > 0) {
+						e(new Error(`${failures} tests failed.`));
+					} else {
+						c();
+					}
+				});
+			} catch (err) {
+				console.error(err);
+				e(err);
+			}
+		});
+	});
+}

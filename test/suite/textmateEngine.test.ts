@@ -1,11 +1,15 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import * as glob from 'glob';
 import * as fs from 'fs';
+import * as glob from 'glob';
 import * as assert from 'assert';
-import { TextmateEngine, TextmateScopeSelector, TextmateScopeSelectorMap } from '../src/textmateEngine';
-import { WorkspaceDocumentProvider } from '../src/workspaceSymbolProvider';
-import * as selectors from './selectors.json';
+import * as writeJsonFile from 'write-json-file';
+import * as loadJsonFile from 'load-json-file';
+import { TextmateEngine, TextmateScopeSelector, TextmateScopeSelectorMap } from '../../src/textmateEngine';
+import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
+
+const selectorsPath = path.resolve(__dirname, '../data/selectors.json');
+const selectors = JSON.parse(fs.readFileSync(selectorsPath).toString());
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
@@ -23,9 +27,9 @@ suite('src/textmateEngine.ts', function() {
 				const document = await workspaceDocumentProvider.getDocument(resource);
 				const tokens = engine.tokenize('source.matlab', document);
 				if (process.env.UPDATE) {
-					fs.writeFileSync(p, JSON.stringify(tokens, null, '  '));
+					writeJsonFile.sync(p, tokens, { indent: '  ' });
 				} else {
-					assert.deepEqual(JSON.parse(fs.readFileSync(p).toString()), tokens);
+					assert.deepEqual(loadJsonFile.sync(p), tokens);
 				}
 			}
 		});
@@ -58,19 +62,19 @@ suite('src/textmateEngine.ts', function() {
 			const trueMapSelector = new TextmateScopeSelectorMap(trueMaps[type]);
 			const falseMapSelector = new TextmateScopeSelectorMap(falseMaps[type]);
 			selectors[type].forEach(function(test, i) {
-				assert.strictEqual(mapSelector.has(test.input), test.expected, `'${test.selector}' failed`);
-				assert.strictEqual(mapSelector.key(test.input), test.selector, `'${test.selector}' failed`);
-				assert.strictEqual(mapSelector.value(test.input), i, `'${test.selector}' failed`);
+				assert.strictEqual(mapSelector.has(test.input), test.expected, `'${test.selector}' map.has failed`);
+				assert.strictEqual(mapSelector.key(test.input), test.selector, `'${test.selector}' map.key failed`);
+				assert.strictEqual(mapSelector.value(test.input), i, `'${test.selector}' map.value failed`);
 				if (test.expected === true) {
-					assert.strictEqual(trueMapSelector.has(test.input), true, `'${test.selector}' failed`);
-					assert.strictEqual(falseMapSelector.has(test.input), false, `'${test.selector}' failed`);
-					assert.strictEqual(trueMapSelector.key(test.input), test.selector, `'${test.selector}' failed`);
-					assert.strictEqual(trueMapSelector.value(test.input), i, `'${test.selector}' failed`);
+					assert.strictEqual(trueMapSelector.has(test.input), true, `'${test.selector}' trueMap.has failed`);
+					assert.strictEqual(falseMapSelector.has(test.input), false, `'${test.selector}' falseMap.has failed`);
+					assert.strictEqual(trueMapSelector.key(test.input), test.selector, `'${test.selector}' trueMap.key failed`);
+					assert.strictEqual(trueMapSelector.value(test.input), i, `'${test.selector}' trueMap.value failed`);
 				} else {
-					assert.strictEqual(falseMapSelector.has(test.input), true, `'${test.selector}' failed`);
-					assert.strictEqual(trueMapSelector.has(test.input), false, `'${test.selector}' failed`);
-					assert.strictEqual(falseMapSelector.key(test.input), test.selector, `'${test.selector}' failed`);
-					assert.strictEqual(falseMapSelector.value(test.input), i, `'${test.selector}' failed`);
+					assert.strictEqual(falseMapSelector.has(test.input), true, `'${test.selector}' falseMap.has failed`);
+					assert.strictEqual(trueMapSelector.has(test.input), false, `'${test.selector}' trueMap.has failed`);
+					assert.strictEqual(falseMapSelector.key(test.input), test.selector, `'${test.selector}' falseMap.key failed`);
+					assert.strictEqual(falseMapSelector.value(test.input), i, `'${test.selector}' falseMap.value failed`);
 				}
 			});
 		});

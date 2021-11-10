@@ -20,32 +20,40 @@
   "types": "./out/src/index",
   "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
+    "clean": "rimraf vscode-textmate-languageservice-*.tgz out test/vscode-matlab/node_modules",
     "compile": "tsc -p ./",
-    "mocha": "mocha out/test --config .mocharc.json --require dotenv/config",
-    "patch": "npx cpy test/textmate-configuration.json test/vscode-matlab",
-    "stage": "npm-run-all stage:prepare stage:cwd stage:test",
-    "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.1.1.tgz --production && cd -",
-    "stage:cwd": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice",
-    "stage:test": "npm run stage:cwd && npm install --only=production && npm test && cd -",
-    "test": "npm-run-all compile patch stage stage:cwd mocha"
+    "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && mocha out/test/runTest --require dotenv/config",
+    "patch": "copyfiles test/data/textmate-configuration.json test/vscode-matlab",
+    "stage": "npm-run-all stage:install stage:data stage:test stage:dump",
+    "stage:cd": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice",
+    "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.1.1.tgz --production && npm install --only=production && cd ../..",
+    "stage:data": "copyfiles test/data test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test",
+    "stage:test": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && cd ../../../.. && npm run mocha",
+    "stage:dump": "copyfiles test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data test",
+    "test": "npm-run-all clean compile patch stage mocha"
   },
   "devDependencies": {
+    "@types/first-mate": "^7.0.6",
     "@types/mocha": "^9.0.0",
     "@types/node": "^7.0.43",
     "@types/vscode": "^1.51.0",
-    "cpy-cli": "^3.1.1",
     "dotenv": "^10.0.0",
     "glob": "^7.2.0",
     "mocha": "^9.1.1",
     "node-fetch": "^3.0.0",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "typescript": "^4.3.5",
-    "vscode-test": "^1.5.2"
+    "vscode-oniguruma": "^1.5.1",
+    "vscode-test": "^1.5.2",
+    "vscode-textmate": "^5.4.1",
+    "write-json-file": "^4.3.0"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "delay": "^5.0.0",
-    "pkg-dir": "^5.0.0",
-    "vscode-oniguruma": "^1.5.1",
-    "vscode-textmate": "^5.4.0"
+    "first-mate": "^7.4.3",
+    "load-json-file": "^6.2.0",
+    "pkg-up": "^3.1.0"
   }
 }

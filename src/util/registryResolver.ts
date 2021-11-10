@@ -1,9 +1,11 @@
 'use strict';
 
-import { IRawGrammar, IOnigLib, parseRawGrammar, RegistryOptions } from 'vscode-textmate';
-
 import * as path from 'path';
 import * as fs from 'fs';
+
+import getCoreNodeModule from './getCoreNodeModule';
+import * as vsctm from 'vscode-textmate';
+const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 
 export interface ILanguageRegistration {
 	id: string;
@@ -16,18 +18,18 @@ export interface IGrammarRegistration {
 	scopeName: string;
 	path: string;
 	embeddedLanguages?: { [scopeName: string]: string; };
-	grammar?: Promise<IRawGrammar>;
+	grammar?: Promise<vsctm.IRawGrammar>;
 }
 
-export class Resolver implements RegistryOptions {
+export class Resolver implements vsctm.RegistryOptions {
 	public readonly language2id: { [languages: string]: number; };
 	private _lastLanguageId: number;
 	private _id2language: string[];
 	private readonly _grammars: IGrammarRegistration[];
 	private readonly _languages: ILanguageRegistration[];
-	public readonly onigLib: Promise<IOnigLib>;
+	public readonly onigLib: Promise<vsctm.IOnigLib>;
 
-	constructor(grammars: IGrammarRegistration[], languages: ILanguageRegistration[], onigLibPromise: Promise<IOnigLib>) {
+	constructor(grammars: IGrammarRegistration[], languages: ILanguageRegistration[], onigLibPromise: Promise<vsctm.IOnigLib>) {
 		this._grammars = grammars;
 		this._languages = languages;
 		this.onigLib = onigLibPromise;
@@ -106,7 +108,7 @@ export class Resolver implements RegistryOptions {
 		throw new Error('Could not findGrammarByLanguage for ' + language);
 	}
 
-	public async loadGrammar(scopeName: string): Promise<IRawGrammar | null> {
+	public async loadGrammar(scopeName: string): Promise<vsctm.IRawGrammar | null> {
 		for (let i = 0; i < this._grammars.length; i++) {
 			let grammar = this._grammars[i];
 			if (grammar.scopeName === scopeName) {
@@ -121,13 +123,13 @@ export class Resolver implements RegistryOptions {
 	}
 }
 
-function readGrammarFromPath(path: string) : Promise<IRawGrammar> {
+function readGrammarFromPath(path: string) : Promise<vsctm.IRawGrammar> {
 	return new Promise((c,e) => {
 		fs.readFile(path, (error, content) => {
 			if (error) {
 				e(error);
 			} else {
-				c(parseRawGrammar(content.toString(), path));
+				c(vsctmModule.parseRawGrammar(content.toString(), path));
 			}
 		});
 	});

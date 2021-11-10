@@ -1,19 +1,20 @@
 'use strict';
-
+import * as pkgUp from 'pkg-up';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as pkgDir from 'pkg-dir';
+import * as loadJsonFile from 'load-json-file';
 import * as delay from 'delay';
-import { IGrammar, INITIAL, IToken, ITokenizeLineResult, Registry, StackElement } from 'vscode-textmate';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
-import { createMatchers, MatcherWithPriority, nameMatcher } from './util/matcher';
-import { getOniguruma } from './util/onigLibs';
+import { ScopeSelector } from 'first-mate';
 
-export const extensionPath = pkgDir.sync(path.dirname(pkgDir.sync(__dirname)));
+import getCoreNodeModule from './util/getCoreNodeModule';
+import * as vsctm from 'vscode-textmate';
+const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
+import * as vscodeOniguruma from 'vscode-oniguruma';
+const vscodeOnigurumaModule = getCoreNodeModule<typeof vscodeOniguruma>('vscode-oniguruma');
 
-const configurationDataPath = path.resolve(extensionPath, './textmate-configuration.json');
-export const configurationData = JSON.parse(fs.readFileSync(configurationDataPath).toString());
+const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');
+export const configurationData = loadJsonFile.sync(path.resolve(extensionPath, './textmate-configuration.json')) as any;
 
 export interface SkinnyTextLine {
 	text: string;
@@ -32,16 +33,15 @@ type Mutable<T> = {
 	-readonly[P in keyof T]: T[P]
 };
 
-export interface ITextmateToken extends Mutable<IToken> {
+export interface ITextmateToken extends Mutable<vsctm.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface ITextmateTokenizeLineResult extends ITokenizeLineResult {
-	readonly tokens: ITextmateToken[],
-	readonly stack: StackElement
+export interface ITextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineResult, 'tokens'> {
+	readonly tokens: ITextmateToken[]
 }
 
 interface ITextmateTokenizerState {
@@ -49,14 +49,11 @@ interface ITextmateTokenizerState {
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: StackElement;
+	rule: vsctm.StackElement;
 	stack: number;
 }
 
-export const packageJSON = JSON.parse(fs.readFileSync(
-	path.resolve(extensionPath, './package.json'),
-	{ encoding: 'utf8' }
-));
+export const packageJSON = loadJsonFile.sync(path.resolve(extensionPath, './package.json')) as any;
 
 export class TextmateEngine {
 	constructor(
@@ -71,7 +68,7 @@ export class TextmateEngine {
 		continuation: false,
 		declaration: false,
 		line: 0,
-		rule: INITIAL,
+		rule: vsctmModule.INITIAL,
 		stack: 0
 	};
 
@@ -79,7 +76,7 @@ export class TextmateEngine {
 
 	private _cache: Record<string, ITextmateToken[] | undefined> = {};
 
-	private _grammars?: IGrammar[] = [];
+	private _grammars?: vsctm.IGrammar[] = [];
 
 	public async tokenize(scope: string, document: SkinnyTextDocument): Promise<ITextmateToken[]> {
 		if (!this.scopes.includes(scope)) {
@@ -187,45 +184,50 @@ export class TextmateEngine {
 		const grammar = configurationData.grammar as IGrammarRegistration;
 		grammar.path = path.resolve(extensionPath, grammar.path);
 		const language = configurationData.language as ILanguageRegistration;
-		const onigLibPromise = getOniguruma();
+		const onigLibPromise = new Promise<vsctm.IOnigLib>(function(resolve, reject) {
+			if (vscodeOnigurumaModule) {
+				resolve({
+					createOnigScanner: vscodeOnigurumaModule.createOnigScanner,
+					createOnigString: vscodeOnigurumaModule.createOnigString
+				});
+			} else {
+				reject(new TypeError('Cannot find module \'vscode-textmate\''));
+			}
+		});
 		const resolver = new Resolver([grammar], [language], onigLibPromise);
-		const registry = new Registry(resolver);
+		const registry = new vsctmModule.Registry(resolver);
 		this._grammars.push(await registry.loadGrammar(grammar.scopeName));
 		this.scopes.push(scope);
 	}
 }
 
 export class TextmateScopeSelector {
-	matchers?: MatcherWithPriority<string[]>[][];
-	matcher?: MatcherWithPriority<string[]>[];
+	selectors?: ScopeSelector[];
+	selector?: ScopeSelector;
 	constructor(selector: string[] | string) {
 		if (Array.isArray(selector)) {
-			this.matchers = selector.map(function(s) {
-				return createMatchers(s, nameMatcher);
+			this.selectors = selector.map(function(s) {
+				return new ScopeSelector(s);
 			});
 		} else {
-			this.matcher = createMatchers(selector, nameMatcher);
+			this.selector = new ScopeSelector(selector);
 		}
 	}
 	match(scopes: string[]): boolean {
-		if (!this.matchers && !this.matcher) {
+		if (!this.selectors && !this.selector) {
 			return false;
 		}
-		if (this.matchers) {
-			return this.matchers.some(function(m) {
-				return m.some(function(n) {
-					return n.matcher(scopes);
-				});
+		if (this.selectors) {
+			return this.selectors.some(function(s) {
+				return s.matches(scopes);
 			});
 		}
-		if (this.matcher) {
-			return this.matcher.some(function(m) {
-				return m.matcher(scopes);
-			});
+		if (this.selector) {
+			return this.selector.matches(scopes);
 		}
 	}
 	include(scopes: string[][]): boolean {
-		if (!this.matchers && !this.matcher) {
+		if (!this.selectors && !this.selector) {
 			return false;
 		}
 		return scopes.some(this.match.bind(this));
@@ -244,7 +246,7 @@ export class TextmateScopeSelectorMap {
 			return;
 		}
 		return Object.keys(this.selectors).filter(function(s) {
-			return new TextmateScopeSelector(s).match(scopes);
+			return new ScopeSelector(s).matches(scopes);
 		})[0];
 	}
 	has(scopes: string[]): boolean {
