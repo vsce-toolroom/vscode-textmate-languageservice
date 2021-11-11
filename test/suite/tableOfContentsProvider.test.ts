@@ -23,7 +23,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 			for (const file of files) {
 				const resource = vscode.Uri.file(file);
 				const document = await workspaceDocumentProvider.getDocument(resource);
-				const p = path.resolve(__dirname, 'data/tableOfContentsProvider', path.basename(file));
+				const p = path.resolve(__dirname, '../data/tableOfContentsProvider', path.basename(file));
 				const toc = tableOfContentsProvider.getToc(document);
 				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), toc);

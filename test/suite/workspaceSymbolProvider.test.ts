@@ -41,7 +41,7 @@ suite('src/foldingProvider.ts', function() {
 				const resource = vscode.Uri.file(file);
 				await vscode.workspace.openTextDocument(resource);
 				const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
-				const p = path.resolve(__dirname, 'data/workspaceSymbolProvider', path.basename(file));
+				const p = path.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file));
 				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), symbols);
 				}

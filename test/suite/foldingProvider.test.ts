@@ -23,7 +23,7 @@ suite('src/foldingProvider.ts', function() {
 			for (const file of files) {
 				const resource = vscode.Uri.file(file);
 				const document = await vscode.workspace.openTextDocument(resource);
-				const p = path.resolve(__dirname, 'data/foldingProvider', path.basename(file));
+				const p = path.resolve(__dirname, '../data/foldingProvider', path.basename(file));
 				const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
 				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), folds);

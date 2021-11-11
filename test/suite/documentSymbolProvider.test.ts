@@ -23,7 +23,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 			for (const file of files) {
 				const resource = vscode.Uri.file(file);
 				const document = await workspaceDocumentProvider.getDocument(resource);
-				const p = path.resolve(__dirname, 'data/documentSymbolProvider', path.basename(file));
+				const p = path.resolve(__dirname, '../data/documentSymbolProvider', path.basename(file));
 				const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
 				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), symbols);

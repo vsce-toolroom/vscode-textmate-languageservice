@@ -57,7 +57,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 						})
 					});
 				});
-				const p = path.resolve(__dirname, 'data/peekDefinitionProvider', path.basename(file));
+				const p = path.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file));
 				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), definitions);
 				}

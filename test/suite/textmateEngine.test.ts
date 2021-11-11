@@ -23,7 +23,7 @@ suite('src/textmateEngine.ts', function() {
 			}
 			for (const file of files) {
 				const resource = vscode.Uri.file(file);
-				const p = path.resolve(__dirname, 'data/textmateEngine', path.basename(file));
+				const p = path.resolve(__dirname, '../data/textmateEngine', path.basename(file));
 				const document = await workspaceDocumentProvider.getDocument(resource);
 				const tokens = engine.tokenize('source.matlab', document);
 				if (fs.existsSync(p)) {
