@@ -21,7 +21,7 @@
   "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
     "clean": "rm -rf out test/vscode-matlab/node_modules && rm -f *.tgz test/vscode-matlab/package-lock.json",
-    "compile": "npx tsc -p ./",
+    "compile": "npm run clean && npx tsc -p ./",
     "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && mocha out/test/runTest --require dotenv/config",
     "patch": "cp test/data/textmate-configuration.json test/vscode-matlab",
     "stage": "npm-run-all stage:install stage:data stage:test stage:dump",
@@ -29,7 +29,7 @@
     "stage:data": "mkdir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data && cp -R test/data/* test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
     "stage:test": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && cd ../../../.. && npm run mocha",
     "stage:dump": "cp -R test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/* test/data/*",
-    "test": "npm-run-all clean compile patch stage mocha"
+    "test": "npm-run-all compile patch stage mocha"
   },
   "devDependencies": {
     "@types/first-mate": "^7.0.6",
