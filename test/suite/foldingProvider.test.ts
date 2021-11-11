@@ -16,7 +16,7 @@ const cancelToken = new vscode.CancellationTokenSource().token;
 suite('src/foldingProvider.ts', function() {
 	this.timeout(30000);
 	test('DocumentSymbolProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
+		glob(path.resolve(__dirname, '../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
 			if (e) {
 				throw e;
 			}
