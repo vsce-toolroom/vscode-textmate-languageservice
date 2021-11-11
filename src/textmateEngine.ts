@@ -261,7 +261,7 @@ export class TextmateScopeSelectorMap {
 		}
 		return Object.keys(this.selectors).filter(function(selector) {
 			try {
-				return (new ScopeSelector(selector).matches(scopes));
+				return (new ScopeSelector(selector)).matches(scopes);
 			} catch (error) {
 				throw new Error(
 					`"${selector}" is an invalid Textmate scope selector.` +

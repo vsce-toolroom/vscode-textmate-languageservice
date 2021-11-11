@@ -18,35 +18,27 @@ const cancelToken = new vscode.CancellationTokenSource().token;
 suite('src/foldingProvider.ts', function() {
 	this.timeout(30000);
 	test('WorkspaceDocumentProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
-			if (e) {
-				throw e;
-			}
-			for (const file of files) {
-				const resource = vscode.Uri.file(file);
-				const textDocument = await vscode.workspace.openTextDocument(resource);
-				const providerDocument = await workspaceDocumentProvider.getDocument(resource);
-				assert.strictEqual(textDocument.uri.toString(), providerDocument.uri.toString());
-				assert.strictEqual(textDocument.lineCount, providerDocument.lineCount);
-				assert.strictEqual(textDocument.lineAt(0), providerDocument.lineAt(0));
-			}
-		});
+		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		for (const file of files) {
+			const resource = vscode.Uri.file(file);
+			const textDocument = await vscode.workspace.openTextDocument(resource);
+			const providerDocument = await workspaceDocumentProvider.getDocument(resource);
+			assert.strictEqual(textDocument.uri.toString(), providerDocument.uri.toString());
+			assert.strictEqual(textDocument.lineCount, providerDocument.lineCount);
+			assert.strictEqual(textDocument.lineAt(0), providerDocument.lineAt(0));
+		}
 	});
 	test('WorkspaceSymbolProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
-			if (e) {
-				throw e;
+		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		for (const file of files) {
+			const resource = vscode.Uri.file(file);
+			await vscode.workspace.openTextDocument(resource);
+			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
+			const p = path.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file));
+			if (fs.existsSync(p)) {
+				assert.deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			for (const file of files) {
-				const resource = vscode.Uri.file(file);
-				await vscode.workspace.openTextDocument(resource);
-				const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
-				const p = path.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file));
-				if (fs.existsSync(p)) {
-					assert.deepEqual(loadJsonFile.sync(p), symbols);
-				}
-				writeJsonFile.sync(p, symbols, { indent: '  ' });
-			}
-		});
+			writeJsonFile.sync(p, symbols, { indent: '  ' });
+		}
 	});
 });

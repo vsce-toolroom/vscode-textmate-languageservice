@@ -16,20 +16,16 @@ const cancelToken = new vscode.CancellationTokenSource().token;
 suite('src/foldingProvider.ts', function() {
 	this.timeout(30000);
 	test('DocumentSymbolProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
-			if (e) {
-				throw e;
+		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		for (const file of files) {
+			const resource = vscode.Uri.file(file);
+			const document = await vscode.workspace.openTextDocument(resource);
+			const p = path.resolve(__dirname, '../data/foldingProvider', path.basename(file));
+			const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
+			if (fs.existsSync(p)) {
+				assert.deepEqual(loadJsonFile.sync(p), folds);
 			}
-			for (const file of files) {
-				const resource = vscode.Uri.file(file);
-				const document = await vscode.workspace.openTextDocument(resource);
-				const p = path.resolve(__dirname, '../data/foldingProvider', path.basename(file));
-				const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
-				if (fs.existsSync(p)) {
-					assert.deepEqual(loadJsonFile.sync(p), folds);
-				}
-				writeJsonFile.sync(p, folds, { indent: '  ' });
-			}
-		});
+			writeJsonFile.sync(p, folds, { indent: '  ' });
+		}
 	});
 });
