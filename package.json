@@ -26,7 +26,7 @@
     "patch": "cp test/data/textmate-configuration.json test/vscode-matlab",
     "stage": "npm-run-all stage:install stage:data stage:test stage:dump",
     "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.1.1.tgz --production && npm install --only=production && cd ../..",
-    "stage:data": "cp -R test/data/* test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
+    "stage:data": "mkdir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data && cp -R test/data/* test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
     "stage:test": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && cd ../../../.. && npm run mocha",
     "stage:dump": "cp -R test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/* test/data/*",
     "test": "npm-run-all clean compile patch stage mocha"
