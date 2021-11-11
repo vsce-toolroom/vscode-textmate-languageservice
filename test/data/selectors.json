@@ -33,11 +33,6 @@
 			"expected": true
 		},
 		{
-			"selector": "- - foo6",
-			"input": ["bar6"],
-			"expected": false
-		},
-		{
 			"selector": "bar7 foo7",
 			"input": ["bar7", "foo7"],
 			"expected": true
