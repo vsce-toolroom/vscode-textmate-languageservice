@@ -22,13 +22,14 @@
   "scripts": {
     "clean": "rm -rf out test/vscode-matlab/node_modules && rm -f *.tgz test/vscode-matlab/package-lock.json",
     "compile": "npm run clean && npx tsc -p ./",
+    "dump": "cp -R test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/* test/data",
     "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && mocha out/test/runTest --require dotenv/config && cd ../../../..",
     "patch": "cp test/data/textmate-configuration.json test/vscode-matlab",
-    "stage": "npm-run-all stage:install stage:data stage:test",
-    "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.1.1.tgz --production && npm install --only=production && cd ../..",
+    "posttest": "npm run dump",
     "stage:data": "mkdir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data && cp -R test/data/* test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
-    "dump": "cp -R test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/* test/data/*",
-    "test": "npm-run-all compile patch stage mocha; npm run dump"
+    "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.1.1.tgz --production && npm install --only=production && cd ../..",
+    "stage": "npm-run-all stage:install stage:data",
+    "test": "npm-run-all compile patch stage mocha"
   },
   "devDependencies": {
     "@types/first-mate": "^7.0.6",
