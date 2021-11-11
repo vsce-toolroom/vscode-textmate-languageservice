@@ -5,6 +5,7 @@
 		"outDir": "out",
 		"moduleResolution": "node",
 		"lib": ["es6", "es2016", "dom"],
+		"allowJs": true,
 		"sourceMap": false,
 		"resolveJsonModule": true,
 		"rootDir": ".",
@@ -13,6 +14,7 @@
 	"exclude": [
 		"node_modules",
 		".vscode-test",
-		"test/vscode-matlab"
+		"test/vscode-matlab",
+		"out"
 	]
 }

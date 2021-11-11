@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 import * as loadJsonFile from 'load-json-file';
 import * as delay from 'delay';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
-import { ScopeSelector } from 'first-mate';
+import ScopeSelector from './util/scope-selector';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
 import * as vsctm from 'vscode-textmate';
