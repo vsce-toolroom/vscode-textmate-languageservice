@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as glob from 'glob';
+import * as fs from 'fs';
 import * as assert from 'assert';
 import * as writeJsonFile from 'write-json-file';
 import * as loadJsonFile from 'load-json-file';
@@ -19,7 +20,7 @@ const peekDefinitionProvider = new PeekDefinitionProvider(documentSymbolProvider
 suite('src/tableOfContentsProvider.ts', function() {
 	this.timeout(30000);
 	test('PeekDefinitionProvider class', async function() {
-		glob(path.resolve(__dirname, './test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
+		glob(path.resolve(__dirname, '../../../test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
 			if (e) {
 				throw e;
 			}
@@ -57,11 +58,10 @@ suite('src/tableOfContentsProvider.ts', function() {
 					});
 				});
 				const p = path.resolve(__dirname, 'data/peekDefinitionProvider', path.basename(file));
-				if (process.env.UPDATE) {
-					writeJsonFile.sync(p, definitions, { indent: '  ' });
-				} else {
+				if (fs.existsSync(p)) {
 					assert.deepEqual(loadJsonFile.sync(p), definitions);
 				}
+				writeJsonFile.sync(p, definitions, { indent: '  ' });
 			}
 		});
 	});
