@@ -16,20 +16,16 @@ const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 suite('src/tableOfContentsProvider.ts', function() {
 	this.timeout(30000);
 	test('DocumentSymbolProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
-			if (e) {
-				throw e;
+		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		for (const file of files) {
+			const resource = vscode.Uri.file(file);
+			const document = await workspaceDocumentProvider.getDocument(resource);
+			const p = path.resolve(__dirname, '../data/documentSymbolProvider', path.basename(file));
+			const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
+			if (fs.existsSync(p)) {
+				assert.deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			for (const file of files) {
-				const resource = vscode.Uri.file(file);
-				const document = await workspaceDocumentProvider.getDocument(resource);
-				const p = path.resolve(__dirname, '../data/documentSymbolProvider', path.basename(file));
-				const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
-				if (fs.existsSync(p)) {
-					assert.deepEqual(loadJsonFile.sync(p), symbols);
-				}
-				writeJsonFile.sync(p, symbols, { indent: '  ' });
-			}
-		});
+			writeJsonFile.sync(p, symbols, { indent: '  ' });
+		}
 	});
 });

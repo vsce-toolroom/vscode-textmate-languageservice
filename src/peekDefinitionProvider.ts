@@ -57,8 +57,8 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 			filePaths = [].concat.apply([], paths);
 			if (filePaths.length) {
 				let allPaths = [];
-				filePaths.forEach(filePath => {
-					allPaths.push(new vscode.Location(vscode.Uri.file(`${filePath.path}`), new vscode.Position(0,1) ))
+				filePaths.forEach(function(filePath) {
+					allPaths.push(new vscode.Location(vscode.Uri.file(`${filePath.path}`), new vscode.Position(0,1)));
 				});
 				return allPaths;
 			} else {

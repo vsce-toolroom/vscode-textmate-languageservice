@@ -17,21 +17,17 @@ const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 suite('src/textmateEngine.ts', function() {
 	this.timeout(30000);
 	test('TextmateEngine class', async function() {
-		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
-			if (e) {
-				throw e;
+		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		for (const file of files) {
+			const resource = vscode.Uri.file(file);
+			const p = path.resolve(__dirname, '../data/textmateEngine', path.basename(file));
+			const document = await workspaceDocumentProvider.getDocument(resource);
+			const tokens = engine.tokenize('source.matlab', document);
+			if (fs.existsSync(p)) {
+				assert.deepEqual(loadJsonFile.sync(p), tokens);
 			}
-			for (const file of files) {
-				const resource = vscode.Uri.file(file);
-				const p = path.resolve(__dirname, '../data/textmateEngine', path.basename(file));
-				const document = await workspaceDocumentProvider.getDocument(resource);
-				const tokens = engine.tokenize('source.matlab', document);
-				if (fs.existsSync(p)) {
-					assert.deepEqual(loadJsonFile.sync(p), tokens);
-				}
-				writeJsonFile.sync(p, tokens, { indent: '  ' });
-			}
-		});
+			writeJsonFile.sync(p, tokens, { indent: '  ' });
+		}
 	});
 	test('TextmateScopeSelector class', function() {
 		Object.keys(selectors).forEach(function(type) {
