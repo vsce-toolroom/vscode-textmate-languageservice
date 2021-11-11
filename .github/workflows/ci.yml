@@ -30,4 +30,5 @@ jobs:
       with:
         name: vscode-textmate-languageservice-test-data
         path: test/data
+      if: always()
 concurrency: vscode_environment

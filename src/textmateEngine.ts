@@ -250,8 +250,8 @@ export class TextmateScopeSelector {
 
 export class TextmateScopeSelectorMap {
 	selectors: object;
-	constructor(selectors: Record<string, number>) {
-		if (typeof selectors === 'object' && selectors) {
+	constructor(selectors: Record<string, number> | null | undefined) {
+		if (typeof selectors === 'object' && selectors instanceof Object) {
 			this.selectors = selectors;
 		}
 	}
@@ -261,7 +261,7 @@ export class TextmateScopeSelectorMap {
 		}
 		return Object.keys(this.selectors).filter(function(selector) {
 			try {
-				return new ScopeSelector(selector).matches(scopes);
+				return (new ScopeSelector(selector).matches(scopes));
 			} catch (error) {
 				throw new Error(
 					`"${selector}" is an invalid Textmate scope selector.` +
