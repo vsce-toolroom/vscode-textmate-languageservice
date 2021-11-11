@@ -17,8 +17,8 @@ suite('src/tableOfContentsProvider.ts', function() {
 	this.timeout(30000);
 	test('TableOfContentsProvider class', async function() {
 		console.log(__dirname);
-		console.log(path.resolve(__dirname, '../../../../syntaxes/MATLAB-Language-grammar/test/snap'))
-		glob(path.resolve(__dirname, '../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
+		console.log(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap'))
+		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
 			if (e) {
 				throw e;
 			}
