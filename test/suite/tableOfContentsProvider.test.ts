@@ -21,6 +21,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 				throw e;
 			}
 			for (const file of files) {
+				console.log(file);
 				const resource = vscode.Uri.file(file);
 				const document = await workspaceDocumentProvider.getDocument(resource);
 				const p = path.resolve(__dirname, '../data/tableOfContentsProvider', path.basename(file));
