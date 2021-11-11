@@ -20,7 +20,7 @@ const peekDefinitionProvider = new PeekDefinitionProvider(documentSymbolProvider
 suite('src/tableOfContentsProvider.ts', function() {
 	this.timeout(30000);
 	test('PeekDefinitionProvider class', async function() {
-		glob(path.resolve(__dirname, '../../../test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
+		glob(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'), async function(e, files) {
 			if (e) {
 				throw e;
 			}
