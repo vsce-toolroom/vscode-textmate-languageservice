@@ -25,7 +25,7 @@ suite('src/foldingProvider.ts', function() {
 			const providerDocument = await workspaceDocumentProvider.getDocument(resource);
 			assert.strictEqual(textDocument.uri.toString(), providerDocument.uri.toString());
 			assert.strictEqual(textDocument.lineCount, providerDocument.lineCount);
-			assert.strictEqual(textDocument.lineAt(0), providerDocument.lineAt(0));
+			assert.strictEqual(textDocument.lineAt(0).text, providerDocument.lineAt(0).text);
 		}
 	});
 	test('WorkspaceSymbolProvider class', async function() {
