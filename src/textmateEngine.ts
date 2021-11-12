@@ -1,17 +1,17 @@
 'use strict';
+
 import * as pkgUp from 'pkg-up';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import * as loadJsonFile from 'load-json-file';
 import * as delay from 'delay';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
+import { getOniguruma } from './util/onigLibs';
 import ScopeSelector from './util/scope-selector';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
 import * as vsctm from 'vscode-textmate';
 const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
-import * as vscodeOniguruma from 'vscode-oniguruma';
-const vscodeOnigurumaModule = getCoreNodeModule<typeof vscodeOniguruma>('vscode-oniguruma');
 
 const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');
 export const configurationData = loadJsonFile.sync(path.resolve(extensionPath, './textmate-configuration.json')) as any;
@@ -184,16 +184,7 @@ export class TextmateEngine {
 		const grammar = configurationData.grammar as IGrammarRegistration;
 		grammar.path = path.resolve(extensionPath, grammar.path);
 		const language = configurationData.language as ILanguageRegistration;
-		const onigLibPromise = new Promise<vsctm.IOnigLib>(function(resolve, reject) {
-			if (vscodeOnigurumaModule) {
-				resolve({
-					createOnigScanner: vscodeOnigurumaModule.createOnigScanner,
-					createOnigString: vscodeOnigurumaModule.createOnigString
-				});
-			} else {
-				reject(new TypeError('Cannot find module \'vscode-textmate\''));
-			}
-		});
+		const onigLibPromise = getOniguruma();
 		const resolver = new Resolver([grammar], [language], onigLibPromise);
 		const registry = new vsctmModule.Registry(resolver);
 		this._grammars.push(await registry.loadGrammar(grammar.scopeName));
