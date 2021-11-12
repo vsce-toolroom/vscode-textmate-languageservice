@@ -18,7 +18,6 @@ suite('src/tableOfContentsProvider.ts', function() {
 	test('TableOfContentsProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {
-			console.log(file);
 			const resource = vscode.Uri.file(file);
 			const document = await workspaceDocumentProvider.getDocument(resource);
 			const p = path.resolve(__dirname, '../data/tableOfContentsProvider', path.basename(file));
