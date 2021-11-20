@@ -195,11 +195,15 @@ export class TextmateEngine {
 export class TextmateScopeSelector {
 	selectors?: ScopeSelector[];
 	selector?: ScopeSelector;
-	constructor(selectors: string[] | string) {
-		if (Array.isArray(selectors)) {
-			this.selectors = selectors.map(function(selector) {
+	constructor(s: string[] | string) {
+		if (Array.isArray(s)) {
+			this.selectors = s.filter(function(selector) {
+				return typeof selector === 'string';
+			}).map(function(selector) {
 				try {
-					return new ScopeSelector(selector);
+					if (selector !== undefined && selector !== null) {
+						return new ScopeSelector(selector);
+					}
 				} catch (error) {
 					throw new Error(
 						`"${selector}" is an invalid Textmate scope selector.` +
@@ -209,24 +213,24 @@ export class TextmateScopeSelector {
 			});
 		} else {
 			try {
-				if (selectors !== undefined && selectors !== null) {
-					this.selector = new ScopeSelector(selectors);
+				if (typeof s === 'string') {
+					this.selector = new ScopeSelector(s);
 				}
 			} catch (error) {
 				throw new Error(
-					`"${selectors}" is an invalid Textmate scope selector.` +
+					`"${s}" is an invalid Textmate scope selector.` +
 					(error?.message ? `\n\n${error.message}` : '')
 				);
 			}
-	}
+		}
 	}
 	match(scopes: string[]): boolean {
 		if (!this.selectors && !this.selector) {
 			return false;
 		}
 		if (this.selectors) {
-			return this.selectors.some(function(s) {
-				return s.matches(scopes);
+			return this.selectors.some(function(selector) {
+				return selector.matches(scopes);
 			});
 		}
 		if (this.selector) {
