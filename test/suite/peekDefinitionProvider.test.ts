@@ -24,11 +24,12 @@ suite('src/tableOfContentsProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
-			await vscode.window.showTextDocument(document);
+			const textEditor = await vscode.window.showTextDocument(document);
 			const skinnyDocument = await workspaceDocumentProvider.getDocument(resource);
 			const toc = await tableOfContentsProvider.getToc(skinnyDocument);
 			const definitions = [];
 			toc.forEach(async function(entry) {
+				textEditor.selection = new vscode.Selection(entry.location.range.start, entry.location.range.end);
 				const references = await peekDefinitionProvider.provideDefinition(
 					document,
 					entry.location.range.start
