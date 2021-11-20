@@ -1,129 +1,129 @@
 {
 	"simple": [
 		{
-			"selector": "foo0",
-			"input": ["foo0"],
+			"selector": "foo.one",
+			"input": ["foo.one"],
 			"expected": true
 		},
 		{
-			"selector": "foo1",
-			"input": ["bar1"],
+			"selector": "foo.two",
+			"input": ["bar.two"],
 			"expected": false
 		},
 		{
-			"selector": "bar2 foo2",
-			"input": ["foo2"],
+			"selector": "bar.three foo.three",
+			"input": ["foo.three"],
 			"expected": false
 		},
 		{
-			"selector": "bar3 foo3",
-			"input": ["bar3"],
+			"selector": "bar.four foo.four",
+			"input": ["bar.four"],
 			"expected": false
 		}
 	],
 	"negated": [
 		{
-			"selector": "bar4 - foo4",
-			"input": ["foo4"],
+			"selector": "bar.five - foo.five",
+			"input": ["foo.five"],
 			"expected": false
 		},
 		{
-			"selector": "bar5 - foo5",
-			"input": ["bar5"],
+			"selector": "bar.six - foo.six",
+			"input": ["bar.six"],
 			"expected": true
 		},
 		{
-			"selector": "bar7 foo7",
-			"input": ["bar7", "foo7"],
+			"selector": "bar.seven foo.seven",
+			"input": ["bar.seven", "foo.seven"],
 			"expected": true
 		},
 		{
-			"selector": "bar8 - foo8",
-			"input": ["bar8"],
+			"selector": "bar.eight - foo.eight",
+			"input": ["bar.eight"],
 			"expected": true
 		},
 		{
-			"selector": "bar9 - foo9",
-			"input": ["foo9", "bar9"],
+			"selector": "bar.nine - foo.nine",
+			"input": ["foo.nine", "bar.nine"],
 			"expected": false
 		},
 		{
-			"selector": "bar10 - foo10",
-			"input": ["foo10"],
+			"selector": "bar.ten - foo.ten",
+			"input": ["foo.ten"],
 			"expected": false
 		}
 	],
 	"combined": [
 		{
-			"selector": "bar11, foo11",
-			"input": ["foo11"],
+			"selector": "bar.eleven, foo.eleven",
+			"input": ["foo.eleven"],
 			"expected": true
 		},
 		{
-			"selector": "bar12, foo12",
-			"input": ["bar12"],
+			"selector": "bar.twelve, foo.twelve",
+			"input": ["bar.twelve"],
 			"expected": true
 		},
 		{
-			"selector": "bar13, foo13",
-			"input": ["bar13", "foo13"],
+			"selector": "bar.thirteen, foo.thirteen",
+			"input": ["bar.thirteen", "foo.thirteen"],
 			"expected": true
 		},
 		{
-			"selector": "bar14, -foo14",
-			"input": ["bar14", "foo14"],
+			"selector": "bar.fourteen, * - foo.fourteen",
+			"input": ["bar.fourteen", "foo.fourteen"],
 			"expected": true
 		},
 		{
-			"selector": "bar15, -foo15",
-			"input": ["yo15"],
+			"selector": "bar.fifteen, * - foo.fifteen",
+			"input": ["yo.fifteen"],
 			"expected": true
 		},
 		{
-			"selector": "bar16, -foo16",
-			"input": ["foo16"],
+			"selector": "bar.sixteen, -foo.sixteen",
+			"input": ["foo.sixteen"],
 			"expected": false
 		}
 	],
 	"expressions": [
 		{
-			"selector": "(foo17)",
-			"input": ["foo17"],
+			"selector": "(foo.seventeen)",
+			"input": ["foo.seventeen"],
 			"expected": true
 		},
 		{
-			"selector": "(foo18 - bar18)",
-			"input": ["foo18"],
+			"selector": "(foo.eighteen - bar.eighteen)",
+			"input": ["foo.eighteen"],
 			"expected": true
 		},
 		{
-			"selector": "(foo19 - bar19)",
-			"input": ["foo19", "bar19"],
+			"selector": "(foo.nineteen - bar.nineteen)",
+			"input": ["foo.nineteen", "bar.nineteen"],
 			"expected": false
 		},
 		{
-			"selector": "foo20 bar20 - (yo20 man20)",
-			"input": ["foo20", "bar20"],
+			"selector": "foo.twenty bar.twenty - (yo.twenty man.twenty)",
+			"input": ["foo.twenty", "bar.twenty"],
 			"expected": true
 		},
 		{
-			"selector": "foo21 bar21 - (yo21 man21)",
-			"input": ["foo21", "bar21", "yo21"],
+			"selector": "foo.twentyone bar.twentyone - (yo.twentyone man.twentyone)",
+			"input": ["foo.twentyone", "bar.twentyone", "yo.twentyone"],
 			"expected": true
 		},
 		{
-			"selector": "foo22 bar22 - (yo22 man22)",
-			"input": ["foo22", "bar22", "yo22", "man22"],
+			"selector": "foo.twentytwo bar.twentytwo - (yo.twentytwo man.twentytwo)",
+			"input": ["foo.twentytwo", "bar.twentytwo", "yo.twentytwo", "man.twentytwo"],
 			"expected": false
 		},
 		{
-			"selector": "foo23 bar23 - (yo23 | man23)",
-			"input": ["foo23", "bar23", "yo23", "man23"],
+			"selector": "foo.twentythree bar.twentythree - (yo.twentythree | man.twentythree)",
+			"input": ["foo.twentythree", "bar.twentythree", "yo.twentythree", "man.twentythree"],
 			"expected": false
 		},
 		{
-			"selector": "foo24 bar24 - (yo24 | man24)",
-			"input": ["foo24", "bar24", "yo24"],
+			"selector": "foo.twentyfour bar.twentyfour - (yo.twentyfour | man.twentyfour)",
+			"input": ["foo.twentyfour", "bar.twentyfour", "yo.twentyfour"],
 			"expected": false
 		}
 	],
