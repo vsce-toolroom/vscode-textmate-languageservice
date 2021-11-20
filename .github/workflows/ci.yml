@@ -22,11 +22,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
+    - name: Install Dependencies
+      run: npm install
     - name: Run Tests
       id: test
       uses: GabrielBB/xvfb-action@v1.4
       with:
-        run: npm install; npm test;
+        run: npm test
     - name: Upload Data Artifact
       uses: actions/upload-artifact@v2
       with:

@@ -209,7 +209,9 @@ export class TextmateScopeSelector {
 			});
 		} else {
 			try {
-				this.selector = new ScopeSelector(selectors);
+				if (selectors !== undefined && selectors !== null) {
+					this.selector = new ScopeSelector(selectors);
+				}
 			} catch (error) {
 				throw new Error(
 					`"${selectors}" is an invalid Textmate scope selector.` +
