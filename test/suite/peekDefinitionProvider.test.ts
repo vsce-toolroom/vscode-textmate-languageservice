@@ -58,7 +58,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 			if (fs.existsSync(p)) {
 				assert.deepEqual(loadJsonFile.sync(p), definitions);
 			}
-			writeJsonFile.sync(p, definitions, { indent: '  ' });
+			writeJsonFile.sync(p.replace(/\.m$/, '.json'), definitions, { indent: '  ' });
 		}
 	});
 });
