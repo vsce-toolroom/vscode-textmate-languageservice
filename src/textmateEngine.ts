@@ -252,7 +252,7 @@ export class TextmateScopeSelectorMap {
 			this.selectors = selectors;
 		}
 	}
-	key(scopes: string[]): string {
+	key(scopes: string[]): string | undefined {
 		if (!this.selectors) {
 			return;
 		}
@@ -270,7 +270,7 @@ export class TextmateScopeSelectorMap {
 	has(scopes: string[]): boolean {
 		return typeof this.key(scopes) === 'string';
 	}
-	value(scopes: string[]): number {
+	value(scopes: string[]): number | undefined {
 		if (!this.selectors) {
 			return;
 		}

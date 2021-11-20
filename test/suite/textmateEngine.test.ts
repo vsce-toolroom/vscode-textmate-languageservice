@@ -58,21 +58,16 @@ suite('src/textmateEngine.ts', function() {
 			});
 			const mapSelector = new TextmateScopeSelectorMap(maps[type]);
 			const trueMapSelector = new TextmateScopeSelectorMap(trueMaps[type]);
-			const falseMapSelector = new TextmateScopeSelectorMap(falseMaps[type]);
 			selectors[type].forEach(function(test, i) {
 				assert.strictEqual(mapSelector.has(test.input), test.expected, `'${test.selector}' map.has failed`);
-				assert.strictEqual(mapSelector.key(test.input), test.selector, `'${test.selector}' map.key failed`);
+				assert.strictEqual(mapSelector.key(test.input), test.expected ? test.selector : undefined, `'${test.selector}' map.key failed`);
 				assert.strictEqual(mapSelector.value(test.input), i, `'${test.selector}' map.value failed`);
 				if (test.expected === true) {
 					assert.strictEqual(trueMapSelector.has(test.input), true, `'${test.selector}' trueMap.has failed`);
-					assert.strictEqual(falseMapSelector.has(test.input), false, `'${test.selector}' falseMap.has failed`);
 					assert.strictEqual(trueMapSelector.key(test.input), test.selector, `'${test.selector}' trueMap.key failed`);
 					assert.strictEqual(trueMapSelector.value(test.input), i, `'${test.selector}' trueMap.value failed`);
 				} else {
-					assert.strictEqual(falseMapSelector.has(test.input), true, `'${test.selector}' falseMap.has failed`);
 					assert.strictEqual(trueMapSelector.has(test.input), false, `'${test.selector}' trueMap.has failed`);
-					assert.strictEqual(falseMapSelector.key(test.input), test.selector, `'${test.selector}' falseMap.key failed`);
-					assert.strictEqual(falseMapSelector.value(test.input), i, `'${test.selector}' falseMap.value failed`);
 				}
 			});
 		});
