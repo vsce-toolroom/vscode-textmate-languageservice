@@ -61,7 +61,7 @@ suite('src/textmateEngine.ts', function() {
 			selectors[type].forEach(function(test, i) {
 				assert.strictEqual(mapSelector.has(test.input), test.expected, `'${test.selector}' map.has failed`);
 				assert.strictEqual(mapSelector.key(test.input), test.expected ? test.selector : undefined, `'${test.selector}' map.key failed`);
-				assert.strictEqual(mapSelector.value(test.input), i, `'${test.selector}' map.value failed`);
+				assert.strictEqual(mapSelector.value(test.input), test.expected ? i : undefined, `'${test.selector}' map.value failed`);
 				if (test.expected === true) {
 					assert.strictEqual(trueMapSelector.has(test.input), true, `'${test.selector}' trueMap.has failed`);
 					assert.strictEqual(trueMapSelector.key(test.input), test.selector, `'${test.selector}' trueMap.key failed`);
