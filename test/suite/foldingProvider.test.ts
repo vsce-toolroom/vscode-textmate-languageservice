@@ -1,10 +1,10 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
-import * as glob from 'glob';
-import * as fs from 'fs';
-import * as assert from 'assert';
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
+import vscode from 'vscode';
+import path from 'path';
+import glob from 'glob';
+import fs from 'fs';
+import deepEqual from 'deep-equal';
+import writeJsonFile from 'write-json-file';
+import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { FoldingProvider } from '../../src/foldingProvider';
 
@@ -20,12 +20,14 @@ suite('src/foldingProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
-			const p = path.resolve(__dirname, '../data/foldingProvider', path.basename(file));
+			const p = path
+				.resolve(__dirname, '../data/foldingProvider', path.basename(file))
+				.replace(/\.m$/, '.json');
 			const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
 			if (fs.existsSync(p)) {
-				assert.deepEqual(loadJsonFile.sync(p), folds);
+				deepEqual(loadJsonFile.sync(p), folds);
 			}
-			writeJsonFile.sync(p.replace(/\.m$/, '.json'), folds, { indent: '  ' });
+			writeJsonFile.sync(p, folds, { indent: '  ' });
 		}
 	});
 });

@@ -1,13 +1,13 @@
 'use strict';
 
-import * as glob from 'glob';
-import * as path from 'path';
-import * as vscode from 'vscode';
-import * as fs from 'fs';
+import glob from 'glob';
+import path from 'path';
+import vscode from 'vscode';
+import fs from 'fs';
 
 import getCoreNodeModule from './getCoreNodeModule';
-import * as vsctm from 'vscode-textmate';
-import * as vscodeOniguruma from 'vscode-oniguruma';
+import vsctm from 'vscode-textmate';
+import vscodeOniguruma from 'vscode-oniguruma';
 const vscodeOnigurumaModule = getCoreNodeModule<typeof vscodeOniguruma>('vscode-oniguruma');
 
 const wasmPath = glob.sync(path.resolve(vscode.env.appRoot, '+(node_modules|node_modules.asar|node_modules.asar.unpacked)/vscode-oniguruma/release/onig.wasm'))[0];

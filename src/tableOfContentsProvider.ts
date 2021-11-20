@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 import { SkinnyTextDocument, TextmateEngine, configurationData, ITextmateToken, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
 
 const symbolSelectorMap = new TextmateScopeSelectorMap(configurationData.symbols);

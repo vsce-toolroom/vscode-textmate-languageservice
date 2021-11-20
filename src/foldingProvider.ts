@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 import { ITextmateToken, TextmateEngine, configurationData } from './textmateEngine';
 import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
 

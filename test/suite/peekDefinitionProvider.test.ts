@@ -1,10 +1,10 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
-import * as glob from 'glob';
-import * as fs from 'fs';
-import * as assert from 'assert';
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
+import vscode from 'vscode';
+import path from 'path';
+import glob from 'glob';
+import fs from 'fs';
+import deepEqual from 'deep-equal';
+import writeJsonFile from 'write-json-file';
+import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
@@ -54,11 +54,13 @@ suite('src/tableOfContentsProvider.ts', function() {
 					})
 				});
 			});
-			const p = path.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file));
+			const p = path
+				.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file))
+				.replace(/\.m$/, '.json');
 			if (fs.existsSync(p)) {
-				assert.deepEqual(loadJsonFile.sync(p), definitions);
+				deepEqual(loadJsonFile.sync(p), definitions);
 			}
-			writeJsonFile.sync(p.replace(/\.m$/, '.json'), definitions, { indent: '  ' });
+			writeJsonFile.sync(p, definitions, { indent: '  ' });
 		}
 	});
 });

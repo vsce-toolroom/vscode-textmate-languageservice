@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
 import { TextmateEngine, SkinnyTextDocument } from './textmateEngine';
 

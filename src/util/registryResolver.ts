@@ -1,10 +1,10 @@
 'use strict';
 
-import * as path from 'path';
-import * as fs from 'fs';
+import path from 'path';
+import fs from 'fs';
 
 import getCoreNodeModule from './getCoreNodeModule';
-import * as vsctm from 'vscode-textmate';
+import vsctm from 'vscode-textmate';
 const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 
 export interface ILanguageRegistration {

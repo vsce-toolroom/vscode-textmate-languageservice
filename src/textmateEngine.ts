@@ -1,16 +1,16 @@
 'use strict';
 
-import * as pkgUp from 'pkg-up';
-import * as path from 'path';
-import * as vscode from 'vscode';
-import * as loadJsonFile from 'load-json-file';
-import * as delay from 'delay';
+import pkgUp from 'pkg-up';
+import path from 'path';
+import vscode from 'vscode';
+import loadJsonFile from 'load-json-file';
+import delay from 'delay';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
 import { getOniguruma } from './util/onigLibs';
 import ScopeSelector from './util/scope-selector';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
-import * as vsctm from 'vscode-textmate';
+import vsctm from 'vscode-textmate';
 const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 
 const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');

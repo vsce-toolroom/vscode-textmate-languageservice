@@ -1,4 +1,4 @@
-import * as ScopeSelectorParser from "./scope-selector-parser";
+import ScopeSelectorParser from "./scope-selector-parser";
 
 export default class ScopeSelector {
 	matcher: any;

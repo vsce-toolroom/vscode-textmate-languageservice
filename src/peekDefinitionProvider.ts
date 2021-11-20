@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 import { configurationData } from './textmateEngine';
 import { DocumentSymbolProvider } from './documentSymbolProvider';
 

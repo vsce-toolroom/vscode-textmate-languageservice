@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 
 /**
  * Returns a node module installed with VSCode, or undefined if it fails.
