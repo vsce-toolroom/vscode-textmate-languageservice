@@ -38,7 +38,7 @@ suite('src/foldingProvider.ts', function() {
 			if (fs.existsSync(p)) {
 				assert.deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			writeJsonFile.sync(p, symbols, { indent: '  ' });
+			writeJsonFile.sync(p.replace(/\.m$/, '.json'), symbols, { indent: '  ' });
 		}
 	});
 });

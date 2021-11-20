@@ -25,7 +25,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 			if (fs.existsSync(p)) {
 				assert.deepEqual(loadJsonFile.sync(p), toc);
 			}
-			writeJsonFile.sync(p, toc, { indent: '  ' });
+			writeJsonFile.sync(p.replace(/\.m$/, '.json'), toc, { indent: '  ' });
 		}
 	});
 });

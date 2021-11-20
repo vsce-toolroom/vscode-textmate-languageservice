@@ -26,7 +26,7 @@ suite('src/textmateEngine.ts', function() {
 			if (fs.existsSync(p)) {
 				assert.deepEqual(loadJsonFile.sync(p), tokens);
 			}
-			writeJsonFile.sync(p, tokens, { indent: '  ' });
+			writeJsonFile.sync(p.replace(/\.m$/, '.json'), tokens, { indent: '  ' });
 		}
 	});
 	test('TextmateScopeSelector class', function() {
