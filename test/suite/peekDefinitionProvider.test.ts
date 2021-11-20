@@ -30,6 +30,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 			const definitions = [];
 			toc.forEach(async function(entry) {
 				textEditor.selection = new vscode.Selection(entry.location.range.start, entry.location.range.end);
+				vscode.commands.executeCommand('cursorWordStartRightSelect');
 				const references = await peekDefinitionProvider.provideDefinition(
 					document,
 					entry.location.range.start
