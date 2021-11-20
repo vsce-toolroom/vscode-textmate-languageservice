@@ -46,7 +46,7 @@ suite('src/textmateEngine.ts', function() {
 		const falseMaps = {};
 		Object.keys(selectors).forEach(function(type) {
 			selectors[type].forEach(function(test, i) {
-				maps[type] = {}
+				maps[type] = maps[type] || {}
 				maps[type][test.selector] = i;
 				if (test.expected === true) {
 					trueMaps[type] = trueMaps[type] || {};
@@ -56,15 +56,6 @@ suite('src/textmateEngine.ts', function() {
 					falseMaps[type][test.selector] = i;
 				}
 			});
-			console.log(`Type selector map: ${type}`);
-			console.log(JSON.stringify(maps[type], null, '  '));
-			console.log('');
-			console.log(`Type selector map - true: ${type}`);
-			console.log(JSON.stringify(trueMaps[type], null, '  '));
-			console.log('');
-			console.log(`Type selector map - false: ${type}`);
-			console.log(JSON.stringify(falseMaps[type], null, '  '));
-			console.log('');
 			const mapSelector = new TextmateScopeSelectorMap(maps[type]);
 			const trueMapSelector = new TextmateScopeSelectorMap(trueMaps[type]);
 			const falseMapSelector = new TextmateScopeSelectorMap(falseMaps[type]);
