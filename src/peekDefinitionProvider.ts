@@ -47,7 +47,7 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 		return vscode.workspace.findFiles(`**/${fileName}`, configurationData.exclude); // Returns promise
 	}
 
-	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[]> {
+	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[] | undefined> {
 		let filePaths = [];
 		const componentNames = this.getComponentName(position);
 		const searchPathActions = componentNames.map(this.searchFilePath);

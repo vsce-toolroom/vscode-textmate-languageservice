@@ -33,26 +33,28 @@ suite('src/tableOfContentsProvider.ts', function() {
 					document,
 					entry.location.range.start
 				);
-				definitions.push({
-					text: entry.text,
-					token: entry.token,
-					definition: entry.location,
-					references: references.map(function(ref) {
-						return {
-							title: path.basename(ref.uri.path),
-							location: {
-								end: {
-									character: ref.range.end.character,
-									line: ref.range.end.line
-								},
-								start: {
-									character: ref.range.start.character,
-									line: ref.range.start.line
+				if (Array.isArray(references)) {
+					definitions.push({
+						text: entry.text,
+						token: entry.token,
+						definition: entry.location,
+						references: references.map(function(ref) {
+							return {
+								title: path.basename(ref.uri.path),
+								location: {
+									end: {
+										character: ref.range.end.character,
+										line: ref.range.end.line
+									},
+									start: {
+										character: ref.range.start.character,
+										line: ref.range.start.line
+									}
 								}
 							}
-						}
-					})
-				});
+						})
+					});
+				}
 			});
 			const p = path
 				.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file))
