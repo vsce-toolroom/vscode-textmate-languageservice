@@ -1,0 +1,606 @@
+[
+  {
+    "name": "properties",
+    "detail": "keyword.control.properties.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 1,
+        "character": 0
+      },
+      {
+        "line": 3,
+        "character": 6
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 1,
+        "character": 0
+      },
+      {
+        "line": 3,
+        "character": 6
+      }
+    ],
+    "children": [
+      {
+        "name": "Radius",
+        "detail": "variable.object.property.matlab",
+        "kind": 6,
+        "range": [
+          {
+            "line": 2,
+            "character": 0
+          },
+          {
+            "line": 3,
+            "character": 6
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 2,
+            "character": 0
+          },
+          {
+            "line": 3,
+            "character": 6
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "properties",
+    "detail": "keyword.control.properties.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 4,
+        "character": 0
+      },
+      {
+        "line": 6,
+        "character": 6
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 4,
+        "character": 0
+      },
+      {
+        "line": 6,
+        "character": 6
+      }
+    ],
+    "children": [
+      {
+        "name": "P",
+        "detail": "variable.object.property.matlab",
+        "kind": 6,
+        "range": [
+          {
+            "line": 5,
+            "character": 0
+          },
+          {
+            "line": 6,
+            "character": 6
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 5,
+            "character": 0
+          },
+          {
+            "line": 6,
+            "character": 6
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "properties",
+    "detail": "keyword.control.properties.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 7,
+        "character": 0
+      },
+      {
+        "line": 9,
+        "character": 6
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 7,
+        "character": 0
+      },
+      {
+        "line": 9,
+        "character": 6
+      }
+    ],
+    "children": [
+      {
+        "name": "Area",
+        "detail": "variable.object.property.matlab",
+        "kind": 6,
+        "range": [
+          {
+            "line": 8,
+            "character": 0
+          },
+          {
+            "line": 9,
+            "character": 6
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 8,
+            "character": 0
+          },
+          {
+            "line": 9,
+            "character": 6
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "methods",
+    "detail": "keyword.control.methods.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 10,
+        "character": 0
+      },
+      {
+        "line": 43,
+        "character": 6
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 10,
+        "character": 0
+      },
+      {
+        "line": 43,
+        "character": 6
+      }
+    ],
+    "children": [
+      {
+        "name": "if",
+        "detail": "keyword.control.if.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 12,
+            "character": 0
+          },
+          {
+            "line": 16,
+            "character": 34
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 12,
+            "character": 0
+          },
+          {
+            "line": 16,
+            "character": 34
+          }
+        ],
+        "children": [
+          {
+            "name": "obj.Radius",
+            "detail": "variable.other.readwrite.matlab",
+            "kind": 12,
+            "range": [
+              {
+                "line": 13,
+                "character": 0
+              },
+              {
+                "line": 16,
+                "character": 34
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 13,
+                "character": 0
+              },
+              {
+                "line": 16,
+                "character": 34
+              }
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "val",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 17,
+            "character": 0
+          },
+          {
+            "line": 19,
+            "character": 40
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 17,
+            "character": 0
+          },
+          {
+            "line": 19,
+            "character": 40
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "if",
+        "detail": "keyword.control.if.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 20,
+            "character": 0
+          },
+          {
+            "line": 22,
+            "character": 12
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 20,
+            "character": 0
+          },
+          {
+            "line": 22,
+            "character": 12
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "obj.Radius",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 23,
+            "character": 0
+          },
+          {
+            "line": 25,
+            "character": 24
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 23,
+            "character": 0
+          },
+          {
+            "line": 25,
+            "character": 24
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "r",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 26,
+            "character": 0
+          },
+          {
+            "line": 26,
+            "character": 24
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 26,
+            "character": 0
+          },
+          {
+            "line": 26,
+            "character": 24
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "d",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 27,
+            "character": 0
+          },
+          {
+            "line": 27,
+            "character": 17
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 27,
+            "character": 0
+          },
+          {
+            "line": 27,
+            "character": 17
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "pos",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 28,
+            "character": 0
+          },
+          {
+            "line": 28,
+            "character": 25
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 28,
+            "character": 0
+          },
+          {
+            "line": 28,
+            "character": 25
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "curv",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 29,
+            "character": 0
+          },
+          {
+            "line": 39,
+            "character": 24
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 29,
+            "character": 0
+          },
+          {
+            "line": 39,
+            "character": 24
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "rad",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 40,
+            "character": 0
+          },
+          {
+            "line": 43,
+            "character": 6
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 40,
+            "character": 0
+          },
+          {
+            "line": 43,
+            "character": 6
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "methods",
+    "detail": "keyword.control.methods.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 44,
+        "character": 0
+      },
+      {
+        "line": 54,
+        "character": 0
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 44,
+        "character": 0
+      },
+      {
+        "line": 54,
+        "character": 0
+      }
+    ],
+    "children": [
+      {
+        "name": "prompt",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 46,
+            "character": 0
+          },
+          {
+            "line": 46,
+            "character": 39
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 46,
+            "character": 0
+          },
+          {
+            "line": 46,
+            "character": 39
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "dlgTitle",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 47,
+            "character": 0
+          },
+          {
+            "line": 47,
+            "character": 29
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 47,
+            "character": 0
+          },
+          {
+            "line": 47,
+            "character": 29
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "rad",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 48,
+            "character": 0
+          },
+          {
+            "line": 48,
+            "character": 41
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 48,
+            "character": 0
+          },
+          {
+            "line": 48,
+            "character": 41
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "r",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 49,
+            "character": 0
+          },
+          {
+            "line": 49,
+            "character": 32
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 49,
+            "character": 0
+          },
+          {
+            "line": 49,
+            "character": 32
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "obj",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 50,
+            "character": 0
+          },
+          {
+            "line": 54,
+            "character": 0
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 50,
+            "character": 0
+          },
+          {
+            "line": 54,
+            "character": 0
+          }
+        ],
+        "children": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "name": "%% Logic based on nargin",
+    "detail": "entity.name.section.matlab",
+    "kind": 14,
+    "range": [
+      {
+        "line": 1,
+        "character": 0
+      },
+      {
+        "line": 1,
+        "character": 24
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 1,
+        "character": 0
+      },
+      {
+        "line": 1,
+        "character": 24
+      }
+    ],
+    "children": []
+  },
+  {
+    "name": "switch",
+    "detail": "keyword.control.switch.matlab",
+    "kind": 2,
+    "range": [
+      {
+        "line": 2,
+        "character": 0
+      },
+      {
+        "line": 27,
+        "character": 0
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 2,
+        "character": 0
+      },
+      {
+        "line": 27,
+        "character": 0
+      }
+    ],
+    "children": [
+      {
+        "name": "y",
+        "detail": "variable.other.readwrite.matlab",
+        "kind": 12,
+        "range": [
+          {
+            "line": 6,
+            "character": 0
+          },
+          {
+            "line": 7,
+            "character": 107
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 6,
+            "character": 0
+          },
+          {
+            "line": 7,
+            "character": 107
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "if",
+        "detail": "keyword.control.if.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 8,
+            "character": 0
+          },
+          {
+            "line": 12,
+            "character": 3
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 8,
+            "character": 0
+          },
+          {
+            "line": 12,
+            "character": 3
+          }
+        ],
+        "children": [
+          {
+            "name": "y",
+            "detail": "variable.other.readwrite.matlab",
+            "kind": 12,
+            "range": [
+              {
+                "line": 10,
+                "character": 0
+              },
+              {
+                "line": 12,
+                "character": 3
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 10,
+                "character": 0
+              },
+              {
+                "line": 12,
+                "character": 3
+              }
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "try",
+        "detail": "keyword.control.try.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 13,
+            "character": 0
+          },
+          {
+            "line": 23,
+            "character": 3
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 13,
+            "character": 0
+          },
+          {
+            "line": 23,
+            "character": 3
+          }
+        ],
+        "children": [
+          {
+            "name": "if",
+            "detail": "keyword.control.if.matlab",
+            "kind": 2,
+            "range": [
+              {
+                "line": 14,
+                "character": 0
+              },
+              {
+                "line": 15,
+                "character": 23
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 14,
+                "character": 0
+              },
+              {
+                "line": 15,
+                "character": 23
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "elseif",
+            "detail": "keyword.control.elseif.matlab",
+            "kind": 2,
+            "range": [
+              {
+                "line": 16,
+                "character": 0
+              },
+              {
+                "line": 17,
+                "character": 23
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 16,
+                "character": 0
+              },
+              {
+                "line": 17,
+                "character": 23
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "else",
+            "detail": "keyword.control.else.matlab",
+            "kind": 2,
+            "range": [
+              {
+                "line": 18,
+                "character": 0
+              },
+              {
+                "line": 23,
+                "character": 3
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 18,
+                "character": 0
+              },
+              {
+                "line": 23,
+                "character": 3
+              }
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "while",
+        "detail": "keyword.control.while.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 24,
+            "character": 0
+          },
+          {
+            "line": 27,
+            "character": 0
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 24,
+            "character": 0
+          },
+          {
+            "line": 27,
+            "character": 0
+          }
+        ],
+        "children": [
+          {
+            "name": "if",
+            "detail": "keyword.control.if.matlab",
+            "kind": 2,
+            "range": [
+              {
+                "line": 25,
+                "character": 0
+              },
+              {
+                "line": 27,
+                "character": 0
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 25,
+                "character": 0
+              },
+              {
+                "line": 27,
+                "character": 0
+              }
+            ],
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
