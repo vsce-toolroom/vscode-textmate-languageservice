@@ -23,12 +23,12 @@
 	],
 	"negated": [
 		{
-			"selector": "* - foo4",
+			"selector": "bar4 - foo4",
 			"input": ["foo4"],
 			"expected": false
 		},
 		{
-			"selector": "* - foo5",
+			"selector": "bar5 - foo5",
 			"input": ["bar5"],
 			"expected": true
 		},
