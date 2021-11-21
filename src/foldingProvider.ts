@@ -70,20 +70,20 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 
 	private async getBlockFoldingRanges(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
-	const ranges: vscode.FoldingRange[] = [];
-	for (let index = 1; index < tokens.length; index++) {
-	  const token = tokens[index];
-	  if (token.level > tokens[index - 1].level) {
-		for (let subindex = index; subindex < tokens.length; subindex++) {
-		  const subtoken = tokens[subindex];
-		  if (subtoken.level < token.level) {
-			const range = new vscode.FoldingRange(token.line, tokens[subindex - 1].line, this.getFoldingRangeKind(token));
-			ranges.push(range);
-		  }
+		const ranges: vscode.FoldingRange[] = [];
+		for (let index = 1; index < tokens.length; index++) {
+			const token = tokens[index];
+			if (token.level > tokens[index - 1].level) {
+				for (let subindex = index; subindex < tokens.length; subindex++) {
+					const subtoken = tokens[subindex];
+					if (subtoken.level < token.level) {
+						const range = new vscode.FoldingRange(token.line, tokens[subindex - 1].line, this.getFoldingRangeKind(token));
+						ranges.push(range);
+					}
+				}
+			}
 		}
-	  }
-	}
-	return ranges;
+		return ranges;
 	}
 
 	private getFoldingRangeKind(listItem: ITextmateToken): vscode.FoldingRangeKind | undefined {

@@ -25,7 +25,7 @@ suite('src/textmateEngine.ts', function() {
 				.resolve(__dirname, '../data/textmateEngine', path.basename(file))
 				.replace(/\.m$/, '.json');
 			const document = await workspaceDocumentProvider.getDocument(resource);
-			const tokens = engine.tokenize('source.matlab', document);
+			const tokens = await engine.tokenize('source.matlab', document);
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), tokens);
 			}

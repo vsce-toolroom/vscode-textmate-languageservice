@@ -163,7 +163,7 @@ export class TextmateEngine {
 
 				if (
 					indentationSelectorMap.has(token.scopes)
-					&& (!this._state.declaration || dedentationSelector.match(token.scopes))
+					&& (!this._state.declaration || indentationSelectorMap.value(token.scopes) < 0)
 				) {
 					this._state.stack += indentationSelectorMap.value(token.scopes);
 				}
