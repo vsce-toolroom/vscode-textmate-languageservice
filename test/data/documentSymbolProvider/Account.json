@@ -602,7 +602,34 @@
         "character": 22
       }
     ],
-    "children": []
+    "children": [
+      {
+        "name": "StateChanged",
+        "detail": "entity.name.type.event.matlab",
+        "kind": 23,
+        "range": [
+          {
+            "line": 45,
+            "character": 0
+          },
+          {
+            "line": 47,
+            "character": 22
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 45,
+            "character": 0
+          },
+          {
+            "line": 47,
+            "character": 22
+          }
+        ],
+        "children": []
+      }
+    ]
   },
   {
     "name": "enumeration",
