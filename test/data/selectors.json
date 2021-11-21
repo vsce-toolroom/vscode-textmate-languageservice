@@ -70,12 +70,12 @@
 			"expected": true
 		},
 		{
-			"selector": "bar.fourteen, * - (foo.fourteen, fifteen)",
-			"input": ["bar.fourteen", "foo.fourteen"],
+			"selector": "bar.fourteen, * - (foo.fourteen, yo.fifteen)",
+			"input": ["bar.fourteen"],
 			"expected": true
 		},
 		{
-			"selector": "bar.fifteen, * - (foo.fifteen, fourteen)",
+			"selector": "bar.fifteen, * - (foo.fifteen, foo.fourteen)",
 			"input": ["yo.fifteen"],
 			"expected": true
 		},
