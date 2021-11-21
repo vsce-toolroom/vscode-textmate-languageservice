@@ -1,11 +1,11 @@
 [
   {
-    "name": "enumeration",
-    "detail": "keyword.control.enum.matlab",
-    "kind": 2,
+    "name": "AnEnum",
+    "detail": "entity.name.type.class.matlab",
+    "kind": 4,
     "range": [
       {
-        "line": 2,
+        "line": 0,
         "character": 0
       },
       {
@@ -15,7 +15,7 @@
     ],
     "selectionRange": [
       {
-        "line": 2,
+        "line": 0,
         "character": 0
       },
       {
@@ -25,64 +25,12 @@
     ],
     "children": [
       {
-        "name": "One",
-        "detail": "variable.other.enummember.matlab",
-        "kind": 21,
+        "name": "enumeration",
+        "detail": "keyword.control.enum.matlab",
+        "kind": 2,
         "range": [
           {
-            "line": 4,
-            "character": 0
-          },
-          {
-            "line": 4,
-            "character": 32
-          }
-        ],
-        "selectionRange": [
-          {
-            "line": 4,
-            "character": 0
-          },
-          {
-            "line": 4,
-            "character": 32
-          }
-        ],
-        "children": []
-      },
-      {
-        "name": "Two",
-        "detail": "variable.other.enummember.matlab",
-        "kind": 21,
-        "range": [
-          {
-            "line": 5,
-            "character": 0
-          },
-          {
-            "line": 5,
-            "character": 15
-          }
-        ],
-        "selectionRange": [
-          {
-            "line": 5,
-            "character": 0
-          },
-          {
-            "line": 5,
-            "character": 15
-          }
-        ],
-        "children": []
-      },
-      {
-        "name": "Ten",
-        "detail": "variable.other.enummember.matlab",
-        "kind": 21,
-        "range": [
-          {
-            "line": 6,
+            "line": 2,
             "character": 0
           },
           {
@@ -92,7 +40,7 @@
         ],
         "selectionRange": [
           {
-            "line": 6,
+            "line": 2,
             "character": 0
           },
           {
@@ -100,7 +48,86 @@
             "character": 0
           }
         ],
-        "children": []
+        "children": [
+          {
+            "name": "One",
+            "detail": "variable.other.enummember.matlab",
+            "kind": 21,
+            "range": [
+              {
+                "line": 4,
+                "character": 0
+              },
+              {
+                "line": 4,
+                "character": 32
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 4,
+                "character": 0
+              },
+              {
+                "line": 4,
+                "character": 32
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Two",
+            "detail": "variable.other.enummember.matlab",
+            "kind": 21,
+            "range": [
+              {
+                "line": 5,
+                "character": 0
+              },
+              {
+                "line": 5,
+                "character": 15
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 5,
+                "character": 0
+              },
+              {
+                "line": 5,
+                "character": 15
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Ten",
+            "detail": "variable.other.enummember.matlab",
+            "kind": 21,
+            "range": [
+              {
+                "line": 6,
+                "character": 0
+              },
+              {
+                "line": 11,
+                "character": 0
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 6,
+                "character": 0
+              },
+              {
+                "line": 11,
+                "character": 0
+              }
+            ],
+            "children": []
+          }
+        ]
       }
     ]
   }
