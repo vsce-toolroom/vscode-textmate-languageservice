@@ -45,7 +45,6 @@ export interface ITextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineRes
 }
 
 interface ITextmateTokenizerState {
-	context: boolean;
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
@@ -64,7 +63,6 @@ export class TextmateEngine {
 	public scopes?: string[] = [];
 
 	private _state?: ITextmateTokenizerState = {
-		context: false,
 		continuation: false,
 		declaration: false,
 		line: 0,
@@ -96,6 +94,12 @@ export class TextmateEngine {
 		} else {
 			this._queue[text] = true;
 		}
+
+		this._state.continuation = false;
+		this._state.declaration = false;
+		this._state.line = 0;
+		this._state.rule = vsctmModule.INITIAL;
+		this._state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
 			let line: SkinnyTextLine = document.lineAt(lineNumber);
@@ -139,12 +143,17 @@ export class TextmateEngine {
 			const indentationSelectorMap = new TextmateScopeSelectorMap(configurationData.indentation);
 			const dedentationSelector = new TextmateScopeSelector(configurationData.dedentation);
 
+			let indentationIncrement: number;
 			for (const token of lineTokens.tokens) {
 				this._state.declaration = (
-					indentationSelectorMap.value(token.scopes) === 1
+					indentationSelectorMap.value(token.scopes) > 0
 					|| dedentationSelector.match(token.scopes)
 					|| this._state.declaration
 				);
+
+				if (indentationSelectorMap.value(token.scopes) > 0) {
+					indentationIncrement = indentationSelectorMap.value(token.scopes);
+				}
 
 				if (this._state.declaration) {
 					if (continuationSelector.match(token.scopes)) {
@@ -157,7 +166,7 @@ export class TextmateEngine {
 						&& lineNumber > this._state.line
 					) {
 						this._state.declaration = false;
-						this._state.stack++;
+						this._state.stack += indentationIncrement;
 					}
 				}
 

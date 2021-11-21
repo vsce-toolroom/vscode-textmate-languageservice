@@ -161,13 +161,223 @@
                         "character": 0
                       },
                       {
+                        "line": 8,
+                        "character": 35
+                      }
+                    ],
+                    "selectionRange": [
+                      {
+                        "line": 8,
+                        "character": 0
+                      },
+                      {
+                        "line": 8,
+                        "character": 35
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "name": "case",
+                    "detail": "keyword.control.switch.case.matlab",
+                    "kind": 2,
+                    "range": [
+                      {
+                        "line": 9,
+                        "character": 0
+                      },
+                      {
+                        "line": 12,
+                        "character": 3
+                      }
+                    ],
+                    "selectionRange": [
+                      {
+                        "line": 9,
+                        "character": 0
+                      },
+                      {
+                        "line": 12,
+                        "character": 3
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "y",
+                        "detail": "variable.other.readwrite.matlab",
+                        "kind": 12,
+                        "range": [
+                          {
+                            "line": 10,
+                            "character": 0
+                          },
+                          {
+                            "line": 10,
+                            "character": 34
+                          }
+                        ],
+                        "selectionRange": [
+                          {
+                            "line": 10,
+                            "character": 0
+                          },
+                          {
+                            "line": 10,
+                            "character": 34
+                          }
+                        ],
+                        "children": []
+                      },
+                      {
+                        "name": "otherwise",
+                        "detail": "keyword.control.switch.otherwise.matlab",
+                        "kind": 2,
+                        "range": [
+                          {
+                            "line": 11,
+                            "character": 0
+                          },
+                          {
+                            "line": 12,
+                            "character": 3
+                          }
+                        ],
+                        "selectionRange": [
+                          {
+                            "line": 11,
+                            "character": 0
+                          },
+                          {
+                            "line": 12,
+                            "character": 3
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "try",
+                    "detail": "keyword.control.try.matlab",
+                    "kind": 2,
+                    "range": [
+                      {
+                        "line": 13,
+                        "character": 0
+                      },
+                      {
+                        "line": 23,
+                        "character": 3
+                      }
+                    ],
+                    "selectionRange": [
+                      {
+                        "line": 13,
+                        "character": 0
+                      },
+                      {
+                        "line": 23,
+                        "character": 3
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "if",
+                        "detail": "keyword.control.if.matlab",
+                        "kind": 2,
+                        "range": [
+                          {
+                            "line": 14,
+                            "character": 0
+                          },
+                          {
+                            "line": 15,
+                            "character": 23
+                          }
+                        ],
+                        "selectionRange": [
+                          {
+                            "line": 14,
+                            "character": 0
+                          },
+                          {
+                            "line": 15,
+                            "character": 23
+                          }
+                        ],
+                        "children": []
+                      },
+                      {
+                        "name": "elseif",
+                        "detail": "keyword.control.elseif.matlab",
+                        "kind": 2,
+                        "range": [
+                          {
+                            "line": 16,
+                            "character": 0
+                          },
+                          {
+                            "line": 17,
+                            "character": 23
+                          }
+                        ],
+                        "selectionRange": [
+                          {
+                            "line": 16,
+                            "character": 0
+                          },
+                          {
+                            "line": 17,
+                            "character": 23
+                          }
+                        ],
+                        "children": []
+                      },
+                      {
+                        "name": "else",
+                        "detail": "keyword.control.else.matlab",
+                        "kind": 2,
+                        "range": [
+                          {
+                            "line": 18,
+                            "character": 0
+                          },
+                          {
+                            "line": 23,
+                            "character": 3
+                          }
+                        ],
+                        "selectionRange": [
+                          {
+                            "line": 18,
+                            "character": 0
+                          },
+                          {
+                            "line": 23,
+                            "character": 3
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "while",
+                    "detail": "keyword.control.while.matlab",
+                    "kind": 2,
+                    "range": [
+                      {
+                        "line": 24,
+                        "character": 0
+                      },
+                      {
                         "line": 27,
                         "character": 0
                       }
                     ],
                     "selectionRange": [
                       {
-                        "line": 8,
+                        "line": 24,
                         "character": 0
                       },
                       {
@@ -177,12 +387,12 @@
                     ],
                     "children": [
                       {
-                        "name": "case",
-                        "detail": "keyword.control.switch.case.matlab",
+                        "name": "if",
+                        "detail": "keyword.control.if.matlab",
                         "kind": 2,
                         "range": [
                           {
-                            "line": 9,
+                            "line": 25,
                             "character": 0
                           },
                           {
@@ -192,7 +402,7 @@
                         ],
                         "selectionRange": [
                           {
-                            "line": 9,
+                            "line": 25,
                             "character": 0
                           },
                           {
@@ -200,218 +410,7 @@
                             "character": 0
                           }
                         ],
-                        "children": [
-                          {
-                            "name": "y",
-                            "detail": "variable.other.readwrite.matlab",
-                            "kind": 12,
-                            "range": [
-                              {
-                                "line": 10,
-                                "character": 0
-                              },
-                              {
-                                "line": 10,
-                                "character": 34
-                              }
-                            ],
-                            "selectionRange": [
-                              {
-                                "line": 10,
-                                "character": 0
-                              },
-                              {
-                                "line": 10,
-                                "character": 34
-                              }
-                            ],
-                            "children": []
-                          },
-                          {
-                            "name": "otherwise",
-                            "detail": "keyword.control.switch.otherwise.matlab",
-                            "kind": 2,
-                            "range": [
-                              {
-                                "line": 11,
-                                "character": 0
-                              },
-                              {
-                                "line": 12,
-                                "character": 3
-                              }
-                            ],
-                            "selectionRange": [
-                              {
-                                "line": 11,
-                                "character": 0
-                              },
-                              {
-                                "line": 12,
-                                "character": 3
-                              }
-                            ],
-                            "children": []
-                          },
-                          {
-                            "name": "try",
-                            "detail": "keyword.control.try.matlab",
-                            "kind": 2,
-                            "range": [
-                              {
-                                "line": 13,
-                                "character": 0
-                              },
-                              {
-                                "line": 23,
-                                "character": 3
-                              }
-                            ],
-                            "selectionRange": [
-                              {
-                                "line": 13,
-                                "character": 0
-                              },
-                              {
-                                "line": 23,
-                                "character": 3
-                              }
-                            ],
-                            "children": [
-                              {
-                                "name": "if",
-                                "detail": "keyword.control.if.matlab",
-                                "kind": 2,
-                                "range": [
-                                  {
-                                    "line": 14,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 15,
-                                    "character": 23
-                                  }
-                                ],
-                                "selectionRange": [
-                                  {
-                                    "line": 14,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 15,
-                                    "character": 23
-                                  }
-                                ],
-                                "children": []
-                              },
-                              {
-                                "name": "elseif",
-                                "detail": "keyword.control.elseif.matlab",
-                                "kind": 2,
-                                "range": [
-                                  {
-                                    "line": 16,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 17,
-                                    "character": 23
-                                  }
-                                ],
-                                "selectionRange": [
-                                  {
-                                    "line": 16,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 17,
-                                    "character": 23
-                                  }
-                                ],
-                                "children": []
-                              },
-                              {
-                                "name": "else",
-                                "detail": "keyword.control.else.matlab",
-                                "kind": 2,
-                                "range": [
-                                  {
-                                    "line": 18,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 23,
-                                    "character": 3
-                                  }
-                                ],
-                                "selectionRange": [
-                                  {
-                                    "line": 18,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 23,
-                                    "character": 3
-                                  }
-                                ],
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "while",
-                            "detail": "keyword.control.while.matlab",
-                            "kind": 2,
-                            "range": [
-                              {
-                                "line": 24,
-                                "character": 0
-                              },
-                              {
-                                "line": 27,
-                                "character": 0
-                              }
-                            ],
-                            "selectionRange": [
-                              {
-                                "line": 24,
-                                "character": 0
-                              },
-                              {
-                                "line": 27,
-                                "character": 0
-                              }
-                            ],
-                            "children": [
-                              {
-                                "name": "if",
-                                "detail": "keyword.control.if.matlab",
-                                "kind": 2,
-                                "range": [
-                                  {
-                                    "line": 25,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 27,
-                                    "character": 0
-                                  }
-                                ],
-                                "selectionRange": [
-                                  {
-                                    "line": 25,
-                                    "character": 0
-                                  },
-                                  {
-                                    "line": 27,
-                                    "character": 0
-                                  }
-                                ],
-                                "children": []
-                              }
-                            ]
-                          }
-                        ]
+                        "children": []
                       }
                     ]
                   }

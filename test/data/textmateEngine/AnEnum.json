@@ -1,1 +1,572 @@
-{}
+[
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "storage.type.class.matlab"
+    ],
+    "type": "storage.type.class.matlab",
+    "text": "classdef",
+    "line": 0,
+    "level": 11
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab"
+    ],
+    "type": "meta.class.matlab",
+    "text": " ",
+    "line": 0,
+    "level": 11
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab",
+      "entity.name.type.class.matlab"
+    ],
+    "type": "entity.name.type.class.matlab",
+    "text": "AnEnum",
+    "line": 0,
+    "level": 11
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 1,
+    "level": 12
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 20,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " A test enumeration",
+    "line": 1,
+    "level": 12
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": "    ",
+    "line": 2,
+    "level": 12
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "keyword.control.enum.matlab"
+    ],
+    "type": "keyword.control.enum.matlab",
+    "text": "enumeration",
+    "line": 2,
+    "level": 12
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 3,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 3,
+    "level": 13
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 18,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Comments",
+    "line": 3,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab"
+    ],
+    "type": "meta.assignment.definition.enummember.matlab",
+    "text": "        ",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 11,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab",
+      "variable.other.enummember.matlab"
+    ],
+    "type": "variable.other.enummember.matlab",
+    "text": "One",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": " ",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.parens.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": "; ",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 18,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 32,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Line comments",
+    "line": 4,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab"
+    ],
+    "type": "meta.assignment.definition.enummember.matlab",
+    "text": "        ",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 11,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab",
+      "variable.other.enummember.matlab"
+    ],
+    "type": "variable.other.enummember.matlab",
+    "text": "Two",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": " ",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.parens.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "2",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 5,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab"
+    ],
+    "type": "meta.assignment.definition.enummember.matlab",
+    "text": "        ",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 11,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab",
+      "variable.other.enummember.matlab"
+    ],
+    "type": "variable.other.enummember.matlab",
+    "text": "Ten",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": " ",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.parens.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "10",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 6,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 7,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 7,
+    "level": 13
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 32,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Trailing comment which",
+    "line": 7,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 8,
+    "level": 13
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 8,
+    "level": 13
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 27,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " is multiple lines",
+    "line": 8,
+    "level": 13
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab"
+    ],
+    "type": "meta.enum.matlab",
+    "text": "    ",
+    "line": 9,
+    "level": 13
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "keyword.control.end.enum.matlab"
+    ],
+    "type": "keyword.control.end.enum.matlab",
+    "text": "end",
+    "line": 9,
+    "level": 12
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 3,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "storage.type.class.end.matlab"
+    ],
+    "type": "storage.type.class.end.matlab",
+    "text": "end",
+    "line": 10,
+    "level": 12
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "source.matlab"
+    ],
+    "type": "source.matlab",
+    "text": "",
+    "line": 11,
+    "level": 13
+  }
+]
