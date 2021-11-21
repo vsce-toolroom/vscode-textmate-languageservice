@@ -45,6 +45,7 @@ export interface ITextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineRes
 }
 
 interface ITextmateTokenizerState {
+	context: number;
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
@@ -63,6 +64,7 @@ export class TextmateEngine {
 	public scopes?: string[] = [];
 
 	private _state?: ITextmateTokenizerState = {
+		context: 0,
 		continuation: false,
 		declaration: false,
 		line: 0,
@@ -143,7 +145,6 @@ export class TextmateEngine {
 			const indentationSelectorMap = new TextmateScopeSelectorMap(configurationData.indentation);
 			const dedentationSelector = new TextmateScopeSelector(configurationData.dedentation);
 
-			let indentationIncrement: number;
 			for (const token of lineTokens.tokens) {
 				this._state.declaration = (
 					indentationSelectorMap.value(token.scopes) > 0
@@ -152,7 +153,7 @@ export class TextmateEngine {
 				);
 
 				if (indentationSelectorMap.value(token.scopes) > 0) {
-					indentationIncrement = indentationSelectorMap.value(token.scopes);
+					this._state.context = indentationSelectorMap.value(token.scopes);
 				}
 
 				if (this._state.declaration) {
@@ -166,14 +167,11 @@ export class TextmateEngine {
 						&& lineNumber > this._state.line
 					) {
 						this._state.declaration = false;
-						this._state.stack += indentationIncrement;
+						this._state.stack += this._state.context;
 					}
 				}
 
-				if (
-					indentationSelectorMap.has(token.scopes)
-					&& (!this._state.declaration || indentationSelectorMap.value(token.scopes) < 0)
-				) {
+				if (indentationSelectorMap.value(token.scopes) < 0) {
 					this._state.stack += indentationSelectorMap.value(token.scopes);
 				}
 
