@@ -34,8 +34,11 @@ suite('src/textmateEngine.ts', function() {
 		}
 	});
 	test('TextmateScopeSelector class', function() {
-		for (const [type, tests] of Object.entries(textmateScopeSelectorTests)) {
-			for (const test of tests) {
+		const testSuite = Object.values(textmateScopeSelectorTests);
+		for (let index = 0; index < testSuite.length; index++) {
+			const testCases = testSuite[index];
+			for (let subindex = 0; subindex < testCases.length; subindex++) {
+				const test = testCases[subindex];
 				const selector = new TextmateScopeSelector(test.selector);
 				assert.strictEqual(
 					selector.match(test.input),
@@ -47,22 +50,24 @@ suite('src/textmateEngine.ts', function() {
 	});
 	test('TextmateScopeSelectorMap class', function() {
 		for (const tests of Object.values(textmateScopeSelectorMapTests)) {
-			for (const test of tests) {
+            for (let index = 0; index < tests.length; index++) {
+				const test = tests[index];
 				const selectorMap = new TextmateScopeSelectorMap(test.selector);
+				const scopes = typeof test.input === 'string'? test.input : test.input.join(' ');
 				assert.strictEqual(
 					selectorMap.key(test.input),
 					test.key,
-					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${scopes}'`
 				);
 				assert.strictEqual(
 					selectorMap.has(test.input),
 					test.expected,
-					`TextmateScopeSelectorMap.has: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+					`TextmateScopeSelectorMap.has: '${test.selector}' failed for the input: '${scopes}'`
 				);
 				assert.strictEqual(
 					selectorMap.value(test.input),
 					test.value,
-					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${scopes}'`
 				);
 			}
 		}
