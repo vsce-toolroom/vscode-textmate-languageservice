@@ -50,7 +50,7 @@ suite('src/textmateEngine.ts', function() {
 		}
 	});
 	test('TextmateScopeSelectorMap class', function() {
-		const testSuite = Object.values(textmateScopeSelectorTests);
+		const testSuite = Object.values(textmateScopeSelectorMapTests);
 		for (let index = 0; index < testSuite.length; index++) {
 			const testCases = testSuite[index];
 			for (let subindex = 0; subindex < testCases.length; subindex++) {
