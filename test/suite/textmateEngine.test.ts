@@ -40,10 +40,11 @@ suite('src/textmateEngine.ts', function() {
 			for (let subindex = 0; subindex < testCases.length; subindex++) {
 				const test = testCases[subindex];
 				const selector = new TextmateScopeSelector(test.selector);
+				const scopes = typeof test.input === 'string'? test.input : test.input.join(' ');
 				assert.strictEqual(
 					selector.match(test.input),
 					test.expected,
-					`'${test.selector}' failed for the input: '${test.input.join(' ')}'`
+					`'${test.selector}' failed for the input: '${scopes}'`
 				);
 			}
 		}

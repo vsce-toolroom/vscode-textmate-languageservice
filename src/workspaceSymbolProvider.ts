@@ -164,7 +164,7 @@ export class WorkspaceSymbolProvider extends Disposable implements vscode.Worksp
 	private getSymbols(document: SkinnyTextDocument): Lazy<Thenable<vscode.SymbolInformation[]>> {
 		return lazy(async function() {
 			return this._symbolProvider.provideDocumentSymbolInformation(document);
-		});
+		}.bind(this));
 	}
 
 	private onDidChangeDocument(document: SkinnyTextDocument) {
