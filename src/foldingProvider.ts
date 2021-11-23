@@ -6,7 +6,7 @@ import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
 
 const rangeLimit = 5000;
 
-export type FoldingToken = {
+export interface IFoldingToken {
 	isStart: boolean,
 	line: number
 };
@@ -32,12 +32,19 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
-		const regionMarkers = tokens.filter(isRegionMarker).map(token => ({
+		const regionMarkers = tokens.filter(function(token: ITextmateToken): boolean {
+			return (
+				token.type === configurationData.comments.lineComment
+				&& (isStartRegion(token.text) || isEndRegion(token.text))
+			);
+		}).map(function(token) {
+			return {
 				line: token.line,
 				isStart: isStartRegion(token.text)
-		}));
+			};
+		});
 
-		const nestingStack: FoldingToken[] = [];
+		const nestingStack: IFoldingToken[] = [];
 		return regionMarkers
 			.map(function(marker) {
 				marker.line = marker.line;
@@ -54,17 +61,31 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 	}
 
 	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
+		const tokens = await this._engine.tokenize(this._engine.scope, document)
 		const tocProvider = new TableOfContentsProvider(this._engine);
 		const toc = await tocProvider.getToc(document);
-		const sections = toc.filter(isSectionHeader);
-		return sections.map((section, i) => {
-			let endLine = sections.hasOwnProperty(i + 1)
-		? sections[i + 1].line - 1
+		const sections = toc.filter(function(this: TocEntry[], entry: TocEntry, _: number) {
+			return entry.type === vscode.SymbolKind.String;
+		});
+		return sections.map(function(section: TocEntry, index: number) {
+			let startLine = section.line;
+			let endLine = sections.hasOwnProperty(index + 1)
+				? sections[index + 1].line - 1
 				: document.lineCount - 1;
-			while (document.lineAt(endLine).isEmptyOrWhitespace && endLine >= section.line + 1) {
+			const dedentToken = tokens.find(function(this: ITextmateToken[], token: ITextmateToken, index: number) {
+				return (
+					(!tokens[index - 1] || token.level !== tokens[index - 1].level)
+					&& (token.line > startLine && token.line < endLine)
+					&& token.level < section.level
+				);
+			});
+			if (dedentToken) {
+				endLine = dedentToken.line - 1;
+			}
+			while (document.lineAt(endLine).isEmptyOrWhitespace && endLine >= startLine + 1) {
 				endLine--;
 			}
-			return new vscode.FoldingRange(section.line, endLine);
+			return new vscode.FoldingRange(startLine, endLine);
 		});
 	}
 
@@ -77,7 +98,11 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 				for (let subindex = index; subindex < tokens.length; subindex++) {
 					const subtoken = tokens[subindex];
 					if (subtoken.level < token.level) {
-						const range = new vscode.FoldingRange(token.line, tokens[subindex - 1].line, this.getFoldingRangeKind(token));
+						const range = new vscode.FoldingRange(
+							token.line - 1,
+							tokens[subindex - 1].line - 1,
+							this.getFoldingRangeKind(token)
+						);
 						ranges.push(range);
 					}
 				}
@@ -97,14 +122,3 @@ const startRegionPattern = new RegExp(configurationData.markers.start);
 const isStartRegion = (text: string): boolean => startRegionPattern.test(text);
 const endRegionPattern = new RegExp(configurationData.markers.end);
 const isEndRegion = (text: string): boolean => endRegionPattern.test(text);
-
-function isRegionMarker(token: ITextmateToken): boolean {
-	return (
-		token.type === configurationData.comments.lineComment
-		&& (isStartRegion(token.text) || isEndRegion(token.text))
-	);
-}
-
-function isSectionHeader(entry: TocEntry, i: number) {
-  return entry.type === vscode.SymbolKind.String;
-}
