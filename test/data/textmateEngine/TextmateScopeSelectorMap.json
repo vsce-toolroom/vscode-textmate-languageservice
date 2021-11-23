@@ -97,7 +97,7 @@
 			"variable.other.readwrite.matlab"
 		],
 		"expected": true,
-		"key": "",
+		"key": "meta.assignment.variable.group variable.other.readwrite",
 		"value": 12
 	},
 	{
@@ -108,7 +108,7 @@
 			"variable.other.readwrite.matlab"
 		],
 		"expected": true,
-		"key": "",
+		"key": "meta.assignment.variable.single variable.other.readwrite",
 		"value": 12
 	},
 	{
@@ -120,7 +120,7 @@
 			"variable.parameter.output.matlab"
 		],
 		"expected": false,
-		"key": "",
+		"key": null,
 		"value": null
 	},
 	{
@@ -132,7 +132,7 @@
 			"variable.parameter.input.matlab"
 		],
 		"expected": false,
-		"key": "",
+		"key": null,
 		"value": null
 	}
 ]

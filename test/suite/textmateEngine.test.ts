@@ -50,14 +50,16 @@ suite('src/textmateEngine.ts', function() {
 		}
 	});
 	test('TextmateScopeSelectorMap class', function() {
-		for (const tests of Object.values(textmateScopeSelectorMapTests)) {
-            for (let index = 0; index < tests.length; index++) {
-				const test = tests[index];
+		const testSuite = Object.values(textmateScopeSelectorTests);
+		for (let index = 0; index < testSuite.length; index++) {
+			const testCases = testSuite[index];
+			for (let subindex = 0; subindex < testCases.length; subindex++) {
+				const test = testCases[subindex];
 				const selectorMap = new TextmateScopeSelectorMap(test.selector);
 				const scopes = typeof test.input === 'string'? test.input : test.input.join(' ');
 				assert.strictEqual(
 					selectorMap.key(test.input),
-					test.key,
+					test.key === null ? undefined : test.key,
 					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${scopes}'`
 				);
 				assert.strictEqual(
@@ -67,7 +69,7 @@ suite('src/textmateEngine.ts', function() {
 				);
 				assert.strictEqual(
 					selectorMap.value(test.input),
-					test.value,
+					test.value === null ? undefined : test.value,
 					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${scopes}'`
 				);
 			}
