@@ -33,13 +33,13 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
 		const regionMarkers = tokens.filter(isRegionMarker).map(token => ({
-			line: token.line,
-			isStart: isStartRegion(token.text)
+				line: token.line,
+				isStart: isStartRegion(token.text)
 		}));
 
 		const nestingStack: FoldingToken[] = [];
 		return regionMarkers
-			.map(marker => {
+			.map(function(marker) {
 				marker.line = marker.line;
 				if (marker.isStart) {
 					nestingStack.push(marker);
@@ -60,7 +60,7 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 		return sections.map((section, i) => {
 			let endLine = sections.hasOwnProperty(i + 1)
 		? sections[i + 1].line - 1
-		: document.lineCount - 1;
+				: document.lineCount - 1;
 			while (document.lineAt(endLine).isEmptyOrWhitespace && endLine >= section.line + 1) {
 				endLine--;
 			}

@@ -6,11 +6,12 @@ import deepEqual from 'deep-equal';
 import assert from 'assert';
 import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
-import { TextmateEngine, TextmateScopeSelector, TextmateScopeSelectorMap } from '../../src/textmateEngine';
+import { TextmateEngine, TextmateScopeSelector, configurationData, TextmateScopeSelectorMap } from '../../src/textmateEngine';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
 
-const selectorsPath = path.resolve(__dirname, '../data/selectors.json');
-const selectors = JSON.parse(fs.readFileSync(selectorsPath).toString());
+const textmateEngineTestsPath = path.resolve(__dirname, '../data/textmateEngine');
+const textmateScopeSelectorTests = loadJsonFile.sync(path.resolve(textmateEngineTestsPath, 'TextmateScopeSelector.json'));
+const textmateScopeSelectorMapTests = loadJsonFile.sync(path.resolve(textmateEngineTestsPath, 'TextmateScopeSelectorMap.json'));
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
@@ -33,43 +34,37 @@ suite('src/textmateEngine.ts', function() {
 		}
 	});
 	test('TextmateScopeSelector class', function() {
-		Object.keys(selectors).forEach(function(type) {
-			selectors[type].forEach(function(test) {
+		for (const [type, tests] of Object.entries(textmateScopeSelectorTests)) {
+			for (const test of tests) {
 				const selector = new TextmateScopeSelector(test.selector);
-				assert.strictEqual(selector.match(test.input), test.expected, `'${test.selector}' failed`);
-			})
-		});
+				assert.strictEqual(
+					selector.match(test.input),
+					test.expected,
+					`'${test.selector}' failed for the input: '${test.input.join(' ')}'`
+				);
+			}
+		}
 	});
 	test('TextmateScopeSelectorMap class', function() {
-		const maps = {};
-		const trueMaps = {};
-		const falseMaps = {};
-		Object.keys(selectors).forEach(function(type) {
-			selectors[type].forEach(function(test, i) {
-				maps[type] = maps[type] || {}
-				maps[type][test.selector] = i;
-				if (test.expected === true) {
-					trueMaps[type] = trueMaps[type] || {};
-					trueMaps[type][test.selector] = i;
-				} else {
-					falseMaps[type] = falseMaps[type] || {};
-					falseMaps[type][test.selector] = i;
-				}
-			});
-			const mapSelector = new TextmateScopeSelectorMap(maps[type]);
-			const trueMapSelector = new TextmateScopeSelectorMap(trueMaps[type]);
-			selectors[type].forEach(function(test, i) {
-				assert.strictEqual(mapSelector.has(test.input), test.expected, `'${test.selector}' map.has failed`);
-				assert.strictEqual(mapSelector.key(test.input), test.expected ? test.selector : undefined, `'${test.selector}' map.key failed`);
-				assert.strictEqual(mapSelector.value(test.input), test.expected ? i : undefined, `'${test.selector}' map.value failed`);
-				if (test.expected === true) {
-					assert.strictEqual(trueMapSelector.has(test.input), true, `'${test.selector}' trueMap.has failed`);
-					assert.strictEqual(trueMapSelector.key(test.input), test.selector, `'${test.selector}' trueMap.key failed`);
-					assert.strictEqual(trueMapSelector.value(test.input), i, `'${test.selector}' trueMap.value failed`);
-				} else {
-					assert.strictEqual(trueMapSelector.has(test.input), false, `'${test.selector}' trueMap.has failed`);
-				}
-			});
-		});
+		for (const tests of Object.values(textmateScopeSelectorMapTests)) {
+			for (const test of tests) {
+				const selectorMap = new TextmateScopeSelectorMap(test.selector);
+				assert.strictEqual(
+					selectorMap.key(test.input),
+					test.key,
+					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+				);
+				assert.strictEqual(
+					selectorMap.has(test.input),
+					test.expected,
+					`TextmateScopeSelectorMap.has: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+				);
+				assert.strictEqual(
+					selectorMap.value(test.input),
+					test.value,
+					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${test.input.join(' ')}'`
+				);
+			}
+		}
 	});
 });

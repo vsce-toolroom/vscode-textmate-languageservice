@@ -18,7 +18,7 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const toc = await new TableOfContentsProvider(this._engine).getToc(document);
-		return toc.map(entry => this.toSymbolInformation(entry));
+		return toc.map(this.toSymbolInformation.bind(this));
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {

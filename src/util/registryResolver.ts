@@ -124,8 +124,8 @@ export class Resolver implements vsctm.RegistryOptions {
 }
 
 function readGrammarFromPath(path: string) : Promise<vsctm.IRawGrammar> {
-	return new Promise((c,e) => {
-		fs.readFile(path, (error, content) => {
+	return new Promise(function(c,e) {
+		fs.readFile(path, function(error, content) {
 			if (error) {
 				e(error);
 			} else {

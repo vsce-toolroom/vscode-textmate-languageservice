@@ -53,7 +53,7 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 		const searchPathActions = componentNames.map(this.searchFilePath);
 		const searchPromises = Promise.all(searchPathActions); // pass array of promises
 		const posInFile = await this.getNestedPosition(position);
-		return searchPromises.then((paths) => {
+		return searchPromises.then(function(paths) {
 			filePaths = [].concat.apply([], paths);
 			if (filePaths.length) {
 				let allPaths = [];
@@ -70,7 +70,7 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 					return undefined;
 				}
 			}
-		}, () => {
+		}, function() {
 			return undefined;
 		});
 	}

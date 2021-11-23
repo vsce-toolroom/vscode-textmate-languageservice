@@ -17,7 +17,7 @@ let onigurumaLib: Promise<vsctm.IOnigLib> | null = null;
 export function getOniguruma(): Promise<vsctm.IOnigLib> {
 	if (!onigurumaLib) {
 		const wasmBin = fs.readFileSync(wasmPath).buffer;
-		onigurumaLib = (<Promise<any>>vscodeOnigurumaModule.loadWASM(wasmBin)).then((_: any) => {
+		onigurumaLib = (<Promise<any>>vscodeOnigurumaModule.loadWASM(wasmBin)).then(function(_: any) {
 			return {
 				createOnigScanner(patterns: string[]) { return new vscodeOnigurumaModule.OnigScanner(patterns); },
 				createOnigString(s: string) { return new vscodeOnigurumaModule.OnigString(s); }

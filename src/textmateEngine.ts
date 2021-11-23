@@ -117,9 +117,9 @@ export class TextmateEngine {
 			const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
 			const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
 
-			for (let i = 0; i < (lineTokens.tokens.length - 1); i++) {
-				const token = lineTokens.tokens[i];
-				const nextToken = lineTokens.tokens[i + 1];
+			for (let index = 0; index < (lineTokens.tokens.length - 1); index++) {
+				const token = lineTokens.tokens[index];
+				const nextToken = lineTokens.tokens[index + 1];
 
 				if (typeof configurationData.assignment === 'object') {
 					if (
@@ -135,8 +135,8 @@ export class TextmateEngine {
 					) {
 						token.endIndex = nextToken.endIndex;
 						token.text += nextToken.text;
-						lineTokens.tokens.splice(i + 1, 1);
-						i--;
+						lineTokens.tokens.splice(index + 1, 1);
+						index--;
 					}
 				}
 			}

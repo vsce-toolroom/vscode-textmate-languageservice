@@ -66,10 +66,10 @@ export class WorkspaceDocumentProvider extends Disposable implements IWorkspaceD
 			uri: resource,
 			version: 0,
 			lineCount: lineCount,
-			lineAt: (i) => {
-				return lines[i];
+			lineAt: function(index) {
+				return lines[index];
 			},
-			getText: () => {
+			getText: function() {
 				return text;
 			}
 		};
@@ -97,25 +97,25 @@ export class WorkspaceDocumentProvider extends Disposable implements IWorkspaceD
 
 		this._watcher = this._register(vscode.workspace.createFileSystemWatcher(include));
 
-		this._watcher.onDidChange(async resource => {
+		this._watcher.onDidChange(async function(resource) {
 			const document = await this.getDocument(resource);
 			if (document) {
 				this._onDidChangeDocumentEmitter.fire(document);
 			}
 		}, null, this._disposables);
 
-		this._watcher.onDidCreate(async resource => {
+		this._watcher.onDidCreate(async function(resource) {
 			const document = await this.getDocument(resource);
 			if (document) {
 				this._onDidCreateDocumentEmitter.fire(document);
 			}
 		}, null, this._disposables);
 
-		this._watcher.onDidDelete(async resource => {
+		this._watcher.onDidDelete(async function(resource) {
 			this._onDidDeleteDocumentEmitter.fire(resource);
 		}, null, this._disposables);
 
-		vscode.workspace.onDidChangeTextDocument(e => {
+		vscode.workspace.onDidChangeTextDocument(function(e) {
 			if (this.isLanguageFile(e.document)) {
 				this._onDidChangeDocumentEmitter.fire(e.document);
 			}
@@ -162,7 +162,7 @@ export class WorkspaceSymbolProvider extends Disposable implements vscode.Worksp
 	}
 
 	private getSymbols(document: SkinnyTextDocument): Lazy<Thenable<vscode.SymbolInformation[]>> {
-		return lazy(async () => {
+		return lazy(async function() {
 			return this._symbolProvider.provideDocumentSymbolInformation(document);
 		});
 	}

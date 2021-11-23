@@ -61,7 +61,7 @@ export class TableOfContentsProvider {
 		}
 
 		// Get full range of section
-		return toc.map((entry, startIndex): TocEntry => {
+		return toc.map(function(entry: TocEntry, startIndex: number): TocEntry {
 			let end: number | undefined = undefined;
 			for (let i = startIndex + 1; i < toc.length; ++i) {
 				if (toc[i].level <= entry.level) {
