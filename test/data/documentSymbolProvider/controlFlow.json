@@ -25,7 +25,7 @@
     ],
     "children": [
       {
-        "name": "%% Logic based on nargin",
+        "name": "Logic based on nargin",
         "detail": "entity.name.section.matlab",
         "kind": 14,
         "range": [
