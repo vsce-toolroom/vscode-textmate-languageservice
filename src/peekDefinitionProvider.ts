@@ -35,7 +35,7 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 			const columnNumber = start.character;
 			if (
 				!doc.lineAt(lineNumber).isEmptyOrWhitespace
-				&& selectedText === this._symbolProvider.getEntryText(symbol)
+				&& selectedText === symbol.name
 			) {
 				return [lineNumber, columnNumber];
 			}

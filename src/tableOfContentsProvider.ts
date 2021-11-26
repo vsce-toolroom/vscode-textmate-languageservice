@@ -54,7 +54,7 @@ export class TableOfContentsProvider {
 					document.uri,
 					new vscode.Range(lineNumber, 0, lineNumber, line.text.length)
 				),
-				text: this.getText(entry),
+				text: entry.text,
 				token: entry.type,
 				type: symbolSelectorMap.value(entry.scopes)
 			});
@@ -89,16 +89,5 @@ export class TableOfContentsProvider {
 			&& (!isEntity || declarationSelector.match(token.scopes))
 			&& (!assignmentSeparatorSelector || !assignmentSeparatorSelector.match(token.scopes))
 		);
-	}
-
-	private getText(entry: ITextmateToken): string {
-		switch (symbolSelectorMap.value(entry.scopes)) {
-			case vscode.SymbolKind.String:
-				return `%% ${entry.text}`;
-				break;
-			default:
-				return entry.text;
-				break;
-		}
 	}
 }

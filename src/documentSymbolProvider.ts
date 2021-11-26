@@ -74,15 +74,4 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 			entry.location.range
 		);
 	}
-
-	public getEntryText(symbol: vscode.SymbolInformation): string {
-		switch (symbol.kind) {
-			case vscode.SymbolKind.String:
-				return symbol.name.substring(3);
-				break;
-			default:
-				return symbol.name;
-				break;
-		}
-	}
 }
