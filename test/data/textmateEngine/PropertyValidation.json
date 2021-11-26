@@ -2270,7 +2270,7 @@
     "type": "storage.type.class.end.matlab",
     "text": "end",
     "line": 15,
-    "level": 1
+    "level": 0
   },
   {
     "startIndex": 0,
@@ -2281,6 +2281,6 @@
     "type": "source.matlab",
     "text": "",
     "line": 16,
-    "level": 2
+    "level": 0
   }
 ]

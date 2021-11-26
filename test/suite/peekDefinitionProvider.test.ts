@@ -29,11 +29,17 @@ suite('src/tableOfContentsProvider.ts', function() {
 			const toc = await tableOfContentsProvider.getToc(skinnyDocument);
 			const definitions = [];
 			toc.forEach(async function(entry) {
-				textEditor.selection = new vscode.Selection(entry.location.range.start, entry.location.range.end);
+				textEditor.selection = textEditor.selections[0] = new vscode.Selection(
+					entry.location.range.start,
+					entry.location.range.end
+				);
 				const references = await peekDefinitionProvider.provideDefinition(
 					document,
 					entry.location.range.start
 				);
+				console.log(`Entry text: ${entry.text}`);
+				console.log(`Selected text: ${document.getText(textEditor.selection)}`);
+				console.log(JSON.stringify(references, null, '  '));
 				if (references != null) {
 					definitions.push({
 						text: entry.text,

@@ -293,7 +293,7 @@
     "type": "meta.control.matlab",
     "text": "    ",
     "line": 4,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -308,7 +308,7 @@
     "type": "keyword.control.flow.matlab",
     "text": "return",
     "line": 4,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -322,7 +322,7 @@
     "type": "meta.case.matlab",
     "text": "  ",
     "line": 5,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 2,
@@ -337,7 +337,7 @@
     "type": "keyword.control.switch.case.matlab",
     "text": "case",
     "line": 5,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -352,7 +352,7 @@
     "type": "meta.case.declaration.matlab",
     "text": " ",
     "line": 5,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -368,7 +368,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "1",
     "line": 5,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -381,7 +381,7 @@
     "type": "meta.switch.matlab",
     "text": "    ",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -396,7 +396,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "y",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 5,
@@ -409,7 +409,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -423,7 +423,7 @@
     "type": "keyword.operator.assignment.matlab",
     "text": "=",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -436,7 +436,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -450,7 +450,7 @@
     "type": "variable.language.function.matlab",
     "text": "varargin",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 16,
@@ -463,7 +463,7 @@
     "type": "meta.switch.matlab",
     "text": "{",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 17,
@@ -477,7 +477,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "1",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 18,
@@ -490,7 +490,7 @@
     "type": "meta.switch.matlab",
     "text": "}",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 19,
@@ -504,7 +504,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 6,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -518,7 +518,7 @@
     "type": "punctuation.whitespace.comment.leading.matlab",
     "text": "    ",
     "line": 7,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -533,7 +533,7 @@
     "type": "punctuation.definition.comment.matlab",
     "text": "%",
     "line": 7,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 5,
@@ -547,7 +547,7 @@
     "type": "comment.line.percentage.matlab",
     "text": " Check single-line if inside switch for https://github.com/mathworks/MATLAB-Language-grammar/issues/19",
     "line": 7,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -561,7 +561,7 @@
     "type": "meta.if.matlab",
     "text": "    ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -576,7 +576,7 @@
     "type": "keyword.control.if.matlab",
     "text": "if",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -591,7 +591,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -607,7 +607,7 @@
     "type": "variable.language.function.matlab",
     "text": "varargin",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 15,
@@ -622,7 +622,7 @@
     "type": "meta.if.declaration.matlab",
     "text": "{",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 16,
@@ -638,7 +638,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "1",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 17,
@@ -653,7 +653,7 @@
     "type": "meta.if.declaration.matlab",
     "text": "}",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 18,
@@ -668,7 +668,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 19,
@@ -684,7 +684,7 @@
     "type": "keyword.operator.relational.matlab",
     "text": "<",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 20,
@@ -699,7 +699,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 21,
@@ -715,7 +715,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "0",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 22,
@@ -730,7 +730,7 @@
     "type": "punctuation.separator.comma.matlab",
     "text": ",",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 23,
@@ -745,7 +745,7 @@
     "type": "meta.control.matlab",
     "text": " ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 24,
@@ -761,7 +761,7 @@
     "type": "keyword.control.flow.matlab",
     "text": "return",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 30,
@@ -776,7 +776,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 31,
@@ -790,7 +790,7 @@
     "type": "meta.if.matlab",
     "text": " ",
     "line": 8,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 32,
@@ -805,7 +805,7 @@
     "type": "keyword.control.end.if.matlab",
     "text": "end",
     "line": 8,
-    "level": 3
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -819,7 +819,7 @@
     "type": "meta.case.matlab",
     "text": "  ",
     "line": 9,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 2,
@@ -834,7 +834,7 @@
     "type": "keyword.control.switch.case.matlab",
     "text": "case",
     "line": 9,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -849,7 +849,7 @@
     "type": "meta.case.declaration.matlab",
     "text": " ",
     "line": 9,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -865,7 +865,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "2",
     "line": 9,
-    "level": 4
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -878,7 +878,7 @@
     "type": "meta.switch.matlab",
     "text": "    ",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -893,7 +893,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "y",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 5,
@@ -906,7 +906,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -920,7 +920,7 @@
     "type": "keyword.operator.assignment.matlab",
     "text": "=",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -933,7 +933,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -947,7 +947,7 @@
     "type": "variable.language.function.matlab",
     "text": "varargin",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 16,
@@ -960,7 +960,7 @@
     "type": "meta.switch.matlab",
     "text": "{",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 17,
@@ -974,7 +974,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "1",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 18,
@@ -987,7 +987,7 @@
     "type": "meta.switch.matlab",
     "text": "}",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 19,
@@ -1000,7 +1000,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 20,
@@ -1014,7 +1014,7 @@
     "type": "keyword.operator.arithmetic.matlab",
     "text": "+",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 21,
@@ -1027,7 +1027,7 @@
     "type": "meta.switch.matlab",
     "text": " ",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 22,
@@ -1041,7 +1041,7 @@
     "type": "variable.language.function.matlab",
     "text": "varargin",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 30,
@@ -1054,7 +1054,7 @@
     "type": "meta.switch.matlab",
     "text": "{",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 31,
@@ -1068,7 +1068,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "2",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 32,
@@ -1081,7 +1081,7 @@
     "type": "meta.switch.matlab",
     "text": "}",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 33,
@@ -1095,7 +1095,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 10,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1109,7 +1109,7 @@
     "type": "meta.otherwise.matlab",
     "text": "  ",
     "line": 11,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 2,
@@ -1124,7 +1124,7 @@
     "type": "keyword.control.switch.otherwise.matlab",
     "text": "otherwise",
     "line": 11,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1138,7 +1138,7 @@
     "type": "keyword.control.end.switch.matlab",
     "text": "end",
     "line": 12,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -1152,7 +1152,7 @@
     "type": "keyword.control.try.matlab",
     "text": "try",
     "line": 13,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -1166,7 +1166,7 @@
     "type": "meta.if.matlab",
     "text": "    ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -1181,7 +1181,7 @@
     "type": "keyword.control.if.matlab",
     "text": "if",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -1196,7 +1196,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -1213,7 +1213,7 @@
     "type": "entity.name.function.matlab",
     "text": "y",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -1230,7 +1230,7 @@
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 9,
@@ -1246,7 +1246,7 @@
     "type": "meta.function-call.parens.matlab",
     "text": " ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 10,
@@ -1263,7 +1263,7 @@
     "type": "keyword.operator.word.matlab",
     "text": "end",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 13,
@@ -1279,7 +1279,7 @@
     "type": "meta.function-call.parens.matlab",
     "text": " ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 14,
@@ -1296,7 +1296,7 @@
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 15,
@@ -1311,7 +1311,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 16,
@@ -1327,7 +1327,7 @@
     "type": "keyword.operator.relational.matlab",
     "text": "<",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 17,
@@ -1342,7 +1342,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 18,
@@ -1358,7 +1358,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "10",
     "line": 14,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1372,7 +1372,7 @@
     "type": "meta.if.matlab",
     "text": "        ",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 8,
@@ -1388,7 +1388,7 @@
     "type": "entity.name.function.matlab",
     "text": "disp",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 12,
@@ -1404,7 +1404,7 @@
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 13,
@@ -1421,7 +1421,7 @@
     "type": "punctuation.definition.string.begin.matlab",
     "text": "'",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 14,
@@ -1437,7 +1437,7 @@
     "type": "string.quoted.single.matlab",
     "text": "y < 10",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 20,
@@ -1454,7 +1454,7 @@
     "type": "punctuation.definition.string.end.matlab",
     "text": "'",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 21,
@@ -1470,7 +1470,7 @@
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 22,
@@ -1485,7 +1485,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 15,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 0,
@@ -1500,7 +1500,7 @@
     "type": "meta.elseif.matlab",
     "text": "    ",
     "line": 16,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 4,
@@ -1516,7 +1516,7 @@
     "type": "keyword.control.elseif.matlab",
     "text": "elseif",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 10,
@@ -1530,7 +1530,7 @@
     "type": "meta.if.matlab",
     "text": " ",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 11,
@@ -1545,7 +1545,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "y",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 12,
@@ -1559,7 +1559,7 @@
     "type": "meta.if.matlab",
     "text": " ",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 13,
@@ -1574,7 +1574,7 @@
     "type": "keyword.operator.relational.matlab",
     "text": "<",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 14,
@@ -1588,7 +1588,7 @@
     "type": "meta.if.matlab",
     "text": " ",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 15,
@@ -1603,7 +1603,7 @@
     "type": "constant.numeric.decimal.matlab",
     "text": "20",
     "line": 16,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1617,7 +1617,7 @@
     "type": "meta.if.matlab",
     "text": "        ",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 8,
@@ -1633,7 +1633,7 @@
     "type": "entity.name.function.matlab",
     "text": "disp",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 12,
@@ -1649,7 +1649,7 @@
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 13,
@@ -1666,7 +1666,7 @@
     "type": "punctuation.definition.string.begin.matlab",
     "text": "'",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 14,
@@ -1682,7 +1682,7 @@
     "type": "string.quoted.single.matlab",
     "text": "y < 20",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 20,
@@ -1699,7 +1699,7 @@
     "type": "punctuation.definition.string.end.matlab",
     "text": "'",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 21,
@@ -1715,7 +1715,7 @@
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 22,
@@ -1730,7 +1730,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 17,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 0,
@@ -1745,7 +1745,7 @@
     "type": "meta.else.matlab",
     "text": "    ",
     "line": 18,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 4,
@@ -1761,7 +1761,7 @@
     "type": "keyword.control.else.matlab",
     "text": "else",
     "line": 18,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1775,7 +1775,7 @@
     "type": "meta.if.matlab",
     "text": "        ",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 8,
@@ -1791,7 +1791,7 @@
     "type": "entity.name.function.matlab",
     "text": "disp",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 12,
@@ -1807,7 +1807,7 @@
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 13,
@@ -1824,7 +1824,7 @@
     "type": "punctuation.definition.string.begin.matlab",
     "text": "\"",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 14,
@@ -1840,7 +1840,7 @@
     "type": "string.quoted.double.matlab",
     "text": "y >= 20",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 21,
@@ -1857,7 +1857,7 @@
     "type": "punctuation.definition.string.end.matlab",
     "text": "\"",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 22,
@@ -1873,7 +1873,7 @@
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 23,
@@ -1888,7 +1888,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 19,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 0,
@@ -1902,7 +1902,7 @@
     "type": "meta.if.matlab",
     "text": "    ",
     "line": 20,
-    "level": 6
+    "level": 3
   },
   {
     "startIndex": 4,
@@ -1917,7 +1917,7 @@
     "type": "keyword.control.end.if.matlab",
     "text": "end",
     "line": 20,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1932,7 +1932,7 @@
     "type": "keyword.control.catch.matlab",
     "text": "catch",
     "line": 21,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 5,
@@ -1946,7 +1946,7 @@
     "type": "meta.catch.matlab",
     "text": " ",
     "line": 21,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 6,
@@ -1961,7 +1961,7 @@
     "type": "variable.other.constant.matlab",
     "text": "ME",
     "line": 21,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -1974,7 +1974,7 @@
     "type": "meta.try.matlab",
     "text": "    ",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -1989,7 +1989,7 @@
     "type": "entity.name.function.matlab",
     "text": "rethrow",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 11,
@@ -2004,7 +2004,7 @@
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 12,
@@ -2019,7 +2019,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "ME",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 14,
@@ -2034,7 +2034,7 @@
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 15,
@@ -2048,7 +2048,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 22,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 0,
@@ -2062,7 +2062,7 @@
     "type": "keyword.control.end.try.matlab",
     "text": "end",
     "line": 23,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -2076,7 +2076,7 @@
     "type": "keyword.control.while.matlab",
     "text": "while",
     "line": 24,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 5,
@@ -2090,7 +2090,7 @@
     "type": "meta.while.declaration.matlab",
     "text": " ",
     "line": 24,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 6,
@@ -2105,7 +2105,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "c1",
     "line": 24,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -2119,7 +2119,7 @@
     "type": "meta.if.matlab",
     "text": "  ",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 2,
@@ -2134,7 +2134,7 @@
     "type": "keyword.control.if.matlab",
     "text": "if",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 4,
@@ -2149,7 +2149,7 @@
     "type": "meta.if.declaration.matlab",
     "text": " ",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 5,
@@ -2165,7 +2165,7 @@
     "type": "variable.other.readwrite.matlab",
     "text": "c2",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 7,
@@ -2180,7 +2180,7 @@
     "type": "punctuation.separator.comma.matlab",
     "text": ",",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -2195,7 +2195,7 @@
     "type": "meta.control.matlab",
     "text": " ",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 9,
@@ -2211,7 +2211,7 @@
     "type": "keyword.control.flow.matlab",
     "text": "break",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 14,
@@ -2226,7 +2226,7 @@
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 15,
@@ -2240,7 +2240,7 @@
     "type": "meta.if.matlab",
     "text": " ",
     "line": 25,
-    "level": 5
+    "level": 2
   },
   {
     "startIndex": 16,
@@ -2255,7 +2255,7 @@
     "type": "keyword.control.end.if.matlab",
     "text": "end",
     "line": 25,
-    "level": 4
+    "level": 1
   },
   {
     "startIndex": 0,
@@ -2269,7 +2269,7 @@
     "type": "keyword.control.end.while.matlab",
     "text": "end",
     "line": 26,
-    "level": 3
+    "level": 0
   },
   {
     "startIndex": 0,
@@ -2281,6 +2281,6 @@
     "type": "meta.function.matlab",
     "text": "",
     "line": 27,
-    "level": 4
+    "level": 1
   }
 ]
