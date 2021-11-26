@@ -34,7 +34,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 					document,
 					entry.location.range.start
 				);
-				if (Array.isArray(references)) {
+				if (references != null) {
 					definitions.push({
 						text: entry.text,
 						token: entry.token,
