@@ -40,30 +40,24 @@ suite('src/tableOfContentsProvider.ts', function() {
 		const functionCallTokens = tokens.filter(isFunctionCallToken);
 
 		for (const entry of toc.filter(isFunctionEntry)) {
-			const entryFunctionCalls = functionCallTokens.filter(function(token) {
+			const call = functionCallTokens.find(function(token) {
 				return token.text === entry.text;
 			});
 
-			if (!entryFunctionCalls.length) {
-				continue;
-			}
+			const startPosition = new vscode.Position(call.line, call.startIndex);
+			const endPosition = new vscode.Position(call.line, call.endIndex);
 
-			for (const call of entryFunctionCalls) {
-				const startPosition = new vscode.Position(call.line, call.startIndex);
-				const endPosition = new vscode.Position(call.line, call.endIndex);
+			activeEditor.selection = activeEditor.selections[0] = new vscode.Selection(startPosition, endPosition);
+			const definitionResults = await peekDefinitionProvider.provideDefinition(document, startPosition);
 
-				activeEditor.selection = activeEditor.selections[0] = new vscode.Selection(startPosition, endPosition);
-				const definitionResults = await peekDefinitionProvider.provideDefinition(document, startPosition);
-
-				definitionResults[0].uri = (definitionResults[0] as any).uri.path;
-				assert.strictEqual(definitionResults.length, 1, `${entry.text} function defined ${definitionResults.length} times.`);
-				definitions.push({
-					text: entry.text,
-					token: entry.token,
-					origin: entry.location.uri.path,
-					definition: definitionResults[0]
-				});
-			}
+			definitionResults[0].uri = (definitionResults[0] as any).uri.path;
+			assert.strictEqual(definitionResults.length, 1, `${entry.text} function defined ${definitionResults.length} times.`);
+			definitions.push({
+				text: entry.text,
+				token: entry.token,
+				origin: entry.location.uri.path,
+				definition: definitionResults[0]
+			});
 		}
 
 		const p = path
