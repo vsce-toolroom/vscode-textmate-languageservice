@@ -29,7 +29,9 @@ suite('src/tableOfContentsProvider.ts', function() {
 			const toc = await tableOfContentsProvider.getToc(document);
 
 			for (const entry of toc) {
-				(entry as Mutable<TocEntry>).location.uri = entry.location.uri.path as any;
+				if (entry?.location?.uri) {
+					(entry as Mutable<TocEntry>).location.uri = entry.location.uri.path as any;
+				}
 			}
 
 			const p = path

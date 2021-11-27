@@ -49,7 +49,9 @@ suite('src/foldingProvider.ts', function() {
 			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 
 			for (const symbol of symbols) {
-				symbol.location.uri = symbol.location.uri.path as any;
+				if (symbol?.location?.uri) {
+					symbol.location.uri = symbol.location.uri.path as any;
+				}
 			}
 
 			const p = path
