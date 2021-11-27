@@ -18,7 +18,7 @@ const engine = new TextmateEngine('matlab', 'source.matlab');
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 
 suite('src/textmateEngine.ts', function() {
-	this.timeout(60000);
+	this.timeout(0);
 	test('TextmateEngine class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {

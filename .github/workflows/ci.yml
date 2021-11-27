@@ -23,7 +23,7 @@ jobs:
       run: npm install
     - name: Run Tests
       id: test
-      uses: GabrielBB/xvfb-action@v1.4
+      uses: GabrielBB/xvfb-action@v1.6
       with:
         run: npm test
     - name: Upload Data Artifact
