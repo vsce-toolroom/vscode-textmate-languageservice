@@ -55,6 +55,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 				activeEditor.selection = activeEditor.selections[0] = new vscode.Selection(startPosition, endPosition);
 				const definitionResults = await peekDefinitionProvider.provideDefinition(document, startPosition);
 
+				definitionResults[0].uri = (definitionResults[0] as any).uri.path;
 				assert.strictEqual(definitionResults.length, 1, `${entry.text} function defined ${definitionResults.length} times.`);
 				definitions.push({
 					text: entry.text,

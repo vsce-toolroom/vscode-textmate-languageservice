@@ -47,6 +47,11 @@ suite('src/foldingProvider.ts', function() {
 			const resource = vscode.Uri.file(file);
 			await vscode.workspace.openTextDocument(resource);
 			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
+
+			for (const symbol of symbols) {
+				symbol.location.uri = (symbol.location.uri as any).path;
+			}
+
 			const p = path
 				.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
