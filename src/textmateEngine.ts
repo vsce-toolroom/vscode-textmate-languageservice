@@ -6,7 +6,7 @@ import vscode from 'vscode';
 import loadJsonFile from 'load-json-file';
 import sha1 from 'git-sha1';
 import delay from 'delay';
-import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
+import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registryResolver';
 import { getOniguruma } from './util/onigLibs';
 import ScopeSelector from './util/scope-selector';
 
@@ -34,18 +34,18 @@ type Mutable<T> = {
 	-readonly[P in keyof T]: T[P]
 };
 
-export interface ITextmateToken extends Mutable<vsctm.IToken> {
+export interface TextmateToken extends Mutable<vsctm.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface ITextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineResult, 'tokens'> {
-	readonly tokens: ITextmateToken[]
+export interface TextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineResult, 'tokens'> {
+	readonly tokens: TextmateToken[]
 }
 
-interface ITextmateTokenizerState {
+interface TextmateTokenizerState {
 	context: number;
 	continuation: boolean;
 	declaration: boolean;
@@ -64,7 +64,7 @@ export class TextmateEngine {
 
 	public scopes?: string[] = [];
 
-	private _state?: ITextmateTokenizerState = {
+	private _state?: TextmateTokenizerState = {
 		context: 0,
 		continuation: false,
 		declaration: false,
@@ -75,11 +75,11 @@ export class TextmateEngine {
 
 	private _queue: Record<string, boolean> = {};
 
-	private _cache: Record<string, ITextmateToken[] | undefined> = {};
+	private _cache: Record<string, TextmateToken[] | undefined> = {};
 
 	private _grammars?: vsctm.IGrammar[] = [];
 
-	public async tokenize(scope: string, document: SkinnyTextDocument): Promise<ITextmateToken[]> {
+	public async tokenize(scope: string, document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		if (!this.scopes.includes(scope)) {
 			await this.load(scope);
 		}
@@ -88,7 +88,7 @@ export class TextmateEngine {
 
 		const text = document.getText();
 		const hash = sha1(text);
-		const tokens: ITextmateToken[] = [];
+		const tokens: TextmateToken[] = [];
 
 		if (this._queue[hash]) {
 			while (!this._cache[hash]) {
@@ -107,7 +107,7 @@ export class TextmateEngine {
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
 			let line: SkinnyTextLine = document.lineAt(lineNumber);
-			const lineTokens = grammar.tokenizeLine(line.text, this._state.rule) as ITextmateTokenizeLineResult;
+			const lineTokens = grammar.tokenizeLine(line.text, this._state.rule) as TextmateTokenizeLineResult;
 
 			for (const token of lineTokens.tokens) {
 				token.type = token.scopes[token.scopes.length - 1];
@@ -190,9 +190,9 @@ export class TextmateEngine {
 	}
 
 	async load(scope: string): Promise<void> {
-		const grammar = configurationData.grammar as IGrammarRegistration;
+		const grammar = configurationData.grammar as GrammarRegistration;
 		grammar.path = path.resolve(extensionPath, grammar.path);
-		const language = configurationData.language as ILanguageRegistration;
+		const language = configurationData.language as LanguageRegistration;
 		const onigLibPromise = getOniguruma();
 		const resolver = new Resolver([grammar], [language], onigLibPromise);
 		const registry = new vsctmModule.Registry(resolver);

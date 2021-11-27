@@ -1,5 +1,7 @@
 name: CI
 
+concurrency: vscode_environment
+
 on:
   push:
     branches: [ main, release-candidate/* ]
@@ -31,4 +33,3 @@ jobs:
       with:
         name: vscode-textmate-languageservice-test-data
         path: test/data
-concurrency: vscode_environment

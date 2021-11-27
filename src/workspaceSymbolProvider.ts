@@ -11,7 +11,7 @@ const extensions = configurationData.language.extensions.length === 1
 	: configurationData.language.extensions[0];
 const include = `**/*${extensions}`;
 
-export interface IWorkspaceDocumentProvider {
+export interface WorkspaceDocumentProviderInterface {
 	readonly _language: string;
 
 	getAllDocuments(): Thenable<Iterable<SkinnyTextDocument>>;
@@ -22,7 +22,7 @@ export interface IWorkspaceDocumentProvider {
 	readonly onDidDeleteDocument: vscode.Event<vscode.Uri>;
 }
 
-export class WorkspaceDocumentProvider extends Disposable implements IWorkspaceDocumentProvider {
+export class WorkspaceDocumentProvider extends Disposable implements WorkspaceDocumentProviderInterface {
 	constructor(
 		readonly _language: string
 	) {

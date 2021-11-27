@@ -1,12 +1,12 @@
 'use strict';
 
 import vscode from 'vscode';
-import { ITextmateToken, TextmateEngine, configurationData } from './textmateEngine';
+import { TextmateToken, TextmateEngine, configurationData } from './textmateEngine';
 import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
 
 const rangeLimit = 5000;
 
-export interface IFoldingToken {
+export interface FoldingToken {
 	isStart: boolean,
 	line: number
 };
@@ -32,7 +32,7 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
-		const regionMarkers = tokens.filter(function(token: ITextmateToken): boolean {
+		const regionMarkers = tokens.filter(function(token: TextmateToken): boolean {
 			return (
 				token.type === configurationData.comments.lineComment
 				&& (isStartRegion(token.text) || isEndRegion(token.text))
@@ -44,7 +44,7 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 			};
 		});
 
-		const nestingStack: IFoldingToken[] = [];
+		const nestingStack: FoldingToken[] = [];
 		return regionMarkers
 			.map(function(marker) {
 				marker.line = marker.line;
@@ -72,7 +72,7 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 			let endLine = sections.hasOwnProperty(index + 1)
 				? sections[index + 1].line - 1
 				: document.lineCount - 1;
-			const dedentToken = tokens.find(function(this: ITextmateToken[], token: ITextmateToken, index: number) {
+			const dedentToken = tokens.find(function(this: TextmateToken[], token: TextmateToken, index: number) {
 				return (
 					(!tokens[index - 1] || token.level !== tokens[index - 1].level)
 					&& (token.line > startLine && token.line < endLine)
@@ -111,7 +111,7 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 		return ranges;
 	}
 
-	private getFoldingRangeKind(listItem: ITextmateToken): vscode.FoldingRangeKind | undefined {
+	private getFoldingRangeKind(listItem: TextmateToken): vscode.FoldingRangeKind | undefined {
 		return listItem.type === configurationData.comments.blockComment
 			? vscode.FoldingRangeKind.Comment
 			: undefined;

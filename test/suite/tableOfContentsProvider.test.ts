@@ -19,7 +19,7 @@ type Mutable<T> = {
 };
 
 suite('src/tableOfContentsProvider.ts', function() {
-	this.timeout(0);
+	this.timeout(60000);
 	test('TableOfContentsProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {

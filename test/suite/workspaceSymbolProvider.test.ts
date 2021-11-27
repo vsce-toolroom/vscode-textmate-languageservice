@@ -17,7 +17,7 @@ const documentSymbolProvider = new DocumentSymbolProvider(engine);
 const workspaceSymbolProvider = new WorkspaceSymbolProvider('matlab', documentSymbolProvider);
 
 suite('src/foldingProvider.ts', function() {
-	this.timeout(0);
+	this.timeout(60000);
 	test('WorkspaceDocumentProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {

@@ -7,13 +7,13 @@ import getCoreNodeModule from './getCoreNodeModule';
 import vsctm from 'vscode-textmate';
 const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 
-export interface ILanguageRegistration {
+export interface LanguageRegistration {
 	id: string;
 	extensions?: string[];
 	filenames?: string[]
 }
 
-export interface IGrammarRegistration {
+export interface GrammarRegistration {
 	language: string;
 	scopeName: string;
 	path: string;
@@ -25,11 +25,11 @@ export class Resolver implements vsctm.RegistryOptions {
 	public readonly language2id: { [languages: string]: number; };
 	private _lastLanguageId: number;
 	private _id2language: string[];
-	private readonly _grammars: IGrammarRegistration[];
-	private readonly _languages: ILanguageRegistration[];
+	private readonly _grammars: GrammarRegistration[];
+	private readonly _languages: LanguageRegistration[];
 	public readonly onigLib: Promise<vsctm.IOnigLib>;
 
-	constructor(grammars: IGrammarRegistration[], languages: ILanguageRegistration[], onigLibPromise: Promise<vsctm.IOnigLib>) {
+	constructor(grammars: GrammarRegistration[], languages: LanguageRegistration[], onigLibPromise: Promise<vsctm.IOnigLib>) {
 		this._grammars = grammars;
 		this._languages = languages;
 		this.onigLib = onigLibPromise;
@@ -96,7 +96,7 @@ export class Resolver implements vsctm.RegistryOptions {
 		return null;
 	}
 
-	public findGrammarByLanguage(language: string): IGrammarRegistration {
+	public findGrammarByLanguage(language: string): GrammarRegistration {
 		for (let i = 0; i < this._grammars.length; i++) {
 			let grammar = this._grammars[i];
 

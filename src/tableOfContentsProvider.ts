@@ -1,7 +1,7 @@
 'use strict';
 
 import vscode from 'vscode';
-import { SkinnyTextDocument, TextmateEngine, configurationData, ITextmateToken, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
+import { SkinnyTextDocument, TextmateEngine, configurationData, TextmateToken, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
 
 const symbolSelectorMap = new TextmateScopeSelectorMap(configurationData.symbols);
 const declarationSelector = new TextmateScopeSelector(configurationData.declarations);
@@ -80,7 +80,7 @@ export class TableOfContentsProvider {
 		});
 	}
 
-	private isSymbolToken(token: ITextmateToken): boolean {
+	private isSymbolToken(token: TextmateToken): boolean {
 		const isEntity = new TextmateScopeSelector('entity').match(token.scopes);
 		return (
 			symbolSelectorMap.has(token.scopes)

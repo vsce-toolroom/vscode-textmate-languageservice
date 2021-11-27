@@ -5,11 +5,11 @@ import fs from 'fs';
 import deepEqual from 'deep-equal';
 import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
-import { TextmateEngine } from '../../src/textmateEngine';
+import { TextmateToken, TextmateEngine } from '../../src/textmateEngine';
 import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
 import { PeekDefinitionProvider } from '../../src/peekDefinitionProvider';
-import { TableOfContentsProvider } from '../../src/tableOfContentsProvider';
+import { TableOfContentsProvider, TocEntry } from '../../src/tableOfContentsProvider';
 import ScopeSelector from '../../src/util/scope-selector';
 import replacer from './replacer';
 
@@ -22,7 +22,7 @@ const peekDefinitionProvider = new PeekDefinitionProvider(documentSymbolProvider
 const functionCallSelector = new ScopeSelector('meta.function-call.parens entity.name.function');
 
 suite('src/tableOfContentsProvider.ts', function() {
-	this.timeout(0);
+	this.timeout(60000);
 	test('PeekDefinitionProvider class', async function() {
 		const file = path.resolve(__dirname, '../../../../../../mpm/mpm.m');
 		const resource = vscode.Uri.file(file);
@@ -71,10 +71,10 @@ suite('src/tableOfContentsProvider.ts', function() {
 	});
 });
 
-function isFunctionCallToken(token) {
+function isFunctionCallToken(token: TextmateToken) {
 	return functionCallSelector.matches(token.scopes);
 }
 
-function isFunctionEntry(entry) {
+function isFunctionEntry(entry: TocEntry) {
 	return entry.type === vscode.SymbolKind.Function;
 }
