@@ -27,10 +27,10 @@ suite('src/foldingProvider.ts', function() {
 				.replace(/\.m$/, '.json');
 			const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
 
+			writeJsonFile.sync(p, folds, { indent: '  ' });
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), folds);
 			}
-			writeJsonFile.sync(p, folds, { indent: '  ', replacer: replacer });
 		}
 	});
 });

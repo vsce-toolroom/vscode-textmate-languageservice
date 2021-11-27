@@ -27,10 +27,10 @@ suite('src/tableOfContentsProvider.ts', function() {
 				.replace(/\.m$/, '.json');
 			const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
 
+			writeJsonFile.sync(p, symbols, { indent: '  ' });
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			writeJsonFile.sync(p, symbols, { indent: '  ', replacer: replacer });
 		}
 	});
 });

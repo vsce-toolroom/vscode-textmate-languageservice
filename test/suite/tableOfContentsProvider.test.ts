@@ -29,17 +29,17 @@ suite('src/tableOfContentsProvider.ts', function() {
 			const toc = await tableOfContentsProvider.getToc(document);
 
 			for (const entry of toc) {
-				(entry as Mutable<TocEntry>).location.uri = (entry.location as any).uri.path;
+				(entry as Mutable<TocEntry>).location.uri = entry.location.uri.path as any;
 			}
 
 			const p = path
 				.resolve(__dirname, '../data/tableOfContentsProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
 
+			writeJsonFile.sync(p, toc, { indent: '  ' });
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), toc);
 			}
-			writeJsonFile.sync(p, toc, { indent: '  ', replacer: replacer });
 		}
 	});
 });

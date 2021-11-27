@@ -31,10 +31,10 @@ suite('src/textmateEngine.ts', function() {
 				.resolve(__dirname, '../data/textmateEngine', path.basename(file))
 				.replace(/\.m$/, '.json');
 
+			writeJsonFile.sync(p, tokens, { indent: '  ' });
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), tokens);
 			}
-			writeJsonFile.sync(p, tokens, { indent: '  ', replacer: replacer });
 		}
 	});
 	test('TextmateScopeSelector class', function() {

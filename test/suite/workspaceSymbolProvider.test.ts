@@ -49,17 +49,17 @@ suite('src/foldingProvider.ts', function() {
 			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 
 			for (const symbol of symbols) {
-				symbol.location.uri = (symbol.location.uri as any).path;
+				symbol.location.uri = symbol.location.uri.path as any;
 			}
 
 			const p = path
 				.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
 
+			writeJsonFile.sync(p, symbols, { indent: '  ' });
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			writeJsonFile.sync(p, symbols, { indent: '  ', replacer: replacer });
 		}
 	});
 });

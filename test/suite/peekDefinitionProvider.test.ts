@@ -70,10 +70,10 @@ suite('src/tableOfContentsProvider.ts', function() {
 			.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file))
 			.replace(/\.m$/, '.json');
 
+		writeJsonFile.sync(p, definitions, { indent: '  ' });
 		if (fs.existsSync(p)) {
 			deepEqual(loadJsonFile.sync(p), definitions);
 		}
-		writeJsonFile.sync(p, definitions, { indent: '  ', replacer: replacer });
 	});
 });
 
