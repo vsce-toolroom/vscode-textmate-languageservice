@@ -3,13 +3,7 @@
     "level": 0,
     "line": 0,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 0,
@@ -29,13 +23,7 @@
     "level": 1,
     "line": 2,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 2,
@@ -55,13 +43,7 @@
     "level": 2,
     "line": 3,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 3,
@@ -81,13 +63,7 @@
     "level": 1,
     "line": 6,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 6,
@@ -107,13 +83,7 @@
     "level": 2,
     "line": 8,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 8,
@@ -133,13 +103,7 @@
     "level": 3,
     "line": 9,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 9,
@@ -159,13 +123,7 @@
     "level": 2,
     "line": 11,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 11,
@@ -185,13 +143,7 @@
     "level": 3,
     "line": 12,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 12,
@@ -211,13 +163,7 @@
     "level": 4,
     "line": 13,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 13,
@@ -237,13 +183,7 @@
     "level": 5,
     "line": 14,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 14,
@@ -263,13 +203,7 @@
     "level": 4,
     "line": 15,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 15,
@@ -289,13 +223,7 @@
     "level": 2,
     "line": 20,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 20,
@@ -315,13 +243,7 @@
     "level": 3,
     "line": 21,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 21,
@@ -341,13 +263,7 @@
     "level": 3,
     "line": 22,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 22,
@@ -367,13 +283,7 @@
     "level": 3,
     "line": 23,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 22,
@@ -393,13 +303,7 @@
     "level": 3,
     "line": 23,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 23,
@@ -419,13 +323,7 @@
     "level": 4,
     "line": 24,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 23,
@@ -445,13 +343,7 @@
     "level": 4,
     "line": 24,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 24,
@@ -471,13 +363,7 @@
     "level": 5,
     "line": 25,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 25,
@@ -497,13 +383,7 @@
     "level": 2,
     "line": 29,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 29,
@@ -523,13 +403,7 @@
     "level": 3,
     "line": 30,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 30,
@@ -549,13 +423,7 @@
     "level": 3,
     "line": 31,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 31,
@@ -575,13 +443,7 @@
     "level": 3,
     "line": 32,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 32,
@@ -601,13 +463,7 @@
     "level": 3,
     "line": 33,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 33,
@@ -627,13 +483,7 @@
     "level": 4,
     "line": 34,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 34,
@@ -653,13 +503,7 @@
     "level": 4,
     "line": 35,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 35,
@@ -679,13 +523,7 @@
     "level": 2,
     "line": 38,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 38,
@@ -705,13 +543,7 @@
     "level": 3,
     "line": 39,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 39,
@@ -731,13 +563,7 @@
     "level": 1,
     "line": 43,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 43,
@@ -757,13 +583,7 @@
     "level": 2,
     "line": 45,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 45,
@@ -783,13 +603,7 @@
     "level": 1,
     "line": 48,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 48,
@@ -809,13 +623,7 @@
     "level": 2,
     "line": 49,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 49,
@@ -835,13 +643,7 @@
     "level": 2,
     "line": 50,
     "location": {
-      "uri": {
-        "$mid": 1,
-        "fsPath": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "external": "file:///home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "path": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
-        "scheme": "file"
-      },
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/vscode-matlab/syntaxes/MATLAB-Language-grammar/test/snap/Account.m",
       "range": [
         {
           "line": 50,
