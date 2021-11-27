@@ -15,7 +15,7 @@ const documentSymbolProvider = new DocumentSymbolProvider(engine);
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 
 suite('src/tableOfContentsProvider.ts', function() {
-	this.timeout(30000);
+	this.timeout(60000);
 	test('DocumentSymbolProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {

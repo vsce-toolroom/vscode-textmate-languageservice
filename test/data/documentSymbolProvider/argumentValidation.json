@@ -6,7 +6,7 @@
     "range": [
       {
         "line": 0,
-        "character": 0
+        "character": 9
       },
       {
         "line": 19,
@@ -16,7 +16,7 @@
     "selectionRange": [
       {
         "line": 0,
-        "character": 0
+        "character": 9
       },
       {
         "line": 19,
@@ -31,7 +31,7 @@
         "range": [
           {
             "line": 4,
-            "character": 0
+            "character": 8
           },
           {
             "line": 6,
@@ -41,7 +41,7 @@
         "selectionRange": [
           {
             "line": 4,
-            "character": 0
+            "character": 8
           },
           {
             "line": 6,
@@ -57,7 +57,7 @@
         "range": [
           {
             "line": 7,
-            "character": 0
+            "character": 8
           },
           {
             "line": 7,
@@ -67,7 +67,7 @@
         "selectionRange": [
           {
             "line": 7,
-            "character": 0
+            "character": 8
           },
           {
             "line": 7,
@@ -83,7 +83,7 @@
         "range": [
           {
             "line": 8,
-            "character": 0
+            "character": 8
           },
           {
             "line": 12,
@@ -93,7 +93,7 @@
         "selectionRange": [
           {
             "line": 8,
-            "character": 0
+            "character": 8
           },
           {
             "line": 12,
@@ -109,7 +109,7 @@
         "range": [
           {
             "line": 13,
-            "character": 0
+            "character": 8
           },
           {
             "line": 15,
@@ -119,7 +119,7 @@
         "selectionRange": [
           {
             "line": 13,
-            "character": 0
+            "character": 8
           },
           {
             "line": 15,
@@ -135,7 +135,7 @@
         "range": [
           {
             "line": 16,
-            "character": 0
+            "character": 8
           },
           {
             "line": 19,
@@ -145,7 +145,7 @@
         "selectionRange": [
           {
             "line": 16,
-            "character": 0
+            "character": 8
           },
           {
             "line": 19,

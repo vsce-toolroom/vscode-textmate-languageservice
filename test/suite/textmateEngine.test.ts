@@ -18,16 +18,18 @@ const engine = new TextmateEngine('matlab', 'source.matlab');
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 
 suite('src/textmateEngine.ts', function() {
-	this.timeout(30000);
+	this.timeout(60000);
 	test('TextmateEngine class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
+
+			const document = await workspaceDocumentProvider.getDocument(resource);
+			const tokens = await engine.tokenize('source.matlab', document);
+
 			const p = path
 				.resolve(__dirname, '../data/textmateEngine', path.basename(file))
 				.replace(/\.m$/, '.json');
-			const document = await workspaceDocumentProvider.getDocument(resource);
-			const tokens = await engine.tokenize('source.matlab', document);
 
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), tokens);

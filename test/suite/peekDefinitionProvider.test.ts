@@ -22,7 +22,7 @@ const peekDefinitionProvider = new PeekDefinitionProvider(documentSymbolProvider
 const functionCallSelector = new ScopeSelector('meta.function-call.parens entity.name.function');
 
 suite('src/tableOfContentsProvider.ts', function() {
-	this.timeout(30000);
+	this.timeout(60000);
 	test('PeekDefinitionProvider class', async function() {
 		const file = path.resolve(__dirname, '../../../../../../mpm/mpm.m');
 		const resource = vscode.Uri.file(file);
