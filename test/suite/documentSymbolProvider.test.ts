@@ -8,6 +8,7 @@ import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
 import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
+import replacer from './replacer';
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const documentSymbolProvider = new DocumentSymbolProvider(engine);
@@ -20,14 +21,16 @@ suite('src/tableOfContentsProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await workspaceDocumentProvider.getDocument(resource);
+
 			const p = path
 				.resolve(__dirname, '../data/documentSymbolProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
 			const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
+
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), symbols);
 			}
-			writeJsonFile.sync(p, symbols, { indent: '  ' });
+			writeJsonFile.sync(p, symbols, { indent: '  ', replacer: replacer });
 		}
 	});
 });

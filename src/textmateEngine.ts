@@ -4,7 +4,7 @@ import pkgUp from 'pkg-up';
 import path from 'path';
 import vscode from 'vscode';
 import loadJsonFile from 'load-json-file';
-import crypto from 'crypto';
+import sha1 from 'git-sha1';
 import delay from 'delay';
 import { IGrammarRegistration, ILanguageRegistration, Resolver } from './util/registryResolver';
 import { getOniguruma } from './util/onigLibs';
@@ -87,7 +87,7 @@ export class TextmateEngine {
 		const grammar = this._grammars[this.scopes.indexOf(scope)];
 
 		const text = document.getText();
-		const hash = crypto.createHash('sha1').update(text).digest('hex');
+		const hash = sha1(text);
 		const tokens: ITextmateToken[] = [];
 
 		if (this._queue[hash]) {

@@ -31,13 +31,11 @@ export class PeekDefinitionProvider implements vscode.DefinitionProvider {
 
 		for (const symbol of symbols) {
 			const start = symbol.location.range.start;
-			const lineNumber = start.line;
-			const columnNumber = start.character;
 			if (
-				!doc.lineAt(lineNumber).isEmptyOrWhitespace
+				!doc.lineAt(start.line).isEmptyOrWhitespace
 				&& selectedText === symbol.name
 			) {
-				return [lineNumber, columnNumber];
+				return [start.line, start.character];
 			}
 		}
 		return [];

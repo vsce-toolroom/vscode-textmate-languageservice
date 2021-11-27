@@ -8,6 +8,7 @@ import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
 import { TableOfContentsProvider } from '../../src/tableOfContentsProvider';
+import replacer from './replacer';
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const tableOfContentsProvider = new TableOfContentsProvider(engine);
@@ -23,11 +24,12 @@ suite('src/tableOfContentsProvider.ts', function() {
 			const p = path
 				.resolve(__dirname, '../data/tableOfContentsProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
-			const toc = tableOfContentsProvider.getToc(document);
+			const toc = await tableOfContentsProvider.getToc(document);
+
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), toc);
 			}
-			writeJsonFile.sync(p, toc, { indent: '  ' });
+			writeJsonFile.sync(p, toc, { indent: '  ', replacer: replacer });
 		}
 	});
 });

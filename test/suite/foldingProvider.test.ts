@@ -7,6 +7,7 @@ import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { FoldingProvider } from '../../src/foldingProvider';
+import replacer from './replacer';
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const foldingProvider = new FoldingProvider(engine);
@@ -20,14 +21,16 @@ suite('src/foldingProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
+
 			const p = path
 				.resolve(__dirname, '../data/foldingProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
 			const folds = await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken);
+
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), folds);
 			}
-			writeJsonFile.sync(p, folds, { indent: '  ' });
+			writeJsonFile.sync(p, folds, { indent: '  ', replacer: replacer });
 		}
 	});
 });

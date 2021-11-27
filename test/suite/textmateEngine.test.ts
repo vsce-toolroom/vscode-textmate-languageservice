@@ -8,6 +8,7 @@ import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
 import { TextmateEngine, TextmateScopeSelector, configurationData, TextmateScopeSelectorMap } from '../../src/textmateEngine';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
+import replacer from './replacer';
 
 const textmateEngineTestsPath = path.resolve(__dirname, '../data/textmateEngine');
 const textmateScopeSelectorTests = loadJsonFile.sync(path.resolve(textmateEngineTestsPath, 'TextmateScopeSelector.json'));
@@ -27,10 +28,11 @@ suite('src/textmateEngine.ts', function() {
 				.replace(/\.m$/, '.json');
 			const document = await workspaceDocumentProvider.getDocument(resource);
 			const tokens = await engine.tokenize('source.matlab', document);
+
 			if (fs.existsSync(p)) {
 				deepEqual(loadJsonFile.sync(p), tokens);
 			}
-			writeJsonFile.sync(p, tokens, { indent: '  ' });
+			writeJsonFile.sync(p, tokens, { indent: '  ', replacer: replacer });
 		}
 	});
 	test('TextmateScopeSelector class', function() {
@@ -44,7 +46,7 @@ suite('src/textmateEngine.ts', function() {
 				assert.strictEqual(
 					selector.match(test.input),
 					test.expected,
-					`'${test.selector}' failed for the input: '${scopes}'`
+					`TextmateScopeSelector.match: '${test.selector}' failed for the input: '${scopes}'.`
 				);
 			}
 		}
@@ -60,17 +62,17 @@ suite('src/textmateEngine.ts', function() {
 				assert.strictEqual(
 					selectorMap.key(test.input),
 					test.key === null ? undefined : test.key,
-					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${scopes}'`
+					`TextmateScopeSelectorMap.key: '${test.selector}' failed for the input: '${scopes}'.`
 				);
 				assert.strictEqual(
 					selectorMap.has(test.input),
 					test.expected,
-					`TextmateScopeSelectorMap.has: '${test.selector}' failed for the input: '${scopes}'`
+					`TextmateScopeSelectorMap.has: '${test.selector}' failed for the input: '${scopes}'.`
 				);
 				assert.strictEqual(
 					selectorMap.value(test.input),
 					test.value === null ? undefined : test.value,
-					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${scopes}'`
+					`TextmateScopeSelectorMap.value: '${test.selector}' failed for the input: '${scopes}'.`
 				);
 			}
 		}

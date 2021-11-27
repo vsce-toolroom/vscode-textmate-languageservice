@@ -1,3 +1,6 @@
 [submodule "test/vscode-matlab"]
 	path = test/vscode-matlab
 	url = https://github.com/Gimly/vscode-matlab
+[submodule "test\\mpm\\"]
+	path = test\\mpm\\
+	url = https://github.com/mobeets/mpm

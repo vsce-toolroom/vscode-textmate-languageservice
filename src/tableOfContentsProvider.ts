@@ -45,14 +45,12 @@ export class TableOfContentsProvider {
 
 		for (const entry of tokens.filter(this.isSymbolToken)) {
 			const lineNumber = entry.line;
-			const line = document.lineAt(lineNumber);
-
 			toc.push({
 				level: entry.level,
 				line: lineNumber,
 				location: new vscode.Location(
 					document.uri,
-					new vscode.Range(lineNumber, 0, lineNumber, line.text.length)
+					new vscode.Range(lineNumber, entry.startIndex, lineNumber, entry.endIndex)
 				),
 				text: entry.text,
 				token: entry.type,

@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "delay": "^5.0.0",
+    "git-sha1": "^0.1.2",
     "glob": "^7.2.0",
     "load-json-file": "^6.2.0",
     "pkg-up": "^3.1.0"
