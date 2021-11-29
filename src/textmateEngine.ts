@@ -90,9 +90,6 @@ export class TextmateEngine {
 		const hash = sha1(text);
 		const tokens: TextmateToken[] = [];
 
-		console.log(document.uri.path);
-		console.log(hash);
-
 		if (this._queue[hash]) {
 			while (!this._cache[hash]) {
 				await delay(100);
