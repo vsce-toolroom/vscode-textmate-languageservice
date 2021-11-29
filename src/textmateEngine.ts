@@ -90,15 +90,21 @@ export class TextmateEngine {
 		const hash = sha1(text);
 		const tokens: TextmateToken[] = [];
 
+		console.log(document.uri.path);
+		console.log(hash);
+
 		if (this._queue[hash]) {
 			while (!this._cache[hash]) {
 				await delay(100);
 			}
 			return this._cache[hash];
-		} else {
-			this._queue[hash] = true;
 		}
 
+		if (this._cache[hash]) {
+			return this._cache[hash];
+		}
+
+		this._queue[hash] = true;
 		this._state.continuation = false;
 		this._state.declaration = false;
 		this._state.line = 0;
@@ -186,6 +192,7 @@ export class TextmateEngine {
 		}
 
 		this._cache[text] = tokens;
+		delete this._queue[hash];
 		return tokens;
 	}
 

@@ -22,30 +22,36 @@ suite('src/foldingProvider.ts', function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
-			const textDocument = await vscode.workspace.openTextDocument(resource);
+			const document = await vscode.workspace.openTextDocument(resource);
+			await vscode.window.showTextDocument(document);
+
 			const providerDocument = await workspaceDocumentProvider.getDocument(resource);
 			assert.strictEqual(
-				textDocument.uri.toString(),
+				document.uri.toString(),
 				providerDocument.uri.toString(),
-				`SkinnyTextDocument.uri: expected '${textDocument.uri.path}' but found '${providerDocument.uri.path}'.`
+				`SkinnyTextDocument.uri: expected '${document.uri.path}' but found '${providerDocument.uri.path}'.`
 			);
 			assert.strictEqual(
-				textDocument.lineCount,
+				document.lineCount,
 				providerDocument.lineCount,
-				`SkinnyTextDocument.lineCount: expected ${textDocument.lineCount} lines but found ${providerDocument.lineCount} lines.`
+				`SkinnyTextDocument.lineCount: expected ${document.lineCount} lines but found ${providerDocument.lineCount} lines.`
 			);
 			assert.strictEqual(
-				textDocument.lineAt(0).text,
+				document.lineAt(0).text,
 				providerDocument.lineAt(0).text,
-				`SkinnyTextDocument.lineAt(0): expected '${textDocument.lineAt(0).text}' but found '${providerDocument.lineAt(0).text}' lines.`
+				`SkinnyTextDocument.lineAt(0): expected '${document.lineAt(0).text}' but found '${providerDocument.lineAt(0).text}' lines.`
 			);
 		}
+
+		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 	test('WorkspaceSymbolProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
-			await vscode.workspace.openTextDocument(resource);
+			const document = await vscode.workspace.openTextDocument(resource);
+			await vscode.window.showTextDocument(document);
+
 			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 
 			for (const symbol of symbols) {
@@ -63,5 +69,7 @@ suite('src/foldingProvider.ts', function() {
 				deepEqual(loadJsonFile.sync(p), symbols);
 			}
 		}
+
+		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 });

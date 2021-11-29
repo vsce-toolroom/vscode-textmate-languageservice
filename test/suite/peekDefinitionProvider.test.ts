@@ -68,6 +68,8 @@ suite('src/tableOfContentsProvider.ts', function() {
 		if (fs.existsSync(p)) {
 			deepEqual(loadJsonFile.sync(p), definitions);
 		}
+
+		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 });
 

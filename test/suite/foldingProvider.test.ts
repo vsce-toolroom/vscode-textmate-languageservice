@@ -16,11 +16,13 @@ const cancelToken = new vscode.CancellationTokenSource().token;
 
 suite('src/foldingProvider.ts', function() {
 	this.timeout(60000);
-	test('DocumentSymbolProvider class', async function() {
+	test('FoldingProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
+			await vscode.window.showTextDocument(document);
 
 			const p = path
 				.resolve(__dirname, '../data/foldingProvider', path.basename(file))
@@ -32,5 +34,7 @@ suite('src/foldingProvider.ts', function() {
 				deepEqual(loadJsonFile.sync(p), folds);
 			}
 		}
+
+		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 });
