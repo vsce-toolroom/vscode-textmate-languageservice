@@ -56,7 +56,7 @@ suite('src/workspaceSymbolProvider.ts', function() {
 		const p = path.resolve(__dirname, '../data/workspaceSymbolProvider', 'index.json');
 
 		if (fs.existsSync(p)) {
-			assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true);
+			assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true, p);
 		}
 		writeJsonFile.sync(p, symbols, { indent: '  ' });
 	});

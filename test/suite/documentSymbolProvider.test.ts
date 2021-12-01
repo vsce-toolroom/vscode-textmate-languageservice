@@ -29,7 +29,7 @@ suite('src/documentSymbolProvider.ts', function() {
 			const symbols = jsonify(await documentSymbolProvider.provideDocumentSymbols(document));
 
 			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true, p);
 			}
 			writeJsonFile.sync(p, symbols, { indent: '  ' });
 		}

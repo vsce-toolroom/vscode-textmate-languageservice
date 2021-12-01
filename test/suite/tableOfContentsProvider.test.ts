@@ -40,7 +40,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 				.replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), toc), true);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), toc), true, p);
 			}
 			writeJsonFile.sync(p, toc, { indent: '  ' });
 		}

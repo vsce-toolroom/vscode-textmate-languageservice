@@ -30,7 +30,7 @@ suite('src/foldingProvider.ts', function() {
 			const folds = jsonify(await foldingProvider.provideFoldingRanges(document, foldingContext, cancelToken));
 
 			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), folds), true);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), folds), true, p);
 			}
 			writeJsonFile.sync(p, folds, { indent: '  ' });
 		}

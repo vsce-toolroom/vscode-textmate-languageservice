@@ -64,7 +64,7 @@ suite('src/peekDefinitionProvider.ts', function() {
 				.replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), definitions), true);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), definitions), true, p);
 			}
 			writeJsonFile.sync(p, definitions, { indent: '  ' });
 		}

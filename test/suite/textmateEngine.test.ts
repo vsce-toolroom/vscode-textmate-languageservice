@@ -32,7 +32,7 @@ suite('src/textmateEngine.ts', function() {
 				.replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), tokens), true);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), tokens), true, p);
 			}
 			writeJsonFile.sync(p, tokens, { indent: '  ' });
 		}
