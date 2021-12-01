@@ -1,0 +1,92 @@
+[
+  {
+    "startIndex": 7,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "entity.name.type.class.matlab"
+    ],
+    "type": "entity.name.type.class.matlab",
+    "text": "Animal",
+    "line": 3,
+    "level": 3,
+    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Snake.m",
+    "definition": {
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "range": [
+        {
+          "line": 0,
+          "character": 1
+        },
+        {
+          "line": 0,
+          "character": 1
+        }
+      ]
+    }
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 23,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "entity.name.type.class.matlab"
+    ],
+    "type": "entity.name.type.class.matlab",
+    "text": "Animal",
+    "line": 10,
+    "level": 3,
+    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Snake.m",
+    "definition": {
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "range": [
+        {
+          "line": 0,
+          "character": 1
+        },
+        {
+          "line": 0,
+          "character": 1
+        }
+      ]
+    }
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 24,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "entity.name.type.class.matlab"
+    ],
+    "type": "entity.name.type.class.matlab",
+    "text": "Animal",
+    "line": 14,
+    "level": 3,
+    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Snake.m",
+    "definition": {
+      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "range": [
+        {
+          "line": 0,
+          "character": 1
+        },
+        {
+          "line": 0,
+          "character": 1
+        }
+      ]
+    }
+  }
+]
