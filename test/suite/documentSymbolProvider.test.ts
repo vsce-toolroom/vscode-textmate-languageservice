@@ -15,7 +15,7 @@ const engine = new TextmateEngine('matlab', 'source.matlab');
 const documentSymbolProvider = new DocumentSymbolProvider(engine);
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 
-suite('src/tableOfContentsProvider.ts', function() {
+suite('src/documentSymbolProvider.ts', function() {
 	this.timeout(60000);
 	test('DocumentSymbolProvider class', async function() {
 		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
