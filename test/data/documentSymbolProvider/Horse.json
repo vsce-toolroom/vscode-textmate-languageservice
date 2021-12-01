@@ -1,6 +1,6 @@
 [
   {
-    "name": "AnEnum",
+    "name": "Horse",
     "detail": "entity.name.type.class.matlab",
     "kind": 4,
     "range": [
@@ -9,7 +9,7 @@
         "character": 9
       },
       {
-        "line": 11,
+        "line": 18,
         "character": 0
       }
     ],
@@ -19,109 +19,135 @@
         "character": 9
       },
       {
-        "line": 11,
+        "line": 18,
         "character": 0
       }
     ],
     "children": [
       {
-        "name": "enumeration",
-        "detail": "keyword.control.enum.matlab",
+        "name": "methods",
+        "detail": "keyword.control.methods.matlab",
         "kind": 2,
         "range": [
           {
-            "line": 2,
+            "line": 1,
             "character": 4
           },
           {
-            "line": 11,
+            "line": 18,
             "character": 0
           }
         ],
         "selectionRange": [
           {
-            "line": 2,
+            "line": 1,
             "character": 4
           },
           {
-            "line": 11,
+            "line": 18,
             "character": 0
           }
         ],
         "children": [
           {
-            "name": "One",
-            "detail": "variable.other.enummember.matlab",
-            "kind": 21,
+            "name": "Horse",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
             "range": [
               {
-                "line": 4,
-                "character": 8
+                "line": 2,
+                "character": 17
               },
               {
                 "line": 4,
-                "character": 32
+                "character": 5
               }
             ],
             "selectionRange": [
               {
-                "line": 4,
-                "character": 8
+                "line": 2,
+                "character": 17
               },
               {
                 "line": 4,
-                "character": 32
+                "character": 5
               }
             ],
             "children": []
           },
           {
-            "name": "Two",
-            "detail": "variable.other.enummember.matlab",
-            "kind": 21,
+            "name": "noise",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
             "range": [
               {
                 "line": 5,
-                "character": 8
+                "character": 23
               },
               {
-                "line": 5,
-                "character": 15
+                "line": 7,
+                "character": 11
               }
             ],
             "selectionRange": [
               {
                 "line": 5,
-                "character": 8
+                "character": 23
               },
               {
-                "line": 5,
-                "character": 15
+                "line": 7,
+                "character": 11
               }
             ],
             "children": []
           },
           {
-            "name": "Ten",
-            "detail": "variable.other.enummember.matlab",
-            "kind": 21,
+            "name": "move",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
             "range": [
               {
-                "line": 6,
-                "character": 8
+                "line": 8,
+                "character": 23
               },
               {
                 "line": 11,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 8,
+                "character": 23
+              },
+              {
+                "line": 11,
+                "character": 11
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "sleep",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 12,
+                "character": 23
+              },
+              {
+                "line": 18,
                 "character": 0
               }
             ],
             "selectionRange": [
               {
-                "line": 6,
-                "character": 8
+                "line": 12,
+                "character": 23
               },
               {
-                "line": 11,
+                "line": 18,
                 "character": 0
               }
             ],

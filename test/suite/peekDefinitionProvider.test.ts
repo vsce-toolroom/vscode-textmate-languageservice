@@ -51,9 +51,8 @@ suite('src/peekDefinitionProvider.ts', function() {
 				definitionResults[0].uri = (definitionResults[0] as any).uri.path;
 				assert.strictEqual([1, 2].includes(definitionResults.length), true, `${token.text} class defined ${definitionResults.length} times.`);
 				definitions.push({
-					text: token.text,
-					token: token,
-					origin: resource.path,
+					...token,
+					uri: resource.path,
 					definition: definitionResults[0]
 				});
 			}

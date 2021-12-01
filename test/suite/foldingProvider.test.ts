@@ -23,7 +23,6 @@ suite('src/foldingProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
-			await vscode.window.showTextDocument(document);
 
 			const p = path
 				.resolve(__dirname, '../data/foldingProvider', path.basename(file))

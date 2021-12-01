@@ -23,7 +23,6 @@ suite('src/workspaceSymbolProvider.ts', function() {
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
-			await vscode.window.showTextDocument(document);
 
 			const providerDocument = await workspaceDocumentProvider.getDocument(resource);
 			assert.strictEqual(
@@ -46,30 +45,19 @@ suite('src/workspaceSymbolProvider.ts', function() {
 		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 	test('WorkspaceSymbolProvider class', async function() {
-		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
-		for (const file of files) {
-			const resource = vscode.Uri.file(file);
-			const document = await vscode.workspace.openTextDocument(resource);
-			await vscode.window.showTextDocument(document);
+		const symbols = jsonify(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
 
-			const symbols = jsonify(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
-
-			for (const symbol of symbols) {
-				if (symbol?.location?.uri) {
-					symbol.location.uri = symbol.location.uri.path as any;
-				}
+		for (const symbol of symbols) {
+			if (symbol?.location?.uri) {
+				symbol.location.uri = symbol.location.uri.path as any;
 			}
-
-			const p = path
-				.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file))
-				.replace(/\.m$/, '.json');
-
-			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true);
-			}
-			writeJsonFile.sync(p, symbols, { indent: '  ' });
 		}
 
-		vscode.commands.executeCommand('workbench.action.closeAllEditors');
+		const p = path.resolve(__dirname, '../data/workspaceSymbolProvider', 'index.json');
+
+		if (fs.existsSync(p)) {
+			assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true);
+		}
+		writeJsonFile.sync(p, symbols, { indent: '  ' });
 	});
 });
