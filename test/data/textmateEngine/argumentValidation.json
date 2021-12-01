@@ -1,0 +1,2640 @@
+[
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "storage.type.function.matlab"
+    ],
+    "type": "storage.type.function.matlab",
+    "text": "function",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab"
+    ],
+    "type": "meta.function.matlab",
+    "text": " ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 27,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "entity.name.function.matlab"
+    ],
+    "type": "entity.name.function.matlab",
+    "text": "argumentValidation",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 28,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.definition.parameters.begin.matlab"
+    ],
+    "type": "punctuation.definition.parameters.begin.matlab",
+    "text": "(",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 29,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "type": "variable.parameter.input.matlab",
+    "text": "x",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 29,
+    "endIndex": 30,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.separator.parameter.comma.matlab"
+    ],
+    "type": "punctuation.separator.parameter.comma.matlab",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 31,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.language.anonymous.matlab"
+    ],
+    "type": "variable.language.anonymous.matlab",
+    "text": "~",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 31,
+    "endIndex": 32,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.separator.parameter.comma.matlab"
+    ],
+    "type": "punctuation.separator.parameter.comma.matlab",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 33,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "type": "variable.parameter.input.matlab",
+    "text": "v",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 33,
+    "endIndex": 34,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.separator.parameter.comma.matlab"
+    ],
+    "type": "punctuation.separator.parameter.comma.matlab",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 40,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "type": "variable.parameter.input.matlab",
+    "text": "method",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 41,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.separator.parameter.comma.matlab"
+    ],
+    "type": "punctuation.separator.parameter.comma.matlab",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 45,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "type": "variable.parameter.input.matlab",
+    "text": "flag",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 45,
+    "endIndex": 46,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.separator.parameter.comma.matlab"
+    ],
+    "type": "punctuation.separator.parameter.comma.matlab",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 47,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab"
+    ],
+    "type": "meta.parameters.matlab",
+    "text": " ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 51,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "type": "variable.parameter.input.matlab",
+    "text": "opts",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 51,
+    "endIndex": 52,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "punctuation.definition.parameters.end.matlab"
+    ],
+    "type": "punctuation.definition.parameters.end.matlab",
+    "text": ")",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "    ",
+    "line": 1,
+    "level": 1
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 5,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 1,
+    "level": 1
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 37,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Comment before arguments blocks",
+    "line": 1,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 2,
+    "level": 1
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.arguments.matlab"
+    ],
+    "type": "keyword.control.arguments.matlab",
+    "text": "arguments",
+    "line": 2,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 3,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 3,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 23,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Block comment",
+    "line": 3,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": "        ",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "type": "variable.object.property.matlab",
+    "text": "x",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 10,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "keyword.operator.vector.colon.matlab"
+    ],
+    "type": "keyword.operator.vector.colon.matlab",
+    "text": ":",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 30,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "mustBeNumeric",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 31,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 31,
+    "endIndex": 41,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "mustBeReal",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 42,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 42,
+    "endIndex": 43,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 44,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 60,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " trailing coment",
+    "line": 4,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 10,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "        ~",
+    "line": 5,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 6,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 6,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 22,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Line comment",
+    "line": 6,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": "        ",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "type": "variable.object.property.matlab",
+    "text": "v",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 10,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "keyword.operator.vector.colon.matlab"
+    ],
+    "type": "keyword.operator.vector.colon.matlab",
+    "text": ":",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 30,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "mustBeNumeric",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 31,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 31,
+    "endIndex": 41,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "mustBeReal",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 59,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ", mustBeEqualSize(",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 59,
+    "endIndex": 60,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "v",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 60,
+    "endIndex": 61,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 61,
+    "endIndex": 62,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "x",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 62,
+    "endIndex": 63,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ")",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 64,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 7,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": "        ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "type": "variable.object.property.matlab",
+    "text": "method",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 18,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 19,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "keyword.operator.vector.colon.matlab"
+    ],
+    "type": "keyword.operator.vector.colon.matlab",
+    "text": ":",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 20,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 21,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 25,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "storage.type.matlab"
+    ],
+    "type": "storage.type.matlab",
+    "text": "char",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 26,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 27,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 40,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "mustBeMember(",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 46,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "method",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 47,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 48,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 48,
+    "endIndex": 49,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 49,
+    "endIndex": 55,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab"
+    ],
+    "type": "string.quoted.single.matlab",
+    "text": "linear",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 56,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 56,
+    "endIndex": 57,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 58,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 58,
+    "endIndex": 63,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab"
+    ],
+    "type": "string.quoted.single.matlab",
+    "text": "cubic",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 64,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 64,
+    "endIndex": 65,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 65,
+    "endIndex": 66,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 66,
+    "endIndex": 72,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab"
+    ],
+    "type": "string.quoted.single.matlab",
+    "text": "spline",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 72,
+    "endIndex": 73,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 73,
+    "endIndex": 74,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 74,
+    "endIndex": 75,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ")",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 75,
+    "endIndex": 76,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 76,
+    "endIndex": 77,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 77,
+    "endIndex": 78,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "keyword.operator.assignment.matlab"
+    ],
+    "type": "keyword.operator.assignment.matlab",
+    "text": "=",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 78,
+    "endIndex": 79,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 79,
+    "endIndex": 80,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 80,
+    "endIndex": 86,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "string.quoted.single.matlab"
+    ],
+    "type": "string.quoted.single.matlab",
+    "text": "linear",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 86,
+    "endIndex": 87,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "string.quoted.single.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "'",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 87,
+    "endIndex": 88,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 88,
+    "endIndex": 89,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 89,
+    "endIndex": 109,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " End of line comment",
+    "line": 8,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 9,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 9,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 27,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " End block comment",
+    "line": 9,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 10,
+    "level": 2
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.end.arguments.matlab"
+    ],
+    "type": "keyword.control.end.arguments.matlab",
+    "text": "end",
+    "line": 10,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.arguments.matlab"
+    ],
+    "type": "keyword.control.arguments.matlab",
+    "text": "arguments",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.arguments.declaration.matlab"
+    ],
+    "type": "meta.arguments.declaration.matlab",
+    "text": " ",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.arguments.declaration.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 24,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.arguments.declaration.matlab",
+      "storage.modifier.arguments.matlab"
+    ],
+    "type": "storage.modifier.arguments.matlab",
+    "text": "Repeating",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 25,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.arguments.declaration.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 11,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "punctuation.whitespace.comment.leading.matlab"
+    ],
+    "type": "punctuation.whitespace.comment.leading.matlab",
+    "text": "        ",
+    "line": 12,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab",
+      "punctuation.definition.comment.matlab"
+    ],
+    "type": "punctuation.definition.comment.matlab",
+    "text": "%",
+    "line": 12,
+    "level": 2
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 24,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "comment.line.percentage.matlab"
+    ],
+    "type": "comment.line.percentage.matlab",
+    "text": " Trailing flags",
+    "line": 12,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": "        ",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "type": "variable.object.property.matlab",
+    "text": "flag",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "keyword.operator.vector.colon.matlab"
+    ],
+    "type": "keyword.operator.vector.colon.matlab",
+    "text": ":",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 18,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 19,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 25,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "storage.type.matlab"
+    ],
+    "type": "storage.type.matlab",
+    "text": "string",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 26,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 27,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 40,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "mustBeMember(",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 44,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "flag",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 46,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",[",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 47,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 52,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab"
+    ],
+    "type": "string.quoted.double.matlab",
+    "text": "first",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 53,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 53,
+    "endIndex": 54,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 55,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 61,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab"
+    ],
+    "type": "string.quoted.double.matlab",
+    "text": "second",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 61,
+    "endIndex": 62,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 62,
+    "endIndex": 63,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": ",",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 64,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 64,
+    "endIndex": 69,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab"
+    ],
+    "type": "string.quoted.double.matlab",
+    "text": "third",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 69,
+    "endIndex": 70,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "\"",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 70,
+    "endIndex": 72,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "])",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 72,
+    "endIndex": 73,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 13,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 14,
+    "level": 2
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.end.arguments.matlab"
+    ],
+    "type": "keyword.control.end.arguments.matlab",
+    "text": "end",
+    "line": 14,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 15,
+    "level": 1
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.arguments.matlab"
+    ],
+    "type": "keyword.control.arguments.matlab",
+    "text": "arguments",
+    "line": 15,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 8,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": "        ",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 18,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "type": "variable.object.property.matlab",
+    "text": "opts.Named",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 19,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 20,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 21,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "1",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 22,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 23,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.parens.size.matlab",
+      "keyword.operator.vector.colon.matlab"
+    ],
+    "type": "keyword.operator.vector.colon.matlab",
+    "text": ":",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 23,
+    "endIndex": 24,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 25,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 31,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "storage.type.matlab"
+    ],
+    "type": "storage.type.matlab",
+    "text": "string",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 31,
+    "endIndex": 32,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab"
+    ],
+    "type": "meta.assignment.definition.property.matlab",
+    "text": " ",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 33,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.begin.matlab"
+    ],
+    "type": "punctuation.section.block.begin.matlab",
+    "text": "{",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 33,
+    "endIndex": 47,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "mustBeNumeric(",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 51,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "opts",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 51,
+    "endIndex": 52,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "punctuation.accessor.dot.matlab"
+    ],
+    "type": "punctuation.accessor.dot.matlab",
+    "text": ".",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 57,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.property.matlab"
+    ],
+    "type": "variable.other.property.matlab",
+    "text": "Named",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 60,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "), ",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 60,
+    "endIndex": 63,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.continuation.line.matlab",
+      "punctuation.separator.continuation.line.matlab"
+    ],
+    "type": "punctuation.separator.continuation.line.matlab",
+    "text": "...",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 81,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "meta.continuation.line.matlab",
+      "comment.continuation.line.matlab"
+    ],
+    "type": "comment.continuation.line.matlab",
+    "text": " Dotdotdot comment",
+    "line": 16,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 33,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab"
+    ],
+    "type": "meta.block.validation.matlab",
+    "text": "                                 ",
+    "line": 17,
+    "level": 2
+  },
+  {
+    "startIndex": 33,
+    "endIndex": 43,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "meta.block.validation.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "mustBeReal",
+    "line": 17,
+    "level": 2
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 44,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "meta.assignment.definition.property.matlab",
+      "punctuation.section.block.end.matlab"
+    ],
+    "type": "punctuation.section.block.end.matlab",
+    "text": "}",
+    "line": 17,
+    "level": 2
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 4,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab"
+    ],
+    "type": "meta.arguments.matlab",
+    "text": "    ",
+    "line": 18,
+    "level": 2
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.arguments.matlab",
+      "keyword.control.end.arguments.matlab"
+    ],
+    "type": "keyword.control.end.arguments.matlab",
+    "text": "end",
+    "line": 18,
+    "level": 1
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 3,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "storage.type.function.end.matlab"
+    ],
+    "type": "storage.type.function.end.matlab",
+    "text": "end",
+    "line": 19,
+    "level": 0
+  }
+]
