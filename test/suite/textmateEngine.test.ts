@@ -2,13 +2,13 @@ import vscode from 'vscode';
 import path from 'path';
 import fs from 'fs';
 import glob from 'glob';
-import deepEqual from 'deep-equal';
 import assert from 'assert';
+import deepEqual from 'deep-equal';
 import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
 import { TextmateEngine, TextmateScopeSelector, configurationData, TextmateScopeSelectorMap } from '../../src/textmateEngine';
 import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
-import replacer from './replacer';
+import jsonify from './jsonify';
 
 const textmateEngineTestsPath = path.resolve(__dirname, '../data/textmateEngine');
 const textmateScopeSelectorTests = loadJsonFile.sync(path.resolve(textmateEngineTestsPath, 'TextmateScopeSelector.json'));
@@ -20,21 +20,21 @@ const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 suite('src/textmateEngine.ts', function() {
 	this.timeout(60000);
 	test('TextmateEngine class', async function() {
-		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 
 			const document = await workspaceDocumentProvider.getDocument(resource);
-			const tokens = await engine.tokenize('source.matlab', document);
+			const tokens = jsonify(await engine.tokenize('source.matlab', document));
 
 			const p = path
 				.resolve(__dirname, '../data/textmateEngine', path.basename(file))
 				.replace(/\.m$/, '.json');
 
-			writeJsonFile.sync(p, tokens, { indent: '  ' });
 			if (fs.existsSync(p)) {
-				deepEqual(loadJsonFile.sync(p), tokens);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), tokens), true);
 			}
+			writeJsonFile.sync(p, tokens, { indent: '  ' });
 		}
 	});
 	test('TextmateScopeSelector class', function() {

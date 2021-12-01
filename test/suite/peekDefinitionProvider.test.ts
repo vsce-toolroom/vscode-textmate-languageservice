@@ -11,7 +11,7 @@ import { WorkspaceDocumentProvider } from '../../src/workspaceSymbolProvider';
 import { PeekDefinitionProvider } from '../../src/peekDefinitionProvider';
 import { TableOfContentsProvider, TocEntry } from '../../src/tableOfContentsProvider';
 import ScopeSelector from '../../src/util/scope-selector';
-import replacer from './replacer';
+import jsonify from './jsonify';
 
 const engine = new TextmateEngine('matlab', 'source.matlab');
 const tableOfContentsProvider = new TableOfContentsProvider(engine);
@@ -35,7 +35,7 @@ suite('src/tableOfContentsProvider.ts', function() {
 		await vscode.window.showTextDocument(document);
 		const activeEditor = vscode.window.activeTextEditor;
 
-		const definitions = [];
+		let definitions = [];
 
 		const functionCallTokens = tokens.filter(isFunctionCallToken);
 
@@ -60,14 +60,16 @@ suite('src/tableOfContentsProvider.ts', function() {
 			});
 		}
 
+		definitions = jsonify(definitions);
+
 		const p = path
 			.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file))
 			.replace(/\.m$/, '.json');
 
-		writeJsonFile.sync(p, definitions, { indent: '  ' });
 		if (fs.existsSync(p)) {
-			deepEqual(loadJsonFile.sync(p), definitions);
+			assert.strictEqual(deepEqual(loadJsonFile.sync(p), definitions), true);
 		}
+		writeJsonFile.sync(p, definitions, { indent: '  ' });
 
 		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});

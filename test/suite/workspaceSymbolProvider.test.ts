@@ -2,14 +2,14 @@ import vscode from 'vscode';
 import path from 'path';
 import glob from 'glob';
 import fs from 'fs';
-import deepEqual from 'deep-equal';
 import assert from 'assert';
+import deepEqual from 'deep-equal';
 import writeJsonFile from 'write-json-file';
 import loadJsonFile from 'load-json-file';
 import { TextmateEngine } from '../../src/textmateEngine';
 import { DocumentSymbolProvider } from '../../src/documentSymbolProvider';
 import { WorkspaceDocumentProvider, WorkspaceSymbolProvider } from '../../src/workspaceSymbolProvider';
-import replacer from './replacer';
+import jsonify from './jsonify';
 
 const workspaceDocumentProvider = new WorkspaceDocumentProvider('matlab');
 const engine = new TextmateEngine('matlab', 'source.matlab');
@@ -19,7 +19,7 @@ const workspaceSymbolProvider = new WorkspaceSymbolProvider('matlab', documentSy
 suite('src/foldingProvider.ts', function() {
 	this.timeout(60000);
 	test('WorkspaceDocumentProvider class', async function() {
-		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
@@ -46,13 +46,13 @@ suite('src/foldingProvider.ts', function() {
 		vscode.commands.executeCommand('workbench.action.closeAllEditors');
 	});
 	test('WorkspaceSymbolProvider class', async function() {
-		const files = glob.sync(path.resolve(__dirname, '../../../../../syntaxes/MATLAB-Language-grammar/test/snap/*.m'));
+		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
 			await vscode.window.showTextDocument(document);
 
-			const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
+			const symbols = jsonify(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
 
 			for (const symbol of symbols) {
 				if (symbol?.location?.uri) {
@@ -64,10 +64,10 @@ suite('src/foldingProvider.ts', function() {
 				.resolve(__dirname, '../data/workspaceSymbolProvider', path.basename(file))
 				.replace(/\.m$/, '.json');
 
-			writeJsonFile.sync(p, symbols, { indent: '  ' });
 			if (fs.existsSync(p)) {
-				deepEqual(loadJsonFile.sync(p), symbols);
+				assert.strictEqual(deepEqual(loadJsonFile.sync(p), symbols), true);
 			}
+			writeJsonFile.sync(p, symbols, { indent: '  ' });
 		}
 
 		vscode.commands.executeCommand('workbench.action.closeAllEditors');
