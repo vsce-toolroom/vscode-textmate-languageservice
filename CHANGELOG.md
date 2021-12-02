@@ -1,8 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-02&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.0&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- Accept limited Textmate scope selectors in all configuration values.
+- Introduce array-string duplicity to all configuration values.
+- Add test suite for Textmate engine & VS Code providers.
+
+Major breaking change - `meta.parens` does not match `meta.function-call.parens` in Textmate scope selectors.
+
 ## 0.1.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.1.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.1.1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.1.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.1.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.1.1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.1.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 Adds engine tokenization queue to improve performance for large files.
 
@@ -25,6 +35,7 @@ Initial version:
 ## Roadmap
 
 - Semantic highlighting provider for parameters.
+- Semantic highlighting provider for classes or other "Table of Contents" items.
 - Semantic highlighting for variable assignment driven by token types and/or text.
 - Custom entry text/type getter for "Table of Contents" provider.
 
