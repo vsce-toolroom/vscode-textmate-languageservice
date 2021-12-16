@@ -2,7 +2,6 @@
 .vscode-test/
 .github/
 build/
-out/test/
 src/
 test/
 assets/
