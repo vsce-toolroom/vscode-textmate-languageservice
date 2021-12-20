@@ -45,7 +45,7 @@ suite('src/peekDefinitionProvider.ts', function() {
 				const startPosition = new vscode.Position(token.line, token.startIndex);
 				const endPosition = new vscode.Position(token.line, token.endIndex);
 
-				activeEditor.selection = activeEditor.selections[0] = new vscode.Selection(startPosition, endPosition);
+				activeEditor.selection = new vscode.Selection(startPosition, endPosition);
 				const definitionResults = await peekDefinitionProvider.provideDefinition(document, startPosition);
 
 				definitionResults[0].uri = (definitionResults[0] as any).uri.path;

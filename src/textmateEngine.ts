@@ -17,10 +17,6 @@ const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');
 export const configurationData = loadJsonFile.sync(path.resolve(extensionPath, './textmate-configuration.json')) as any;
 
-const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
-const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
-const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
-
 export interface SkinnyTextLine {
 	text: string;
 }
@@ -57,6 +53,103 @@ interface TextmateTokenizerState {
 	rule: vsctm.StackElement;
 	stack: number;
 }
+
+export class TextmateScopeSelector {
+	selectors?: ScopeSelector[];
+	selector?: ScopeSelector;
+
+	constructor(s: string[] | string) {
+		if (Array.isArray(s)) {
+			this.selectors = s.filter(function(selector) {
+				return typeof selector === 'string';
+			}).map(function(selector) {
+				try {
+					if (selector !== undefined && selector !== null) {
+						return new ScopeSelector(selector);
+					}
+				} catch (error) {
+					throw new Error(
+						`"${selector}" is an invalid Textmate scope selector.` +
+						(error?.message ? `\n\n${error.message}` : '')
+					);
+				}
+			});
+		} else {
+			try {
+				if (typeof s === 'string') {
+					this.selector = new ScopeSelector(s);
+				}
+			} catch (error) {
+				throw new Error(
+					`"${s}" is an invalid Textmate scope selector.` +
+					(error?.message ? `\n\n${error.message}` : '')
+				);
+			}
+		}
+	}
+
+	match(scopes: string[]): boolean {
+		if (!this.selectors && !this.selector) {
+			return false;
+		}
+		if (this.selectors) {
+			return this.selectors.some(function(selector) {
+				return selector.matches(scopes);
+			});
+		}
+		if (this.selector) {
+			return this.selector.matches(scopes);
+		}
+	}
+
+	include(scopes: string[][]): boolean {
+		if (!this.selectors && !this.selector) {
+			return false;
+		}
+		return scopes.some(this.match.bind(this));
+	}
+}
+
+export class TextmateScopeSelectorMap {
+	selectors: object;
+
+	constructor(selectors: Record<string, number> | null | undefined) {
+		if (typeof selectors === 'object' && selectors instanceof Object) {
+			this.selectors = selectors;
+		}
+	}
+
+	key(scopes: string[]): string | undefined {
+		if (!this.selectors) {
+			return;
+		}
+		return Object.keys(this.selectors).filter(function(selector) {
+			try {
+				return (new ScopeSelector(selector)).matches(scopes);
+			} catch (error) {
+				throw new Error(
+					`"${selector}" is an invalid Textmate scope selector.` +
+					(error?.message ? `\n\n${error.message}` : '')
+				);
+			}
+		})[0];
+	}
+
+	has(scopes: string[]): boolean {
+		return typeof this.key(scopes) === 'string';
+	}
+
+	value(scopes: string[]): number | undefined {
+		if (!this.selectors) {
+			return;
+		}
+		return this.selectors[this.key(scopes)];
+	}
+}
+
+const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
+const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
+const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
 
 export const packageJSON = loadJsonFile.sync(path.resolve(extensionPath, './package.json')) as any;
 
@@ -202,91 +295,5 @@ export class TextmateEngine {
 		const registry = new vsctmModule.Registry(resolver);
 		this._grammars.push(await registry.loadGrammar(grammar.scopeName));
 		this.scopes.push(scope);
-	}
-}
-
-export class TextmateScopeSelector {
-	selectors?: ScopeSelector[];
-	selector?: ScopeSelector;
-	constructor(s: string[] | string) {
-		if (Array.isArray(s)) {
-			this.selectors = s.filter(function(selector) {
-				return typeof selector === 'string';
-			}).map(function(selector) {
-				try {
-					if (selector !== undefined && selector !== null) {
-						return new ScopeSelector(selector);
-					}
-				} catch (error) {
-					throw new Error(
-						`"${selector}" is an invalid Textmate scope selector.` +
-						(error?.message ? `\n\n${error.message}` : '')
-					);
-				}
-			});
-		} else {
-			try {
-				if (typeof s === 'string') {
-					this.selector = new ScopeSelector(s);
-				}
-			} catch (error) {
-				throw new Error(
-					`"${s}" is an invalid Textmate scope selector.` +
-					(error?.message ? `\n\n${error.message}` : '')
-				);
-			}
-		}
-	}
-	match(scopes: string[]): boolean {
-		if (!this.selectors && !this.selector) {
-			return false;
-		}
-		if (this.selectors) {
-			return this.selectors.some(function(selector) {
-				return selector.matches(scopes);
-			});
-		}
-		if (this.selector) {
-			return this.selector.matches(scopes);
-		}
-	}
-	include(scopes: string[][]): boolean {
-		if (!this.selectors && !this.selector) {
-			return false;
-		}
-		return scopes.some(this.match.bind(this));
-	}
-}
-
-export class TextmateScopeSelectorMap {
-	selectors: object;
-	constructor(selectors: Record<string, number> | null | undefined) {
-		if (typeof selectors === 'object' && selectors instanceof Object) {
-			this.selectors = selectors;
-		}
-	}
-	key(scopes: string[]): string | undefined {
-		if (!this.selectors) {
-			return;
-		}
-		return Object.keys(this.selectors).filter(function(selector) {
-			try {
-				return (new ScopeSelector(selector)).matches(scopes);
-			} catch (error) {
-				throw new Error(
-					`"${selector}" is an invalid Textmate scope selector.` +
-					(error?.message ? `\n\n${error.message}` : '')
-				);
-			}
-		})[0];
-	}
-	has(scopes: string[]): boolean {
-		return typeof this.key(scopes) === 'string';
-	}
-	value(scopes: string[]): number | undefined {
-		if (!this.selectors) {
-			return;
-		}
-		return this.selectors[this.key(scopes)];
 	}
 }
