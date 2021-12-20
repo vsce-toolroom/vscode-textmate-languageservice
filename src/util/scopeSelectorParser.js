@@ -1028,4 +1028,3 @@ module.exports = {
 	SyntaxError: peg$SyntaxError,
 	parse: peg$parse,
 };
-diff --git a/src/util/scope-selector-parser.js b/src/util/scope-selector-parser.js
