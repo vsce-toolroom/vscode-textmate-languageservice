@@ -11,7 +11,6 @@ interface LanguageSymbol {
 }
 
 export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-
 	constructor(
 		public _engine: TextmateEngine
 	) { }

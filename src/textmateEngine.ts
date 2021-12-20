@@ -17,6 +17,10 @@ const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
 const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');
 export const configurationData = loadJsonFile.sync(path.resolve(extensionPath, './textmate-configuration.json')) as any;
 
+const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
+const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
+const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
+
 export interface SkinnyTextLine {
 	text: string;
 }
@@ -117,10 +121,6 @@ export class TextmateEngine {
 				token.text = line.text.substring(token.startIndex, token.endIndex);
 				token.line = lineNumber;
 			}
-
-			const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
-			const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
-			const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
 
 			for (let index = 0; index < (lineTokens.tokens.length - 1); index++) {
 				const token = lineTokens.tokens[index];

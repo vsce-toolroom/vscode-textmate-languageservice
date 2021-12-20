@@ -12,7 +12,6 @@ export interface FoldingToken {
 };
 
 export class FoldingProvider implements vscode.FoldingRangeProvider {
-
 	constructor(
 		private _engine: TextmateEngine
 	) { }

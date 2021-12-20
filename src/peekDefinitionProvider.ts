@@ -9,7 +9,6 @@ const extensions = configurationData.language.extensions.length === 1
 	: configurationData.language.extensions[0];
 
 export class PeekDefinitionProvider implements vscode.DefinitionProvider {
-
 	constructor(
 		private _symbolProvider: DocumentSymbolProvider
 	) {}
