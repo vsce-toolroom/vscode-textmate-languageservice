@@ -8,7 +8,7 @@ import sha1 from 'git-sha1';
 import delay from 'delay';
 import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registryResolver';
 import { getOniguruma } from './util/onigLibs';
-import ScopeSelector from './util/scope-selector';
+import ScopeSelector from './util/scopeSelector';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
 import vsctm from 'vscode-textmate';
