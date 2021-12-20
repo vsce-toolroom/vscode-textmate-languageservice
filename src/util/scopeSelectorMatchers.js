@@ -293,4 +293,3 @@ export class CompositeMatcher {
 	}
 
 };
-diff --git a/src/util/scope-selector-matchers.js b/src/util/scope-selector-matchers.js

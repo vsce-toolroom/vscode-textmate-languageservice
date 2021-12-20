@@ -76,4 +76,3 @@ export default class ScopeSelector {
 		return this.matcher.toCssSyntaxSelector();
 	}
 };
-diff --git a/src/util/scopeSelectorMatchers.js b/src/util/scopeSelectorMatchers.js

@@ -60,4 +60,3 @@ selector
 
 _
 	= [ \t]*
-diff --git a/src/util/scope-selector-parser.pegjs b/src/util/scope-selector-parser.pegjs
