@@ -99,17 +99,18 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 
 			for (let subindex = index; subindex < tokens.length; subindex++) {
 				const subtoken = tokens[subindex];
-				if (subtoken.level < token.level) {
-					const range = new vscode.FoldingRange(
-						token.line - 1,
-						token.level === 1
-							? tokens[subindex - 1].line
-							: tokens[subindex - 1].line - 1,
-							this.getFoldingRangeKind(token)
-						);
-						ranges.push(range);
-					break;
+				if (subtoken.level >= token.level) {
+					continue;
 				}
+				const range = new vscode.FoldingRange(
+					token.line - 1,
+					token.level === 1
+						? tokens[subindex - 1].line
+						: tokens[subindex - 1].line - 1,
+					this.getFoldingRangeKind(token)
+				);
+				ranges.push(range);
+				break;
 			}
 		}
 
