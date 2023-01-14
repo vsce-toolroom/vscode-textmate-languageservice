@@ -2,7 +2,7 @@
 
 import vscode from 'vscode';
 import { configurationData } from './textmateEngine';
-import { DocumentSymbolProvider } from './documentSymbolProvider';
+import type { DocumentSymbolProvider } from './documentSymbols';
 
 const extensions = configurationData.language.extensions.length === 1
 	? `.{${configurationData.language.extensions.map((e: string) => e.substring(1)).join(',')}}`

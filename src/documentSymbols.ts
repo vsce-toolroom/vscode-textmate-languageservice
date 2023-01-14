@@ -1,8 +1,8 @@
 'use strict';
 
 import vscode from 'vscode';
-import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
-import { TextmateEngine, SkinnyTextDocument } from './textmateEngine';
+import type { TableOfContentsProvider, TocEntry } from './tableOfContents';
+import type { SkinnyTextDocument } from './textmateEngine';
 
 interface LanguageSymbol {
 	readonly level: number;
@@ -12,16 +12,16 @@ interface LanguageSymbol {
 
 export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 	constructor(
-		public _engine: TextmateEngine
+		private _tocProvider: TableOfContentsProvider
 	) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
-		const toc = await new TableOfContentsProvider(this._engine).getToc(document);
+		const toc = await this._tocProvider.getToc(document);
 		return toc.map(this.toSymbolInformation.bind(this));
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
-		const toc = await new TableOfContentsProvider(this._engine).getToc(document);
+		const toc = await this._tocProvider.getToc(document);
 		const root: LanguageSymbol = {
 			level: -Infinity,
 			children: [],
@@ -67,7 +67,9 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 	private toDocumentSymbol(entry: TocEntry) {
 		return new vscode.DocumentSymbol(
 			entry.text,
-			entry.token,
+			entry.token
+				.replace(/^meta\./, '')
+				.replace(/\.[^.]$/, ''),
 			entry.type,
 			entry.location.range,
 			entry.location.range

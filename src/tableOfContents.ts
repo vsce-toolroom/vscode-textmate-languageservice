@@ -1,7 +1,10 @@
 'use strict';
 
 import vscode from 'vscode';
-import { SkinnyTextDocument, TextmateEngine, configurationData, TextmateToken, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
+import sha1 from 'git-sha1';
+import delay from 'delay';
+import type { SkinnyTextDocument, TextmateEngine, TextmateToken } from './textmateEngine';
+import { configurationData, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
 
 const symbolSelectorMap = new TextmateScopeSelectorMap(configurationData.symbols);
 const declarationSelector = new TextmateScopeSelector(configurationData.declarations);
@@ -14,24 +17,42 @@ export interface TocEntry {
 	readonly text: string;
 	readonly token: string;
 	readonly type: vscode.SymbolKind;
+	readonly anchor: number;
 }
 
 export class TableOfContentsProvider {
-	private toc?: TocEntry[];
+	private _queue?: Record<string, boolean> = {};
+	private _cache?: Record<string, TocEntry[] | undefined> = {};
 
 	public constructor(
 		private _engine: TextmateEngine
 	) { }
 
 	public async getToc(document: SkinnyTextDocument): Promise<TocEntry[]> {
-		if (!this.toc) {
-			try {
-				this.toc = await this.buildToc(document);
-			} catch (e) {
-				this.toc = [];
+		const text = document.getText();
+		const hash = sha1(text);
+		let toc: TocEntry[];
+
+		if (this._queue[hash]) {
+			while (!this._cache[hash]) {
+				await delay(100);
 			}
+			return this._cache[hash];
 		}
-		return this.toc;
+
+		if (this._cache[hash]) {
+			return this._cache[hash];
+		}
+
+		this._queue[hash] = true;
+		try {
+			toc = await this.buildToc(document);
+		} catch (e) {
+			toc = [];
+		}
+
+		this._cache[hash] = toc;
+		return toc;
 	}
 
 	public async lookup(document: SkinnyTextDocument, text: string): Promise<TocEntry | undefined> {
@@ -43,7 +64,10 @@ export class TableOfContentsProvider {
 		const toc: TocEntry[] = [];
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
 
-		for (const entry of tokens.filter(this.isSymbolToken)) {
+		tokens.forEach(function(this: TableOfContentsProvider, entry: TextmateToken, index: number) {
+			if (!this.isSymbolToken(entry)) {
+				return;
+			}
 			const lineNumber = entry.line;
 			toc.push({
 				level: entry.level,
@@ -54,9 +78,10 @@ export class TableOfContentsProvider {
 				),
 				text: entry.text,
 				token: entry.type,
-				type: symbolSelectorMap.value(entry.scopes)
+				type: symbolSelectorMap.value(entry.scopes),
+				anchor: index
 			});
-		}
+		}, this);
 
 		// Get full range of section
 		return toc.map(function(entry: TocEntry, startIndex: number): TocEntry {

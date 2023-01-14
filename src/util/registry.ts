@@ -4,8 +4,8 @@ import path from 'path';
 import fs from 'fs';
 
 import getCoreNodeModule from './getCoreNodeModule';
-import vsctm from 'vscode-textmate';
-const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
+import vscodeTextmate from 'vscode-textmate';
+const vscodeTextmateModule = getCoreNodeModule<typeof vscodeTextmate>('vscode-textmate');
 
 export interface LanguageRegistration {
 	id: string;
@@ -18,18 +18,18 @@ export interface GrammarRegistration {
 	scopeName: string;
 	path: string;
 	embeddedLanguages?: { [scopeName: string]: string; };
-	grammar?: Promise<vsctm.IRawGrammar>;
+	grammar?: Promise<vscodeTextmate.IRawGrammar>;
 }
 
-export class Resolver implements vsctm.RegistryOptions {
+export class Resolver implements vscodeTextmate.RegistryOptions {
 	public readonly language2id: { [languages: string]: number; };
 	private _lastLanguageId: number;
 	private _id2language: string[];
 	private readonly _grammars: GrammarRegistration[];
 	private readonly _languages: LanguageRegistration[];
-	public readonly onigLib: Promise<vsctm.IOnigLib>;
+	public readonly onigLib: Promise<vscodeTextmate.IOnigLib>;
 
-	constructor(grammars: GrammarRegistration[], languages: LanguageRegistration[], onigLibPromise: Promise<vsctm.IOnigLib>) {
+	constructor(grammars: GrammarRegistration[], languages: LanguageRegistration[], onigLibPromise: Promise<vscodeTextmate.IOnigLib>) {
 		this._grammars = grammars;
 		this._languages = languages;
 		this.onigLib = onigLibPromise;
@@ -108,7 +108,7 @@ export class Resolver implements vsctm.RegistryOptions {
 		throw new Error('Could not findGrammarByLanguage for ' + language);
 	}
 
-	public async loadGrammar(scopeName: string): Promise<vsctm.IRawGrammar | null> {
+	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
 		for (let i = 0; i < this._grammars.length; i++) {
 			let grammar = this._grammars[i];
 			if (grammar.scopeName === scopeName) {
@@ -123,13 +123,13 @@ export class Resolver implements vsctm.RegistryOptions {
 	}
 }
 
-function readGrammarFromPath(path: string) : Promise<vsctm.IRawGrammar> {
+function readGrammarFromPath(path: string) : Promise<vscodeTextmate.IRawGrammar> {
 	return new Promise(function(c,e) {
 		fs.readFile(path, function(error, content) {
 			if (error) {
 				e(error);
 			} else {
-				c(vsctmModule.parseRawGrammar(content.toString(), path));
+				c(vscodeTextmateModule.parseRawGrammar(content.toString(), path));
 			}
 		});
 	});

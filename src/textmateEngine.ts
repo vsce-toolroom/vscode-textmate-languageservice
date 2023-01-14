@@ -6,13 +6,13 @@ import vscode from 'vscode';
 import loadJsonFile from 'load-json-file';
 import sha1 from 'git-sha1';
 import delay from 'delay';
-import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registryResolver';
-import { getOniguruma } from './util/onigLibs';
-import ScopeSelector from './util/scopeSelector';
+import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registry';
+import { getOniguruma } from './util/oniguruma';
+import ScopeSelector from './util/scopes';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
-import vsctm from 'vscode-textmate';
-const vsctmModule = getCoreNodeModule<typeof vsctm>('vscode-textmate');
+import vscodeTextmate from 'vscode-textmate';
+const vscodeTextmateModule = getCoreNodeModule<typeof vscodeTextmate>('vscode-textmate');
 
 const extensionPath = path.resolve(pkgUp.sync({ cwd: __dirname }), '../../..');
 export const configurationData = loadJsonFile.sync(path.resolve(extensionPath, './textmate-configuration.json')) as any;
@@ -34,23 +34,23 @@ type Mutable<T> = {
 	-readonly[P in keyof T]: T[P]
 };
 
-export interface TextmateToken extends Mutable<vsctm.IToken> {
+export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface TextmateTokenizeLineResult extends Omit<vsctm.ITokenizeLineResult, 'tokens'> {
+export interface TextmateTokenizeLineResult extends Omit<vscodeTextmate.ITokenizeLineResult, 'tokens'> {
 	readonly tokens: TextmateToken[]
 }
 
 interface TextmateTokenizerState {
-	context: number;
+	delta: number;
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: vsctm.StackElement;
+	rule: vscodeTextmate.StackElement;
 	stack: number;
 }
 
@@ -151,6 +151,10 @@ const singleAssignmentSelector = new TextmateScopeSelector(configurationData.ass
 const multipleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.multiple);
 const assignmentSeparatorSelector = new TextmateScopeSelector(configurationData.assignment.separator);
 
+const continuationSelector = new TextmateScopeSelector(configurationData.punctuation.continuaton);
+const indentationSelectorMap = new TextmateScopeSelectorMap(configurationData.indentation);
+const dedentationSelector = new TextmateScopeSelector(configurationData.dedentation);
+
 export const packageJSON = loadJsonFile.sync(path.resolve(extensionPath, './package.json')) as any;
 
 export class TextmateEngine {
@@ -162,11 +166,11 @@ export class TextmateEngine {
 	public scopes?: string[] = [];
 
 	private _state?: TextmateTokenizerState = {
-		context: 0,
+		delta: 0,
 		continuation: false,
 		declaration: false,
 		line: 0,
-		rule: vsctmModule.INITIAL,
+		rule: vscodeTextmateModule.INITIAL,
 		stack: 0
 	};
 
@@ -174,7 +178,7 @@ export class TextmateEngine {
 
 	private _cache: Record<string, TextmateToken[] | undefined> = {};
 
-	private _grammars?: vsctm.IGrammar[] = [];
+	private _grammars?: vscodeTextmate.IGrammar[] = [];
 
 	public async tokenize(scope: string, document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		if (!this.scopes.includes(scope)) {
@@ -202,7 +206,7 @@ export class TextmateEngine {
 		this._state.continuation = false;
 		this._state.declaration = false;
 		this._state.line = 0;
-		this._state.rule = vsctmModule.INITIAL;
+		this._state.rule = vscodeTextmateModule.INITIAL;
 		this._state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
@@ -239,10 +243,6 @@ export class TextmateEngine {
 				}
 			}
 
-			const continuationSelector = new TextmateScopeSelector(configurationData.punctuation.continuaton);
-			const indentationSelectorMap = new TextmateScopeSelectorMap(configurationData.indentation);
-			const dedentationSelector = new TextmateScopeSelector(configurationData.dedentation);
-
 			for (const token of lineTokens.tokens) {
 				this._state.declaration = (
 					indentationSelectorMap.value(token.scopes) > 0
@@ -251,7 +251,7 @@ export class TextmateEngine {
 				);
 
 				if (indentationSelectorMap.value(token.scopes) > 0) {
-					this._state.context = indentationSelectorMap.value(token.scopes);
+					this._state.delta = indentationSelectorMap.value(token.scopes);
 				}
 
 				if (this._state.declaration) {
@@ -265,7 +265,7 @@ export class TextmateEngine {
 						&& lineNumber > this._state.line
 					) {
 						this._state.declaration = false;
-						this._state.stack += this._state.context;
+						this._state.stack += this._state.delta;
 					}
 				}
 
@@ -281,7 +281,7 @@ export class TextmateEngine {
 			}
 		}
 
-		this._cache[text] = tokens;
+		this._cache[hash] = tokens;
 		delete this._queue[hash];
 		return tokens;
 	}
@@ -292,7 +292,7 @@ export class TextmateEngine {
 		const language = configurationData.language as LanguageRegistration;
 		const onigLibPromise = getOniguruma();
 		const resolver = new Resolver([grammar], [language], onigLibPromise);
-		const registry = new vsctmModule.Registry(resolver);
+		const registry = new vscodeTextmateModule.Registry(resolver);
 		this._grammars.push(await registry.loadGrammar(grammar.scopeName));
 		this.scopes.push(scope);
 	}

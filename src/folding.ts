@@ -1,8 +1,8 @@
 'use strict';
 
 import vscode from 'vscode';
-import { TextmateToken, TextmateEngine, configurationData } from './textmateEngine';
-import { TableOfContentsProvider, TocEntry } from './tableOfContentsProvider';
+import { TextmateToken, TextmateEngine, configurationData, TextmateScopeSelector } from './textmateEngine';
+import { TableOfContentsProvider, TocEntry } from './tableOfContents';
 
 const rangeLimit = 5000;
 
@@ -31,12 +31,8 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
-		const regionMarkers = tokens.filter(function(token: TextmateToken): boolean {
-			return (
-				token.type === configurationData.comments.lineComment
-				&& (isStartRegion(token.text) || isEndRegion(token.text))
-			);
-		}).map(function(token) {
+		const regions = tokens.filter(isRegion);
+		const markers = regions.map(function(token) {
 			return {
 				line: token.line,
 				isStart: isStartRegion(token.text)
@@ -44,19 +40,20 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 		});
 
 		const nestingStack: FoldingToken[] = [];
-		return regionMarkers
-			.map(function(marker) {
-				marker.line = marker.line;
-				if (marker.isStart) {
-					nestingStack.push(marker);
-				} else if (nestingStack.length && nestingStack[nestingStack.length - 1].isStart) {
-					return new vscode.FoldingRange(nestingStack.pop()!.line, marker.line, vscode.FoldingRangeKind.Region);
-				} else {
-					// noop: invalid nesting (i.e. [end, start] or [start, end, end])
-				}
-				return null;
-			})
-			.filter((region: vscode.FoldingRange | null): region is vscode.FoldingRange => !!region);
+		const ranges: vscode.FoldingRange[] = [];
+
+		for (let index = 0; index < markers.length; index++) {
+			const marker = markers[index];
+			if (marker.isStart) {
+				nestingStack.push(marker);
+			} else if (nestingStack.length && nestingStack[nestingStack.length - 1].isStart) {
+				ranges.push(new vscode.FoldingRange(nestingStack.pop()!.line, marker.line, vscode.FoldingRangeKind.Region));
+			} else {
+				// noop: invalid nesting (i.e. [end, start] or [start, end, end])
+			}
+		}
+
+		return ranges;
 	}
 
 	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
@@ -91,22 +88,29 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 	private async getBlockFoldingRanges(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
 		const ranges: vscode.FoldingRange[] = [];
+
 		for (let index = 1; index < tokens.length; index++) {
 			const token = tokens[index];
-			if (token.level > tokens[index - 1].level) {
-				for (let subindex = index; subindex < tokens.length; subindex++) {
-					const subtoken = tokens[subindex];
-					if (subtoken.level < token.level) {
-						const range = new vscode.FoldingRange(
-							token.line - 1,
-							tokens[subindex - 1].line - 1,
+			if (token.level <= tokens[index - 1].level) {
+				continue;
+			}
+
+			for (let subindex = index; subindex < tokens.length; subindex++) {
+				const subtoken = tokens[subindex];
+				if (subtoken.level < token.level) {
+					const range = new vscode.FoldingRange(
+						token.line - 1,
+						token.level === 1
+							? tokens[subindex - 1].line
+							: tokens[subindex - 1].line - 1,
 							this.getFoldingRangeKind(token)
 						);
 						ranges.push(range);
-					}
+					break;
 				}
 			}
 		}
+
 		return ranges;
 	}
 
@@ -121,3 +125,9 @@ const startRegionPattern = new RegExp(configurationData.markers.start);
 const isStartRegion = (text: string): boolean => startRegionPattern.test(text);
 const endRegionPattern = new RegExp(configurationData.markers.end);
 const isEndRegion = (text: string): boolean => endRegionPattern.test(text);
+const commentScopeSelector = new TextmateScopeSelector(configurationData.comments.lineComment);
+const isComment = (token: TextmateToken): boolean => commentScopeSelector.match(token.scopes);
+function isRegion(token: TextmateToken): boolean {
+	return isComment(token) && (isStartRegion(token.text) || isEndRegion(token.text));
+};
+const isSectionEntry = (entry: TocEntry) => entry.type === vscode.SymbolKind.String;

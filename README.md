@@ -4,7 +4,7 @@
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://raw.githubusercontent.com/SNDST00M/vscode-textmate-languageservice/v0.2.1/assets/demo-outline.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/SNDST00M/vscode-textmate-languageservice/v0.2.4/assets/demo-outline.png"></p>
 
 In order to be supported by this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
@@ -72,7 +72,7 @@ Template for `textmate-configuration.json` file:
   },
   "grammar": {
     "language": "",
-    "scopeName": "source.",
+    "scopeName": "source.custom",
     "path": ""
   },
   "assignment": {
@@ -89,26 +89,26 @@ Template for `textmate-configuration.json` file:
   },
   "declarations": [],
   "dedentation": [
-    "keyword.control.elseif.",
-    "keyword.control.else."
+    "keyword.control.elseif.custom",
+    "keyword.control.else.custom"
   ],
-  "exclude": "**/{.luarocks,lua_modules}/**",
+  "exclude": "**/{.modules,.includes}/**",
   "indentation": {
-    "punctuation.definition.comment.begin.": 1,
-    "punctuation.definition.comment.end.": -1,
-    "keyword.control.begin.lua": 1,
-    "keyword.control.end.lua": -1
+    "punctuation.definition.comment.begin.custom": 1,
+    "punctuation.definition.comment.end.custom": -1,
+    "keyword.control.begin.custom": 1,
+    "keyword.control.end.custom": -1
   },
   "punctuation": {
-    "continuation": "punctuation.separator.continuation.line."
+    "continuation": "punctuation.separator.continuation.line.custom"
   },
   "markers": {
     "start": "^\\s*#?region\\b",
     "end": "^\\s*#?end\\s?region\\b"
   },
   "symbols": {
-    "keyword.control.": 2,
-    "entity.name.function.": 11
+    "keyword.control.custom": 2,
+    "entity.name.function.custom": 11
   }
 }
 ```
@@ -176,8 +176,9 @@ import * as vsctmls from 'vscode-textmate-languageservice';
 export async function activate(context: vscode.ExtensionContext) {
 	const selector: vscode.DocumentSelector = { language: 'custom', scheme: 'file' };
 	const engine = new vsctmls.textmateEngine.TextmateEngine('custom', 'source.custom');
-	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(engine);
-	const foldingProvider = new vsctmls.folding.FoldingProvider(engine);
+	const tocProvider = new vsctmls.tableOfContents.TableOfContentsProvider(engine);
+	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(tocProvider);
+	const foldingProvider = new vsctmls.folding.FoldingProvider(engine, tocProvider);
 	const workspaceSymbolProvider = new vsctmls.workspaceSymbols.WorkspaceSymbolProvider('custom', documentSymbolProvider);
 	const peekDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
 
