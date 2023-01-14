@@ -2,7 +2,7 @@
 
 import vscode from 'vscode';
 import { TextmateToken, TextmateEngine, configurationData, TextmateScopeSelector } from './textmateEngine';
-import { TableOfContentsProvider, TocEntry } from './tableOfContents';
+import type { TableOfContentsProvider, TocEntry } from './tableOfContents';
 
 const rangeLimit = 5000;
 
@@ -13,7 +13,8 @@ export interface FoldingToken {
 
 export class FoldingProvider implements vscode.FoldingRangeProvider {
 	constructor(
-		private _engine: TextmateEngine
+		private _engine: TextmateEngine,
+		private _tocProvider: TableOfContentsProvider
 	) { }
 
 	public async provideFoldingRanges(
@@ -56,24 +57,22 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 		return ranges;
 	}
 
-	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
-		const tokens = await this._engine.tokenize(this._engine.scope, document)
-		const tocProvider = new TableOfContentsProvider(this._engine);
-		const toc = await tocProvider.getToc(document);
-		const sections = toc.filter(function(this: TocEntry[], entry: TocEntry, _: number) {
-			return entry.type === vscode.SymbolKind.String;
-		});
-		return sections.map(function(section: TocEntry, index: number) {
+	private async getHeaderFoldingRanges(document: vscode.TextDocument) {		const tokens = await this._engine.tokenize(this._engine.scope, document)
+		const toc = await this._tocProvider.getToc(document);
+
+		const sections = toc.filter(isSectionEntry);
+		const ranges: vscode.FoldingRange[] = [];
+
+		for (let index = 1; index < sections.length; index++) {
+			let section = sections[index];
 			let startLine = section.line;
 			let endLine = sections.hasOwnProperty(index + 1)
 				? sections[index + 1].line - 1
 				: document.lineCount - 1;
-			const dedentToken = tokens.find(function(this: TextmateToken[], token: TextmateToken, index: number) {
-				return (
-					(!tokens[index - 1] || token.level !== tokens[index - 1].level)
-					&& (token.line > startLine && token.line < endLine)
-					&& token.level < section.level
-				);
+
+			const dedentRange = tokens.slice(section.anchor + 1, sections[index + 1]?.anchor);
+			const dedentToken = dedentRange.find(function(token: TextmateToken) {
+				return token.line > startLine && token.line < endLine && token.level < section.level;
 			});
 			if (dedentToken) {
 				endLine = dedentToken.line - 1;
@@ -81,8 +80,11 @@ export class FoldingProvider implements vscode.FoldingRangeProvider {
 			while (document.lineAt(endLine).isEmptyOrWhitespace && endLine >= startLine + 1) {
 				endLine--;
 			}
-			return new vscode.FoldingRange(startLine, endLine);
-		});
+
+			ranges.push(new vscode.FoldingRange(startLine, endLine));
+		}
+
+		return ranges;
 	}
 
 	private async getBlockFoldingRanges(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
