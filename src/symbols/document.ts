@@ -1,8 +1,8 @@
 'use strict';
 
 import vscode from 'vscode';
-import type { TableOfContentsProvider, TocEntry } from './tableOfContents';
-import type { SkinnyTextDocument } from './textmateEngine';
+import type { TableOfContentsProvider, TocEntry } from '../toc';
+import type { SkinnyTextDocument } from '../engine';
 
 interface LanguageSymbol {
 	readonly level: number;

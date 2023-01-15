@@ -1,10 +1,10 @@
 'use strict';
 
 import vscode from 'vscode';
-import { Disposable } from './util/dispose';
-import { Lazy, lazy } from './util/lazy';
-import { DocumentSymbolProvider } from './documentSymbols';
-import { SkinnyTextDocument, SkinnyTextLine, configurationData } from './textmateEngine';
+import { Disposable } from '../util/dispose';
+import { Lazy, lazy } from '../util/lazy';
+import { DocumentSymbolProvider } from './document';
+import { SkinnyTextDocument, SkinnyTextLine, configurationData } from '../engine';
 
 const extensions = configurationData.language.extensions.length === 1
 	? `.{${configurationData.language.extensions.map((e: string) => e.substring(1)).join(',')}}`

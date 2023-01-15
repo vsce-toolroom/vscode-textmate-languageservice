@@ -8,7 +8,7 @@ import sha1 from 'git-sha1';
 import delay from 'delay';
 import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registry';
 import { getOniguruma } from './util/oniguruma';
-import ScopeSelector from './util/scopes';
+import ScopeSelector from './scopes';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
 import vscodeTextmate from 'vscode-textmate';
@@ -60,38 +60,13 @@ export class TextmateScopeSelector {
 
 	constructor(s: string[] | string) {
 		if (Array.isArray(s)) {
-			this.selectors = s.filter(function(selector) {
-				return typeof selector === 'string';
-			}).map(function(selector) {
-				try {
-					if (selector !== undefined && selector !== null) {
-						return new ScopeSelector(selector);
-					}
-				} catch (error) {
-					throw new Error(
-						`"${selector}" is an invalid Textmate scope selector.` +
-						(error?.message ? `\n\n${error.message}` : '')
-					);
-				}
-			});
+			this.selectors = s.filter(sel => typeof sel === 'string').map(scopeSelectorFactory);
 		} else {
-			try {
-				if (typeof s === 'string') {
-					this.selector = new ScopeSelector(s);
-				}
-			} catch (error) {
-				throw new Error(
-					`"${s}" is an invalid Textmate scope selector.` +
-					(error?.message ? `\n\n${error.message}` : '')
-				);
-			}
+			this.selector = scopeSelectorFactory(s);
 		}
 	}
 
 	match(scopes: string[]): boolean {
-		if (!this.selectors && !this.selector) {
-			return false;
-		}
 		if (this.selectors) {
 			return this.selectors.some(function(selector) {
 				return selector.matches(scopes);
@@ -107,6 +82,14 @@ export class TextmateScopeSelector {
 			return false;
 		}
 		return scopes.some(this.match.bind(this));
+	}
+}
+
+function scopeSelectorFactory(selector: string): ScopeSelector {
+	try {
+		return new ScopeSelector(selector);
+	} catch (error) {
+		throw new Error(`"${selector}" is an invalid Textmate scope selector. ${error?.message || ''}`);
 	}
 }
 

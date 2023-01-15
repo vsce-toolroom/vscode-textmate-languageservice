@@ -1,8 +1,8 @@
 'use strict';
 
 import vscode from 'vscode';
-import { TextmateToken, TextmateEngine, configurationData, TextmateScopeSelector } from './textmateEngine';
-import type { TableOfContentsProvider, TocEntry } from './tableOfContents';
+import { TextmateToken, TextmateEngine, configurationData, TextmateScopeSelector } from './engine';
+import type { TableOfContentsProvider, TocEntry } from './toc';
 
 const rangeLimit = 5000;
 

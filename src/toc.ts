@@ -3,8 +3,8 @@
 import vscode from 'vscode';
 import sha1 from 'git-sha1';
 import delay from 'delay';
-import type { SkinnyTextDocument, TextmateEngine, TextmateToken } from './textmateEngine';
-import { configurationData, TextmateScopeSelector, TextmateScopeSelectorMap } from './textmateEngine';
+import type { SkinnyTextDocument, TextmateEngine, TextmateToken } from './engine';
+import { configurationData, TextmateScopeSelector, TextmateScopeSelectorMap } from './engine';
 
 const symbolSelectorMap = new TextmateScopeSelectorMap(configurationData.symbols);
 const declarationSelector = new TextmateScopeSelector(configurationData.declarations);
@@ -65,7 +65,7 @@ export class TableOfContentsProvider {
 		const tokens = await this._engine.tokenize(this._engine.scope, document);
 
 		tokens.forEach(function(this: TableOfContentsProvider, entry: TextmateToken, index: number) {
-			if (!this.isSymbolToken(entry)) {
+			if (!isSymbolToken(entry)) {
 				return;
 			}
 			const lineNumber = entry.line;
@@ -104,13 +104,13 @@ export class TableOfContentsProvider {
 			};
 		});
 	}
+}
 
-	private isSymbolToken(token: TextmateToken): boolean {
-		const isEntity = new TextmateScopeSelector('entity').match(token.scopes);
-		return (
-			symbolSelectorMap.has(token.scopes)
-			&& (!isEntity || declarationSelector.match(token.scopes))
-			&& (!assignmentSeparatorSelector || !assignmentSeparatorSelector.match(token.scopes))
-		);
-	}
+function isSymbolToken(token: TextmateToken): boolean {
+	const isEntity = new TextmateScopeSelector('entity').match(token.scopes);
+	return (
+		symbolSelectorMap.has(token.scopes)
+		&& (!isEntity || declarationSelector.match(token.scopes))
+		&& (!assignmentSeparatorSelector || !assignmentSeparatorSelector.match(token.scopes))
+	);
 }

@@ -173,14 +173,15 @@ An example configuration file that targets Lua:
 
 ```typescript
 import * as vsctmls from 'vscode-textmate-languageservice';
+
 export async function activate(context: vscode.ExtensionContext) {
 	const selector: vscode.DocumentSelector = { language: 'custom', scheme: 'file' };
-	const engine = new vsctmls.textmateEngine.TextmateEngine('custom', 'source.custom');
-	const tocProvider = new vsctmls.tableOfContents.TableOfContentsProvider(engine);
-	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(tocProvider);
-	const foldingProvider = new vsctmls.folding.FoldingProvider(engine, tocProvider);
-	const workspaceSymbolProvider = new vsctmls.workspaceSymbols.WorkspaceSymbolProvider('custom', documentSymbolProvider);
-	const peekDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
+	const engine = new vsctmls.engine.TextmateEngine('custom', 'source.custom');
+	const tocProvider = new vsctmls.toc.TableOfContentsProvider(engine);
+	const documentSymbolProvider = new vsctmls.symbols.document.DocumentSymbolProvider(tocProvider);
+	const foldingProvider = new vsctmls.folds.FoldingProvider(engine, tocProvider);
+	const workspaceSymbolProvider = new vsctmls.symbols.workspace.WorkspaceSymbolProvider('custom', documentSymbolProvider);
+	const peekDefinitionProvider = new vsctmls.peek.PeekDefinitionProvider(documentSymbolProvider);
 
 	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(selector, documentSymbolProvider));
 	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingProvider));

@@ -1,8 +1,8 @@
 'use strict';
 
 import vscode from 'vscode';
-import { configurationData } from './textmateEngine';
-import type { DocumentSymbolProvider } from './documentSymbols';
+import { configurationData } from './engine';
+import type { DocumentSymbolProvider } from './symbols/document';
 
 const extensions = configurationData.language.extensions.length === 1
 	? `.{${configurationData.language.extensions.map((e: string) => e.substring(1)).join(',')}}`

@@ -1,8 +1,5 @@
-export * as engine from './textmateEngine';
-export * as toc from './tableOfContents';
+export * as engine from './engine';
+export * as toc from './toc';
 export * as folds from './folding';
-export const symbols = {
-	document: require('./documentSymbols'),
-	workspace: require('./workspaceSymbols')
-};
-export * as peek from './peekDefinitions';
+export * as symbols from './symbols';
+export * as peek from './peeks';
