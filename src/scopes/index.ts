@@ -5,13 +5,17 @@
 'use strict';
 
 import type { ParsedMatcher, GroupPrefix } from './matchers';
-import ScopeSelectorParser = require('./parser');
+import * as parser from './parser';
 
 const matcherCache: Record<string, ParsedMatcher> = {};
 
-export default class ScopeSelector {
-	private _matchCache: Record<string, boolean | void> = {};
-	private _prefixCache: Record<string, GroupPrefix | null | void> = {};
+/**
+ * @author Github Inc.
+ * @see https://github.com/atom/first-mate/blob/v7.4.2/src/scope-selector.coffee
+ */
+class ScopeSelector {
+	private _matchCache: Record<string, boolean | undefined> = {};
+	private _prefixCache: Record<string, GroupPrefix | null | undefined> = {};
 	private matcher: ParsedMatcher;
 
 	/**
@@ -23,7 +27,7 @@ export default class ScopeSelector {
 		if (matcherCache[source]) {
 			this.matcher = matcherCache[source];
 		} else {
-			this.matcher = ScopeSelectorParser.parse(source) as ParsedMatcher;
+			this.matcher = parser.parse(source) as ParsedMatcher;
 			matcherCache[source] = this.matcher;
 		}
 	}
@@ -85,4 +89,82 @@ export default class ScopeSelector {
 				return 0;
 		}
 	}
-};
+}
+
+export class TextmateScopeSelector {
+	public readonly source: string[] | string;
+	public readonly isArray: boolean;
+	private selector: ScopeSelector[] | ScopeSelector;
+
+	constructor(s: string[] | string) {
+		this.source = s;
+		if (Array.isArray(s)) {
+			this.selector = s.map(scopeSelectorFactory);
+		}
+		if (typeof s === 'string') {
+			this.selector = scopeSelectorFactory(s);
+		}
+	}
+
+	match(scopes: string[] | string): boolean {
+		if (!this.selector) {
+			return false;
+		}
+		if (Array.isArray(this.selector)) {
+			return this.selector.some(s => s.matches(scopes));
+		}
+		if (this.selector) {
+			return this.selector.matches(scopes);
+		}
+	}
+
+	include(scopes: string[][]): boolean {
+		if (!this.selector) {
+			return false;
+		}
+		return scopes.some(this.match.bind(this));
+	}
+
+}
+
+function scopeSelectorFactory(selector: string): ScopeSelector {
+	try {
+		return new ScopeSelector(selector);
+	} catch (error) {
+		throw new Error(`"${selector}" is an invalid Textmate scope selector. ${error?.message || ''}`);
+	}
+}
+
+export class TextmateScopeSelectorMap {
+	private selectors: Map<TextmateScopeSelector, number | undefined>;
+
+	constructor(selectors: Record<string, number> | null | undefined) {
+		this.selectors = new Map();
+		if (typeof selectors === 'object' && !Array.isArray(selectors)) {
+			for (const key in selectors) {
+				this.selectors.set(new TextmateScopeSelector(key), selectors[key])
+			}
+		}
+	}
+
+	key(scopes: string[]): string | undefined {
+		if (!this.selectors) {
+			return;
+		}
+		for (const entry of this.selectors) {
+			if (entry[0].match(scopes)) return entry[0].source as string;
+		}
+		return;
+	}
+
+	has(scopes: string[]): boolean {
+		return typeof this.key(scopes) === 'string';
+	}
+
+	value(scopes: string[]): number | undefined {
+		if (!this.selectors) {
+			return;
+		}
+		return this.selectors[this.key(scopes)];
+	}
+}

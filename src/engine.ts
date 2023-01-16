@@ -8,7 +8,7 @@ import sha1 from 'git-sha1';
 import delay from 'delay';
 import { GrammarRegistration, LanguageRegistration, Resolver } from './util/registry';
 import { getOniguruma } from './util/oniguruma';
-import ScopeSelector from './scopes';
+import ScopeSelector, { TextmateScopeSelector } from './scopes';
 
 import getCoreNodeModule from './util/getCoreNodeModule';
 import vscodeTextmate from 'vscode-textmate';
@@ -52,82 +52,6 @@ interface TextmateTokenizerState {
 	line: number;
 	rule: vscodeTextmate.StackElement;
 	stack: number;
-}
-
-export class TextmateScopeSelector {
-	selectors?: ScopeSelector[];
-	selector?: ScopeSelector;
-
-	constructor(s: string[] | string) {
-		if (Array.isArray(s)) {
-			this.selectors = s.filter(sel => typeof sel === 'string').map(scopeSelectorFactory);
-		} else {
-			this.selector = scopeSelectorFactory(s);
-		}
-	}
-
-	match(scopes: string[]): boolean {
-		if (this.selectors) {
-			return this.selectors.some(function(selector) {
-				return selector.matches(scopes);
-			});
-		}
-		if (this.selector) {
-			return this.selector.matches(scopes);
-		}
-	}
-
-	include(scopes: string[][]): boolean {
-		if (!this.selectors && !this.selector) {
-			return false;
-		}
-		return scopes.some(this.match.bind(this));
-	}
-}
-
-function scopeSelectorFactory(selector: string): ScopeSelector {
-	try {
-		return new ScopeSelector(selector);
-	} catch (error) {
-		throw new Error(`"${selector}" is an invalid Textmate scope selector. ${error?.message || ''}`);
-	}
-}
-
-export class TextmateScopeSelectorMap {
-	selectors: object;
-
-	constructor(selectors: Record<string, number> | null | undefined) {
-		if (typeof selectors === 'object' && selectors instanceof Object) {
-			this.selectors = selectors;
-		}
-	}
-
-	key(scopes: string[]): string | undefined {
-		if (!this.selectors) {
-			return;
-		}
-		return Object.keys(this.selectors).filter(function(selector) {
-			try {
-				return (new ScopeSelector(selector)).matches(scopes);
-			} catch (error) {
-				throw new Error(
-					`"${selector}" is an invalid Textmate scope selector.` +
-					(error?.message ? `\n\n${error.message}` : '')
-				);
-			}
-		})[0];
-	}
-
-	has(scopes: string[]): boolean {
-		return typeof this.key(scopes) === 'string';
-	}
-
-	value(scopes: string[]): number | undefined {
-		if (!this.selectors) {
-			return;
-		}
-		return this.selectors[this.key(scopes)];
-	}
 }
 
 const singleAssignmentSelector = new TextmateScopeSelector(configurationData.assignment.single);
