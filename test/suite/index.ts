@@ -1,9 +1,11 @@
-import path from 'path';
-import Mocha from 'mocha';
-import glob from 'glob';
-import vscode from 'vscode';
+'use strict';
 
-export function run(): Promise<void> {
+import * as path from 'path';
+import * as vscode from 'vscode';
+import Mocha = require('mocha');
+import glob = require('glob');
+
+export async function run(): Promise<void> {
 	// Create the mocha test
 	const mocha = new Mocha({
 		ui: 'tdd',
@@ -11,29 +13,20 @@ export function run(): Promise<void> {
 		timeout: 30000
 	});
 
-	const testsRoot = path.resolve(__dirname, '..');
-
-	return new Promise(function(c, e) {
-		glob('**/**.test.js', { cwd: testsRoot }, function(err, files) {
-			if (err) {
-				return e(err);
-			}
-			files.forEach(function(f) {
-				return mocha.addFile(path.resolve(testsRoot, f));
+	return new Promise(async function(c, e) {
+		const files = glob.sync('*.test.js', { cwd: __dirname });
+		files.forEach((f) => { mocha.addFile(path.resolve(__dirname, f)) });
+		try {
+			vscode.window.showInformationMessage('Start all tests.');
+			mocha.run((failures) => {
+				if (failures > 0)
+					e(new Error(`${failures} tests failed.`));
+				else
+					c();
 			});
-			try {
-				vscode.window.showInformationMessage('Start all tests.');
-				mocha.run(function(failures) {
-					if (failures > 0) {
-						e(new Error(`${failures} tests failed.`));
-					} else {
-						c();
-					}
-				});
-			} catch (err) {
-				console.error(err);
-				e(err);
-			}
-		});
+		} catch (err) {
+			console.error(err);
+			e(err);
+		}
 	});
 }
