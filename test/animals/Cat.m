@@ -1,8 +1,8 @@
 classdef Cat < Animal
     methods
-		function obj = Cat(name, years)
-			obj@Animal(name, years * 15, "Felidae", true);
-		end
+        function obj = Cat(name, years)
+            obj@Animal(name, years * 15, "Felidae", true);
+        end
         function obj = noise(obj)
             disp("Meow");
         end

@@ -1,8 +1,8 @@
 classdef Dog < Animal
     methods
-		function obj = Dog(name, years)
-			obj@Animal(name, years * 15, "Canis", true);
-		end
+        function obj = Dog(name, years)
+            obj@Animal(name, years * 15, "Canis", true);
+        end
         function obj = noise(obj)
             disp("Woof");
         end

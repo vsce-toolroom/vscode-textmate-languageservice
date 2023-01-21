@@ -12,9 +12,9 @@ classdef Animal < matlab.mixin.Copyable
             obj.Age = age;
             obj.Tameable = tameable;
         end
-		function obj = copy(obj)
-			obj = copy@matlab.mixin.Copyable(obj);
-		end
+        function obj = copy(obj)
+            obj = copy@matlab.mixin.Copyable(obj);
+        end
         function obj = noise(obj)
             disp("Grunt");
         end
