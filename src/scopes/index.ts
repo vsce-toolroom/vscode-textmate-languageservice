@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 
-import type { ParsedMatcher, GroupPrefix } from './matchers';
 import * as parser from './parser';
+import type { ParsedMatcher, GroupPrefix } from './matchers';
 
 const matcherCache: Record<string, ParsedMatcher> = {};
 
@@ -13,7 +13,7 @@ const matcherCache: Record<string, ParsedMatcher> = {};
  * @author Github Inc.
  * @see https://github.com/atom/first-mate/blob/v7.4.2/src/scope-selector.coffee
  */
-class ScopeSelector {
+export class ScopeSelector {
 	private _matchCache: Record<string, boolean | undefined> = {};
 	private _prefixCache: Record<string, GroupPrefix | null | undefined> = {};
 	private matcher: ParsedMatcher;
@@ -23,7 +23,7 @@ class ScopeSelector {
 	 *  @param {string} source The string to parse as a scope selector.
 	 *  @return A newly constructed ScopeSelector.
 	 */
-	constructor(source: string) {
+	constructor(public readonly source: string) {
 		if (matcherCache[source]) {
 			this.matcher = matcherCache[source];
 		} else {
@@ -89,20 +89,22 @@ class ScopeSelector {
 				return 0;
 		}
 	}
+
+	toString(): string {
+		return this.source;
+	}
 }
 
 export class TextmateScopeSelector {
-	public readonly source: string[] | string;
 	public readonly isArray: boolean;
 	private selector: ScopeSelector[] | ScopeSelector;
 
-	constructor(s: string[] | string) {
-		this.source = s;
-		if (Array.isArray(s)) {
-			this.selector = s.map(scopeSelectorFactory);
+	constructor(public readonly source?: string[] | string) {
+		if (Array.isArray(source)) {
+			this.selector = source.map(ScopeSelectorFactory);
 		}
-		if (typeof s === 'string') {
-			this.selector = scopeSelectorFactory(s);
+		if (typeof source === 'string') {
+			this.selector = ScopeSelectorFactory(source);
 		}
 	}
 
@@ -125,9 +127,12 @@ export class TextmateScopeSelector {
 		return scopes.some(this.match.bind(this));
 	}
 
+	toString(): string {
+		return Array.isArray(this.source) ? this.source.join(', ') : String(this.source);
+	}
 }
 
-function scopeSelectorFactory(selector: string): ScopeSelector {
+function ScopeSelectorFactory(selector: string): ScopeSelector {
 	try {
 		return new ScopeSelector(selector);
 	} catch (error) {
@@ -136,23 +141,21 @@ function scopeSelectorFactory(selector: string): ScopeSelector {
 }
 
 export class TextmateScopeSelectorMap {
-	private selectors: Map<TextmateScopeSelector, number | undefined>;
+	private matchers: Record<string, TextmateScopeSelector | undefined>;
 
-	constructor(selectors: Record<string, number> | null | undefined) {
-		this.selectors = new Map();
-		if (typeof selectors === 'object' && !Array.isArray(selectors)) {
-			for (const key in selectors) {
-				this.selectors.set(new TextmateScopeSelector(key), selectors[key])
-			}
+	constructor(public readonly sourcemap: Record<string, number> | undefined) {
+		this.matchers = {};
+		if (typeof sourcemap === 'object' && sourcemap?.constructor === Object) {
+			for (const key in sourcemap) this.matchers[key] = new TextmateScopeSelector(key);
 		}
 	}
 
 	key(scopes: string[]): string | undefined {
-		if (!this.selectors) {
+		if (!this.sourcemap) {
 			return;
 		}
-		for (const entry of this.selectors) {
-			if (entry[0].match(scopes)) return entry[0].source as string;
+		for (const key in this.sourcemap) {
+			if (this.matchers[key].match(scopes)) return key;
 		}
 		return;
 	}
@@ -162,9 +165,13 @@ export class TextmateScopeSelectorMap {
 	}
 
 	value(scopes: string[]): number | undefined {
-		if (!this.selectors) {
+		if (!this.sourcemap) {
 			return;
 		}
-		return this.selectors[this.key(scopes)];
+		return this.sourcemap[this.key(scopes)];
+	}
+
+	toString(): string {
+		return String(this.sourcemap);
 	}
 }
