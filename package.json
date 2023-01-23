@@ -20,17 +20,22 @@
   "types": "./out/src/index",
   "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
-    "job:compile": "del-cli out && npx tsc -p ./",
-    "job:dump": "cpy test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/** test/data",
-    "job:mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && mocha out/test/runTest --timeout 0 && cd ../../../..",
-    "job:patch": "cpy test/data/textmate-configuration.json test/vscode-matlab",
-    "job:pegjs": "npx peggy --plugin ts-pegjs -o src/scopes/parser/index.ts --extra-options-file src/scopes/parser/pegconfig.json src/scopes/parser/index.pegjs",
-    "job:stage-data": "make-dir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data && cpy test/data/** test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
-    "job:stage-install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.2.4.tgz --production && npm install --only=production && cd ../..",
-    "job:stage": "npm-run-all job:stage-install job:stage-data",
-    "pretest": "del-cli test/vscode-matlab/node_modules test/vscode-matlab/package-lock.json",
-    "posttest": "npm run job:dump",
-    "test": "npm-run-all compile patch stage mocha"
+    "test": "npm-run-all compile patch stage mocha",
+    "posttest": "npm-run-all dump",
+    "build": "npm-run-all pegjs compile",
+    "precompile": "del-cli out",
+    "compile": "npx tsc -p ./",
+    "dump": "cpy test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/** test/data",
+    "lint": "eslint --ext .ts src",
+    "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && mocha out/test/runner --timeout 0 && cd ../../../..",
+    "patch": "cpy test/data/vscode-matlab-patches/** test/vscode-matlab",
+    "pegjs": "npx peggy --plugin ts-pegjs --extra-options-file src/scopes/parser.pegconfig.json -o src/scopes/parser.ts src/scopes/parser.pegjs",
+    "stage-touchdata": "make-dir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
+    "stage-data": "cpy test/data/** test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
+    "stage-install": "npm pack --pack-destination test/vscode-matlab && cd test/vscode-matlab && npm install --production vscode-textmate-languageservice-0.2.3.tgz && cd ../..",
+    "stage-mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install mocha && cd ../../../..",
+    "stage": "npm-run-all stage-install stage-mocha stage-touchdata stage-data",
+    "reset": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@0.2.3 && npm un mocha && cd ../.."
   },
   "devDependencies": {
     "@types/deep-equal": "^1.0.1",
@@ -43,6 +48,7 @@
     "cpy-cli": "^4.2.0",
     "deep-equal": "^1.1.0",
     "del-cli": "^5.0.0",
+    "load-json-file": "^6.2.0",
     "make-dir-cli": "^3.0.0",
     "mocha": "^9.1.1",
     "node-fetch": "^3.0.0",
@@ -50,16 +56,16 @@
     "peggy": "^2.0.1",
     "rimraf": "^3.0.2",
     "ts-pegjs": "^3.0.0",
+    "type-fest": "^0.6.0",
     "typescript": "^4.4.3",
-    "vscode-oniguruma": "^1.5.1",
-    "vscode-textmate": "^5.4.1",
     "write-json-file": "^4.3.0"
   },
   "dependencies": {
+    "browser-or-node": "^2.1.1",
     "delay": "^5.0.0",
     "git-sha1": "^0.1.2",
     "glob": "^7.2.0",
-    "load-json-file": "^6.2.0",
-    "pkg-up": "^3.1.0"
+    "vscode-oniguruma": "^1.5.1",
+    "vscode-textmate": "^5.4.1"
   }
 }

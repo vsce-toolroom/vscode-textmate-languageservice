@@ -1,32 +1,47 @@
-/*---------------------------------------------------------------------------------------------
+/* --------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See LICENSE.md in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+ * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import glob from 'glob';
-import path from 'path';
-import vscode from 'vscode';
-import fs from 'fs';
+import * as vscode from 'vscode';
+import * as path from 'path';
+import vscodeTextmate = require('vscode-textmate');
+import * as vscodeOniguruma from 'vscode-oniguruma';
+import { readFileBytes } from '../util/loader';
 
-import getCoreNodeModule from './getCoreNodeModule';
-import vscodeTextmate from 'vscode-textmate';
-import vscodeOniguruma from 'vscode-oniguruma';
-const vscodeOnigurumaModule = getCoreNodeModule<typeof vscodeOniguruma>('vscode-oniguruma');
+function moduleDirnameToWasmPath(dirname: string): string {
+	return path.join(path.normalize(vscode.env.appRoot), dirname, 'vscode-oniguruma', 'release', 'onig.wasm');
+}
 
-const wasmPath = glob.sync(path.resolve(vscode.env.appRoot, '+(node_modules|node_modules.asar|node_modules.asar.unpacked)/vscode-oniguruma/release/onig.wasm'))[0];
+const nodeModulesDirnames = [
+	'node_modules.asar.unpacked',
+	'node_modules.asar',
+	'node_modules'
+];
+const wasmPaths = nodeModulesDirnames.map(moduleDirnameToWasmPath)
 
-let onigurumaLib: Promise<vscodeTextmate.IOnigLib> | null = null;
+let onigurumaLib: vscodeTextmate.IOnigLib | null = null;
 
-export function getOniguruma(): Promise<vscodeTextmate.IOnigLib> {
+export async function getOniguruma(): Promise<vscodeTextmate.IOnigLib> {
 	if (!onigurumaLib) {
-		const wasmBin = fs.readFileSync(wasmPath).buffer;
-		onigurumaLib = (<Promise<any>>vscodeOnigurumaModule.loadWASM(wasmBin)).then(function(_: any) {
-			return {
-				createOnigScanner(patterns: string[]) { return new vscodeOnigurumaModule.OnigScanner(patterns); },
-				createOnigString(s: string) { return new vscodeOnigurumaModule.OnigString(s); }
-			};
-		});
+		let wasmBin: Uint8Array | ArrayBuffer;
+		let readError: Error;
+		for (let i = 0; i < wasmPaths.length; i++) {
+			const wasmPath = wasmPaths[i];
+			try {
+				wasmBin = await readFileBytes(vscode.Uri.file(wasmPath));
+				break;
+			} catch (e) {
+				readError = e as Error;
+			}
+		}
+		if (!wasmBin) throw readError;
+		await vscodeOniguruma.loadWASM(wasmBin);
+		onigurumaLib = {
+			createOnigScanner(patterns: string[]) { return new vscodeOniguruma.OnigScanner(patterns); },
+			createOnigString(s: string) { return new vscodeOniguruma.OnigString(s); }
+		};
 	}
 	return onigurumaLib;
 }

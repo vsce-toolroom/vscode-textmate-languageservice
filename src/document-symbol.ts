@@ -1,8 +1,8 @@
 'use strict';
 
-import vscode from 'vscode';
-import type { TableOfContentsProvider, TocEntry } from '../toc';
-import type { SkinnyTextDocument } from '../engine';
+import * as vscode from 'vscode';
+import type { OutlineGenerator, OutlineEntry } from './services/outline';
+import type { SkinnyTextDocument } from './services/document';
 
 interface LanguageSymbol {
 	readonly level: number;
@@ -11,27 +11,25 @@ interface LanguageSymbol {
 }
 
 export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(
-		private _tocProvider: TableOfContentsProvider
-	) { }
+	constructor(private _outliner: OutlineGenerator) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
-		const toc = await this._tocProvider.getToc(document);
-		return toc.map(this.toSymbolInformation.bind(this));
+		const outline = await this._outliner.getOutline(document);
+		return outline.map(this.toSymbolInformation.bind(this));
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
-		const toc = await this._tocProvider.getToc(document);
+		const outline = await this._outliner.getOutline(document);
 		const root: LanguageSymbol = {
 			level: -Infinity,
 			children: [],
 			parent: undefined
 		};
-		this.buildTree(root, toc);
+		this.buildTree(root, outline);
 		return root.children;
 	}
 
-	private buildTree(parent: LanguageSymbol, entries: TocEntry[]) {
+	private buildTree(parent: LanguageSymbol, entries: OutlineEntry[]) {
 		if (!entries.length) {
 			return;
 		}
@@ -55,7 +53,7 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 	}
 
 
-	private toSymbolInformation(entry: TocEntry): vscode.SymbolInformation {
+	private toSymbolInformation(entry: OutlineEntry): vscode.SymbolInformation {
 		return new vscode.SymbolInformation(
 			entry.text,
 			entry.type,
@@ -64,7 +62,7 @@ export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 		);
 	}
 
-	private toDocumentSymbol(entry: TocEntry) {
+	private toDocumentSymbol(entry: OutlineEntry) {
 		return new vscode.DocumentSymbol(
 			entry.text,
 			entry.token
