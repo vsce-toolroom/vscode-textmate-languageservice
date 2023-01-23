@@ -4,7 +4,7 @@ classdef Cat < Animal
             obj@Animal(name, years * 15, "Felidae", true);
         end
         function obj = noise(obj)
-            disp("Meow");
+            if strcmp(obj.Locale, "ko"); disp("Yaong") else disp("Meow") end
         end
         function obj = move(obj, meters)
             disp("Pussyfooting..");

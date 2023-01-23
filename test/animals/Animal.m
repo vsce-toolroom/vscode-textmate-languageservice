@@ -1,5 +1,6 @@
 classdef Animal < matlab.mixin.Copyable
     properties
+        Locale char
         Name string
         Order string
         Age int8
@@ -7,6 +8,7 @@ classdef Animal < matlab.mixin.Copyable
     end
     methods
         function obj = Animal(name, age, order, tameable)
+            obj.Locale = char(regexp(get(0, 'Language'), '^[a-zA-Z]+', 'match'))
             obj.Name = name;
             obj.Order = order;
             obj.Age = age;
