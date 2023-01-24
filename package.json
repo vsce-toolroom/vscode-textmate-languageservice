@@ -6,22 +6,22 @@
   "author": {
     "name": "SNDST00M",
     "email": "sndst00m@outlook.com",
-    "url": "https://github.com/SNDST00M/"
+    "url": "https://gitlab.com/SNDST00M/"
   },
   "engines": {
     "vscode": "^1.51.0"
   },
-  "homepage": "https://github.com/SNDST00M/vscode-textmate-languageservice/blob/master/README.md",
+  "homepage": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SNDST00M/vscode-textmate-languageservice.git"
+    "url": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice.git"
   },
   "main": "./out/src/index.js",
   "types": "./out/src/index",
-  "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
+  "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
     "test": "npm-run-all compile patch stage mocha",
-    "posttest": "npm-run-all dump",
+    "posttest": "npm-run-all dump reset",
     "build": "npm-run-all pegjs compile",
     "precompile": "del-cli out",
     "compile": "npx tsc -p ./",
