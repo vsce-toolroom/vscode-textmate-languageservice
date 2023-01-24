@@ -4,11 +4,11 @@ import * as vscode from 'vscode';
 import { Disposable } from './util/dispose';
 import type { Lazy } from './util/lazy';
 import { lazy } from './util/lazy';
-import type { DocumentSymbolProvider } from './document-symbol';
+import type { TextmateDocumentSymbolProvider } from './document-symbol';
 import type { SkinnyTextDocument, WorkspaceDocumentService } from './services/document';
 
-export class WorkspaceSymbolProvider extends Disposable implements vscode.WorkspaceSymbolProvider {
-	constructor(private _documentService: WorkspaceDocumentService, private _documentSymbols: DocumentSymbolProvider) {
+export class TextmateWorkspaceSymbolProvider extends Disposable implements vscode.WorkspaceSymbolProvider {
+	constructor(private _documentService: WorkspaceDocumentService, private _documentSymbols: TextmateDocumentSymbolProvider) {
 		super();
 	}
 

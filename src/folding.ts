@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import { TextmateScopeSelector } from './parser/selectors';
 import type { ConfigData } from './config/config';
 import type { TextmateToken, TextmateTokenizerService } from './services/tokenizer';
-import type { OutlineEntry, OutlineGenerator } from './services/outline';
+import type { OutlineEntry, DocumentOutlineService } from './services/outline';
 
 const rangeLimit = 5000;
 const commentScopeSelector = new TextmateScopeSelector('comment');
@@ -15,7 +15,7 @@ export interface FoldingToken {
 };
 
 export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
-	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outliner: OutlineGenerator) {}
+	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outliner: DocumentOutlineService) {}
 
 	public async provideFoldingRanges(
 		document: vscode.TextDocument,
@@ -106,7 +106,7 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 				// subtoken.level < token.level
 				const range = new vscode.FoldingRange(
 					token.line,
-					tokens[subindex - 1].line,
+					tokens[subindex].line,
 					this.getFoldingRangeKind(token)
 				);
 				ranges.push(range);

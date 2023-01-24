@@ -7,12 +7,12 @@ import { ConfigJson, ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { PackageJSON, ResolverService } from './services/resolver';
-import { OutlineGenerator } from './services/outline';
+import { DocumentOutlineService } from './services/outline';
 import { TextmateFoldingProvider } from './folding';
-import { DocumentSymbolProvider } from './document-symbol';
+import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { WorkspaceDocumentService } from './services/document';
-import { WorkspaceSymbolProvider } from './workspace-symbol';
-import { DefinitionProvider } from './definition';
+import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
+import { TextmateDefinitionProvider } from './definition';
 
 export class LSP {
 	private _packageJSON?: PackageJSON;
@@ -21,11 +21,11 @@ export class LSP {
 	private _grammarPromise: Promise<vscodeTextmate.IGrammar>;
 	private _configPromise: Promise<ConfigData>;
 	private _tokenizer: TextmateTokenizerService;
-	private _outliner?: OutlineGenerator;
+	private _outliner?: DocumentOutlineService;
 	private _workspaceDocumentService?: WorkspaceDocumentService;
-	private _documentSymbolProvider?: DocumentSymbolProvider;
-	private _workspaceSymbolProvider?: WorkspaceSymbolProvider;
-	private _definitionProvider?: DefinitionProvider;
+	private _documentSymbolProvider?: TextmateDocumentSymbolProvider;
+	private _workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
+	private _definitionProvider?: TextmateDefinitionProvider;
 
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
 		this._packageJSON = this.context.extension.packageJSON as PackageJSON;
@@ -76,41 +76,41 @@ export class LSP {
 		return this._workspaceDocumentService;
 	}
 
-	public async createOutlineGeneratorService(): Promise<OutlineGenerator> {
+	public async createDocumentOutlineService(): Promise<DocumentOutlineService> {
 		if (this._outliner) return this._outliner;
 		const tokenizer = this._tokenizer;
 		const config = await this.configPromise;
-		this._outliner = new OutlineGenerator(tokenizer, config);
+		this._outliner = new DocumentOutlineService(tokenizer, config);
 		return this._outliner;
 	}
 
 	public async createFoldingRangeProvider(): Promise<TextmateFoldingProvider> {
 		const config = await this._configPromise;
 		const tokenizer = this._tokenizer;
-		const outliner = await this.createOutlineGeneratorService();
+		const outliner = await this.createDocumentOutlineService();
 		return new TextmateFoldingProvider(config, tokenizer, outliner);
 	}
 
-	public async createDocumentSymbolProvider(): Promise<DocumentSymbolProvider> {
+	public async createDocumentSymbolProvider(): Promise<TextmateDocumentSymbolProvider> {
 		if (this._documentSymbolProvider) return this._documentSymbolProvider;
-		const outliner = await this.createOutlineGeneratorService();
-		this._documentSymbolProvider = new DocumentSymbolProvider(outliner);
+		const outliner = await this.createDocumentOutlineService();
+		this._documentSymbolProvider = new TextmateDocumentSymbolProvider(outliner);
 		return this._documentSymbolProvider;
 	}
 
-	public async createWorkspaceSymbolProvider(): Promise<WorkspaceSymbolProvider> {
+	public async createWorkspaceSymbolProvider(): Promise<TextmateWorkspaceSymbolProvider> {
 		if (this._workspaceSymbolProvider) return this._workspaceSymbolProvider;
 		const workspaceDocumentService = await this.createWorkspaceDocumentService();
 		const documentSymbolProvider = await this.createDocumentSymbolProvider();
-		this._workspaceSymbolProvider = new WorkspaceSymbolProvider(workspaceDocumentService, documentSymbolProvider);
+		this._workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(workspaceDocumentService, documentSymbolProvider);
 		return this._workspaceSymbolProvider;
 	}
 
-	public async createDefinitionProvider(): Promise<DefinitionProvider> {
+	public async createDefinitionProvider(): Promise<TextmateDefinitionProvider> {
 		if (this._definitionProvider) return this._definitionProvider;
 		const config = await this._configPromise;
 		const documentSymbolProvider = await this.createDocumentSymbolProvider();
-		this._definitionProvider = new DefinitionProvider(config, documentSymbolProvider);
+		this._definitionProvider = new TextmateDefinitionProvider(config, documentSymbolProvider);
 		return this._definitionProvider;
 	}
 }

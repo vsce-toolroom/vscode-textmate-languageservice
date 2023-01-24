@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { OutlineGenerator, OutlineEntry } from './services/outline';
+import type { DocumentOutlineService, OutlineEntry } from './services/outline';
 import type { SkinnyTextDocument } from './services/document';
 
 interface LanguageSymbol {
@@ -10,8 +10,8 @@ interface LanguageSymbol {
 	readonly children: vscode.DocumentSymbol[];
 }
 
-export class DocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(private _outliner: OutlineGenerator) { }
+export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
+	constructor(private _outliner: DocumentOutlineService) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outliner.getOutline(document);

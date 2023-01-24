@@ -20,7 +20,7 @@ export interface OutlineEntry {
 	readonly anchor: number;
 }
 
-export class OutlineGenerator {
+export class DocumentOutlineService {
 	constructor(private _tokenizer: TextmateTokenizerService, private _config: ConfigData) {}
 
 	private _queue?: Record<string, boolean> = {};
@@ -62,7 +62,7 @@ export class OutlineGenerator {
 		const outline: OutlineEntry[] = [];
 		const tokens = await this._tokenizer.tokenize(document);
 
-		tokens.forEach(function(this: OutlineGenerator, entry: TextmateToken, index: number) {
+		tokens.forEach(function(this: DocumentOutlineService, entry: TextmateToken, index: number) {
 			if (!this.isSymbolToken(entry)) {
 				return;
 			}

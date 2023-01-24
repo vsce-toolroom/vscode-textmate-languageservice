@@ -2,10 +2,10 @@
 
 import * as vscode from 'vscode';
 import type { ConfigData } from './config/config';
-import type { DocumentSymbolProvider } from './document-symbol';
+import type { TextmateDocumentSymbolProvider } from './document-symbol';
 
-export class DefinitionProvider implements vscode.DefinitionProvider {
-	constructor(private _config: ConfigData, private _documentSymbolProvider: DocumentSymbolProvider) {}
+export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
+	constructor(private _config: ConfigData, private _documentSymbolProvider: TextmateDocumentSymbolProvider) {}
 
 	async getComponentGlob(position: vscode.Position): Promise<string> {
 		const extensions = this._config.extensions;
@@ -41,14 +41,14 @@ export class DefinitionProvider implements vscode.DefinitionProvider {
 	}
 
 	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[] | undefined> {
+		const locations: vscode.Location[] = [];
 		const filePosition = await this.getNestedPosition(position);
-		if (filePosition) {
-			return [new vscode.Location(document.uri, filePosition)];
-		}
+		if (filePosition) locations.push(new vscode.Location(document.uri, filePosition));
 
 		const componentGlob = await this.getComponentGlob(position);
 		const workspaceUris = componentGlob ? await this.searchFiles(componentGlob) : [];
-		return workspaceUris.length ? undefined : [...workspaceUris.map(fromUriToLocation)];
+		locations.push(...workspaceUris.map(fromUriToLocation));
+		return workspaceUris.length ? undefined : locations;
 	}
 }
 
