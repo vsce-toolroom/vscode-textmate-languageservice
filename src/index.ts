@@ -17,7 +17,7 @@ import { TextmateDefinitionProvider } from './definition';
 import type { ConfigJson } from './config/config';
 import type { PackageJSON } from './services/resolver';
 
-export class LSP {
+export default class LSP {
 	private _packageJSON?: PackageJSON;
 	private _resolver: ResolverService;
 	private _registry: vscodeTextmate.Registry;
@@ -48,7 +48,7 @@ export class LSP {
 		const uri = vscode.Uri.joinPath(this.context.extensionUri, path);
 		const languageData = this.resolver.findLanguageById(this.languageId);
 		this._configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
-		this._tokenizer = new TextmateTokenizerService(this);
+		this._tokenizer = new TextmateTokenizerService(this._configPromise, this._grammarPromise);
 	}
 
 	public get resolver(): ResolverService {

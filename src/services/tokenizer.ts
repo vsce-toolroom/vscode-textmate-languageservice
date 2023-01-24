@@ -5,8 +5,8 @@ import sha1 = require('git-sha1');
 import delay = require('delay');
 
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
-import type { LSP } from '..';
 import type { Mutable } from 'type-fest';
+import type { ConfigData } from '../config/config';
 
 export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
@@ -29,7 +29,10 @@ interface TextmateTokenizerState {
 }
 
 export class TextmateTokenizerService {
-	constructor(private _lsp: LSP) {}
+	constructor(
+		private _configPromise: Promise<ConfigData>,
+		private _grammarPromise: Promise<vscodeTextmate.IGrammar>
+	) {}
 
 	private _state: TextmateTokenizerState = {
 		delta: 0,
@@ -45,8 +48,8 @@ export class TextmateTokenizerService {
 	private _cache: Record<string, TextmateToken[] | undefined> = {};
 
 	public async tokenize(document: SkinnyTextDocument): Promise<TextmateToken[]> {
-		const grammar = await this._lsp.grammarPromise;
-		const config = await this._lsp.configPromise;
+		const config = await this._configPromise;
+		const grammar = await this._grammarPromise;
 
 		const text = document.getText();
 		const hash = sha1(text);
