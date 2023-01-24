@@ -7,18 +7,18 @@ class MockMemento implements vscode.Memento {
 	keys(): readonly string[] {
 		return [];
 	}
-	get<T = void>(key: string): T;
-	get<T = void>(key: string, defaultValue: T): T;
-	get<T = void>(key: string, defaultValue?: T): T {
+	get<T = void>(_1: string): T;
+	get<T = void>(_1: string, _2: T): T;
+	get<T = void>(_1: string, _2?: T): T {
 		return;
 	}
-	update(key: string, value: any): Thenable<void> {
+	update(_1: string, _2: any): Thenable<void> {
 		return;
 	}
 }
 
 class MockGlobalMemento extends MockMemento implements vscode.Memento {
-	setKeysForSync(keys: readonly string[]): void {
+	setKeysForSync(_: readonly string[]): void {
 		return;
 	}
 }
@@ -31,25 +31,25 @@ type EnvironmentVariableCollectionCallbackFn = (
 
 class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
 	constructor(public persistent: boolean = true) {}
-	replace(variable: string, value: string): void { return; };
-	append(variable: string, value: string): void { return; };
-	prepend(variable: string, value: string): void { return; };
-	get(variable: string): vscode.EnvironmentVariableMutator {
+	replace(_1: string, _2: string): void { return; };
+	append(_1: string, _2: string): void { return; };
+	prepend(_1: string, _2: string): void { return; };
+	get(_1: string): vscode.EnvironmentVariableMutator {
 		return { type: vscode.EnvironmentVariableMutatorType.Replace, value: '' };
 	}
-	forEach(callback: EnvironmentVariableCollectionCallbackFn, thisArg?: any): void { return; }
-	delete(variable: string): void { return; }
+	forEach(_1: EnvironmentVariableCollectionCallbackFn, _2?: any): void { return; }
+	delete(_: string): void { return; }
 	clear(): void { return; }
 }
 
 class SecretStorage implements vscode.SecretStorage {
-	get(key: string): Thenable<string> {
+	get(_: string): Thenable<string> {
 		return Promise.resolve('');
 	}
-	store(key: string, value: string): Thenable<void> {
+	store(_1: string, _2: string): Thenable<void> {
 		return;
 	}
-	delete(key: string): Thenable<void> {
+	delete(_: string): Thenable<void> {
 		return;
 	}
 	onDidChange: vscode.Event<vscode.SecretStorageChangeEvent>;
@@ -99,29 +99,29 @@ class MockExtensionContext implements vscode.ExtensionContext {
 		this.extension = extension;
 	}
 
-	subscriptions: vscode.Disposable[];
+	public readonly subscriptions: vscode.Disposable[];
 
-	workspaceState: vscode.Memento;
-	globalState: vscode.Memento & { setKeysForSync(keys: readonly string[]): void; };
+	public readonly workspaceState: vscode.Memento;
+	public readonly globalState: vscode.Memento & { setKeysForSync(_: readonly string[]): void; };
 
-	secrets: vscode.SecretStorage;
+	public readonly secrets: vscode.SecretStorage;
 
-	extensionUri: vscode.Uri;
-	extensionPath: string;
+	public readonly extensionUri: vscode.Uri;
+	public readonly extensionPath: string;
 
 	asAbsolutePath: (relativePath: string) => string;
 
-	environmentVariableCollection: vscode.EnvironmentVariableCollection;
+	public readonly environmentVariableCollection: vscode.EnvironmentVariableCollection;
 
-	storageUri: vscode.Uri;
-	storagePath: string;
-	globalStorageUri: vscode.Uri;
-	globalStoragePath: string;
-	logUri: vscode.Uri;
-	logPath: string;
+	public readonly storageUri: vscode.Uri;
+	public readonly storagePath: string;
+	public readonly globalStorageUri: vscode.Uri;
+	public readonly globalStoragePath: string;
+	public readonly logUri: vscode.Uri;
+	public readonly logPath: string;
 
-	extensionMode: vscode.ExtensionMode;
-	extension: vscode.Extension<any>;
+	public readonly extensionMode: vscode.ExtensionMode;
+	public readonly extension: vscode.Extension<any>;
 }
 
 const context: vscode.ExtensionContext = new MockExtensionContext('Gimly81.matlab');
