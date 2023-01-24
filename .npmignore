@@ -10,9 +10,11 @@ assets/
 **/*.pegjs
 .editorconfig
 .eslintignore
+.gitattributes
 .gitignore
 .gitmodules
 .travis.yml
+.eslintignore
 .eslintrc.json
 .mocharc.json
 CODE_OF_CONDUCT.md
