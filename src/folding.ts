@@ -1,6 +1,8 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import sha1 = require('git-sha1');
+import delay = require('delay');
 import { TextmateScopeSelector } from './parser/selectors';
 import type { ConfigData } from './config/config';
 import type { TextmateToken, TextmateTokenizerService } from './services/tokenizer';
@@ -17,17 +19,42 @@ export interface FoldingToken {
 export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outliner: DocumentOutlineService) {}
 
+	private _queue?: Record<string, boolean> = {};
+	private _cache?: Record<string, vscode.FoldingRange[] | undefined> = {};
+
 	public async provideFoldingRanges(
 		document: vscode.TextDocument,
 		_: vscode.FoldingContext,
 		_token: vscode.CancellationToken
 	): Promise<vscode.FoldingRange[]> {
+		const text = document.getText();
+		const hash = sha1(text);
+		let folds: vscode.FoldingRange[];
+
+		if (this._queue[hash]) {
+			while (!this._cache[hash]) {
+				await delay(100);
+			}
+			return this._cache[hash];
+		}
+
+		if (this._cache[hash]) {
+			return this._cache[hash];
+		}
+
+		this._queue[hash] = true;
+
 		const foldables = await Promise.all([
 			this.getRegions(document),
 			this.getHeaderFoldingRanges(document),
 			this.getBlockFoldingRanges(document)
 		]);
-		return [].concat(...foldables).slice(0, rangeLimit);
+		folds = [].concat(...foldables).slice(0, rangeLimit);
+
+		this._cache[hash] = folds;
+		delete this._queue[hash];
+
+		return folds;
 	}
 
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
