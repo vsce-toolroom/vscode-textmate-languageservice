@@ -1,21 +1,4 @@
 {
-  "extension": "gimly81.matlab",
-  "language": {
-    "id": "matlab",
-    "aliases": [
-      "MATLAB",
-      "matlab"
-    ],
-    "extensions": [
-      ".m"
-    ],
-    "configuration": "language-configuration.json"
-  },
-  "grammar": {
-    "language": "matlab",
-    "scopeName": "source.matlab",
-    "path": "./syntaxes/MATLAB-Language-grammar/Matlab.tmbundle/Syntaxes/MATLAB.tmLanguage"
-  },
   "assignment": {
     "separator": "punctuation.separator.comma.matlab - parens",
     "single": "meta.assignment.variable.single.matlab",
@@ -34,10 +17,12 @@
     "comment.line.double-percentage entity.name.section"
   ],
   "dedentation": [
-    "keyword.control.elseif",
-    "keyword.control.else"
+    "keyword.control.elseif.matlab",
+    "keyword.control.else.matlab"
   ],
-  "exclude": "**/{external,mpm-packages}/**",
+  // begin dev change: add "syntaxes,grammars,snap" to filter out noise
+  "exclude": "**/{external,mpm-packages,syntaxes,grammars,snap}/**",
+  // end dev change
   "indentation": {
     "punctuation.definition.comment.begin.matlab": 1,
     "punctuation.definition.comment.end.matlab": -1,
@@ -47,7 +32,7 @@
     "keyword.control.end.if.matlab": -1,
     "keyword.control.else.matlab": -1,
     "keyword.control.elseif.matlab": -1,
-    "keyword.control.repeat.parallel.matlab": 1,
+    "keyword.control.repeat.parallel.matlab": 1	,
     "keyword.control.end.repeat.parallel.matlab": -1,
     "keyword.control.switch.matlab": 1,
     "keyword.control.end.switch.matlab": -1,
