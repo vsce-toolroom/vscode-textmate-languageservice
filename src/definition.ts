@@ -7,7 +7,7 @@ import type { TextmateDocumentSymbolProvider } from './document-symbol';
 export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 	constructor(private _config: ConfigData, private _documentSymbolProvider: TextmateDocumentSymbolProvider) {}
 
-	async getComponentGlob(position: vscode.Position): Promise<string> {
+	private getComponentGlob(position: vscode.Position): string {
 		const extensions = this._config.extensions;
 		if (!extensions) return;
 
@@ -45,7 +45,7 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 		const filePosition = await this.getNestedPosition(position);
 		if (filePosition) locations.push(new vscode.Location(document.uri, filePosition));
 
-		const componentGlob = await this.getComponentGlob(position);
+		const componentGlob = this.getComponentGlob(position);
 		const workspaceUris = componentGlob ? await this.searchFiles(componentGlob) : [];
 		locations.push(...workspaceUris.map(fromUriToLocation));
 		return workspaceUris.length ? undefined : locations;

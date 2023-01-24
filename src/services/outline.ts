@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import sha1 = require('git-sha1');
 import delay = require('delay');
-import { TextmateScopeSelector } from '../parser/selectors';
+import { TextmateScopeSelector } from '../util/selectors';
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
 import type { TextmateTokenizerService, TextmateToken } from './tokenizer';

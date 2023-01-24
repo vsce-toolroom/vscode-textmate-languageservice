@@ -6,10 +6,7 @@ import delay = require('delay');
 
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { LSP } from '..';
-
-type Mutable<T> = {
-	-readonly[P in keyof T]: T[P]
-};
+import type { Mutable } from 'type-fest';
 
 export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
@@ -76,7 +73,7 @@ export class TextmateTokenizerService {
 		this._state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
-			let line: SkinnyTextLine = document.lineAt(lineNumber);
+			const line: SkinnyTextLine = document.lineAt(lineNumber);
 			const lineResult = grammar.tokenizeLine(line.text, this._state.rule) as TextmateTokenizeLineResult;
 
 			for (const token of lineResult.tokens) {

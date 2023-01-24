@@ -1,8 +1,8 @@
 'use strict';
 
-import { JsonObject } from 'type-fest';
-import * as vscode from 'vscode';
-import { GrammarContribution, LanguageContribution } from '../services/resolver';
+import type { JsonObject } from 'type-fest';
+import type * as vscode from 'vscode';
+import type { GrammarContribution, LanguageContribution } from '../services/resolver';
 import { ConfigSelectors } from './selectors';
 
 export type SelectorSource = string[] | string;
@@ -60,7 +60,7 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 		return `*${extensions[0]}`;
 	} else {
 		const segments = extensions.map(e => e.substring(1));
-		return `*.{${segments.join(',')}`
+		return `*.{${segments.join(',')}`;
 	}
 }
 

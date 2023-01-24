@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 import { Disposable } from './util/dispose';
 import type { Lazy } from './util/lazy';
 import { lazy } from './util/lazy';

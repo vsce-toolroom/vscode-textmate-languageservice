@@ -34,7 +34,7 @@ export class SegmentMatcher {
 	}
 
 	getPrefix(_: string): void {}
-};
+}
 
 export class TrueMatcher {
 	constructor() {}
@@ -44,7 +44,7 @@ export class TrueMatcher {
 	}
 
 	getPrefix(_: string[]): void {}
-};
+}
 
 export class ScopeMatcher {
 	segments: Array<AtomMatcher>;
@@ -57,8 +57,8 @@ export class ScopeMatcher {
 	}
 
 	matches(scope: string): boolean {
-		const scopeSegments = scope.split('.')
-		if (scopeSegments.length < this.segments.length) { return false }
+		const scopeSegments = scope.split('.');
+		if (scopeSegments.length < this.segments.length) return false;
 
 		for (let index = 0; index < this.segments.length; index++) {
 			const segment = this.segments[index]
@@ -71,7 +71,7 @@ export class ScopeMatcher {
 	}
 
 	getPrefix(_: string): void {}
-};
+}
 
 
 export class GroupMatcher {
@@ -92,7 +92,7 @@ export class GroupMatcher {
 			return this.prefix;
 		}
 	}
-};
+}
 
 export class PathMatcher {
 	prefix?: GroupPrefix;
@@ -128,7 +128,7 @@ export class PathMatcher {
 			return this.prefix;
 		}
 	}
-};
+}
 
 export class OrMatcher {
 	left: ParsedMatcher;
@@ -145,7 +145,7 @@ export class OrMatcher {
 	getPrefix(scopes: string[]): GroupPrefix | void {
 		return this.left.getPrefix(scopes) || this.right.getPrefix(scopes);
 	}
-};
+}
 
 export class AndMatcher {
 	left: PathMatcher;
@@ -164,7 +164,7 @@ export class AndMatcher {
 			return this.left.getPrefix(scopes); // The right side can't have prefixes
 		}
 	}
-};
+}
 
 export class NegateMatcher {
 	matcher: PathMatcher;
@@ -178,7 +178,7 @@ export class NegateMatcher {
 	}
 
 	getPrefix(_: string[]): void {}
-};
+}
 
 export class CompositeMatcher {
 	matcher: OrMatcher | AndMatcher;
@@ -203,4 +203,4 @@ export class CompositeMatcher {
 	getPrefix(scopes: string[]): GroupPrefix | void {
 		return this.matcher.getPrefix(scopes);
 	}
-};
+}

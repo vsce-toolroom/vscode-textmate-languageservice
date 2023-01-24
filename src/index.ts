@@ -3,16 +3,19 @@
 import * as vscode from 'vscode';
 import vscodeTextmate = require('vscode-textmate');
 import { TextmateTokenizerService } from './services/tokenizer';
-import { ConfigJson, ConfigData } from './config/config';
+import { ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
-import { PackageJSON, ResolverService } from './services/resolver';
+import { ResolverService } from './services/resolver';
 import { DocumentOutlineService } from './services/outline';
 import { TextmateFoldingProvider } from './folding';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { WorkspaceDocumentService } from './services/document';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { TextmateDefinitionProvider } from './definition';
+
+import type { ConfigJson } from './config/config';
+import type { PackageJSON } from './services/resolver';
 
 export class LSP {
 	private _packageJSON?: PackageJSON;

@@ -4,7 +4,7 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 
 export function disposeAll(disposables: vscode.Disposable[]) {
 	while (disposables.length) {

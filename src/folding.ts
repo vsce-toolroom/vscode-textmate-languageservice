@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import sha1 = require('git-sha1');
 import delay = require('delay');
-import { TextmateScopeSelector } from './parser/selectors';
+import { TextmateScopeSelector } from './util/selectors';
 import type { ConfigData } from './config/config';
 import type { TextmateToken, TextmateTokenizerService } from './services/tokenizer';
 import type { OutlineEntry, DocumentOutlineService } from './services/outline';
@@ -12,9 +12,9 @@ const rangeLimit = 5000;
 const commentScopeSelector = new TextmateScopeSelector('comment');
 
 export interface FoldingToken {
-	isStart: boolean,
-	line: number
-};
+	isStart: boolean;
+	line: number;
+}
 
 export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outliner: DocumentOutlineService) {}
@@ -85,7 +85,7 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 	}
 
 	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
-		const tokens = await this._tokenizer.tokenize(document)
+		const tokens = await this._tokenizer.tokenize(document);
 		const outline = await this._outliner.getOutline(document);
 
 		const sections = outline.filter(this.isSectionEntry.bind(this));

@@ -4,8 +4,8 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as vscode from 'vscode';
 import * as path from 'path';
+import * as vscode from 'vscode';
 import vscodeTextmate = require('vscode-textmate');
 import * as vscodeOniguruma from 'vscode-oniguruma';
 import { readFileBytes } from '../util/loader';

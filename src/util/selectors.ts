@@ -1,6 +1,6 @@
 'use strict';
 
-import { FirstMateSelector } from './base';
+import { FirstMateSelector } from '../parser';
 
 export class TextmateScopeSelector {
 	public readonly isArray: boolean;
