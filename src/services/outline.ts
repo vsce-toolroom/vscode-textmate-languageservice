@@ -29,7 +29,7 @@ export class DocumentOutlineService {
 	public async getOutline(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
 		const text = document.getText();
 		const hash = sha1(text);
-		let outline: OutlineEntry[];
+		let outlines: OutlineEntry[];
 
 		if (this._queue[hash]) {
 			while (!this._cache[hash]) {
@@ -44,13 +44,14 @@ export class DocumentOutlineService {
 
 		this._queue[hash] = true;
 		try {
-			outline = await this.buildOutline(document);
+			outlines = await this.buildOutline(document);
 		} catch (e) {
-			outline = [];
+			outlines = [];
 		}
 
-		this._cache[hash] = outline;
-		return outline;
+		this._cache[hash] = outlines;
+		delete this._queue[hash];
+		return outlines;
 	}
 
 	public async lookup(document: SkinnyTextDocument, text: string): Promise<OutlineEntry | undefined> {

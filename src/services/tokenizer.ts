@@ -67,6 +67,7 @@ export class TextmateTokenizerService {
 		}
 
 		this._queue[hash] = true;
+
 		this._state.delta = 0;
 		this._state.continuation = false;
 		this._state.declaration = false;
@@ -157,6 +158,7 @@ export class TextmateTokenizerService {
 
 		this._cache[hash] = tokens;
 		delete this._queue[hash];
+
 		return tokens;
 	}
 }
