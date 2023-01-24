@@ -22,7 +22,6 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 		_: vscode.FoldingContext,
 		_token: vscode.CancellationToken
 	): Promise<vscode.FoldingRange[]> {
-
 		const foldables = await Promise.all([
 			this.getRegions(document),
 			this.getHeaderFoldingRanges(document),
@@ -98,17 +97,16 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 			if (token.level <= tokens[index - 1].level) {
 				continue;
 			}
-
+			// token.level > tokens[index - 1].level
 			for (let subindex = index; subindex < tokens.length; subindex++) {
 				const subtoken = tokens[subindex];
 				if (subtoken.level >= token.level) {
 					continue;
 				}
+				// subtoken.level < token.level
 				const range = new vscode.FoldingRange(
-					token.line - 1,
-					token.level === 1
-						? tokens[subindex - 1].line
-						: tokens[subindex - 1].line - 1,
+					token.line,
+					tokens[subindex - 1].line,
 					this.getFoldingRangeKind(token)
 				);
 				ranges.push(range);
