@@ -29,7 +29,10 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 
 export async function loadJsonFile<T = JsonValue>(uri: vscode.Uri): Promise<T> {
 	try {
-		const text = await readFileText(uri);
+		let text = await readFileText(uri);
+		// Support JSONC block and line comments like other configuration
+		// files in the VS Code ecosystem.
+		text = text.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '');
 		return JSON.parse(text) as T;
 	} catch (e) {
 		if (e instanceof SyntaxError && e.hasOwnProperty('stack')) {
