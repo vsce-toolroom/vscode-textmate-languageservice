@@ -2,7 +2,7 @@
 
 import type { JsonObject } from 'type-fest';
 import type * as vscode from 'vscode';
-import type { GrammarContribution, LanguageContribution } from '../services/resolver';
+import type { LanguageContribution } from '../services/resolver';
 import { ConfigSelectors } from './selectors';
 
 export type SelectorSource = string[] | string;
@@ -37,7 +37,6 @@ export interface ConfigJson extends JsonObject {
 
 export class ConfigData {
 	public readonly language: LanguageContribution;
-	public readonly grammar: GrammarContribution;
 	public readonly extensions?: string;
 	public readonly exclude?: string;
 	public readonly selectors: ConfigSelectors;
