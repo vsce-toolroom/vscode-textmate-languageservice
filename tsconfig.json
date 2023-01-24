@@ -5,7 +5,9 @@
 		"outDir": "out",
 		"moduleResolution": "node",
 		"lib": ["es6", "es2016", "dom"],
-		"sourceMap": false,
+		"sourceMap": true,
+		"declaration": true,
+		"strict": true,
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"types": ["node", "node-fetch"]
