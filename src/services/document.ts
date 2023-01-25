@@ -92,6 +92,10 @@ export class WorkspaceDocumentService extends Disposable implements WorkspaceDoc
 	}
 
 	private ensureWatcher(): void {
+		if (this._watcher) {
+			return;
+		}
+
 		this._watcher = this._register(vscode.workspace.createFileSystemWatcher(this._config.include));
 
 		this._watcher.onDidChange(async function(resource) {

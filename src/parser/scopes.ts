@@ -7,11 +7,9 @@
 import * as parser from './parser';
 import type { ParsedMatcher, GroupPrefix } from './matchers';
 
-const matcherCache: Record<string, ParsedMatcher> = {};
-
 export class FirstMateSelector {
-	private _matchCache: Record<string, boolean | undefined> = {};
-	private _prefixCache: Record<string, GroupPrefix | null | undefined> = {};
+	private _cache: Record<string, boolean | undefined> = {};
+	private _prefixes: Record<string, GroupPrefix | null | undefined> = {};
 	private matcher: ParsedMatcher;
 
 	/**
@@ -20,12 +18,7 @@ export class FirstMateSelector {
 	 *  @return A newly constructed ParsedSelector.
 	 */
 	constructor(public readonly source: string) {
-		if (matcherCache[source]) {
-			this.matcher = matcherCache[source];
-		} else {
-			this.matcher = parser.parse(source) as ParsedMatcher;
-			matcherCache[source] = this.matcher;
-		}
+		this.matcher = parser.parse(source) as ParsedMatcher;
 	}
 
 	/**
@@ -34,18 +27,15 @@ export class FirstMateSelector {
 	 *  @return {boolean} Whether or not this ParsedSelector matched.
 	 */
 	matches(scopes: string | string[]): boolean {
-		if (typeof scopes === 'string') {
-			scopes = [scopes];
-		}
+		if (typeof scopes === 'string') scopes = [scopes];
 		const target = scopes.join(' ');
-		const entry = this._matchCache[target];
+		const entry = this._cache[target];
 
 		if (typeof entry !== 'undefined') {
 			return entry;
 		} else {
 			const result = this.matcher.matches(scopes);
-			this._matchCache[target] = result;
-			return result;
+			return (this._cache[target] = result);
 		}
 	}
 
@@ -54,19 +44,17 @@ export class FirstMateSelector {
 	 *  @param {string|string[]} scopes The scopes to match a prefix against.
 	 *  @return {string|undefined} The matching prefix, if there is one.
 	 */
-	getPrefix(scopes: string | string[]): GroupPrefix | void {
-		if (typeof scopes === 'string') {
-			scopes = [scopes];
-		}
-		const target = scopes.join(' ');
-		const entry = this._prefixCache[target];
+	getPrefix(scopes: string | string[]): GroupPrefix | undefined {
+		if (typeof scopes === 'string') scopes = [scopes];
+		const target = typeof scopes === 'string' ? scopes : scopes.join(' ');
+		const entry = this._prefixes[target];
 
 		if (typeof entry !== 'undefined') {
 			return entry === null ? undefined : entry;
 		} else {
 			const result = this.matcher.getPrefix(scopes) || null;
-			this._prefixCache[target] = result;
-			return result === null ? undefined : result;
+			this._prefixes[target] = result;
+			return result;
 		}
 	}
 

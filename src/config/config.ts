@@ -13,10 +13,6 @@ export interface ConfigJson extends JsonObject {
 		multiple?: SelectorSource;
 		separator?: SelectorSource;
 	};
-	comments?: {
-		lineComment?: SelectorSource;
-		blockComment?: SelectorSource;
-	};
 	declarations?: SelectorSource;
 	dedentation?: SelectorSource;
 	exclude?: string;

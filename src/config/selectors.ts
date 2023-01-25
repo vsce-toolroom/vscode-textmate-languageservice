@@ -14,10 +14,6 @@ export class ConfigSelectors {
 		multiple: TextmateScopeSelector;
 		separator: TextmateScopeSelector;
 	};
-	private _comments: {
-		lineComment: TextmateScopeSelector;
-		blockComment: TextmateScopeSelector;
-	};
 	private _declarations: TextmateScopeSelector;
 	private _dedentation: TextmateScopeSelector;
 	private _indentation: TextmateScopeSelectorMap;
@@ -35,12 +31,6 @@ export class ConfigSelectors {
 			single: new TextmateScopeSelector(this._data.assignment?.single),
 			multiple: new TextmateScopeSelector(this._data.assignment?.multiple),
 			separator: new TextmateScopeSelector(this._data.assignment?.separator)
-		});
-	}
-	public get comments() {
-		return (this._comments = this._comments || {
-			lineComment: new TextmateScopeSelector(this._data.comments?.lineComment),
-			blockComment: new TextmateScopeSelector(this._data.comments?.blockComment)
 		});
 	}
 	public get declarations() {

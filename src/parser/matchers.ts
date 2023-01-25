@@ -87,7 +87,7 @@ export class GroupMatcher {
 		return this.selector.matches(scopes);
 	}
 
-	getPrefix(scopes: string): GroupPrefix | void {
+	getPrefix(scopes: string): GroupPrefix | undefined {
 		if (this.selector.matches(scopes)) {
 			return this.prefix;
 		}
@@ -123,7 +123,7 @@ export class PathMatcher {
 		return false;
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | void {
+	getPrefix(scopes: string[]): GroupPrefix | undefined {
 		if (this.matches(scopes)) {
 			return this.prefix;
 		}
@@ -142,8 +142,8 @@ export class OrMatcher {
 		return this.left.matches(scopes) || this.right.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | void {
-		return this.left.getPrefix(scopes) || this.right.getPrefix(scopes);
+	getPrefix(scopes: string[]): GroupPrefix | undefined {
+		return this.left.getPrefix(scopes) || this.right.getPrefix(scopes) || undefined;
 	}
 }
 
@@ -159,7 +159,7 @@ export class AndMatcher {
 		return this.left.matches(scopes) && this.right.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | void {
+	getPrefix(scopes: string[]): GroupPrefix | undefined {
 		if (this.left.matches(scopes) && this.right.matches(scopes)) {
 			return this.left.getPrefix(scopes); // The right side can't have prefixes
 		}
@@ -200,7 +200,7 @@ export class CompositeMatcher {
 		return this.matcher.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | void {
+	getPrefix(scopes: string[]): GroupPrefix | undefined {
 		return this.matcher.getPrefix(scopes);
 	}
 }

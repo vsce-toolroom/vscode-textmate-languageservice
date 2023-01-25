@@ -11,15 +11,15 @@ interface LanguageSymbol {
 }
 
 export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(private _outliner: DocumentOutlineService) { }
+	constructor(private _outlineService: DocumentOutlineService) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
-		const outline = await this._outliner.getOutline(document);
+		const outline = await this._outlineService.fetch(document);
 		return outline.map(this.toSymbolInformation.bind(this));
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
-		const outline = await this._outliner.getOutline(document);
+		const outline = await this._outlineService.fetch(document);
 		const root: LanguageSymbol = {
 			level: -Infinity,
 			children: [],

@@ -1,6 +1,6 @@
 {
 	"tspegjs": {
-		"customHeader": "// Copyright (c) GitHub Inc.\n// Reserved (r) MIT License - see ./LICENSE.md.\nimport * as matchers from '../matchers';"
+		"customHeader": "// Copyright (c) GitHub Inc.\n// Reserved (r) MIT License - see ./LICENSE.md.\n'use strict';\n\nimport * as matchers from '../matchers';"
 	},
 	"returnTypes": {
 		"start": "matchers.ParsedMatcher",

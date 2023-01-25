@@ -7,6 +7,7 @@ import delay = require('delay');
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { Mutable } from 'type-fest';
 import type { ConfigData } from '../config/config';
+import ServiceBase from '../util/service';
 
 export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
@@ -28,11 +29,13 @@ interface TextmateTokenizerState {
 	stack: number;
 }
 
-export class TextmateTokenizerService {
+export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 	constructor(
-		private _configPromise: Promise<ConfigData>,
-		private _grammarPromise: Promise<vscodeTextmate.IGrammar>
-	) {}
+		private _config: ConfigData,
+		private _grammar: vscodeTextmate.IGrammar
+	) {
+		super();
+	}
 
 	private _state: TextmateTokenizerState = {
 		delta: 0,
@@ -43,30 +46,8 @@ export class TextmateTokenizerService {
 		stack: 0
 	};
 
-	private _queue: Record<string, boolean> = {};
-
-	private _cache: Record<string, TextmateToken[] | undefined> = {};
-
-	public async tokenize(document: SkinnyTextDocument): Promise<TextmateToken[]> {
-		const config = await this._configPromise;
-		const grammar = await this._grammarPromise;
-
-		const text = document.getText();
-		const hash = sha1(text);
+	public async parse(document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		const tokens: TextmateToken[] = [];
-
-		if (this._queue[hash]) {
-			while (!this._cache[hash]) {
-				await delay(100);
-			}
-			return this._cache[hash];
-		}
-
-		if (this._cache[hash]) {
-			return this._cache[hash];
-		}
-
-		this._queue[hash] = true;
 
 		this._state.delta = 0;
 		this._state.continuation = false;
@@ -77,7 +58,7 @@ export class TextmateTokenizerService {
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
 			const line: SkinnyTextLine = document.lineAt(lineNumber);
-			const lineResult = grammar.tokenizeLine(line.text, this._state.rule) as TextmateTokenizeLineResult;
+			const lineResult = this._grammar.tokenizeLine(line.text, this._state.rule) as TextmateTokenizeLineResult;
 
 			for (const token of lineResult.tokens) {
 				token.type = token.scopes[token.scopes.length - 1];
@@ -91,13 +72,13 @@ export class TextmateTokenizerService {
 
 				if (
 					(
-						config.selectors.assignment.single.match(token.scopes)
-						&& config.selectors.assignment.single.match(nextToken.scopes)
+						this._config.selectors.assignment.single.match(token.scopes)
+						&& this._config.selectors.assignment.single.match(nextToken.scopes)
 					)
 					|| (
-						config.selectors.assignment.multiple.match(token.scopes)
-						&& config.selectors.assignment.multiple.match(nextToken.scopes)
-						&& !config.selectors.assignment.separator.match(nextToken.scopes)
+						this._config.selectors.assignment.multiple.match(token.scopes)
+						&& this._config.selectors.assignment.multiple.match(nextToken.scopes)
+						&& !this._config.selectors.assignment.separator.match(nextToken.scopes)
 					)
 				) {
 					token.endIndex = nextToken.endIndex;
@@ -109,12 +90,12 @@ export class TextmateTokenizerService {
 
 			for (let index = 0; index < lineResult.tokens.length; index++) {
 				const token = lineResult.tokens[index];
-				const delta = config.selectors.indentation.value(token.scopes) || 0;
+				const delta = this._config.selectors.indentation.value(token.scopes) || 0;
 				const isIndentToken = delta > 0;
 				const isDedentToken = delta < 0;
-				const isRedentToken = config.selectors.dedentation.match(token.scopes);
+				const isRedentToken = this._config.selectors.dedentation.match(token.scopes);
 				const isDeclarationToken = isIndentToken || isRedentToken;
-				const isContinuationToken = config.selectors.punctuation.continuation.match(token.scopes);
+				const isContinuationToken = this._config.selectors.punctuation.continuation.match(token.scopes);
 
 				if (!this._state.declaration) {
 					if (isDedentToken) {
@@ -155,9 +136,6 @@ export class TextmateTokenizerService {
 
 			for (const token of lineResult.tokens) tokens.push(token);
 		}
-
-		this._cache[hash] = tokens;
-		delete this._queue[hash];
 
 		return tokens;
 	}

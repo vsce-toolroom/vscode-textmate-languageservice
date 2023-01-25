@@ -36,7 +36,7 @@ export async function loadJsonFile<T = JsonValue>(uri: vscode.Uri): Promise<T> {
 		return JSON.parse(text) as T;
 	} catch (e) {
 		if (e instanceof SyntaxError && e.hasOwnProperty('stack')) {
-			e.stack += `\n    in ${uri.toString()}`;
+			e.stack += `\n    in ${uri.path}`;
 		}
 		throw e;
 	}

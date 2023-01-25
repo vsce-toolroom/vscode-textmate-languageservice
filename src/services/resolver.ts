@@ -103,9 +103,9 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 				return this._grammars[scopeName];
 			}
 			try {
-				const p = this._context.asAbsolutePath(grammar.path);
-				const text = await readFileText(vscode.Uri.parse(p));
-				this._grammars[scopeName] = vscodeTextmate.parseRawGrammar(text, p);
+				const uri = vscode.Uri.joinPath(this._context.extensionUri, grammar.path);
+				const text = await readFileText(uri);
+				this._grammars[scopeName] = vscodeTextmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
 				throw e;
 			}

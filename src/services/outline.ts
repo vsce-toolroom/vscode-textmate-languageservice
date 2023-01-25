@@ -1,12 +1,12 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import sha1 = require('git-sha1');
 import delay = require('delay');
 import { TextmateScopeSelector } from '../util/selectors';
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
 import type { TextmateTokenizerService, TextmateToken } from './tokenizer';
+import ServiceBase from '../util/service';
 
 const entitySelector = new TextmateScopeSelector('entity');
 
@@ -20,53 +20,26 @@ export interface OutlineEntry {
 	readonly anchor: number;
 }
 
-export class DocumentOutlineService {
-	constructor(private _tokenizer: TextmateTokenizerService, private _config: ConfigData) {}
-
-	private _queue?: Record<string, boolean> = {};
-	private _cache?: Record<string, OutlineEntry[] | undefined> = {};
-
-	public async getOutline(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
-		const text = document.getText();
-		const hash = sha1(text);
-		let outlines: OutlineEntry[];
-
-		if (this._queue[hash]) {
-			while (!this._cache[hash]) {
-				await delay(100);
-			}
-			return this._cache[hash];
-		}
-
-		if (this._cache[hash]) {
-			return this._cache[hash];
-		}
-
-		this._queue[hash] = true;
-		try {
-			outlines = await this.buildOutline(document);
-		} catch (e) {
-			outlines = [];
-		}
-
-		this._cache[hash] = outlines;
-		delete this._queue[hash];
-		return outlines;
+export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
+	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService) {
+		super();
 	}
 
 	public async lookup(document: SkinnyTextDocument, text: string): Promise<OutlineEntry | undefined> {
-		const outline = await this.getOutline(document);
+		const outline = await this.fetch(document);
 		return outline.find(entry => entry.text === text);
 	}
 
-	private async buildOutline(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
+	public async parse(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
 		const outline: OutlineEntry[] = [];
-		const tokens = await this._tokenizer.tokenize(document);
+		const tokens = await this._tokenizer.fetch(document);
 
-		tokens.forEach(function(this: DocumentOutlineService, entry: TextmateToken, index: number) {
+		for (let index = 0; index < tokens.length; index++) {
+			const entry = tokens[index];
 			if (!this.isSymbolToken(entry)) {
-				return;
+				continue;
 			}
+			
 			const lineNumber = entry.line;
 			outline.push({
 				level: entry.level,
@@ -80,7 +53,7 @@ export class DocumentOutlineService {
 				type: this._config.selectors.symbols.value(entry.scopes),
 				anchor: index
 			});
-		}, this);
+		}
 
 		// Get full range of section
 		return outline.map(function(entry: OutlineEntry, startIndex: number): OutlineEntry {
