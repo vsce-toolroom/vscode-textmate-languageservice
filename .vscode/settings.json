@@ -1,4 +1,7 @@
 {
+	"files.associations": {
+		"textmate-configuration.json": "jsonc"
+	},
 	"material-icon-theme.folders.associations": {
 		"parser": "functions",
 		"services": "resource"
