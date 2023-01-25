@@ -4,13 +4,6 @@
     "single": "meta.assignment.variable.single.matlab",
     "multiple": "meta.assignment.variable.group.matlab"
   },
-  "comments": {
-    "lineComment": "comment.line.percentage.matlab",
-    "blockComment": [
-      "punctuation.definition.comment.begin.matlab",
-      "punctuation.definition.comment.end.matlab"
-    ]
-  },
   "declarations": [
     "meta.*.declaration entity.name",
     "meta.assignment.definition entity.name",
@@ -32,7 +25,7 @@
     "keyword.control.end.if.matlab": -1,
     "keyword.control.else.matlab": -1,
     "keyword.control.elseif.matlab": -1,
-    "keyword.control.repeat.parallel.matlab": 1	,
+    "keyword.control.repeat.parallel.matlab": 1,
     "keyword.control.end.repeat.parallel.matlab": -1,
     "keyword.control.switch.matlab": 1,
     "keyword.control.end.switch.matlab": -1,

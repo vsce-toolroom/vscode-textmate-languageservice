@@ -23,22 +23,13 @@ Create a JSON file named `textmate-configuration.json` in the extension director
 
 Textmate configuration fields:
 
-- **`language`** - required (`object`)<br/>
-  Language contribution as defined by the extension in the manifest.
-- **`grammar`** - required (`object`)<br/>
-  Grammar contribution as defined by the extension in the manifest.
 - **`assignment`** - optional (`object`)<br/>
   Collection of Textmate scope selectors for variable assignment scopes when including variable symbols:<br/>
   **Properties:**
   - `separator`: Token to separate multiple assignments (`string`)
   - `single`: Token to match single variable assignment. (`string`)
   - `multiple`: Token to match multiple variable assignment. (`string`)
-- **`comments`** - optional (`object`)<br/>
-  Collection of Textmate tokens for comments:<br/>
-  **Properties:**
-  - `lineComment`: Token for line comment text (to use in region matching). (`string`)
-  - `blockComment`: Map of block comment start and end token names. (`[string,string]`)
-- **`declarations`** -optional (`array`)<br/>
+- **`declarations`** - optional (`array`)<br/>
   List of Textmate scope selectors for declaration token scopes.
 - **`dedentation`** - optional (`array`)<br/>
   List of Textmate tokens for dedented code block declarations (e.g. `ELSE`, `ELSEIF`).<br/>
@@ -65,27 +56,10 @@ Template for `textmate-configuration.json` file:
 
 ```jsonc
 {
-  "language": {
-    "id": "",
-    "aliases": [],
-    "extensions": []
-  },
-  "grammar": {
-    "language": "",
-    "scopeName": "source.custom",
-    "path": ""
-  },
   "assignment": {
     "single": "",
     "multiple": "",
     "separator": ""
-  },
-  "comments": {
-    "lineComment": "",
-    "blockComment": [
-      "",
-      ""
-    ]
   },
   "declarations": [],
   "dedentation": [
@@ -117,31 +91,10 @@ An example configuration file that targets Lua:
 
 ```jsonc
 {
-  "language": {
-    "id": "lua",
-    "aliases": [
-      "Lua"
-    ],
-    "extensions": [
-      ".m"
-    ]
-  },
-  "grammar": {
-    "language": "matlab",
-    "scopeName": "source.lua",
-    "path": "./syntaxes/Lua.tmbundle/Lua.tmLanguage"
-  },
   "assignment": {
     "single": "meta.assignment.variable.single.lua",
     "multiple": "meta.assignment.variable.group.lua",
     "separator": "punctuation.separator.comma.lua"
-  },
-  "comments": {
-    "lineComment": "comment.line.percentage.lua",
-    "blockComment": [
-      "punctuation.definition.comment.begin.lua",
-      "punctuation.definition.comment.end.lua"
-    ]
   },
   "declarations": [
     "meta.declaration.lua entity.name",
