@@ -1,17 +1,60 @@
 'use strict';
 
-import { FirstMateSelector } from '../parser';
+import { FirstMateSelector } from '../parser/scopes';
+
+function isTextmateScopeBoundary(char) {
+	return ['', '.', ' '].includes(char);
+}
+
+class FastScopeSelector {
+	private _cache: Record<string, boolean | undefined> = {};
+
+	constructor(public readonly source: string) {}
+
+	matches(scopes: string | string[]) {
+		if (typeof scopes === 'string') scopes = [scopes];
+		const target = scopes.join(' ');
+		const entry = this._cache[target];
+
+		if (typeof entry !== 'undefined') {
+			return entry;
+		} else {
+			const position = target.indexOf(this.source);
+			if (position === -1) {
+				return (this._cache[target] = false);
+			}
+			const left = target.charAt(position - 1)
+			const right = target.charAt(position + this.source.length)
+
+			return (this._cache[target] = [left, right].every(isTextmateScopeBoundary));
+		}
+	}
+
+	getPrefix(_: string | string[]): undefined {
+		return;
+	}
+
+	getPriority(_: string | string[]): undefined {
+		return;
+	}
+
+	toString(): string {
+		return this.source;
+	}
+}
+
+type ScopeSelector = FastScopeSelector | FirstMateSelector;
 
 export class TextmateScopeSelector {
 	public readonly isArray: boolean;
-	private selector: FirstMateSelector[] | FirstMateSelector;
+	private selector: ScopeSelector[] | ScopeSelector;
 
 	constructor(public readonly source?: string[] | string) {
 		if (Array.isArray(source)) {
-			this.selector = source.map(firstMateSelectorFactory);
+			this.selector = source.map(optimizedSelectorFactory);
 		}
 		if (typeof source === 'string') {
-			this.selector = firstMateSelectorFactory(source);
+			this.selector = optimizedSelectorFactory(source);
 		}
 	}
 
@@ -39,21 +82,21 @@ export class TextmateScopeSelector {
 	}
 }
 
-function firstMateSelectorFactory(selector: string): FirstMateSelector {
+function optimizedSelectorFactory(selector: string): FastScopeSelector | FirstMateSelector {
 	try {
-		return new FirstMateSelector(selector);
+		return /[ *:()|&-,]/.test(selector) ? new FirstMateSelector(selector) : new FastScopeSelector(selector);
 	} catch (error) {
-		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error?.message || ''}`);
+		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error?.message || ''}`.trim());
 	}
 }
 
 export class TextmateScopeSelectorMap {
-	private matchers: Record<string, FirstMateSelector | undefined>;
+	private matchers: Record<string, ScopeSelector | undefined>;
 
 	constructor(public readonly sourcemap: Record<string, number> | undefined) {
 		this.matchers = {};
 		if (typeof sourcemap === 'object' && sourcemap?.constructor === Object) {
-			for (const key in sourcemap) this.matchers[key] = firstMateSelectorFactory(key);
+			for (const key in sourcemap) this.matchers[key] = optimizedSelectorFactory(key);
 		}
 	}
 
