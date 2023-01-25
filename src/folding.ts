@@ -1,15 +1,11 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import sha1 = require('git-sha1');
-import delay = require('delay');
-import { TextmateScopeSelector } from './util/selectors';
 import type { ConfigData } from './config/config';
 import type { TextmateToken, TextmateTokenizerService } from './services/tokenizer';
 import type { OutlineEntry, DocumentOutlineService } from './services/outline';
 
 const rangeLimit = 5000;
-const commentScopeSelector = new TextmateScopeSelector('comment');
 
 export interface FoldingToken {
 	isStart: boolean;
@@ -17,48 +13,23 @@ export interface FoldingToken {
 }
 
 export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
-	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outliner: DocumentOutlineService) {}
-
-	private _queue?: Record<string, boolean> = {};
-	private _cache?: Record<string, vscode.FoldingRange[] | undefined> = {};
+	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outlineService: DocumentOutlineService) {}
 
 	public async provideFoldingRanges(
 		document: vscode.TextDocument,
 		_: vscode.FoldingContext,
 		_token: vscode.CancellationToken
 	): Promise<vscode.FoldingRange[]> {
-		const text = document.getText();
-		const hash = sha1(text);
-		let folds: vscode.FoldingRange[];
-
-		if (this._queue[hash]) {
-			while (!this._cache[hash]) {
-				await delay(100);
-			}
-			return this._cache[hash];
-		}
-
-		if (this._cache[hash]) {
-			return this._cache[hash];
-		}
-
-		this._queue[hash] = true;
-
 		const foldables = await Promise.all([
 			this.getRegions(document),
 			this.getHeaderFoldingRanges(document),
 			this.getBlockFoldingRanges(document)
 		]);
-		folds = [].concat(...foldables).slice(0, rangeLimit);
-
-		this._cache[hash] = folds;
-		delete this._queue[hash];
-
-		return folds;
+		return [].concat(...foldables).slice(0, rangeLimit);
 	}
 
 	private async getRegions(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
-		const tokens = await this._tokenizer.tokenize(document);
+		const tokens = await this._tokenizer.fetch(document);
 		const regions = tokens.filter(this.isRegion.bind(this));
 		const markers = regions.map(function(token) {
 			return {
@@ -75,7 +46,10 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 			if (marker.isStart) {
 				nestingStack.push(marker);
 			} else if (nestingStack.length && nestingStack[nestingStack.length - 1].isStart) {
-				ranges.push(new vscode.FoldingRange(nestingStack.pop()!.line, marker.line, vscode.FoldingRangeKind.Region));
+				const start = nestingStack.pop()!.line;
+				const end = marker.line;
+				const kind = vscode.FoldingRangeKind.Region;
+				ranges.push(new vscode.FoldingRange(start, end, kind));
 			} else {
 				// noop: invalid nesting (i.e. [end, start] or [start, end, end])
 			}
@@ -85,8 +59,8 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 	}
 
 	private async getHeaderFoldingRanges(document: vscode.TextDocument) {
-		const tokens = await this._tokenizer.tokenize(document);
-		const outline = await this._outliner.getOutline(document);
+		const tokens = await this._tokenizer.fetch(document);
+		const outline = await this._outlineService.fetch(document);
 
 		const sections = outline.filter(this.isSectionEntry.bind(this));
 		const ranges: vscode.FoldingRange[] = [];
@@ -116,26 +90,26 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 	}
 
 	private async getBlockFoldingRanges(document: vscode.TextDocument): Promise<vscode.FoldingRange[]> {
-		const tokens = await this._tokenizer.tokenize(document);
+		const tokens = await this._tokenizer.fetch(document);
 		const ranges: vscode.FoldingRange[] = [];
 
 		for (let index = 1; index < tokens.length; index++) {
-			const token = tokens[index];
+			let token = tokens[index];
 			if (token.level <= tokens[index - 1].level) {
 				continue;
 			}
-			// token.level > tokens[index - 1].level
+			token = tokens[--index];
+			// tokens[index + 1].level > token.level
 			for (let subindex = index; subindex < tokens.length; subindex++) {
-				const subtoken = tokens[subindex];
-				if (subtoken.level >= token.level) {
+				let subtoken = tokens[subindex];
+				if (token.level !== subtoken.level) {
 					continue;
 				}
-				// subtoken.level < token.level
-				const range = new vscode.FoldingRange(
-					token.line,
-					tokens[subindex].line,
-					this.getFoldingRangeKind(token)
-				);
+				subtoken = tokens[--subindex];
+				// tokens[subindex + 1].level < subtoken.level
+				const start = token.line + 1;
+				const end = subtoken.line + 1;
+				const range = new vscode.FoldingRange(start, end);
 				ranges.push(range);
 				break;
 			}
@@ -144,14 +118,8 @@ export class TextmateFoldingProvider implements vscode.FoldingRangeProvider {
 		return ranges;
 	}
 
-	private getFoldingRangeKind(listItem: TextmateToken): vscode.FoldingRangeKind | undefined {
-		return this._config.selectors.comments.blockComment.match(listItem.type)
-			? vscode.FoldingRangeKind.Comment
-			: undefined;
-	}
-
 	private isComment(token: TextmateToken): boolean {
-		return commentScopeSelector.match(token.scopes);
+		return /(?:^|\.| )comment(?:\.| |$)/.test(token.scopes.join(' '));
 	}
 
 	private isRegion(token: TextmateToken): boolean {

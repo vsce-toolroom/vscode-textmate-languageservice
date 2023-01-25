@@ -1,12 +1,11 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "es6",
+		"target": "es2017",
 		"outDir": "out",
 		"moduleResolution": "node",
-		"lib": ["es6", "es2016", "dom"],
+		"lib": ["es2017", "dom"],
 		"sourceMap": true,
-		"declaration": true,
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"types": ["node", "node-fetch"]
