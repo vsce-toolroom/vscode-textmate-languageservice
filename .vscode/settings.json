@@ -1,6 +1,7 @@
 {
 	"files.associations": {
-		"textmate-configuration.json": "jsonc"
+		"textmate-configuration.json": "jsonc",
+		"build": "shellscript"
 	},
 	"material-icon-theme.folders.associations": {
 		"parser": "functions",
