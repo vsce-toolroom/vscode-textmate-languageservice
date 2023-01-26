@@ -1,10 +1,3 @@
----
-name: "⚡️️ Feature Request"
-about: "Suggest an idea for this project ✨"
-labels: [feature-request]
-
----
-
 ## ⚡️️ Feature Request
 
 - [ ] I'm using the latest version of `vscode-textmate-languageservice` available.
@@ -21,3 +14,5 @@ labels: [feature-request]
 
 <!-- Checklist -->
 [vsctmls-issues]: https://github.com/SNDST00M/vscode-textmate-languageservice/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
+
+/label ~feature-request

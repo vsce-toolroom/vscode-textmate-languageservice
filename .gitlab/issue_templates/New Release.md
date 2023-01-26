@@ -1,11 +1,4 @@
----
-name: "🚀 New Release"
-about: "Publish changes 📦"
-labels: [endgame-plan]
-
----
-
-## `#.#.#`
+## 📦 `#.#.#`
 
 - [ ] Cross-channel testing for `#.#.#` (VSC, Insiders, GitHub Codespaces, VSCodium).
 - [ ] Update asset references.
@@ -16,3 +9,5 @@ labels: [endgame-plan]
 
 - Change 1
 - ...
+
+/label ~endgame-plan

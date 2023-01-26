@@ -1,10 +1,3 @@
----
-name: "🐛 Bug Report"
-about: "Something isn't working well 🚨"
-labels: [bug]
-
----
-
 ## 🐛 Bug Report
 
 - [ ] I'm using the latest version of `vscode-textmate-languageservice` available.
@@ -49,3 +42,5 @@ REPL or a link to your sample code if applicable.
 
 <!-- Checklist -->
 [vsctmls-issues]: https://github.com/SNDST00M/vscode-textmate-languageservice/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
+
+/label ~bug

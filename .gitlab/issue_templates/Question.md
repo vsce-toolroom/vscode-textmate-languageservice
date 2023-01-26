@@ -1,10 +1,3 @@
----
-name: "❓ Question"
-about: "There's something unclear 😕"
-labels: [question]
-
----
-
 ## ❓ Question
 
 ### Describe your question
@@ -15,3 +8,5 @@ labels: [question]
 <!-- Help others find this and upvote it. -->
 <!-- Add meaningful tags for search engines. -->
 <!-- #typescript #merge #incompatible #... -->
+
+/label ~question
