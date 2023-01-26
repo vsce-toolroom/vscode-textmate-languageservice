@@ -41,6 +41,6 @@ REPL or a link to your sample code if applicable.
 - OS version:
 
 <!-- Checklist -->
-[vsctmls-issues]: https://github.com/SNDST00M/vscode-textmate-languageservice/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
+[vsctmls-issues]: https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/issues/?sort=created_date&state=opened
 
 /label ~bug

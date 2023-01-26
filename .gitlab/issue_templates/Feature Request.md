@@ -13,6 +13,6 @@
 <!-- A clear & concise description of any alternative solutions or features you've considered. -->
 
 <!-- Checklist -->
-[vsctmls-issues]: https://github.com/SNDST00M/vscode-textmate-languageservice/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
+[vsctmls-issues]: https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/issues/?sort=created_date&state=opened
 
 /label ~feature-request
