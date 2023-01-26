@@ -2,7 +2,7 @@
 
 > **This package is now superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
 
-> I've chosen not to deprecate it but to mark it as 1.0.0 and recommend you leverage `tree-sitter`. It's the Holy Grail of source code LSP! It's the one maintainable solution & has faster retokenization ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid.
+> I've chosen to stabilize it with browser compatibility as a 1.0.0 release and recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid.
 
 > If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][vscode-known-language-ids].
 > Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
