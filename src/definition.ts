@@ -14,7 +14,7 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 		const selection = document.getWordRangeAtPosition(position);
 		const componentName = document.getText(selection);
 		const extensionGlob = extensions.substring(1);
-		return `${componentName}${extensionGlob}`;
+		return `**/${componentName}${extensionGlob}`;
 	}
 
 	async getNestedPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Position | undefined> {
@@ -25,8 +25,8 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 		return !entry ? undefined : entry.location.range.start;
 	}
 
-	async searchFiles(fileName: string): Promise<vscode.Uri[]> {
-		return vscode.workspace.findFiles(fileName, this._config.exclude);
+	async searchFiles(extensionGlob: string): Promise<vscode.Uri[]> {
+		return vscode.workspace.findFiles(extensionGlob, this._config.exclude, 5);
 	}
 
 	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[] | undefined> {
