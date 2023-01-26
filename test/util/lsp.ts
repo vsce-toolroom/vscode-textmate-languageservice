@@ -1,8 +1,8 @@
 'use strict';
 
-import { LSP } from '../../src';
-import mockedContext from './context';
+import LSP from '../../src';
+import context from './context';
 
-const lsp = new LSP('matlab', mockedContext);
+const lsp = new LSP('matlab', context);
 
 export default lsp;

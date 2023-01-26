@@ -6,11 +6,11 @@ import * as path from 'path';
 import * as assert from 'assert';
 import deepEqual = require('deep-equal');
 import * as fs from 'fs';
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
+import writeJsonFile = require('write-json-file');
+import loadJsonFile = require('load-json-file');
 import type { JsonArray } from 'type-fest';
 
-import { TextmateScopeSelector } from '../../src/parser/selectors';
+import { TextmateScopeSelector } from '../../src/util/selectors';
 import type { TextmateToken } from '../../src/services/tokenizer';
 
 import lsp from '../util/lsp';
@@ -24,18 +24,22 @@ const classReferenceSelector = new TextmateScopeSelector([
 const BASE_CLASS_NAME = 'Animal';
 
 suite('src/definition.ts', function() {
-	this.timeout(20000);
-	test('DefinitionProvider class', async function() {
-		const workspaceDocumentService = await lsp.createWorkspaceDocumentService();
+	this.timeout(10000);
+	test('TextmateDefinitionProvider class', async function() {
+		vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');
+
+		const workspaceDocumentService = await lsp.initWorkspaceDocumentService();
 		const definitionProvider = await lsp.createDefinitionProvider();
 
-		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
+		const files = glob.sync(path.resolve(__dirname, '../../../../../samples/*.m'));
 
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
+			const basename = path.basename(file);
 
 			const skinnyDocument = await workspaceDocumentService.getDocument(resource);
-			const tokens = await lsp.tokenizer.tokenize(skinnyDocument);
+			const tokenizer = await lsp.initTokenizerService();
+			const tokens = await tokenizer.fetch(skinnyDocument);
 
 			const document = await vscode.workspace.openTextDocument(resource);
 			await vscode.window.showTextDocument(document);
@@ -50,7 +54,11 @@ suite('src/definition.ts', function() {
 				activeEditor.selection = new vscode.Selection(startPosition, endPosition);
 				const definitionResults = await definitionProvider.provideDefinition(document, startPosition);
 
-				assert.strictEqual([1, 2].includes(definitionResults.length), true, `${token.text} class defined ${definitionResults.length} times.`);
+				assert.strictEqual(
+					[1, 2].includes(definitionResults.length),
+					true,
+					`Could not go to ${token.text} class from ${basename}.`
+				);
 				definitions.push({
 					...token,
 					uri: resource,
@@ -60,7 +68,7 @@ suite('src/definition.ts', function() {
 
 			definitions = jsonify<JsonArray>(definitions);
 
-			const p = path.resolve(__dirname, '../data/peekDefinitionProvider', path.basename(file)).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../data/peekDefinitionProvider', basename).replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
 				assert.strictEqual(deepEqual(definitions, loadJsonFile.sync(p)), true, p);

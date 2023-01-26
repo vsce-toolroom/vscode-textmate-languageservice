@@ -14,20 +14,22 @@ import jsonify from '../../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
 suite('src/services/outline.ts', function() {
-	this.timeout(20000);
-	test('OutlineGenerator class', async function() {
-		const workspaceDocumentService = await lsp.createWorkspaceDocumentService();
-		const outlineGeneratorService = await lsp.createOutlineGeneratorService();
+	this.timeout(10000);
+	test('DocumentOutlineService class', async function() {
+		vscode.window.showInformationMessage('DocumentOutlineService class (src/services/outline.ts)');
 
-		const files = glob.sync(path.resolve(__dirname, '../../../../../../animals/*.m'));
+		const workspaceDocumentService = await lsp.initWorkspaceDocumentService();
+		const documentOutlineService = await lsp.initDocumentOutlineService();
+
+		const files = glob.sync(path.resolve(__dirname, '../../../../../../samples/*.m'));
 
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 
 			const document = await workspaceDocumentService.getDocument(resource);
-			const outline = jsonify<JsonArray>(await outlineGeneratorService.getOutline(document));
+			const outline = jsonify<JsonArray>(await documentOutlineService.fetch(document));
 
-			const p = path.resolve(__dirname, '../data/tableofContentsProvider', path.basename(file)).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../../data/tableOfContentsProvider', path.basename(file)).replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
 				assert.strictEqual(deepEqual(outline, loadJsonFile.sync(p)), true, p);

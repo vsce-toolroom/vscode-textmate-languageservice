@@ -14,19 +14,22 @@ import jsonify from '../../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
 suite('src/services/tokenizer.ts', async function() {
-	this.timeout(20000);
+	this.timeout(10000);
 	test('TextmateTokenizerService class', async function() {
-		const workspaceDocumentService = await lsp.createWorkspaceDocumentService();
+		vscode.window.showInformationMessage('TextmateTokenizerService class (src/services/tokenizer.ts)');
 
-		const files = glob.sync(path.resolve(__dirname, '../../../../../../../animals/*.m'));
+		const workspaceDocumentService = await lsp.initWorkspaceDocumentService();
+
+		const files = glob.sync(path.resolve(__dirname, '../../../../../../samples/*.m'));
 
 		for (const file of files) {
 			const resource = vscode.Uri.file(file);
 
 			const document = await workspaceDocumentService.getDocument(resource);
-			const tokens = jsonify<JsonArray>(await lsp.tokenizer.tokenize(document));
+			const tokenizer = await lsp.initTokenizerService();
+			const tokens = jsonify<JsonArray>(await tokenizer.fetch(document));
 
-			const p = path.resolve(__dirname, '../data/tokenizer', path.basename(file)).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../../data/tokenizer', path.basename(file)).replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
 				assert.strictEqual(deepEqual(tokens, loadJsonFile.sync(p)), true, p);
