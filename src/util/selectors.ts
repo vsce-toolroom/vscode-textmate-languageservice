@@ -2,10 +2,6 @@
 
 import { FirstMateSelector } from '../parser/scopes';
 
-function isTextmateScopeBoundary(char) {
-	return ['', '.', ' '].includes(char);
-}
-
 class FastScopeSelector {
 	private _cache: Record<string, boolean | undefined> = {};
 
@@ -26,7 +22,8 @@ class FastScopeSelector {
 			const left = target.charAt(position - 1)
 			const right = target.charAt(position + this.source.length)
 
-			return (this._cache[target] = [left, right].every(isTextmateScopeBoundary));
+			const isScopeBoundary = (c: string) => ['', '.', ' '].includes(c);
+			return (this._cache[target] = [left, right].every(isScopeBoundary));
 		}
 	}
 
@@ -82,9 +79,19 @@ export class TextmateScopeSelector {
 	}
 }
 
-function optimizedSelectorFactory(selector: string): FastScopeSelector | FirstMateSelector {
+function isSelectorAtScopeLevel(selector: string) {
+	return (
+		/[a-zA-Z0-9+_]$/.test(selector) &&
+		/^[a-zA-Z0-9+_]/.test(selector) &&
+		/^[a-zA-Z0-9+_\-.]*$/.test(selector)
+	);
+}
+
+function optimizedSelectorFactory(selector: string): ScopeSelector {
 	try {
-		return /[ *:()|&-,]/.test(selector) ? new FirstMateSelector(selector) : new FastScopeSelector(selector);
+		return isSelectorAtScopeLevel(selector)
+			? new FastScopeSelector(selector)
+			: new FirstMateSelector(selector);
 	} catch (error) {
 		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error?.message || ''}`.trim());
 	}
