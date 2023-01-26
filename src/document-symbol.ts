@@ -25,11 +25,11 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			children: [],
 			parent: undefined
 		};
-		this.buildTree(root, outline);
+		this.traverseAndCopy(root, outline);
 		return root.children;
 	}
 
-	private buildTree(parent: LanguageSymbol, entries: OutlineEntry[]) {
+	private traverseAndCopy(parent: LanguageSymbol, entries: OutlineEntry[]) {
 		if (!entries.length) {
 			return;
 		}
@@ -42,7 +42,7 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			parent = parent.parent!;
 		}
 		parent.children.push(symbol);
-		this.buildTree(
+		this.traverseAndCopy(
 			{
 				level: entry.level,
 				children: symbol.children,
@@ -51,7 +51,6 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			entries.slice(1)
 		);
 	}
-
 
 	private toSymbolInformation(this: OutlineEntry[], entry: OutlineEntry, index: number): vscode.SymbolInformation {
 		return new vscode.SymbolInformation(
