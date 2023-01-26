@@ -2,10 +2,10 @@
 
 import * as vscode from 'vscode';
 import type { ConfigData } from './config/config';
-import type { TextmateDocumentSymbolProvider } from './document-symbol';
+import type { DocumentOutlineService } from './services/outline';
 
 export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
-	constructor(private _config: ConfigData, private _documentSymbolProvider: TextmateDocumentSymbolProvider) {}
+	constructor(private _config: ConfigData, private _outlineService: DocumentOutlineService) {}
 
 	private getComponentGlob(document: vscode.TextDocument, position: vscode.Position): string | undefined {
 		const extensions = this._config.extensions;
@@ -18,20 +18,11 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 	}
 
 	async getNestedPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Position | undefined> {
-		const symbols = await this._documentSymbolProvider.provideDocumentSymbolInformation(document) as vscode.SymbolInformation[];
-		const selection = document.getWordRangeAtPosition(position);
-		const selectedText = document.getText(selection);
+		const range = document.getWordRangeAtPosition(position);
+		const selection = document.getText(range);
 
-		for (const symbol of symbols) {
-			const start = symbol.location.range.start;
-			if (
-				!document.lineAt(start.line).isEmptyOrWhitespace
-				&& selectedText === symbol.name
-			) {
-				return new vscode.Position(start.line, start.character);
-			}
-		}
-		return;
+		const entry = await this._outlineService.lookup(document, selection);
+		return !entry ? undefined : entry.location.range.start;
 	}
 
 	async searchFiles(fileName: string): Promise<vscode.Uri[]> {

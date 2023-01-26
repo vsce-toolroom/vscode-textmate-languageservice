@@ -2,7 +2,6 @@
 
 import vscodeTextmate = require('vscode-textmate');
 import sha1 = require('git-sha1');
-import delay = require('delay');
 
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { Mutable } from 'type-fest';

@@ -64,7 +64,6 @@
   },
   "dependencies": {
     "browser-or-node": "^2.1.1",
-    "delay": "^5.0.0",
     "git-sha1": "^0.1.2",
     "glob": "^7.2.0",
     "vscode-oniguruma": "^1.5.1",

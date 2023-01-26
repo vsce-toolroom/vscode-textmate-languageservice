@@ -100,8 +100,8 @@ export default class LSP {
 	public async createDefinitionProvider(): Promise<TextmateDefinitionProvider> {
 		if (this._definitionProvider) return this._definitionProvider;
 		const config = await this._configPromise;
-		const documentSymbolProvider = await this.createDocumentSymbolProvider();
-		this._definitionProvider = new TextmateDefinitionProvider(config, documentSymbolProvider);
+		const outlineService = await this.initDocumentOutlineService();
+		this._definitionProvider = new TextmateDefinitionProvider(config, outlineService);
 		return this._definitionProvider;
 	}
 }

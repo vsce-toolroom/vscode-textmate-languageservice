@@ -1,7 +1,6 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import delay = require('delay');
 import { TextmateScopeSelector } from '../util/selectors';
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
@@ -25,7 +24,7 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 		super();
 	}
 
-	public async lookup(document: SkinnyTextDocument, text: string): Promise<OutlineEntry | undefined> {
+	public async lookup(document: SkinnyTextDocument, text: string): Promise<OutlineEntry | void> {
 		const outline = await this.fetch(document);
 		return outline.find(entry => entry.text === text);
 	}
