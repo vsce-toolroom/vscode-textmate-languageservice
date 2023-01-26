@@ -29,7 +29,7 @@ suite('src/services/outline.ts', function() {
 			const document = await workspaceDocumentService.getDocument(resource);
 			const outline = jsonify<JsonArray>(await documentOutlineService.fetch(document));
 
-			const p = path.resolve(__dirname, '../../../../../../data/tableOfContentsProvider', path.basename(file)).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../../data/outline', path.basename(file)).replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
 				assert.strictEqual(deepEqual(outline, loadJsonFile.sync(p)), true, p);

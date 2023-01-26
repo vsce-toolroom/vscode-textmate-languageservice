@@ -19,7 +19,7 @@ suite('src/workspace-symbol.ts', function() {
 
 		const workspaceSymbolProvider = await lsp.createWorkspaceSymbolProvider();
 		const symbols = jsonify<JsonArray>(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
-		const p = path.resolve(__dirname, '../../../../../data/workspaceSymbolProvider', 'index.json');
+		const p = path.resolve(__dirname, '../../../../../data/workspace-symbol', 'index.json');
 
 		if (fs.existsSync(p)) {
 			assert.strictEqual(deepEqual(symbols, loadJsonFile.sync(p)), true, p);

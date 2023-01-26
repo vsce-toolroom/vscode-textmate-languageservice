@@ -68,7 +68,7 @@ suite('src/definition.ts', function() {
 
 			definitions = jsonify<JsonArray>(definitions);
 
-			const p = path.resolve(__dirname, '../../../../../data/peekDefinitionProvider', basename).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../data/definition', basename).replace(/\.m$/, '.json');
 
 			if (fs.existsSync(p)) {
 				assert.strictEqual(deepEqual(definitions, loadJsonFile.sync(p)), true, p);

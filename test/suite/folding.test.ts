@@ -28,7 +28,7 @@ suite('src/folding.ts', function() {
 			const resource = vscode.Uri.file(file);
 			const document = await vscode.workspace.openTextDocument(resource);
 
-			const p = path.resolve(__dirname, '../../../../../data/foldingProvider', path.basename(file)).replace(/\.m$/, '.json');
+			const p = path.resolve(__dirname, '../../../../../data/folding', path.basename(file)).replace(/\.m$/, '.json');
 			const folds = jsonify<JsonArray>(await foldingRangeProvider.provideFoldingRanges(document, foldingContext, cancelToken));
 
 			if (fs.existsSync(p)) {
