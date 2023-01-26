@@ -1,0 +1,23 @@
+image: SNDST00M/build
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SUBMODULE_DEPTH: 0
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+- build
+
+build:
+  stage: build
+  script:
+  - ./build
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: never
+  artifacts:
+    paths:
+    - test/data/

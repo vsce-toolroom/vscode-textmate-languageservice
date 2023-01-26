@@ -1,1 +1,2 @@
 **/textmate-configuration.json linguist-language=jsonc
+build linguist-language=bash
