@@ -1,21 +1,20 @@
 'use strict';
 
-import vscodeTextmate = require('vscode-textmate');
-import sha1 = require('git-sha1');
+import * as textmate from 'vscode-textmate';
 
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { Mutable } from 'type-fest';
 import type { ConfigData } from '../config/config';
 import ServiceBase from '../util/service';
 
-export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
+export interface TextmateToken extends Mutable<textmate.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface TextmateTokenizeLineResult extends Omit<vscodeTextmate.ITokenizeLineResult, 'tokens'> {
+export interface TextmateTokenizeLineResult extends Omit<textmate.ITokenizeLineResult, 'tokens'> {
 	readonly tokens: TextmateToken[]
 }
 
@@ -24,14 +23,14 @@ interface TextmateTokenizerState {
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: vscodeTextmate.StackElement;
+	rule: textmate.StackElement;
 	stack: number;
 }
 
 export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 	constructor(
 		private _config: ConfigData,
-		private _grammar: vscodeTextmate.IGrammar
+		private _grammar: textmate.IGrammar
 	) {
 		super();
 	}
@@ -41,7 +40,7 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 		continuation: false,
 		declaration: false,
 		line: 0,
-		rule: vscodeTextmate.INITIAL,
+		rule: textmate.INITIAL,
 		stack: 0
 	};
 
@@ -52,7 +51,7 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 		this._state.continuation = false;
 		this._state.declaration = false;
 		this._state.line = 0;
-		this._state.rule = vscodeTextmate.INITIAL;
+		this._state.rule = textmate.INITIAL;
 		this._state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {

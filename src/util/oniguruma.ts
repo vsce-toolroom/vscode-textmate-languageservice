@@ -6,8 +6,8 @@
 
 import * as path from 'path';
 import * as vscode from 'vscode';
-import vscodeTextmate = require('vscode-textmate');
-import * as vscodeOniguruma from 'vscode-oniguruma';
+import * as textmate from 'vscode-textmate';
+import * as bindings from 'vscode-oniguruma';
 import { readFileBytes } from '../util/loader';
 
 function moduleDirnameToWasmPath(dirname: string): string {
@@ -21,9 +21,9 @@ const nodeModulesDirnames = [
 ];
 const wasmPaths = nodeModulesDirnames.map(moduleDirnameToWasmPath)
 
-let onigurumaLib: vscodeTextmate.IOnigLib | null = null;
+let onigurumaLib: textmate.IOnigLib | null = null;
 
-export async function getOniguruma(): Promise<vscodeTextmate.IOnigLib> {
+export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
 		let wasmBin: Uint8Array | ArrayBuffer;
 		let readError: Error;
@@ -37,10 +37,10 @@ export async function getOniguruma(): Promise<vscodeTextmate.IOnigLib> {
 			}
 		}
 		if (!wasmBin) throw readError;
-		await vscodeOniguruma.loadWASM(wasmBin);
+		await bindings.loadWASM(wasmBin);
 		onigurumaLib = {
-			createOnigScanner(patterns: string[]) { return new vscodeOniguruma.OnigScanner(patterns); },
-			createOnigString(s: string) { return new vscodeOniguruma.OnigString(s); }
+			createOnigScanner(patterns: string[]) { return new bindings.OnigScanner(patterns); },
+			createOnigString(s: string) { return new bindings.OnigString(s); }
 		};
 	}
 	return onigurumaLib;

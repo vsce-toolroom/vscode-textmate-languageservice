@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import vscodeTextmate = require('vscode-textmate');
+import * as textmate from 'vscode-textmate';
 import { TextmateTokenizerService } from './services/tokenizer';
 import { ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
@@ -20,9 +20,9 @@ import type { PackageJSON } from './services/resolver';
 export default class LSP {
 	private _packageJSON?: PackageJSON;
 	private _resolver: ResolverService;
-	private _registry: vscodeTextmate.Registry;
+	private _registry: textmate.Registry;
 	private _configPromise: Promise<ConfigData>;
-	private _grammarPromise: Promise<vscodeTextmate.IGrammar>;
+	private _grammarPromise: Promise<textmate.IGrammar>;
 	private _tokenService: TextmateTokenizerService;
 	private _outlineService?: DocumentOutlineService;
 	private _workspaceDocumentService?: WorkspaceDocumentService;
@@ -40,7 +40,7 @@ export default class LSP {
 		const onigLibPromise = getOniguruma();
 
 		this._resolver = new ResolverService(context, grammars, languages, onigLibPromise);
-		this._registry = new vscodeTextmate.Registry(this._resolver);
+		this._registry = new textmate.Registry(this._resolver);
 		const grammarData = this._resolver.findGrammarByLanguageId(this.languageId);
 		this._grammarPromise = this._registry.loadGrammar(grammarData.scopeName);
 
@@ -61,17 +61,21 @@ export default class LSP {
 
 	public async initWorkspaceDocumentService(): Promise<WorkspaceDocumentService> {
 		if (this._workspaceDocumentService) return this._workspaceDocumentService;
+
 		const id = this.languageId;
 		const config = await this._configPromise;
 		this._workspaceDocumentService = new WorkspaceDocumentService(id, config);
+
 		return this._workspaceDocumentService;
 	}
 
 	public async initDocumentOutlineService(): Promise<DocumentOutlineService> {
 		if (this._outlineService) return this._outlineService;
+
 		const config = await this._configPromise;
 		const tokenizer = await this.initTokenizerService();
 		this._outlineService = new DocumentOutlineService(config, tokenizer);
+
 		return this._outlineService;
 	}
 
@@ -84,24 +88,30 @@ export default class LSP {
 
 	public async createDocumentSymbolProvider(): Promise<TextmateDocumentSymbolProvider> {
 		if (this._documentSymbolProvider) return this._documentSymbolProvider;
+
 		const outlineService = await this.initDocumentOutlineService();
 		this._documentSymbolProvider = new TextmateDocumentSymbolProvider(outlineService);
+
 		return this._documentSymbolProvider;
 	}
 
 	public async createWorkspaceSymbolProvider(): Promise<TextmateWorkspaceSymbolProvider> {
 		if (this._workspaceSymbolProvider) return this._workspaceSymbolProvider;
+
 		const workspaceDocumentService = await this.initWorkspaceDocumentService();
 		const documentSymbolProvider = await this.createDocumentSymbolProvider();
 		this._workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(workspaceDocumentService, documentSymbolProvider);
+
 		return this._workspaceSymbolProvider;
 	}
 
 	public async createDefinitionProvider(): Promise<TextmateDefinitionProvider> {
 		if (this._definitionProvider) return this._definitionProvider;
+
 		const config = await this._configPromise;
 		const outlineService = await this.initDocumentOutlineService();
 		this._definitionProvider = new TextmateDefinitionProvider(config, outlineService);
+
 		return this._definitionProvider;
 	}
 }
