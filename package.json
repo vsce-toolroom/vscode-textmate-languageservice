@@ -20,7 +20,8 @@
   "types": "./out/src/index",
   "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
-    "test": "npm-run-all compile patch stage mocha",
+    "test": "npm-run-all reset patch stage mocha",
+    "prepack": "npm run compile",
     "posttest": "npm-run-all dump reset",
     "build": "npm-run-all pegjs compile",
     "precompile": "del-cli out",
@@ -34,10 +35,12 @@
     "stage-data": "cpy test/data/** test/vscode-matlab/data",
     "stage-touch-samples": "make-dir test/vscode-matlab/samples",
     "stage-samples": "cpy test/samples/** test/vscode-matlab/samples",
-    "stage-install": "npm pack --pack-destination test/vscode-matlab && cd test/vscode-matlab && npm install --production vscode-textmate-languageservice-0.2.3.tgz && cd ../..",
+    "stage-install": "npm pack --pack-destination ./test/vscode-matlab && cd test/vscode-matlab && npm install --production vscode-textmate-languageservice-1.0.0-rc-1.tgz && cd ../..",
     "stage-mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install mocha && cd ../../../..",
     "stage": "npm-run-all stage-install stage-mocha stage-touch-data stage-data stage-touch-samples stage-samples",
-    "reset": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@0.2.3 && npm un mocha && git reset –hard && cd ../.."
+    "reset": "npm-run-all reset-npm reset-git",
+    "reset-npm": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@0.2.3 && npm un mocha && cd ../..",
+    "reset-git": "cd test/vscode-matlab && git add . && git reset --hard && cd ../.."
   },
   "devDependencies": {
     "@types/deep-equal": "^1.0.1",
