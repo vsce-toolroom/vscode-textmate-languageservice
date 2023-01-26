@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.0-rc-1
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/6/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v1.0.0-rc-1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- `vscode-textmate-languageservice` codebase republished and migrated to Gitlab.
+- Significant changes to the shape of the API exports.
+  - Usage: `const lsp = new LSP('languageId', context)`
+  - API is now a collection of async `create*` factory functions. The names match their output interfaces in the VS Code API.
+  - This means you will need to use await or `.then` to get the actual provider class..
+  - It also means your `activate` function is better off as an `async` function - the code will be easier to read.
+  - Services/generators/engines are now all created behind the scenes to reduce boilerplate.
+- Introduce top-level `"textmate-languageservices"` to support extension manifests with multiple configured languages.
+  This key can map language ID to config path, i.e. `"textmate-languageservices": { "lua": "./syntaxes/lua-textmate-configuration.json" }`.
+  (Without the setting, the package loads `./textmate-configuration.json` targeting the language ID in the `LSP` constructor.)
+- Mostly removed Node dependencies in favour of native VS Code APIs. (Browser support SOON™?)
+- Fix external file search matching in the definition provider, so it now searches in any folder.
+- Invalidate service caches using an asynchronous hash engine - see #1.
+- Rewrite folding provider to remove performance overheads in header & block folding - see #2.
+- Fix line token incrementation for decremented lines in the tokenizer.
+- Fix for cache hashing in Textmate engine tokenization queue.
+- Add performance layer to Textmate scope selector parser to bypass the need for a WASM parser.
+
+## 0.2.3
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-04-01&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.3&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- Fix performance of header algorithm.
+- Fix ending decrement of 1 line in folding provider top-level blocks.
+- Add local test execution support to test suite.
+
+## 0.2.2
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-03-18&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/4/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.2&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/4/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- Fix performance of folding provider block dedent loop.
+- Port Textmate scope parser to TypeScript and remove caching overheads.
+
 ## 0.2.1
 
 <a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-20&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>

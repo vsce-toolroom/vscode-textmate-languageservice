@@ -1,6 +1,6 @@
 out/
 node_modules/
-.vscode-test/
+**/.vscode-test/
 package-lock.json
-*.tgz
+**/*.tgz
 *.vsix

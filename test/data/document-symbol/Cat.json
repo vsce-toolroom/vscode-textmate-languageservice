@@ -1,0 +1,213 @@
+[
+  {
+    "name": "Cat",
+    "detail": "entity.name.type.class.matlab",
+    "kind": 4,
+    "range": [
+      {
+        "line": 0,
+        "character": 9
+      },
+      {
+        "line": 18,
+        "character": 0
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 0,
+        "character": 9
+      },
+      {
+        "line": 18,
+        "character": 0
+      }
+    ],
+    "children": [
+      {
+        "name": "methods",
+        "detail": "keyword.control.methods.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 1,
+            "character": 4
+          },
+          {
+            "line": 18,
+            "character": 0
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 1,
+            "character": 4
+          },
+          {
+            "line": 18,
+            "character": 0
+          }
+        ],
+        "children": [
+          {
+            "name": "Cat",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 2,
+                "character": 23
+              },
+              {
+                "line": 4,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 2,
+                "character": 23
+              },
+              {
+                "line": 4,
+                "character": 11
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "noise",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 5,
+                "character": 23
+              },
+              {
+                "line": 7,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 5,
+                "character": 23
+              },
+              {
+                "line": 7,
+                "character": 11
+              }
+            ],
+            "children": [
+              {
+                "name": "if",
+                "detail": "keyword.control.if.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 5,
+                    "character": 33
+                  },
+                  {
+                    "line": 6,
+                    "character": 12
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 5,
+                    "character": 33
+                  },
+                  {
+                    "line": 6,
+                    "character": 12
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "else",
+                "detail": "keyword.control.else.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 6,
+                    "character": 55
+                  },
+                  {
+                    "line": 7,
+                    "character": 11
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 6,
+                    "character": 55
+                  },
+                  {
+                    "line": 7,
+                    "character": 11
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "move",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 8,
+                "character": 23
+              },
+              {
+                "line": 11,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 8,
+                "character": 23
+              },
+              {
+                "line": 11,
+                "character": 11
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "sleep",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 12,
+                "character": 23
+              },
+              {
+                "line": 18,
+                "character": 0
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 12,
+                "character": 23
+              },
+              {
+                "line": 18,
+                "character": 0
+              }
+            ],
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

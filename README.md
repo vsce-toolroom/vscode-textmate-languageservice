@@ -1,10 +1,15 @@
 # `vscode-textmate-languageservice`
 
-> **I request anyone from Microsoft to adopt this package as soon as possible. I'd prefer to see this repository where it belongs.**
+> **This package is now superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
+
+> I've chosen to stabilize it with browser compatibility as a 1.0.0 release and recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid.
+
+> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][vscode-known-language-ids].
+> Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://raw.githubusercontent.com/SNDST00M/vscode-textmate-languageservice/v0.2.1/assets/demo-outline.png"></p>
+<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.0-rc-1/assets/demo-outline.png"></p>
 
 In order to be supported by this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
@@ -23,22 +28,13 @@ Create a JSON file named `textmate-configuration.json` in the extension director
 
 Textmate configuration fields:
 
-- **`language`** - required (`object`)<br/>
-  Language contribution as defined by the extension in the manifest.
-- **`grammar`** - required (`object`)<br/>
-  Grammar contribution as defined by the extension in the manifest.
 - **`assignment`** - optional (`object`)<br/>
   Collection of Textmate scope selectors for variable assignment scopes when including variable symbols:<br/>
   **Properties:**
   - `separator`: Token to separate multiple assignments (`string`)
   - `single`: Token to match single variable assignment. (`string`)
   - `multiple`: Token to match multiple variable assignment. (`string`)
-- **`comments`** - optional (`object`)<br/>
-  Collection of Textmate tokens for comments:<br/>
-  **Properties:**
-  - `lineComment`: Token for line comment text (to use in region matching). (`string`)
-  - `blockComment`: Map of block comment start and end token names. (`[string,string]`)
-- **`declarations`** -optional (`array`)<br/>
+- **`declarations`** - optional (`array`)<br/>
   List of Textmate scope selectors for declaration token scopes.
 - **`dedentation`** - optional (`array`)<br/>
   List of Textmate tokens for dedented code block declarations (e.g. `ELSE`, `ELSEIF`).<br/>
@@ -65,50 +61,33 @@ Template for `textmate-configuration.json` file:
 
 ```jsonc
 {
-  "language": {
-    "id": "",
-    "aliases": [],
-    "extensions": []
-  },
-  "grammar": {
-    "language": "",
-    "scopeName": "source.",
-    "path": ""
-  },
   "assignment": {
     "single": "",
     "multiple": "",
     "separator": ""
   },
-  "comments": {
-    "lineComment": "",
-    "blockComment": [
-      "",
-      ""
-    ]
-  },
   "declarations": [],
   "dedentation": [
-    "keyword.control.elseif.",
-    "keyword.control.else."
+    "keyword.control.elseif.custom",
+    "keyword.control.else.custom"
   ],
-  "exclude": "**/{.luarocks,lua_modules}/**",
+  "exclude": "**/{.modules,.includes}/**",
   "indentation": {
-    "punctuation.definition.comment.begin.": 1,
-    "punctuation.definition.comment.end.": -1,
-    "keyword.control.begin.lua": 1,
-    "keyword.control.end.lua": -1
+    "punctuation.definition.comment.begin.custom": 1,
+    "punctuation.definition.comment.end.custom": -1,
+    "keyword.control.begin.custom": 1,
+    "keyword.control.end.custom": -1
   },
   "punctuation": {
-    "continuation": "punctuation.separator.continuation.line."
+    "continuation": "punctuation.separator.continuation.line.custom"
   },
   "markers": {
     "start": "^\\s*#?region\\b",
     "end": "^\\s*#?end\\s?region\\b"
   },
   "symbols": {
-    "keyword.control.": 2,
-    "entity.name.function.": 11
+    "keyword.control.custom": 2,
+    "entity.name.function.custom": 11
   }
 }
 ```
@@ -117,31 +96,10 @@ An example configuration file that targets Lua:
 
 ```jsonc
 {
-  "language": {
-    "id": "lua",
-    "aliases": [
-      "Lua"
-    ],
-    "extensions": [
-      ".m"
-    ]
-  },
-  "grammar": {
-    "language": "matlab",
-    "scopeName": "source.lua",
-    "path": "./syntaxes/Lua.tmbundle/Lua.tmLanguage"
-  },
   "assignment": {
     "single": "meta.assignment.variable.single.lua",
     "multiple": "meta.assignment.variable.group.lua",
     "separator": "punctuation.separator.comma.lua"
-  },
-  "comments": {
-    "lineComment": "comment.line.percentage.lua",
-    "blockComment": [
-      "punctuation.definition.comment.begin.lua",
-      "punctuation.definition.comment.end.lua"
-    ]
   },
   "declarations": [
     "meta.declaration.lua entity.name",
@@ -172,14 +130,17 @@ An example configuration file that targets Lua:
 ## Usage
 
 ```typescript
-import * as vsctmls from 'vscode-textmate-languageservice';
+import LSP from 'vscode-textmate-languageservice';
+
 export async function activate(context: vscode.ExtensionContext) {
 	const selector: vscode.DocumentSelector = { language: 'custom', scheme: 'file' };
-	const engine = new vsctmls.textmateEngine.TextmateEngine('custom', 'source.custom');
-	const documentSymbolProvider = new vsctmls.documentSymbols.DocumentSymbolProvider(engine);
-	const foldingProvider = new vsctmls.folding.FoldingProvider(engine);
-	const workspaceSymbolProvider = new vsctmls.workspaceSymbols.WorkspaceSymbolProvider('custom', documentSymbolProvider);
-	const peekDefinitionProvider = new vsctmls.peekDefinitions.PeekDefinitionProvider(documentSymbolProvider);
+
+	const lsp = new LSP('custom', context);
+
+	const foldingProvider = await lsp.createFoldingRangeProvider();
+	const documentSymbolProvider = await lsp.createDocumentSymbolProvider();
+	const workspaceSymbolProvider = await lsp.createWorkspaceSymbolProvider();
+	const definitionProvider = await lsp.createDefinitionProvider();
 
 	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(selector, documentSymbolProvider));
 	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingProvider));
@@ -188,6 +149,12 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 ```
 
+<!-- `vscode-textmate-languageservice` -->
+[tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
+[macromates-scope-selector-spec]: https://macromates.com/manual/en/language_grammars#naming_conventions
+[vscode-known-language-ids]: https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
+[github-vscode-anycode]: https://github.com/microsoft/vscode-anycode/issues
+[github-epeshkov-syntax-highlighter]: https://github.com/EvgeniyPeshkov/syntax-highlighter
 <!-- Configuration -->
 [vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
 [vscode-api-symbolkind]: https://code.visualstudio.com/api/references/vscode-api#SymbolKind

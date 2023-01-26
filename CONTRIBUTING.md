@@ -61,9 +61,9 @@ Please limit your description and code sample/screenshot(s) to one MVCE (Minimum
    - Latest version of [VSCodium][vscodium-download].
 
 <!-- Create issues -->
-[roadmap]: https://github.com/SNDST00M/vscode-textmate-languageservice/blob/main/CHANGELOG.md#roadmap
+[roadmap]: https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/blob/main/CHANGELOG.md#roadmap
 <!-- Open pull requests -->
-[github-pr-link]: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
+[gitlab-pr-link]: https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically
 [vscode-download]: https://code.visualstudio.com/Download
 [vscode-insiders-download]: https://code.visualstudio.com/insiders/
 [vscodium-download]: https://vscodium.com/#install

@@ -1,59 +1,75 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate language service for Visual Studio Code.",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",
     "email": "sndst00m@outlook.com",
-    "url": "https://github.com/SNDST00M/"
+    "url": "https://gitlab.com/SNDST00M/"
   },
   "engines": {
     "vscode": "^1.51.0"
   },
-  "homepage": "https://github.com/SNDST00M/vscode-textmate-languageservice/blob/master/README.md",
+  "homepage": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SNDST00M/vscode-textmate-languageservice.git"
+    "url": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice.git"
   },
   "main": "./out/src/index.js",
   "types": "./out/src/index",
-  "bugs": "https://github.com/SNDST00M/vscode-textmate-languageservice/issues",
+  "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
-    "compile": "rm -rf out test/vscode-matlab/node_modules && rm -f *.tgz test/vscode-matlab/package-lock.json && npx tsc -p ./",
-    "dump": "cp -R test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data/* test/data",
-    "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install && mocha out/test/runTest --timeout 0 && cd ../../../..",
-    "patch": "cp test/data/textmate-configuration.json test/vscode-matlab",
-    "posttest": "npm run dump",
-    "stage:data": "mkdir test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data && cp -R test/data/* test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/data",
-    "stage:install": "npm pack && cd test/vscode-matlab && npm install ../../vscode-textmate-languageservice-0.2.1.tgz --production && npm install --only=production && cd ../..",
-    "stage": "npm-run-all stage:install stage:data",
-    "test": "npm-run-all compile patch stage mocha"
+    "test": "npm-run-all reset patch stage mocha",
+    "prepack": "npm run compile",
+    "posttest": "npm-run-all dump reset",
+    "build": "npm-run-all pegjs compile",
+    "precompile": "del-cli out",
+    "compile": "npx tsc -p ./",
+    "dump": "cpy test/vscode-matlab/data/** test/data",
+    "lint": "eslint --ext .ts src",
+    "mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && mocha out/test/runner --timeout 0 && cd ../../../..",
+    "patch": "cpy test/vscode-matlab-patches/** test/vscode-matlab",
+    "pegjs": "npx peggy --plugin ts-pegjs --extra-options-file src/scopes/parser.pegconfig.json -o src/scopes/parser.ts src/scopes/parser.pegjs",
+    "stage-touch-data": "make-dir test/vscode-matlab/data",
+    "stage-data": "cpy test/data/** test/vscode-matlab/data",
+    "stage-touch-samples": "make-dir test/vscode-matlab/samples",
+    "stage-samples": "cpy test/samples/** test/vscode-matlab/samples",
+    "stage-install": "npm pack --pack-destination ./test/vscode-matlab && cd test/vscode-matlab && npm install --production vscode-textmate-languageservice-1.0.0-rc-1.tgz && cd ../..",
+    "stage-mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install mocha && cd ../../../..",
+    "stage": "npm-run-all stage-install stage-mocha stage-touch-data stage-data stage-touch-samples stage-samples",
+    "reset": "npm-run-all reset-npm reset-git",
+    "reset-npm": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@0.2.3 && npm un mocha && cd ../..",
+    "reset-git": "cd test/vscode-matlab && git add . && git reset --hard && cd ../.."
   },
   "devDependencies": {
     "@types/deep-equal": "^1.0.1",
     "@types/first-mate": "^7.0.6",
     "@types/glob": "^7.2.0",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^7.0.43",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^14.18.11",
     "@types/vscode": "^1.51.0",
+    "@vscode/test-electron": "^2.2.0",
+    "cpy-cli": "^4.2.0",
     "deep-equal": "^1.1.0",
+    "del-cli": "^5.0.0",
+    "load-json-file": "^6.2.0",
+    "make-dir-cli": "^3.0.0",
     "mocha": "^9.1.1",
     "node-fetch": "^3.0.0",
     "npm-run-all": "^4.1.5",
-    "peggy": "^1.2.0",
+    "peggy": "^2.0.1",
     "rimraf": "^3.0.2",
+    "ts-pegjs": "^3.0.0",
+    "type-fest": "^0.6.0",
     "typescript": "^4.4.3",
-    "vscode-oniguruma": "^1.5.1",
-    "vscode-test": "^1.5.2",
-    "vscode-textmate": "^5.4.1",
     "write-json-file": "^4.3.0"
   },
   "dependencies": {
-    "delay": "^5.0.0",
+    "browser-or-node": "^2.1.1",
     "git-sha1": "^0.1.2",
     "glob": "^7.2.0",
-    "load-json-file": "^6.2.0",
-    "pkg-up": "^3.1.0"
+    "vscode-oniguruma": "^1.5.1",
+    "vscode-textmate": "^5.4.1"
   }
 }

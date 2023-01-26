@@ -1,0 +1,128 @@
+[
+  {
+    "level": 0,
+    "line": 0,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 0,
+          "character": 9
+        },
+        {
+          "line": 18,
+          "character": 0
+        }
+      ]
+    },
+    "text": "Dog",
+    "token": "entity.name.type.class.matlab",
+    "type": 4,
+    "anchor": 2
+  },
+  {
+    "level": 1,
+    "line": 1,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 1,
+          "character": 4
+        },
+        {
+          "line": 18,
+          "character": 0
+        }
+      ]
+    },
+    "text": "methods",
+    "token": "keyword.control.methods.matlab",
+    "type": 2,
+    "anchor": 8
+  },
+  {
+    "level": 2,
+    "line": 2,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 2,
+          "character": 23
+        },
+        {
+          "line": 4,
+          "character": 11
+        }
+      ]
+    },
+    "text": "Dog",
+    "token": "entity.name.function.matlab",
+    "type": 11,
+    "anchor": 16
+  },
+  {
+    "level": 2,
+    "line": 5,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 5,
+          "character": 23
+        },
+        {
+          "line": 7,
+          "character": 11
+        }
+      ]
+    },
+    "text": "noise",
+    "token": "entity.name.function.matlab",
+    "type": 11,
+    "anchor": 55
+  },
+  {
+    "level": 2,
+    "line": 8,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 8,
+          "character": 23
+        },
+        {
+          "line": 11,
+          "character": 11
+        }
+      ]
+    },
+    "text": "move",
+    "token": "entity.name.function.matlab",
+    "type": 11,
+    "anchor": 76
+  },
+  {
+    "level": 2,
+    "line": 12,
+    "location": {
+      "uri": "./samples/Dog.m",
+      "range": [
+        {
+          "line": 12,
+          "character": 23
+        },
+        {
+          "line": 18,
+          "character": 0
+        }
+      ]
+    },
+    "text": "sleep",
+    "token": "entity.name.function.matlab",
+    "type": 11,
+    "anchor": 115
+  }
+]

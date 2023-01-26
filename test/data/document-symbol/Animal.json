@@ -1,0 +1,501 @@
+[
+  {
+    "name": "Animal",
+    "detail": "entity.name.type.class.matlab",
+    "kind": 4,
+    "range": [
+      {
+        "line": 0,
+        "character": 9
+      },
+      {
+        "line": 30,
+        "character": 0
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 0,
+        "character": 9
+      },
+      {
+        "line": 30,
+        "character": 0
+      }
+    ],
+    "children": [
+      {
+        "name": "properties",
+        "detail": "keyword.control.properties.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 1,
+            "character": 4
+          },
+          {
+            "line": 7,
+            "character": 7
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 1,
+            "character": 4
+          },
+          {
+            "line": 7,
+            "character": 7
+          }
+        ],
+        "children": [
+          {
+            "name": "Locale",
+            "detail": "variable.object.property.matlab",
+            "kind": 6,
+            "range": [
+              {
+                "line": 2,
+                "character": 8
+              },
+              {
+                "line": 2,
+                "character": 19
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 2,
+                "character": 8
+              },
+              {
+                "line": 2,
+                "character": 19
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Name",
+            "detail": "variable.object.property.matlab",
+            "kind": 6,
+            "range": [
+              {
+                "line": 3,
+                "character": 8
+              },
+              {
+                "line": 3,
+                "character": 19
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 3,
+                "character": 8
+              },
+              {
+                "line": 3,
+                "character": 19
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Order",
+            "detail": "variable.object.property.matlab",
+            "kind": 6,
+            "range": [
+              {
+                "line": 4,
+                "character": 8
+              },
+              {
+                "line": 4,
+                "character": 20
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 4,
+                "character": 8
+              },
+              {
+                "line": 4,
+                "character": 20
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Age",
+            "detail": "variable.object.property.matlab",
+            "kind": 6,
+            "range": [
+              {
+                "line": 5,
+                "character": 8
+              },
+              {
+                "line": 5,
+                "character": 16
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 5,
+                "character": 8
+              },
+              {
+                "line": 5,
+                "character": 16
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "Tameable",
+            "detail": "variable.object.property.matlab",
+            "kind": 6,
+            "range": [
+              {
+                "line": 6,
+                "character": 8
+              },
+              {
+                "line": 7,
+                "character": 7
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 6,
+                "character": 8
+              },
+              {
+                "line": 7,
+                "character": 7
+              }
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "methods",
+        "detail": "keyword.control.methods.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 8,
+            "character": 4
+          },
+          {
+            "line": 30,
+            "character": 0
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 8,
+            "character": 4
+          },
+          {
+            "line": 30,
+            "character": 0
+          }
+        ],
+        "children": [
+          {
+            "name": "Animal",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 9,
+                "character": 23
+              },
+              {
+                "line": 15,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 9,
+                "character": 23
+              },
+              {
+                "line": 15,
+                "character": 11
+              }
+            ],
+            "children": [
+              {
+                "name": "obj.Locale",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 10,
+                    "character": 12
+                  },
+                  {
+                    "line": 10,
+                    "character": 80
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 10,
+                    "character": 12
+                  },
+                  {
+                    "line": 10,
+                    "character": 80
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "obj.Name",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 11,
+                    "character": 12
+                  },
+                  {
+                    "line": 11,
+                    "character": 28
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 11,
+                    "character": 12
+                  },
+                  {
+                    "line": 11,
+                    "character": 28
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "obj.Order",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 12,
+                    "character": 12
+                  },
+                  {
+                    "line": 12,
+                    "character": 30
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 12,
+                    "character": 12
+                  },
+                  {
+                    "line": 12,
+                    "character": 30
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "obj.Age",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 13,
+                    "character": 12
+                  },
+                  {
+                    "line": 13,
+                    "character": 26
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 13,
+                    "character": 12
+                  },
+                  {
+                    "line": 13,
+                    "character": 26
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "obj.Tameable",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 14,
+                    "character": 12
+                  },
+                  {
+                    "line": 15,
+                    "character": 11
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 14,
+                    "character": 12
+                  },
+                  {
+                    "line": 15,
+                    "character": 11
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "copy",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 16,
+                "character": 23
+              },
+              {
+                "line": 18,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 16,
+                "character": 23
+              },
+              {
+                "line": 18,
+                "character": 11
+              }
+            ],
+            "children": [
+              {
+                "name": "obj",
+                "detail": "variable.other.readwrite.matlab",
+                "kind": 12,
+                "range": [
+                  {
+                    "line": 17,
+                    "character": 12
+                  },
+                  {
+                    "line": 18,
+                    "character": 11
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 17,
+                    "character": 12
+                  },
+                  {
+                    "line": 18,
+                    "character": 11
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "noise",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 19,
+                "character": 23
+              },
+              {
+                "line": 21,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 19,
+                "character": 23
+              },
+              {
+                "line": 21,
+                "character": 11
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "move",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 22,
+                "character": 23
+              },
+              {
+                "line": 24,
+                "character": 11
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 22,
+                "character": 23
+              },
+              {
+                "line": 24,
+                "character": 11
+              }
+            ],
+            "children": []
+          },
+          {
+            "name": "sleep",
+            "detail": "entity.name.function.matlab",
+            "kind": 11,
+            "range": [
+              {
+                "line": 25,
+                "character": 23
+              },
+              {
+                "line": 30,
+                "character": 0
+              }
+            ],
+            "selectionRange": [
+              {
+                "line": 25,
+                "character": 23
+              },
+              {
+                "line": 30,
+                "character": 0
+              }
+            ],
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
