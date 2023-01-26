@@ -6,9 +6,9 @@ import { TextmateTokenizerService } from './services/tokenizer';
 import { ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
-import { ResolverService } from './services/resolver';
+import { GrammarLanguageContribution, GrammarContribution, ResolverService } from './services/resolver';
 import { DocumentOutlineService } from './services/outline';
-import { TextmateFoldingProvider } from './folding';
+import { TextmateFoldingRangeProvider } from './folding';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { WorkspaceDocumentService } from './services/document';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
@@ -34,7 +34,8 @@ export default class LSP {
 		this._packageJSON = this.context.extension.packageJSON as PackageJSON;
 
 		const contributes = this._packageJSON?.contributes || {};
-		const grammars = contributes?.grammars || [];
+		const grammars = (contributes?.grammars || [])
+			.filter((g): g is GrammarLanguageContribution => !g.injectTo);
 		const languages = contributes?.languages || [];
 		const onigLibPromise = getOniguruma();
 
@@ -74,11 +75,11 @@ export default class LSP {
 		return this._outlineService;
 	}
 
-	public async createFoldingRangeProvider(): Promise<TextmateFoldingProvider> {
+	public async createFoldingRangeProvider(): Promise<TextmateFoldingRangeProvider> {
 		const config = await this._configPromise;
 		const tokenizer = await this.initTokenizerService();
 		const outlineService = await this.initDocumentOutlineService();
-		return new TextmateFoldingProvider(config, tokenizer, outlineService);
+		return new TextmateFoldingRangeProvider(config, tokenizer, outlineService);
 	}
 
 	public async createDocumentSymbolProvider(): Promise<TextmateDocumentSymbolProvider> {

@@ -11,13 +11,20 @@ import vscodeTextmate = require('vscode-textmate');
 
 import { readFileText } from '../util/loader';
 
-export interface GrammarContribution extends JsonObject {
+export interface GrammarLanguageContribution extends JsonObject {
 	language: string;
 	scopeName: string;
 	path: string;
 	embeddedLanguages?: { [scopeName: string]: string };
 }
 
+export interface GrammarInjectionContribution extends JsonObject {
+	scopeName: string;
+	path: string;
+	injectTo: string[];
+}
+
+export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
 
 export interface LanguageContribution extends JsonObject {
 	id: string;
