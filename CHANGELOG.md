@@ -2,9 +2,9 @@
 
 ## 1.0.0-rc-1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/6/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v1.0.0-rc-1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
-- `vscode-textmate-languageservice` codebase republished and migrated to Gitlab.
+- `vscode-textmate-languageservice` codebase republished and migrated to [Gitlab][gitlab-repository].
 - Significant changes to the shape of the API exports.
   - Usage: `const lsp = new LSP('languageId', context)`
   - API is now a collection of async `create*` factory functions. The names match their output interfaces in the VS Code API.
@@ -24,7 +24,7 @@
 
 ## 0.2.3
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-04-01&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.3&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-04-01&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Fix performance of header algorithm.
 - Fix ending decrement of 1 line in folding provider top-level blocks.
@@ -32,20 +32,20 @@
 
 ## 0.2.2
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-03-18&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/4/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.2&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/4/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-03-18&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Fix performance of folding provider block dedent loop.
 - Port Textmate scope parser to TypeScript and remove caching overheads.
 
 ## 0.2.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-20&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-20&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Boost tokenization performance by adding cache layers to Textmate scope selector logic.
 
 ## 0.2.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-02&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.2.0&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-02&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Accept limited Textmate scope selectors in all configuration values.
 - Introduce array-string duplicity to all configuration values.
@@ -55,13 +55,13 @@ Major breaking change - `meta.parens` does not match `meta.function-call.parens`
 
 ## 0.1.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.1.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.1.1&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.1.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Adds engine tokenization queue to improve performance for large files.
 
 ## 0.1.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/tree/v0.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-08-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/projects/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Project%20Board&message=v0.1.0&logo=trello&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/SNDST00M/vscode-textmate-languageservice/milestone/1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v0.1.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-08-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Initial version:
 
