@@ -12,7 +12,9 @@ const importScopeSelector = new TextmateScopeSelector('import');
 
 export interface FoldingToken {
 	isStart: boolean;
+	level: number;
 	line: number;
+	type: string;
 }
 
 export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider {
@@ -39,7 +41,9 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 		const regions = tokens.filter(this.isRegion, this);
 		const markers = regions.map(function(token) {
 			return {
+				level: token.level,
 				line: token.line,
+				type: token.type,
 				isStart: this.isStartRegion(token.text)
 			};
 		});
@@ -96,7 +100,9 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 		const bounds: TextmateToken[] = tokens.filter(this.isBlockBoundary, tokens);
 		const markers = bounds.map(function(bound) {
 			return {
-				...Object.assign({}, bound),
+				level: bound.level,
+				line: bound.line,
+				type: bound.type,
 				isStart: tokens[tokens.indexOf(bound) + 1].level > bound.level
 			};
 		});
@@ -109,7 +115,8 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 			if (marker.isStart) {
 				stack.push(marker);
 			} else if (stack.length && stack[stack.length - 1].isStart) {
-				const start = stack.pop()!.line + 1;
+				const token = stack.pop();
+				const start = token!.level === 0 ? token!.line : token!.line + 1;
 				const end = marker.line + 1;
 				const kind = this.getTokenFoldingRangeKind(marker);
 				ranges.push(new vscode.FoldingRange(start, end, kind));
@@ -121,7 +128,7 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 		return ranges;
 	}
 
-	private getTokenFoldingRangeKind(token: TextmateToken): vscode.FoldingRangeKind | undefined {
+	private getTokenFoldingRangeKind(token: FoldingToken): vscode.FoldingRangeKind | undefined {
 		switch (true) {
 			case commentScopeSelector.match(token.type):
 				return vscode.FoldingRangeKind.Comment;
