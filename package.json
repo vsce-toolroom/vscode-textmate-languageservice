@@ -1,7 +1,7 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate language service for Visual Studio Code.",
-  "version": "0.2.3",
+  "version": "1.0.0-rc-1",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",
@@ -39,7 +39,7 @@
     "stage-mocha": "cd test/vscode-matlab/node_modules/vscode-textmate-languageservice && npm install mocha && cd ../../../..",
     "stage": "npm-run-all stage-install stage-mocha stage-touch-data stage-data stage-touch-samples stage-samples",
     "reset": "npm-run-all reset-npm reset-git",
-    "reset-npm": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@0.2.3 && npm un mocha && cd ../..",
+    "reset-npm": "cd test/vscode-matlab && npm install vscode-textmate-languageservice@1.0.0-rc-1 && npm un mocha && cd ../..",
     "reset-git": "cd test/vscode-matlab && git add . && git reset --hard && cd ../.."
   },
   "devDependencies": {
