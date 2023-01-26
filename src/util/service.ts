@@ -10,10 +10,7 @@ export default abstract class ServiceBase<T> {
 	private _integrity: Record<string, string> = {};
 	abstract parse(document: SkinnyTextDocument): Promise<T>;
 
-	constructor() {
-		this._cache = {};
-		this._integrity = {};
-	}
+	constructor() {}
 
 	public async fetch(document: SkinnyTextDocument): Promise<T> {
 		const filepath = document.uri.path;
@@ -31,7 +28,9 @@ export default abstract class ServiceBase<T> {
 		if (this._integrity[filepath]) delete this._integrity[filepath];
 		if (this._cache[filepath]) delete this._cache[filepath];
 
-		return (this._cache[filepath] = this.parse(document));
+		const output = this._cache[filepath] = this.parse(document);
+		this._integrity[filepath] = hash;
+		return output;
 	}
 }
 
