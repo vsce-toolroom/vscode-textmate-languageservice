@@ -1,6 +1,6 @@
 [
   {
-    "name": "Dog",
+    "name": "Snake",
     "detail": "entity.name.type.class.matlab",
     "kind": 4,
     "range": [
@@ -9,7 +9,7 @@
         "character": 9
       },
       {
-        "line": 18,
+        "line": 22,
         "character": 0
       }
     ],
@@ -19,7 +19,7 @@
         "character": 9
       },
       {
-        "line": 18,
+        "line": 22,
         "character": 0
       }
     ],
@@ -34,7 +34,7 @@
             "character": 4
           },
           {
-            "line": 18,
+            "line": 22,
             "character": 0
           }
         ],
@@ -44,33 +44,33 @@
             "character": 4
           },
           {
-            "line": 18,
+            "line": 22,
             "character": 0
           }
         ],
         "children": [
           {
-            "name": "Dog",
+            "name": "Snake",
             "detail": "entity.name.function.matlab",
             "kind": 11,
             "range": [
               {
                 "line": 2,
-                "character": 17
+                "character": 23
               },
               {
                 "line": 4,
-                "character": 5
+                "character": 11
               }
             ],
             "selectionRange": [
               {
                 "line": 2,
-                "character": 17
+                "character": 23
               },
               {
                 "line": 4,
-                "character": 5
+                "character": 11
               }
             ],
             "children": []
@@ -111,7 +111,7 @@
                 "character": 23
               },
               {
-                "line": 11,
+                "line": 15,
                 "character": 11
               }
             ],
@@ -121,11 +121,64 @@
                 "character": 23
               },
               {
-                "line": 11,
+                "line": 15,
                 "character": 11
               }
             ],
-            "children": []
+            "children": [
+              {
+                "name": "if",
+                "detail": "keyword.control.if.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 9,
+                    "character": 12
+                  },
+                  {
+                    "line": 10,
+                    "character": 37
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 9,
+                    "character": 12
+                  },
+                  {
+                    "line": 10,
+                    "character": 37
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "else",
+                "detail": "keyword.control.else.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 11,
+                    "character": 12
+                  },
+                  {
+                    "line": 15,
+                    "character": 11
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 11,
+                    "character": 12
+                  },
+                  {
+                    "line": 15,
+                    "character": 11
+                  }
+                ],
+                "children": []
+              }
+            ]
           },
           {
             "name": "sleep",
@@ -133,21 +186,21 @@
             "kind": 11,
             "range": [
               {
-                "line": 12,
+                "line": 16,
                 "character": 23
               },
               {
-                "line": 18,
+                "line": 22,
                 "character": 0
               }
             ],
             "selectionRange": [
               {
-                "line": 12,
+                "line": 16,
                 "character": 23
               },
               {
-                "line": 18,
+                "line": 22,
                 "character": 0
               }
             ],

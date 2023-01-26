@@ -56,21 +56,21 @@
             "range": [
               {
                 "line": 2,
-                "character": 17
+                "character": 23
               },
               {
                 "line": 4,
-                "character": 5
+                "character": 11
               }
             ],
             "selectionRange": [
               {
                 "line": 2,
-                "character": 17
+                "character": 23
               },
               {
                 "line": 4,
-                "character": 5
+                "character": 11
               }
             ],
             "children": []
@@ -99,7 +99,60 @@
                 "character": 11
               }
             ],
-            "children": []
+            "children": [
+              {
+                "name": "if",
+                "detail": "keyword.control.if.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 5,
+                    "character": 33
+                  },
+                  {
+                    "line": 6,
+                    "character": 12
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 5,
+                    "character": 33
+                  },
+                  {
+                    "line": 6,
+                    "character": 12
+                  }
+                ],
+                "children": []
+              },
+              {
+                "name": "else",
+                "detail": "keyword.control.else.matlab",
+                "kind": 2,
+                "range": [
+                  {
+                    "line": 6,
+                    "character": 55
+                  },
+                  {
+                    "line": 7,
+                    "character": 11
+                  }
+                ],
+                "selectionRange": [
+                  {
+                    "line": 6,
+                    "character": 55
+                  },
+                  {
+                    "line": 7,
+                    "character": 11
+                  }
+                ],
+                "children": []
+              }
+            ]
           },
           {
             "name": "move",

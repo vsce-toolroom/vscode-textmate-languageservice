@@ -1,7 +1,7 @@
 [
   {
-    "startIndex": 7,
-    "endIndex": 13,
+    "startIndex": 16,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -14,9 +14,9 @@
     "text": "Animal",
     "line": 3,
     "level": 3,
-    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Dog.m",
+    "uri": "./samples/Dog.m",
     "definition": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "uri": "./samples/Animal.m",
       "range": [
         {
           "line": 0,
@@ -44,9 +44,9 @@
     "text": "Animal",
     "line": 10,
     "level": 3,
-    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Dog.m",
+    "uri": "./samples/Dog.m",
     "definition": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "uri": "./samples/Animal.m",
       "range": [
         {
           "line": 0,
@@ -74,9 +74,9 @@
     "text": "Animal",
     "line": 14,
     "level": 3,
-    "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Dog.m",
+    "uri": "./samples/Dog.m",
     "definition": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "uri": "./samples/Animal.m",
       "range": [
         {
           "line": 0,

@@ -1,74 +1,92 @@
 [
   {
-    "name": "obj.Name",
+    "name": "obj.Locale",
     "kind": "Variable",
     "location": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "uri": "./samples/Animal.m",
       "range": [
         {
-          "line": 9,
+          "line": 10,
           "character": 12
         },
         {
-          "line": 9,
+          "line": 10,
+          "character": 80
+        }
+      ]
+    },
+    "containerName": "Animal"
+  },
+  {
+    "name": "obj.Name",
+    "kind": "Variable",
+    "location": {
+      "uri": "./samples/Animal.m",
+      "range": [
+        {
+          "line": 11,
+          "character": 12
+        },
+        {
+          "line": 11,
           "character": 28
         }
       ]
     },
-    "containerName": ""
+    "containerName": "obj.Locale"
   },
   {
     "name": "obj.Order",
     "kind": "Variable",
     "location": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
-      "range": [
-        {
-          "line": 10,
-          "character": 12
-        },
-        {
-          "line": 10,
-          "character": 30
-        }
-      ]
-    },
-    "containerName": ""
-  },
-  {
-    "name": "obj.Age",
-    "kind": "Variable",
-    "location": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
-      "range": [
-        {
-          "line": 11,
-          "character": 12
-        },
-        {
-          "line": 11,
-          "character": 26
-        }
-      ]
-    },
-    "containerName": ""
-  },
-  {
-    "name": "obj.Tameable",
-    "kind": "Variable",
-    "location": {
-      "uri": "/home/runner/work/vscode-textmate-languageservice/vscode-textmate-languageservice/test/animals/Animal.m",
+      "uri": "./samples/Animal.m",
       "range": [
         {
           "line": 12,
           "character": 12
         },
         {
+          "line": 12,
+          "character": 30
+        }
+      ]
+    },
+    "containerName": "obj.Name"
+  },
+  {
+    "name": "obj.Age",
+    "kind": "Variable",
+    "location": {
+      "uri": "./samples/Animal.m",
+      "range": [
+        {
           "line": 13,
+          "character": 12
+        },
+        {
+          "line": 13,
+          "character": 26
+        }
+      ]
+    },
+    "containerName": "obj.Order"
+  },
+  {
+    "name": "obj.Tameable",
+    "kind": "Variable",
+    "location": {
+      "uri": "./samples/Animal.m",
+      "range": [
+        {
+          "line": 14,
+          "character": 12
+        },
+        {
+          "line": 15,
           "character": 11
         }
       ]
     },
-    "containerName": ""
+    "containerName": "obj.Age"
   }
 ]

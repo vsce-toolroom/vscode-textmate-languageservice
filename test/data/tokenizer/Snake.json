@@ -26,7 +26,7 @@
   },
   {
     "startIndex": 9,
-    "endIndex": 12,
+    "endIndex": 14,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -34,34 +34,7 @@
       "entity.name.type.class.matlab"
     ],
     "type": "entity.name.type.class.matlab",
-    "text": "Dog",
-    "line": 0,
-    "level": 0
-  },
-  {
-    "startIndex": 12,
-    "endIndex": 13,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.class.declaration.matlab"
-    ],
-    "type": "meta.class.declaration.matlab",
-    "text": " ",
-    "line": 0,
-    "level": 0
-  },
-  {
-    "startIndex": 13,
-    "endIndex": 14,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.class.declaration.matlab",
-      "punctuation.separator.lt.inheritance.matlab"
-    ],
-    "type": "punctuation.separator.lt.inheritance.matlab",
-    "text": "<",
+    "text": "Snake",
     "line": 0,
     "level": 0
   },
@@ -80,7 +53,34 @@
   },
   {
     "startIndex": 15,
-    "endIndex": 21,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab",
+      "punctuation.separator.lt.inheritance.matlab"
+    ],
+    "type": "punctuation.separator.lt.inheritance.matlab",
+    "text": "<",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab"
+    ],
+    "type": "meta.class.declaration.matlab",
+    "text": " ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -122,7 +122,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 2,
+    "endIndex": 8,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -130,13 +130,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t",
+    "text": "        ",
     "line": 2,
     "level": 2
   },
   {
-    "startIndex": 2,
-    "endIndex": 10,
+    "startIndex": 8,
+    "endIndex": 16,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -150,8 +150,8 @@
     "level": 2
   },
   {
-    "startIndex": 10,
-    "endIndex": 11,
+    "startIndex": 16,
+    "endIndex": 17,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -164,8 +164,8 @@
     "level": 2
   },
   {
-    "startIndex": 11,
-    "endIndex": 14,
+    "startIndex": 17,
+    "endIndex": 20,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -181,8 +181,8 @@
     "level": 2
   },
   {
-    "startIndex": 14,
-    "endIndex": 15,
+    "startIndex": 20,
+    "endIndex": 21,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -196,8 +196,8 @@
     "level": 2
   },
   {
-    "startIndex": 15,
-    "endIndex": 16,
+    "startIndex": 21,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -212,8 +212,8 @@
     "level": 2
   },
   {
-    "startIndex": 16,
-    "endIndex": 17,
+    "startIndex": 22,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -227,8 +227,8 @@
     "level": 2
   },
   {
-    "startIndex": 17,
-    "endIndex": 20,
+    "startIndex": 23,
+    "endIndex": 28,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -238,13 +238,13 @@
       "entity.name.function.matlab"
     ],
     "type": "entity.name.function.matlab",
-    "text": "Dog",
+    "text": "Snake",
     "line": 2,
     "level": 2
   },
   {
-    "startIndex": 20,
-    "endIndex": 21,
+    "startIndex": 28,
+    "endIndex": 29,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -260,8 +260,8 @@
     "level": 2
   },
   {
-    "startIndex": 21,
-    "endIndex": 25,
+    "startIndex": 29,
+    "endIndex": 33,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -277,8 +277,8 @@
     "level": 2
   },
   {
-    "startIndex": 25,
-    "endIndex": 26,
+    "startIndex": 33,
+    "endIndex": 34,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -294,8 +294,8 @@
     "level": 2
   },
   {
-    "startIndex": 26,
-    "endIndex": 27,
+    "startIndex": 34,
+    "endIndex": 35,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -310,8 +310,8 @@
     "level": 2
   },
   {
-    "startIndex": 27,
-    "endIndex": 32,
+    "startIndex": 35,
+    "endIndex": 40,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -327,8 +327,8 @@
     "level": 2
   },
   {
-    "startIndex": 32,
-    "endIndex": 33,
+    "startIndex": 40,
+    "endIndex": 41,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -345,7 +345,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 3,
+    "endIndex": 12,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -353,13 +353,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t\t",
+    "text": "            ",
     "line": 3,
     "level": 3
   },
   {
-    "startIndex": 3,
-    "endIndex": 6,
+    "startIndex": 12,
+    "endIndex": 15,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -374,8 +374,8 @@
     "level": 3
   },
   {
-    "startIndex": 6,
-    "endIndex": 7,
+    "startIndex": 15,
+    "endIndex": 16,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -390,8 +390,8 @@
     "level": 3
   },
   {
-    "startIndex": 7,
-    "endIndex": 13,
+    "startIndex": 16,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -406,8 +406,8 @@
     "level": 3
   },
   {
-    "startIndex": 13,
-    "endIndex": 14,
+    "startIndex": 22,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -422,8 +422,8 @@
     "level": 3
   },
   {
-    "startIndex": 14,
-    "endIndex": 18,
+    "startIndex": 23,
+    "endIndex": 27,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -438,8 +438,8 @@
     "level": 3
   },
   {
-    "startIndex": 18,
-    "endIndex": 19,
+    "startIndex": 27,
+    "endIndex": 28,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -454,8 +454,8 @@
     "level": 3
   },
   {
-    "startIndex": 19,
-    "endIndex": 20,
+    "startIndex": 28,
+    "endIndex": 29,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -469,8 +469,8 @@
     "level": 3
   },
   {
-    "startIndex": 20,
-    "endIndex": 25,
+    "startIndex": 29,
+    "endIndex": 34,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -485,8 +485,8 @@
     "level": 3
   },
   {
-    "startIndex": 25,
-    "endIndex": 26,
+    "startIndex": 34,
+    "endIndex": 35,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -500,8 +500,8 @@
     "level": 3
   },
   {
-    "startIndex": 26,
-    "endIndex": 27,
+    "startIndex": 35,
+    "endIndex": 36,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -516,8 +516,8 @@
     "level": 3
   },
   {
-    "startIndex": 27,
-    "endIndex": 28,
+    "startIndex": 36,
+    "endIndex": 37,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -531,8 +531,8 @@
     "level": 3
   },
   {
-    "startIndex": 28,
-    "endIndex": 30,
+    "startIndex": 37,
+    "endIndex": 39,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -542,88 +542,7 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "15",
-    "line": 3,
-    "level": 3
-  },
-  {
-    "startIndex": 30,
-    "endIndex": 31,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.methods.matlab",
-      "meta.function.matlab",
-      "meta.method-call.parens.matlab",
-      "punctuation.separator.comma.matlab"
-    ],
-    "type": "punctuation.separator.comma.matlab",
-    "text": ",",
-    "line": 3,
-    "level": 3
-  },
-  {
-    "startIndex": 31,
-    "endIndex": 32,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.methods.matlab",
-      "meta.function.matlab",
-      "meta.method-call.parens.matlab"
-    ],
-    "type": "meta.method-call.parens.matlab",
-    "text": " ",
-    "line": 3,
-    "level": 3
-  },
-  {
-    "startIndex": 32,
-    "endIndex": 33,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.methods.matlab",
-      "meta.function.matlab",
-      "meta.method-call.parens.matlab",
-      "string.quoted.double.matlab",
-      "punctuation.definition.string.begin.matlab"
-    ],
-    "type": "punctuation.definition.string.begin.matlab",
-    "text": "\"",
-    "line": 3,
-    "level": 3
-  },
-  {
-    "startIndex": 33,
-    "endIndex": 38,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.methods.matlab",
-      "meta.function.matlab",
-      "meta.method-call.parens.matlab",
-      "string.quoted.double.matlab"
-    ],
-    "type": "string.quoted.double.matlab",
-    "text": "Canis",
-    "line": 3,
-    "level": 3
-  },
-  {
-    "startIndex": 38,
-    "endIndex": 39,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.methods.matlab",
-      "meta.function.matlab",
-      "meta.method-call.parens.matlab",
-      "string.quoted.double.matlab",
-      "punctuation.definition.string.end.matlab"
-    ],
-    "type": "punctuation.definition.string.end.matlab",
-    "text": "\"",
+    "text": "18",
     "line": 3,
     "level": 3
   },
@@ -660,7 +579,88 @@
   },
   {
     "startIndex": 41,
-    "endIndex": 45,
+    "endIndex": 42,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "\"",
+    "line": 3,
+    "level": 3
+  },
+  {
+    "startIndex": 42,
+    "endIndex": 51,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "string.quoted.double.matlab"
+    ],
+    "type": "string.quoted.double.matlab",
+    "text": "Serpentes",
+    "line": 3,
+    "level": 3
+  },
+  {
+    "startIndex": 51,
+    "endIndex": 52,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "\"",
+    "line": 3,
+    "level": 3
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 53,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab",
+      "punctuation.separator.comma.matlab"
+    ],
+    "type": "punctuation.separator.comma.matlab",
+    "text": ",",
+    "line": 3,
+    "level": 3
+  },
+  {
+    "startIndex": 53,
+    "endIndex": 54,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.method-call.parens.matlab"
+    ],
+    "type": "meta.method-call.parens.matlab",
+    "text": " ",
+    "line": 3,
+    "level": 3
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 58,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -675,8 +675,8 @@
     "level": 3
   },
   {
-    "startIndex": 45,
-    "endIndex": 46,
+    "startIndex": 58,
+    "endIndex": 59,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -691,8 +691,8 @@
     "level": 3
   },
   {
-    "startIndex": 46,
-    "endIndex": 47,
+    "startIndex": 59,
+    "endIndex": 60,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -707,7 +707,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 2,
+    "endIndex": 8,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -715,13 +715,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t",
+    "text": "        ",
     "line": 4,
-    "level": 3
+    "level": 2
   },
   {
-    "startIndex": 2,
-    "endIndex": 5,
+    "startIndex": 8,
+    "endIndex": 11,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -982,7 +982,7 @@
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Woof",
+    "text": "Hiss",
     "line": 6,
     "level": 3
   },
@@ -1046,7 +1046,7 @@
     "type": "meta.function.matlab",
     "text": "        ",
     "line": 7,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -1293,11 +1293,278 @@
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
-      "meta.function.matlab"
+      "meta.function.matlab",
+      "meta.if.matlab"
     ],
-    "type": "meta.function.matlab",
+    "type": "meta.if.matlab",
     "text": "            ",
     "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "keyword.control.if.matlab"
+    ],
+    "type": "keyword.control.if.matlab",
+    "text": "if",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab"
+    ],
+    "type": "meta.if.declaration.matlab",
+    "text": " ",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 21,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "type": "variable.other.readwrite.matlab",
+    "text": "meters",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 22,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab"
+    ],
+    "type": "meta.if.declaration.matlab",
+    "text": " ",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 23,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab",
+      "keyword.operator.relational.matlab"
+    ],
+    "type": "keyword.operator.relational.matlab",
+    "text": "<",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 23,
+    "endIndex": 24,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab"
+    ],
+    "type": "meta.if.declaration.matlab",
+    "text": " ",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 25,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.if.declaration.matlab",
+      "constant.numeric.decimal.matlab"
+    ],
+    "type": "constant.numeric.decimal.matlab",
+    "text": "2",
+    "line": 9,
+    "level": 3
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab"
+    ],
+    "type": "meta.if.matlab",
+    "text": "                ",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 20,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "entity.name.function.matlab"
+    ],
+    "type": "entity.name.function.matlab",
+    "text": "disp",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 21,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "punctuation.section.parens.begin.matlab"
+    ],
+    "type": "punctuation.section.parens.begin.matlab",
+    "text": "(",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 22,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.begin.matlab"
+    ],
+    "type": "punctuation.definition.string.begin.matlab",
+    "text": "\"",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 34,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "string.quoted.double.matlab"
+    ],
+    "type": "string.quoted.double.matlab",
+    "text": "Whip strike!",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 35,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "string.quoted.double.matlab",
+      "punctuation.definition.string.end.matlab"
+    ],
+    "type": "punctuation.definition.string.end.matlab",
+    "text": "\"",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 35,
+    "endIndex": 36,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.function-call.parens.matlab",
+      "punctuation.section.parens.end.matlab"
+    ],
+    "type": "punctuation.section.parens.end.matlab",
+    "text": ")",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 37,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "punctuation.terminator.semicolon.matlab"
+    ],
+    "type": "punctuation.terminator.semicolon.matlab",
+    "text": ";",
+    "line": 10,
+    "level": 4
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.else.matlab"
+    ],
+    "type": "meta.else.matlab",
+    "text": "            ",
+    "line": 11,
     "level": 3
   },
   {
@@ -1308,109 +1575,179 @@
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
+      "meta.else.matlab",
+      "keyword.control.else.matlab"
+    ],
+    "type": "keyword.control.else.matlab",
+    "text": "else",
+    "line": 11,
+    "level": 3
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 16,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab"
+    ],
+    "type": "meta.if.matlab",
+    "text": "                ",
+    "line": 12,
+    "level": 4
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 20,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "entity.name.function.matlab"
     ],
     "type": "entity.name.function.matlab",
     "text": "disp",
-    "line": 9,
-    "level": 3
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 16,
-    "endIndex": 17,
+    "startIndex": 20,
+    "endIndex": 21,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "punctuation.section.parens.begin.matlab"
     ],
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
-    "line": 9,
-    "level": 3
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 17,
-    "endIndex": 18,
+    "startIndex": 21,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "string.quoted.double.matlab",
       "punctuation.definition.string.begin.matlab"
     ],
     "type": "punctuation.definition.string.begin.matlab",
     "text": "\"",
-    "line": 9,
-    "level": 3
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 18,
-    "endIndex": 26,
+    "startIndex": 22,
+    "endIndex": 34,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Pacing..",
-    "line": 9,
-    "level": 3
+    "text": "Slithering..",
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 26,
-    "endIndex": 27,
+    "startIndex": 34,
+    "endIndex": 35,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "string.quoted.double.matlab",
       "punctuation.definition.string.end.matlab"
     ],
     "type": "punctuation.definition.string.end.matlab",
     "text": "\"",
-    "line": 9,
-    "level": 3
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 27,
-    "endIndex": 28,
+    "startIndex": 35,
+    "endIndex": 36,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "meta.function-call.parens.matlab",
       "punctuation.section.parens.end.matlab"
     ],
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
-    "line": 9,
-    "level": 3
+    "line": 12,
+    "level": 4
   },
   {
-    "startIndex": 28,
-    "endIndex": 29,
+    "startIndex": 36,
+    "endIndex": 37,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
       "meta.methods.matlab",
       "meta.function.matlab",
+      "meta.if.matlab",
       "punctuation.terminator.semicolon.matlab"
     ],
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
-    "line": 9,
+    "line": 12,
+    "level": 4
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 12,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab"
+    ],
+    "type": "meta.if.matlab",
+    "text": "            ",
+    "line": 13,
+    "level": 3
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 15,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "keyword.control.end.if.matlab"
+    ],
+    "type": "keyword.control.end.if.matlab",
+    "text": "end",
+    "line": 13,
     "level": 3
   },
   {
@@ -1424,7 +1761,7 @@
     ],
     "type": "meta.function.matlab",
     "text": "            ",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1440,7 +1777,7 @@
     ],
     "type": "entity.name.function.matlab",
     "text": "move",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1456,7 +1793,7 @@
     ],
     "type": "punctuation.accessor.scope-resolution.superclass.matlab",
     "text": "@",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1472,7 +1809,7 @@
     ],
     "type": "entity.name.type.class.matlab",
     "text": "Animal",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1488,7 +1825,7 @@
     ],
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1504,7 +1841,7 @@
     ],
     "type": "variable.other.readwrite.matlab",
     "text": "obj",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1520,7 +1857,7 @@
     ],
     "type": "punctuation.separator.comma.matlab",
     "text": ",",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1535,7 +1872,7 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1551,7 +1888,7 @@
     ],
     "type": "variable.other.readwrite.matlab",
     "text": "meters",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1566,7 +1903,7 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1582,7 +1919,7 @@
     ],
     "type": "keyword.operator.arithmetic.matlab",
     "text": "/",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1597,7 +1934,7 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1612,8 +1949,8 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "3",
-    "line": 10,
+    "text": "5",
+    "line": 14,
     "level": 3
   },
   {
@@ -1629,7 +1966,7 @@
     ],
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1644,7 +1981,7 @@
     ],
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
-    "line": 10,
+    "line": 14,
     "level": 3
   },
   {
@@ -1658,8 +1995,8 @@
     ],
     "type": "meta.function.matlab",
     "text": "        ",
-    "line": 11,
-    "level": 3
+    "line": 15,
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -1673,7 +2010,7 @@
     ],
     "type": "storage.type.function.end.matlab",
     "text": "end",
-    "line": 11,
+    "line": 15,
     "level": 2
   },
   {
@@ -1687,7 +2024,7 @@
     ],
     "type": "meta.function.matlab",
     "text": "        ",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1702,7 +2039,7 @@
     ],
     "type": "storage.type.function.matlab",
     "text": "function",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1716,7 +2053,7 @@
     ],
     "type": "meta.function.matlab",
     "text": " ",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1733,7 +2070,7 @@
     ],
     "type": "variable.parameter.output.matlab",
     "text": "obj",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1748,7 +2085,7 @@
     ],
     "type": "meta.function.declaration.matlab",
     "text": " ",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1764,7 +2101,7 @@
     ],
     "type": "keyword.operator.assignment.matlab",
     "text": "=",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1779,7 +2116,7 @@
     ],
     "type": "meta.function.declaration.matlab",
     "text": " ",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1795,7 +2132,7 @@
     ],
     "type": "entity.name.function.matlab",
     "text": "sleep",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1812,7 +2149,7 @@
     ],
     "type": "punctuation.definition.parameters.begin.matlab",
     "text": "(",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1829,7 +2166,7 @@
     ],
     "type": "variable.parameter.input.matlab",
     "text": "obj",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1846,7 +2183,7 @@
     ],
     "type": "punctuation.separator.parameter.comma.matlab",
     "text": ",",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1862,7 +2199,7 @@
     ],
     "type": "meta.parameters.matlab",
     "text": " ",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1879,7 +2216,7 @@
     ],
     "type": "variable.parameter.input.matlab",
     "text": "multiplier",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1896,7 +2233,7 @@
     ],
     "type": "punctuation.definition.parameters.end.matlab",
     "text": ")",
-    "line": 12,
+    "line": 16,
     "level": 2
   },
   {
@@ -1910,7 +2247,7 @@
     ],
     "type": "meta.function.matlab",
     "text": "            ",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
@@ -1926,7 +2263,7 @@
     ],
     "type": "entity.name.function.matlab",
     "text": "disp",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
@@ -1942,7 +2279,7 @@
     ],
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
@@ -1959,12 +2296,12 @@
     ],
     "type": "punctuation.definition.string.begin.matlab",
     "text": "\"",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
     "startIndex": 18,
-    "endIndex": 27,
+    "endIndex": 31,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1974,13 +2311,13 @@
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Napping..",
-    "line": 13,
+    "text": "Hibernating..",
+    "line": 17,
     "level": 3
   },
   {
-    "startIndex": 27,
-    "endIndex": 28,
+    "startIndex": 31,
+    "endIndex": 32,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1992,12 +2329,12 @@
     ],
     "type": "punctuation.definition.string.end.matlab",
     "text": "\"",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
-    "startIndex": 28,
-    "endIndex": 29,
+    "startIndex": 32,
+    "endIndex": 33,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -2008,12 +2345,12 @@
     ],
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
-    "startIndex": 29,
-    "endIndex": 30,
+    "startIndex": 33,
+    "endIndex": 34,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -2023,7 +2360,7 @@
     ],
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
-    "line": 13,
+    "line": 17,
     "level": 3
   },
   {
@@ -2037,7 +2374,7 @@
     ],
     "type": "meta.function.matlab",
     "text": "            ",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2053,7 +2390,7 @@
     ],
     "type": "entity.name.function.matlab",
     "text": "sleep",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2069,7 +2406,7 @@
     ],
     "type": "punctuation.accessor.scope-resolution.superclass.matlab",
     "text": "@",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2085,7 +2422,7 @@
     ],
     "type": "entity.name.type.class.matlab",
     "text": "Animal",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2101,7 +2438,7 @@
     ],
     "type": "punctuation.section.parens.begin.matlab",
     "text": "(",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2117,7 +2454,7 @@
     ],
     "type": "variable.other.readwrite.matlab",
     "text": "obj",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2133,7 +2470,7 @@
     ],
     "type": "punctuation.separator.comma.matlab",
     "text": ",",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2148,7 +2485,7 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2164,7 +2501,7 @@
     ],
     "type": "variable.other.readwrite.matlab",
     "text": "multiplier",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2179,7 +2516,7 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2195,7 +2532,7 @@
     ],
     "type": "keyword.operator.arithmetic.matlab",
     "text": "*",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2210,12 +2547,12 @@
     ],
     "type": "meta.method-call.parens.matlab",
     "text": " ",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
     "startIndex": 43,
-    "endIndex": 45,
+    "endIndex": 44,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -2225,13 +2562,13 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "12",
-    "line": 14,
+    "text": "3",
+    "line": 18,
     "level": 3
   },
   {
-    "startIndex": 45,
-    "endIndex": 46,
+    "startIndex": 44,
+    "endIndex": 45,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -2242,12 +2579,12 @@
     ],
     "type": "punctuation.section.parens.end.matlab",
     "text": ")",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
-    "startIndex": 46,
-    "endIndex": 47,
+    "startIndex": 45,
+    "endIndex": 46,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -2257,7 +2594,7 @@
     ],
     "type": "punctuation.terminator.semicolon.matlab",
     "text": ";",
-    "line": 14,
+    "line": 18,
     "level": 3
   },
   {
@@ -2271,8 +2608,8 @@
     ],
     "type": "meta.function.matlab",
     "text": "        ",
-    "line": 15,
-    "level": 3
+    "line": 19,
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -2286,7 +2623,7 @@
     ],
     "type": "storage.type.function.end.matlab",
     "text": "end",
-    "line": 15,
+    "line": 19,
     "level": 2
   },
   {
@@ -2299,8 +2636,8 @@
     ],
     "type": "meta.methods.matlab",
     "text": "    ",
-    "line": 16,
-    "level": 2
+    "line": 20,
+    "level": 1
   },
   {
     "startIndex": 4,
@@ -2313,7 +2650,7 @@
     ],
     "type": "keyword.control.end.methods.matlab",
     "text": "end",
-    "line": 16,
+    "line": 20,
     "level": 1
   },
   {
@@ -2326,7 +2663,7 @@
     ],
     "type": "storage.type.class.end.matlab",
     "text": "end",
-    "line": 17,
+    "line": 21,
     "level": 0
   },
   {
@@ -2337,7 +2674,7 @@
     ],
     "type": "source.matlab",
     "text": "",
-    "line": 18,
+    "line": 22,
     "level": 0
   }
 ]

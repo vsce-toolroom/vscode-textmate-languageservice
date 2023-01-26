@@ -26,7 +26,7 @@
   },
   {
     "startIndex": 9,
-    "endIndex": 14,
+    "endIndex": 12,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -34,7 +34,34 @@
       "entity.name.type.class.matlab"
     ],
     "type": "entity.name.type.class.matlab",
-    "text": "Horse",
+    "text": "Dog",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab"
+    ],
+    "type": "meta.class.declaration.matlab",
+    "text": " ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 14,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab",
+      "punctuation.separator.lt.inheritance.matlab"
+    ],
+    "type": "punctuation.separator.lt.inheritance.matlab",
+    "text": "<",
     "line": 0,
     "level": 0
   },
@@ -53,34 +80,7 @@
   },
   {
     "startIndex": 15,
-    "endIndex": 16,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.class.declaration.matlab",
-      "punctuation.separator.lt.inheritance.matlab"
-    ],
-    "type": "punctuation.separator.lt.inheritance.matlab",
-    "text": "<",
-    "line": 0,
-    "level": 0
-  },
-  {
-    "startIndex": 16,
-    "endIndex": 17,
-    "scopes": [
-      "source.matlab",
-      "meta.class.matlab",
-      "meta.class.declaration.matlab"
-    ],
-    "type": "meta.class.declaration.matlab",
-    "text": " ",
-    "line": 0,
-    "level": 0
-  },
-  {
-    "startIndex": 17,
-    "endIndex": 23,
+    "endIndex": 21,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -122,7 +122,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 2,
+    "endIndex": 8,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -130,13 +130,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t",
+    "text": "        ",
     "line": 2,
     "level": 2
   },
   {
-    "startIndex": 2,
-    "endIndex": 10,
+    "startIndex": 8,
+    "endIndex": 16,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -150,8 +150,8 @@
     "level": 2
   },
   {
-    "startIndex": 10,
-    "endIndex": 11,
+    "startIndex": 16,
+    "endIndex": 17,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -164,8 +164,8 @@
     "level": 2
   },
   {
-    "startIndex": 11,
-    "endIndex": 14,
+    "startIndex": 17,
+    "endIndex": 20,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -181,8 +181,8 @@
     "level": 2
   },
   {
-    "startIndex": 14,
-    "endIndex": 15,
+    "startIndex": 20,
+    "endIndex": 21,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -196,8 +196,8 @@
     "level": 2
   },
   {
-    "startIndex": 15,
-    "endIndex": 16,
+    "startIndex": 21,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -212,8 +212,8 @@
     "level": 2
   },
   {
-    "startIndex": 16,
-    "endIndex": 17,
+    "startIndex": 22,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -227,8 +227,8 @@
     "level": 2
   },
   {
-    "startIndex": 17,
-    "endIndex": 22,
+    "startIndex": 23,
+    "endIndex": 26,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -238,13 +238,13 @@
       "entity.name.function.matlab"
     ],
     "type": "entity.name.function.matlab",
-    "text": "Horse",
+    "text": "Dog",
     "line": 2,
     "level": 2
   },
   {
-    "startIndex": 22,
-    "endIndex": 23,
+    "startIndex": 26,
+    "endIndex": 27,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -260,8 +260,8 @@
     "level": 2
   },
   {
-    "startIndex": 23,
-    "endIndex": 27,
+    "startIndex": 27,
+    "endIndex": 31,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -277,8 +277,8 @@
     "level": 2
   },
   {
-    "startIndex": 27,
-    "endIndex": 28,
+    "startIndex": 31,
+    "endIndex": 32,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -294,8 +294,8 @@
     "level": 2
   },
   {
-    "startIndex": 28,
-    "endIndex": 29,
+    "startIndex": 32,
+    "endIndex": 33,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -310,8 +310,8 @@
     "level": 2
   },
   {
-    "startIndex": 29,
-    "endIndex": 34,
+    "startIndex": 33,
+    "endIndex": 38,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -327,8 +327,8 @@
     "level": 2
   },
   {
-    "startIndex": 34,
-    "endIndex": 35,
+    "startIndex": 38,
+    "endIndex": 39,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -345,7 +345,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 3,
+    "endIndex": 12,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -353,13 +353,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t\t",
+    "text": "            ",
     "line": 3,
     "level": 3
   },
   {
-    "startIndex": 3,
-    "endIndex": 6,
+    "startIndex": 12,
+    "endIndex": 15,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -374,8 +374,8 @@
     "level": 3
   },
   {
-    "startIndex": 6,
-    "endIndex": 7,
+    "startIndex": 15,
+    "endIndex": 16,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -390,8 +390,8 @@
     "level": 3
   },
   {
-    "startIndex": 7,
-    "endIndex": 13,
+    "startIndex": 16,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -406,8 +406,8 @@
     "level": 3
   },
   {
-    "startIndex": 13,
-    "endIndex": 14,
+    "startIndex": 22,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -422,8 +422,8 @@
     "level": 3
   },
   {
-    "startIndex": 14,
-    "endIndex": 18,
+    "startIndex": 23,
+    "endIndex": 27,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -438,8 +438,8 @@
     "level": 3
   },
   {
-    "startIndex": 18,
-    "endIndex": 19,
+    "startIndex": 27,
+    "endIndex": 28,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -454,8 +454,8 @@
     "level": 3
   },
   {
-    "startIndex": 19,
-    "endIndex": 20,
+    "startIndex": 28,
+    "endIndex": 29,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -469,8 +469,8 @@
     "level": 3
   },
   {
-    "startIndex": 20,
-    "endIndex": 25,
+    "startIndex": 29,
+    "endIndex": 34,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -485,8 +485,8 @@
     "level": 3
   },
   {
-    "startIndex": 25,
-    "endIndex": 26,
+    "startIndex": 34,
+    "endIndex": 35,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -500,8 +500,8 @@
     "level": 3
   },
   {
-    "startIndex": 26,
-    "endIndex": 27,
+    "startIndex": 35,
+    "endIndex": 36,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -516,8 +516,8 @@
     "level": 3
   },
   {
-    "startIndex": 27,
-    "endIndex": 28,
+    "startIndex": 36,
+    "endIndex": 37,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -531,8 +531,8 @@
     "level": 3
   },
   {
-    "startIndex": 28,
-    "endIndex": 29,
+    "startIndex": 37,
+    "endIndex": 39,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -542,13 +542,13 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "6",
+    "text": "15",
     "line": 3,
     "level": 3
   },
   {
-    "startIndex": 29,
-    "endIndex": 30,
+    "startIndex": 39,
+    "endIndex": 40,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -563,8 +563,8 @@
     "level": 3
   },
   {
-    "startIndex": 30,
-    "endIndex": 31,
+    "startIndex": 40,
+    "endIndex": 41,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -578,8 +578,8 @@
     "level": 3
   },
   {
-    "startIndex": 31,
-    "endIndex": 32,
+    "startIndex": 41,
+    "endIndex": 42,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -595,8 +595,8 @@
     "level": 3
   },
   {
-    "startIndex": 32,
-    "endIndex": 39,
+    "startIndex": 42,
+    "endIndex": 47,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -606,13 +606,13 @@
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Equidae",
+    "text": "Canis",
     "line": 3,
     "level": 3
   },
   {
-    "startIndex": 39,
-    "endIndex": 40,
+    "startIndex": 47,
+    "endIndex": 48,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -628,8 +628,8 @@
     "level": 3
   },
   {
-    "startIndex": 40,
-    "endIndex": 41,
+    "startIndex": 48,
+    "endIndex": 49,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -644,8 +644,8 @@
     "level": 3
   },
   {
-    "startIndex": 41,
-    "endIndex": 42,
+    "startIndex": 49,
+    "endIndex": 50,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -659,8 +659,8 @@
     "level": 3
   },
   {
-    "startIndex": 42,
-    "endIndex": 46,
+    "startIndex": 50,
+    "endIndex": 54,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -675,8 +675,8 @@
     "level": 3
   },
   {
-    "startIndex": 46,
-    "endIndex": 47,
+    "startIndex": 54,
+    "endIndex": 55,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -691,8 +691,8 @@
     "level": 3
   },
   {
-    "startIndex": 47,
-    "endIndex": 48,
+    "startIndex": 55,
+    "endIndex": 56,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -707,7 +707,7 @@
   },
   {
     "startIndex": 0,
-    "endIndex": 2,
+    "endIndex": 8,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -715,13 +715,13 @@
       "meta.function.matlab"
     ],
     "type": "meta.function.matlab",
-    "text": "\t\t",
+    "text": "        ",
     "line": 4,
-    "level": 3
+    "level": 2
   },
   {
-    "startIndex": 2,
-    "endIndex": 5,
+    "startIndex": 8,
+    "endIndex": 11,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -972,7 +972,7 @@
   },
   {
     "startIndex": 18,
-    "endIndex": 23,
+    "endIndex": 22,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -982,13 +982,13 @@
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Neigh",
+    "text": "Woof",
     "line": 6,
     "level": 3
   },
   {
-    "startIndex": 23,
-    "endIndex": 24,
+    "startIndex": 22,
+    "endIndex": 23,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1004,8 +1004,8 @@
     "level": 3
   },
   {
-    "startIndex": 24,
-    "endIndex": 25,
+    "startIndex": 23,
+    "endIndex": 24,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1020,8 +1020,8 @@
     "level": 3
   },
   {
-    "startIndex": 25,
-    "endIndex": 26,
+    "startIndex": 24,
+    "endIndex": 25,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1046,7 +1046,7 @@
     "type": "meta.function.matlab",
     "text": "        ",
     "line": 7,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -1351,7 +1351,7 @@
   },
   {
     "startIndex": 18,
-    "endIndex": 29,
+    "endIndex": 26,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1361,13 +1361,13 @@
       "string.quoted.double.matlab"
     ],
     "type": "string.quoted.double.matlab",
-    "text": "Galloping..",
+    "text": "Pacing..",
     "line": 9,
     "level": 3
   },
   {
-    "startIndex": 29,
-    "endIndex": 30,
+    "startIndex": 26,
+    "endIndex": 27,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1383,8 +1383,8 @@
     "level": 3
   },
   {
-    "startIndex": 30,
-    "endIndex": 31,
+    "startIndex": 27,
+    "endIndex": 28,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1399,8 +1399,8 @@
     "level": 3
   },
   {
-    "startIndex": 31,
-    "endIndex": 32,
+    "startIndex": 28,
+    "endIndex": 29,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -1581,7 +1581,7 @@
       "keyword.operator.arithmetic.matlab"
     ],
     "type": "keyword.operator.arithmetic.matlab",
-    "text": "*",
+    "text": "/",
     "line": 10,
     "level": 3
   },
@@ -1612,7 +1612,7 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "5",
+    "text": "3",
     "line": 10,
     "level": 3
   },
@@ -1659,7 +1659,7 @@
     "type": "meta.function.matlab",
     "text": "        ",
     "line": 11,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -2225,7 +2225,7 @@
       "constant.numeric.decimal.matlab"
     ],
     "type": "constant.numeric.decimal.matlab",
-    "text": "16",
+    "text": "12",
     "line": 14,
     "level": 3
   },
@@ -2272,7 +2272,7 @@
     "type": "meta.function.matlab",
     "text": "        ",
     "line": 15,
-    "level": 3
+    "level": 2
   },
   {
     "startIndex": 8,
@@ -2300,7 +2300,7 @@
     "type": "meta.methods.matlab",
     "text": "    ",
     "line": 16,
-    "level": 2
+    "level": 1
   },
   {
     "startIndex": 4,
