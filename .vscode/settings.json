@@ -6,6 +6,9 @@
 	"git.ignoredRepositories": [
 		"./test/vscode-matlab"
 	],
+	"search.exclude": {
+		"./test/vscode-matlab/**": true
+	},
 	"material-icon-theme.folders.associations": {
 		"parser": "functions",
 		"services": "resource"
