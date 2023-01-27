@@ -13,21 +13,14 @@ cache:
   - node_modules/
 
 stages:
-- build
 - test
-
-build:
-  extends:
-  - .shared_windows_runners
-  stage: build
-  script:
-  - npm install
 
 test:
   extends:
   - .shared_windows_runners
   stage: test
   script:
+  - npm install
   - npm test
   artifacts:
     paths:
