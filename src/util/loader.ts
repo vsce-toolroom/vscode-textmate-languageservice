@@ -1,20 +1,15 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { isNode } from 'browser-or-node';
 import type { JsonValue } from 'type-fest';
 
-async function fetchAsBuffer(uri: vscode.Uri): Promise<Uint8Array> {
-	const response = await fetch(uri.toString());
-	if (!response.ok) {
-		throw new Error(`GET ${uri.toString()} ${response.status}`);
-	}
-	const buffer = await response.arrayBuffer();
-	return new Uint8Array(buffer);
-}
-
 export async function readFileBytes(uri: vscode.Uri) {
-	return !isNode ? await fetchAsBuffer(uri) : await vscode.workspace.fs.readFile(uri);
+	// Other libraries such as monaco-tm use `fetch` and pipe a response.
+	// This allows them to use a streaming compiler for WASM.
+	// However these browser APIs require us to aggressively complicate
+	// compiler stack or lock support to 1 env (browser or Node).
+	// The perf payoff is most likely not worth it.
+	return vscode.workspace.fs.readFile(uri);
 }
 
 export async function readFileText(uri: vscode.Uri): Promise<string> {
