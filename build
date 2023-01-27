@@ -1,2 +1,0 @@
-#!/bin/bash
-npm install && xvfb-run -a npm test
