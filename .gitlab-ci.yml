@@ -1,4 +1,8 @@
-image: cinatic/xvfb_node
+.shared_windows_runners:
+  tags:
+  - shared-windows
+  - windows
+  - windows-1809
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -10,12 +14,21 @@ cache:
 
 stages:
 - build
+- test
 
 build:
+  extends:
+  - .shared_windows_runners
   stage: build
   script:
-    - export DISPLAY=:9.0 Xvfb -ac -screen scrn 1024x768x24 :9.0 &
-    - xvfb-run -a npm test
+  - npm install
+
+test:
+  extends:
+  - .shared_windows_runners
+  stage: test
+  script:
+  - npm test
   artifacts:
     paths:
     - test/data/
