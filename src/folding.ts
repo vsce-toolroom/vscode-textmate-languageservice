@@ -13,7 +13,8 @@ const importScopeSelector = new TextmateScopeSelector('import');
 export interface FoldingToken {
 	isStart: boolean;
 	level: number;
-	line: number;
+	/** Line number - zero-indexed. */
+	line: number; 
 	type: string;
 }
 
@@ -39,7 +40,7 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 
 	private async getRegions(tokens: TextmateToken[]): Promise<vscode.FoldingRange[]> {
 		const regions = tokens.filter(this.isRegion, this);
-		const markers = regions.map(function(token) {
+		const markers = regions.map(function(token): FoldingToken {
 			return {
 				level: token.level,
 				line: token.line,
@@ -98,7 +99,7 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 
 	private async getBlockFoldingRanges(tokens: TextmateToken[]): Promise<vscode.FoldingRange[]> {
 		const bounds: TextmateToken[] = tokens.filter(this.isBlockBoundary, tokens);
-		const markers = bounds.map(function(bound) {
+		const markers = bounds.map(function(bound): FoldingToken {
 			return {
 				level: bound.level,
 				line: bound.line,
@@ -112,12 +113,17 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 		
 		for (let index = 0; index < markers.length; index++) {
 			const marker = markers[index];
+			const last = stack[stack.length - 1];
 			if (marker.isStart) {
 				stack.push(marker);
-			} else if (stack.length && stack[stack.length - 1].isStart) {
-				const token = stack.pop();
-				const start = token!.level === 0 ? token!.line : token!.line + 1;
-				const end = marker.line + 1;
+			} else if (last && last.isStart) {
+				const previous = stack!.pop();
+				let start = previous.line;
+				let end = marker.line;
+
+				// Increment patch for `level=0&line!=0` - see #4
+				if (previous.level === 0 && previous.line !== 0) ++start & ++end;
+
 				const kind = this.getTokenFoldingRangeKind(marker);
 				ranges.push(new vscode.FoldingRange(start, end, kind));
 			} else {
