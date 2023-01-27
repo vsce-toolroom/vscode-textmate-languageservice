@@ -3,6 +3,9 @@
 		"textmate-configuration.json": "jsonc",
 		"build": "shellscript"
 	},
+	"git.ignoredRepositories": [
+		"./test/vscode-matlab"
+	],
 	"material-icon-theme.folders.associations": {
 		"parser": "functions",
 		"services": "resource"
