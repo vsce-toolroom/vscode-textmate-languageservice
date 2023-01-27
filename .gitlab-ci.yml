@@ -1,4 +1,4 @@
-image: sndst00m/vscode-textmate-languageservice
+image: bluemixcode/node-xvfb
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -14,7 +14,9 @@ stages:
 build:
   stage: build
   script:
-  - ./build
+    - xvfb-run -a npm test
+  before_script:
+    - npm install
   artifacts:
     paths:
     - test/data/
