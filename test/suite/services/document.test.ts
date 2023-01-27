@@ -7,7 +7,7 @@ import * as assert from 'assert';
 
 import lsp from '../../util/lsp';
 
-suite('src/services/document.ts', function() {
+suite('src/services/document.ts (test/suite/services/document.ts)', function() {
 	this.timeout(10000);
 	test('WorkspaceDocumentService class', async function() {
 		vscode.window.showInformationMessage('WorkspaceDocumentService class (src/services/document.ts)');

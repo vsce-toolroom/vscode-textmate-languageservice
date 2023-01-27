@@ -4,7 +4,6 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as path from 'path';
 import type { JsonObject } from 'type-fest';
 import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
@@ -76,7 +75,8 @@ export class ResolverService implements textmate.RegistryOptions {
 	}
 
 	public findScopeByFilename(filename: string): string | null {
-		const language = this.findLanguageByExtension(path.extname(filename)) || this.findLanguageByFilename(filename);
+		const extname = filename.substring(filename.lastIndexOf('.'));
+		const language = this.findLanguageByExtension(extname) || this.findLanguageByFilename(filename);
 		if (!language) return null;
 
 		const grammar = this.findGrammarByLanguageId(language);

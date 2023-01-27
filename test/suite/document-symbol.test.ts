@@ -13,7 +13,7 @@ import lsp from '../util/lsp';
 import jsonify from '../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
-suite('src/document-symbol.ts', function() {
+suite('src/document-symbol.ts (test/suite/document-symbol.ts)', function() {
 	this.timeout(10000);
 	test('TextmateDocumentSymbolProvider class', async function() {
 		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');

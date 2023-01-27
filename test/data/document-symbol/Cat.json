@@ -99,60 +99,7 @@
                 "character": 11
               }
             ],
-            "children": [
-              {
-                "name": "if",
-                "detail": "keyword.control.if.matlab",
-                "kind": 2,
-                "range": [
-                  {
-                    "line": 5,
-                    "character": 33
-                  },
-                  {
-                    "line": 6,
-                    "character": 12
-                  }
-                ],
-                "selectionRange": [
-                  {
-                    "line": 5,
-                    "character": 33
-                  },
-                  {
-                    "line": 6,
-                    "character": 12
-                  }
-                ],
-                "children": []
-              },
-              {
-                "name": "else",
-                "detail": "keyword.control.else.matlab",
-                "kind": 2,
-                "range": [
-                  {
-                    "line": 6,
-                    "character": 55
-                  },
-                  {
-                    "line": 7,
-                    "character": 11
-                  }
-                ],
-                "selectionRange": [
-                  {
-                    "line": 6,
-                    "character": 55
-                  },
-                  {
-                    "line": 7,
-                    "character": 11
-                  }
-                ],
-                "children": []
-              }
-            ]
+            "children": []
           },
           {
             "name": "move",
@@ -207,6 +154,111 @@
             "children": []
           }
         ]
+      }
+    ]
+  },
+  {
+    "name": "Test header folding and level=0&line!=0",
+    "detail": "entity.name.section.matlab",
+    "kind": 14,
+    "range": [
+      {
+        "line": 19,
+        "character": 3
+      },
+      {
+        "line": 23,
+        "character": 0
+      }
+    ],
+    "selectionRange": [
+      {
+        "line": 19,
+        "character": 3
+      },
+      {
+        "line": 23,
+        "character": 0
+      }
+    ],
+    "children": [
+      {
+        "name": "handleCatNoiseKo",
+        "detail": "entity.name.function.matlab",
+        "kind": 11,
+        "range": [
+          {
+            "line": 20,
+            "character": 9
+          },
+          {
+            "line": 20,
+            "character": 33
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 20,
+            "character": 9
+          },
+          {
+            "line": 20,
+            "character": 33
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "if",
+        "detail": "keyword.control.if.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 20,
+            "character": 33
+          },
+          {
+            "line": 21,
+            "character": 4
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 20,
+            "character": 33
+          },
+          {
+            "line": 21,
+            "character": 4
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "else",
+        "detail": "keyword.control.else.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 21,
+            "character": 43
+          },
+          {
+            "line": 23,
+            "character": 0
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 21,
+            "character": 43
+          },
+          {
+            "line": 23,
+            "character": 0
+          }
+        ],
+        "children": []
       }
     ]
   }

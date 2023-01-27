@@ -13,7 +13,7 @@ import lsp from '../util/lsp';
 import jsonify from '../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
-suite('src/folding.ts', function() {
+suite('src/folding.ts (test/suite/folding.ts)', function() {
 	this.timeout(10000);
 	test('TextmateFoldingRangeProvider class', async function() {
 		vscode.window.showInformationMessage('TextmateFoldingRangeProvider class (src/folding.ts)');

@@ -23,7 +23,7 @@ const classReferenceSelector = new TextmateScopeSelector([
 
 const BASE_CLASS_NAME = 'Animal';
 
-suite('src/definition.ts', function() {
+suite('src/definition.ts (test/suite/definition.ts)', function() {
 	this.timeout(10000);
 	test('TextmateDefinitionProvider class', async function() {
 		vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');

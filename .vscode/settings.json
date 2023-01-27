@@ -1,6 +1,13 @@
 {
 	"files.associations": {
-		"textmate-configuration.json": "jsonc"
+		"textmate-configuration.json": "jsonc",
+		"build": "shellscript"
+	},
+	"git.ignoredRepositories": [
+		"./test/vscode-matlab"
+	],
+	"search.exclude": {
+		"./test/vscode-matlab/**": true
 	},
 	"material-icon-theme.folders.associations": {
 		"parser": "functions",

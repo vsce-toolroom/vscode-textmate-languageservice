@@ -13,7 +13,7 @@ import lsp from '../../util/lsp';
 import jsonify from '../../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
-suite('src/services/outline.ts', function() {
+suite('src/services/outline.ts (test/suite/services/outline.ts)', function() {
 	this.timeout(10000);
 	test('DocumentOutlineService class', async function() {
 		vscode.window.showInformationMessage('DocumentOutlineService class (src/services/outline.ts)');

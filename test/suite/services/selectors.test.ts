@@ -11,7 +11,7 @@ const scopeTestsPath = path.resolve(__dirname, '../../../../../../data/selectors
 const scopeSelectorTests = loadJsonFile.sync(path.resolve(scopeTestsPath, 'TextmateScopeSelector.json'));
 const scopeSelectorMapTests = loadJsonFile.sync(path.resolve(scopeTestsPath, 'TextmateScopeSelectorMap.json'));
 
-suite('src/parser/selectors.ts', function() {
+suite('src/parser/selectors.ts (test/suite/parser/selectors.ts)', function() {
 	this.timeout(10000);
 	test('TextmateScopeSelector class', function() {
 		vscode.window.showInformationMessage('TextmateScopeSelector class (src/parser/selectors.ts)');
