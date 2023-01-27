@@ -18,7 +18,7 @@ In order to be supported by this module, the Textmate grammar must include the f
 
 ## Installation
 
-```console
+```bash
 npm install vscode-textmate-languageservice
 ```
 
