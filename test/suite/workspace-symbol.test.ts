@@ -12,7 +12,7 @@ import lsp from '../util/lsp';
 import jsonify from '../util/jsonify';
 import type { JsonArray } from 'type-fest';
 
-suite('src/workspace-symbol.ts', function() {
+suite('src/workspace-symbol.ts (test/suite/workspace-symbol.ts)', function() {
 	this.timeout(10000);
 	test('TextmateWorkspaceSymbolProvider class', async function() {
 		vscode.window.showInformationMessage('TextmateTokenizerService class (src/parser/selectors.ts)');

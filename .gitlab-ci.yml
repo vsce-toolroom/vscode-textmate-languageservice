@@ -1,0 +1,34 @@
+.shared_windows_runners:
+  tags:
+  - shared-windows
+  - windows
+  - windows-1809
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SUBMODULE_DEPTH: 0
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+- build
+- test
+
+build:
+  extends:
+  - .shared_windows_runners
+  stage: build
+  script:
+  - npm install
+
+test:
+  extends:
+  - .shared_windows_runners
+  stage: test
+  script:
+  - npm test
+  artifacts:
+    paths:
+    - test/data/

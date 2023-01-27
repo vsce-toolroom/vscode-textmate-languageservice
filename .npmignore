@@ -1,6 +1,6 @@
 .vscode/
 .vscode-test/
-.github/
+.gitlab/
 build/
 src/
 test/
@@ -12,6 +12,7 @@ assets/
 .eslintignore
 .gitattributes
 .gitignore
+.gitlab-ci.yml
 .gitmodules
 .travis.yml
 .eslintignore
@@ -19,4 +20,6 @@ assets/
 .mocharc.json
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+Dockerfile
 tsconfig.json
+wheel

@@ -4,7 +4,7 @@ classdef Cat < Animal
             obj@Animal(name, years * 15, "Felidae", true);
         end
         function obj = noise(obj)
-            if strcmp(obj.Locale, "ko"); disp("Yaong") else disp("Meow") end
+            handleCatNoiseKo(obj.Locale)
         end
         function obj = move(obj, meters)
             disp("Pussyfooting..");
@@ -15,4 +15,9 @@ classdef Cat < Animal
             sleep@Animal(obj, multiplier * 16);
         end
     end
+end
+
+%% Test header folding and level=0&line!=0
+function handleCatNoiseKo(locale)
+    if strcmp(locale, "ko"); disp("Yaong") else disp("Meow") end
 end

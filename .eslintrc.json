@@ -128,7 +128,11 @@
 			"error",
 			{
 				"code": 120,
-				"ignorePattern": "^(?!\\s*\\}?\\s*(?:else|if|else\\s+if)\\s*).*\\{$"
+				"ignorePattern": "^(?!\\s*\\}?\\s*(?:else|if|else\\s+if)\\s*).*\\{$",
+				"ignoreRegExpLiterals": true,
+				"ignoreStrings": true,
+				"ignoreTemplateLiterals": true,
+				"ignoreUrls": true
 			}
 		],
 		"new-parens": "error",
