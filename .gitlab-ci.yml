@@ -15,9 +15,6 @@ build:
   stage: build
   script:
   - ./build
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: never
   artifacts:
     paths:
     - test/data/
