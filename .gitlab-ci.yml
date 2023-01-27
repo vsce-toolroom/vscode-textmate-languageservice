@@ -1,4 +1,4 @@
-image: sndst00m/build
+image: sndst00m/vscode-textmate-languageservice
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
