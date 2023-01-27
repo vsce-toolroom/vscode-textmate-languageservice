@@ -1,4 +1,4 @@
-image: bluemixcode/node-xvfb
+image: cinatic/xvfb_node
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -14,9 +14,8 @@ stages:
 build:
   stage: build
   script:
+    - export DISPLAY=:9.0 Xvfb -ac -screen scrn 1024x768x24 :9.0 &
     - xvfb-run -a npm test
-  before_script:
-    - npm install
   artifacts:
     paths:
     - test/data/
