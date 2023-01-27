@@ -1,4 +1,4 @@
-image: SNDST00M/build
+image: sndst00m/build
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
