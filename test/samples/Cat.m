@@ -17,6 +17,7 @@ classdef Cat < Animal
     end
 end
 
+%% Test header folding and level=0&line!=0
 function handleCatNoiseKo(locale)
-    if strcmp(obj.Locale, "ko"); disp("Yaong") else disp("Meow") end
+    if strcmp(locale, "ko"); disp("Yaong") else disp("Meow") end
 end
