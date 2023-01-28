@@ -20,8 +20,7 @@
   "types": "./out/src/index",
   "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "workspaces": [
-    "./test/vscode-matlab",
-    "./test/vscode-matlab/node_modules/vscode-textmate-languageservice"
+    "./test/vscode-matlab"
   ],
   "scripts": {
     "test": "npm-run-all reset patch stage mocha",
@@ -40,8 +39,8 @@
     "stage-touch-samples": "make-dir test/vscode-matlab/samples",
     "stage-samples": "cpy samples/*.m vscode-matlab --cwd=test --parents",
     "stage-pack": "npm pack && cpy *.tgz test/vscode-matlab",
-    "stage-install": "glob-run npm --prefix ./test/vscode-matlab install --production *.tgz",
-    "stage-mocha": "npm i mocha --workspace ./test/vscode-matlab/node_modules/vscode-textmate-languageservice",
+    "stage-install": "glob-run npm --prefix ./test/vscode-matlab i --production *.tgz",
+    "stage-mocha": "npm --prefix ./test/vscode-matlab/node_modules/vscode-textmate-languageservice i mocha",
     "stage": "npm-run-all stage-pack stage-install stage-mocha stage-touch-data stage-data stage-touch-samples stage-samples",
     "reset": "npm-run-all reset-npm reset-git",
     "reset-git": "git submodule update -f --init",
