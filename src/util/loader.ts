@@ -3,6 +3,9 @@
 import * as vscode from 'vscode';
 import type { JsonValue } from 'type-fest';
 
+const decoder = new TextDecoder('utf-8');
+const jsonCommentsRegex = /\/\*[\s\S]*?\*\/|\/\/.*/g;
+
 export async function readFileBytes(uri: vscode.Uri) {
 	// Other libraries such as monaco-tm use `fetch` and pipe a response.
 	// This allows them to use a streaming compiler for WASM.
@@ -14,7 +17,6 @@ export async function readFileBytes(uri: vscode.Uri) {
 
 export async function readFileText(uri: vscode.Uri): Promise<string> {
 	// We assume that the document language is in UTF-8
-	const decoder = new TextDecoder('utf-8');
 	try {
 		return decoder.decode(await readFileBytes(uri));
 	} catch (e) {
@@ -22,12 +24,10 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 	}
 }
 
-const jsonCommentsRegex = /\/\*[\s\S]*?\*\/|\/\/.*/g;
-
 export async function loadJsonFile<T = JsonValue>(uri: vscode.Uri): Promise<T> {
 	try {
 		let text = await readFileText(uri);
-		text = text.replace(jsonCommentsRegex, '');
+		text = text.replace(jsonCommentsRegex, ''); // support jsonc!
 		return JSON.parse(text) as T;
 	} catch (e) {
 		if (e instanceof SyntaxError && e.hasOwnProperty('stack')) {
