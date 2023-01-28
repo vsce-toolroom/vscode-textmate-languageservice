@@ -1,11 +1,19 @@
 # Changelog
 
+## 1.0.0
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/3"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- Achieved browser production support by handling hashing. We use native hashing of file text contents to keep it fast.
+- Upgrade from SHA-1 algorithm (a famous collision-attack vector) and adopt stable SHA-256 alternatives.
+- Remove last external dependency (`git-sha1`) so we don't need a bundler.
+
 ## 1.0.0-rc-2
 
 <a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/2"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Fix the line number in the folding provider for top-level declaration folds after the first declaration.
-- Add browser production support with a cost-benefit tradeoff... we now load `onig.wasm` (Textmate grammar regex parser) [without streaming][github-monacotm-app-loadonigwasm].
+- Add browser readiness with a cost-benefit tradeoff... we now load `onig.wasm` (Textmate grammar regex parser) [without streaming][github-monacotm-app-loadonigwasm].
 - Remove any system dependencies in the test scripts. Plus the scripts use the CLIs better & are much cleaner.
 - Migrate [previous CI workflow][github-old-ci-yaml] pipeline to Gitlab.
 
