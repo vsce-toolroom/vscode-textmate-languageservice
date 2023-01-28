@@ -23,6 +23,20 @@ class MockGlobalMemento extends MockMemento implements vscode.Memento {
 	}
 }
 
+export class SecretStorage {
+    get(_: string): Thenable<string | undefined> {
+        return Promise.resolve('●●●●●●●●●●●●●●●●');
+    }
+    store(_1: string, _2: string): Thenable<void> {
+        return Promise.resolve();
+    }
+    delete(_1: string): Thenable<void> {
+        return Promise.resolve();
+    }
+    onDidChange = new vscode.EventEmitter<vscode.SecretStorageChangeEvent>().event;
+}
+
+
 type EnvironmentVariableCollectionCallbackFn = (
 	variable: string,
 	mutator: vscode.EnvironmentVariableMutator,
@@ -30,29 +44,30 @@ type EnvironmentVariableCollectionCallbackFn = (
 ) => any;
 
 class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
-	constructor(public persistent: boolean = true) {}
-	replace(_1: string, _2: string): void { return; };
-	append(_1: string, _2: string): void { return; };
-	prepend(_1: string, _2: string): void { return; };
-	get(_1: string): vscode.EnvironmentVariableMutator {
-		return { type: vscode.EnvironmentVariableMutatorType.Replace, value: '' };
+	readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();
+	private _persistent: boolean = true;
+	public get persistent(): boolean { return this._persistent; }
+	public set persistent(value: boolean) {
+		this._persistent = value;
 	}
-	forEach(_1: EnvironmentVariableCollectionCallbackFn, _2?: any): void { return; }
-	delete(_: string): void { return; }
-	clear(): void { return; }
-}
-
-class SecretStorage implements vscode.SecretStorage {
-	get(_: string): Thenable<string> {
-		return Promise.resolve('');
+	constructor(serialized?: [string, vscode.EnvironmentVariableMutator][]) {
+		this.map = new Map(serialized);
 	}
-	store(_1: string, _2: string): Thenable<void> {
-		return;
+	get size(): number {
+		return this.map.size;
 	}
-	delete(_: string): Thenable<void> {
-		return;
+	replace(_1: string, _2: string): void {}
+	append(_1: string, _2: string): void {}
+	prepend(_1: string, _2: string): void {}
+	get(variable: string): vscode.EnvironmentVariableMutator | undefined {
+		return this.map.get(variable);
 	}
-	onDidChange: vscode.Event<vscode.SecretStorageChangeEvent>;
+	forEach(_1: Parameters<vscode.EnvironmentVariableCollection['forEach']>[0], _2?: any): void {}
+	[Symbol.iterator](): IterableIterator<[variable: string, mutator: vscode.EnvironmentVariableMutator]> {
+		return this.map.entries();
+	}
+	delete(_1: string): void {}
+	clear(): void {}
 }
 
 const appRoot = path.normalize(vscode.env.appRoot);
