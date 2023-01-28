@@ -5,7 +5,7 @@ import * as textmate from 'vscode-textmate';
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { Mutable } from 'type-fest';
 import type { ConfigData } from '../config/config';
-import ServiceBase from '../util/service';
+import { ServiceBase } from '../util/service';
 
 export interface TextmateToken extends Mutable<textmate.IToken> {
 	level: number;
@@ -35,28 +35,22 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 		super();
 	}
 
-	private _state: TextmateTokenizerState = {
-		delta: 0,
-		continuation: false,
-		declaration: false,
-		line: 0,
-		rule: textmate.INITIAL,
-		stack: 0
-	};
+	private _states: Record<string, TextmateTokenizerState> = {};
 
 	public async parse(document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		const tokens: TextmateToken[] = [];
 
-		this._state.delta = 0;
-		this._state.continuation = false;
-		this._state.declaration = false;
-		this._state.line = 0;
-		this._state.rule = textmate.INITIAL;
-		this._state.stack = 0;
+		const state = this._states[document.uri.path] = {} as TextmateTokenizerState;
+		state.delta = 0;
+		state.continuation = false;
+		state.declaration = false;
+		state.line = 0;
+		state.rule = textmate.INITIAL;
+		state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
 			const line: SkinnyTextLine = document.lineAt(lineNumber);
-			const lineResult = this._grammar.tokenizeLine(line.text, this._state.rule) as TextmateTokenizeLineResult;
+			const lineResult = this._grammar.tokenizeLine(line.text, state.rule) as TextmateTokenizeLineResult;
 
 			for (const token of lineResult.tokens) {
 				token.type = token.scopes[token.scopes.length - 1];
@@ -95,9 +89,9 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 				const isDeclarationToken = isIndentToken || isRedentToken;
 				const isContinuationToken = this._config.selectors.punctuation.continuation.match(token.scopes);
 
-				if (!this._state.declaration) {
+				if (state.declaration === false) {
 					if (isDedentToken) {
-						this._state.stack += delta;
+						state.stack += delta;
 						let subindex =  index - 1;
 						while (subindex >= 0) {
 							lineResult.tokens[subindex].level += delta;
@@ -105,36 +99,36 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 						}
 					}
 					if (isDeclarationToken) {
-						this._state.delta += Math.abs(delta);
+						state.delta += Math.abs(delta);
 					}
 				}
 
-				if (this._state.declaration && !isRedentToken) { // handle redent e.g. ELSE-IF clause
-					this._state.delta += delta;
+				if (state.declaration && !isRedentToken) { // handle redent e.g. ELSE-IF clause
+					state.delta += delta;
 				}
 
-				this._state.declaration = this._state.declaration || isDeclarationToken;
-				this._state.continuation = this._state.continuation || isContinuationToken;
+				state.declaration = state.declaration || isDeclarationToken;
+				state.continuation = state.continuation || isContinuationToken;
 
-				if (this._state.declaration && lineNumber > this._state.line) {
-					if (!this._state.continuation) {
-						this._state.stack += this._state.delta;
-						this._state.delta = 0;
-						this._state.declaration = false;
+				if (state.declaration && lineNumber > state.line) {
+					if (state.continuation === false) {
+						state.stack += state.delta;
+						state.delta = 0;
+						state.declaration = false;
 					} else {
-						this._state.continuation = false;
+						state.continuation = false;
 					}
 				}
 
-				token.level = this._state.stack;
-				this._state.line = lineNumber;
+				token.level = state.stack;
+				state.line = lineNumber;
 			}
 
-			this._state.rule = lineResult.ruleStack;
-
-			for (const token of lineResult.tokens) tokens.push(token);
+			state.rule = lineResult.ruleStack;
+			tokens.push(...lineResult.tokens);
 		}
 
+		delete this._states[document.uri.path];
 		return tokens;
 	}
 }
