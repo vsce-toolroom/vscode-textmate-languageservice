@@ -36,13 +36,6 @@ export class SecretStorage {
     onDidChange = new vscode.EventEmitter<vscode.SecretStorageChangeEvent>().event;
 }
 
-
-type EnvironmentVariableCollectionCallbackFn = (
-	variable: string,
-	mutator: vscode.EnvironmentVariableMutator,
-	collection: vscode.EnvironmentVariableCollection
-) => any;
-
 class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
 	readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();
 	private _persistent: boolean = true;
