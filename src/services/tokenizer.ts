@@ -5,7 +5,7 @@ import * as textmate from 'vscode-textmate';
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { Mutable } from 'type-fest';
 import type { ConfigData } from '../config/config';
-import ServiceBase from '../util/service';
+import { ServiceBase } from '../util/service';
 
 export interface TextmateToken extends Mutable<textmate.IToken> {
 	level: number;

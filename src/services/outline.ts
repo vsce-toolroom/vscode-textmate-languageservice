@@ -5,7 +5,7 @@ import { TextmateScopeSelector } from '../util/selectors';
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
 import type { TextmateTokenizerService, TextmateToken } from './tokenizer';
-import ServiceBase from '../util/service';
+import { ServiceBase } from '../util/service';
 
 const entitySelector = new TextmateScopeSelector('entity');
 
