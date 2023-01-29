@@ -29,7 +29,7 @@ export async function getOniguruma(): Promise<textmate.IOnigLib> {
 		for (let i = 0; i < wasmPaths.length; i++) {
 			const wasmPath = wasmPaths[i];
 			try {
-				wasmBin = await getWasmFile(vscode.Uri.file(wasmPath));
+				wasmBin = await getWasmFile(wasmPath);
 				break;
 			} catch (e) {
 				readError = e as Error;

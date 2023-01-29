@@ -15,11 +15,14 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 	}
 }
 
-export async function getWasmFile(uri: vscode.Uri): Promise<Uint8Array | ArrayBuffer | Response> {
+export async function getWasmFile(filepath: string): Promise<Uint8Array | ArrayBuffer | Response> {
 	// Node environment.
-	if (globalThis.process?.env?.node) return vscode.workspace.fs.readFile(uri);
+	if (globalThis.process?.env?.node) {
+		const uri = vscode.Uri.file(filepath);
+		return vscode.workspace.fs.readFile(uri);
+	}
 	// Web environment.
-	const response = await fetch(uri.toString());
+	const response = await fetch(filepath);
 	const contentType = response.headers.get('content-type');
 	if (contentType === 'application/wasm') {
 		return response;
