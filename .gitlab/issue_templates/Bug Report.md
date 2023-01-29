@@ -7,20 +7,21 @@
 
 <!-- A clear and concise description of what the bug is. -->
 
-### Reproduce the bug
+### Reproduction / log
 
 ```
-A MVCE (Minimum Verifiable Complete Example) of the problem.
-REPL or a link to your sample code if applicable.
+A MVCE (Minimum Verifiable Complete Example) or error log of the problem.
 ```
 
-### Screenshots
+<!-- Can send a REPL or a link to your sample code also. If not remove this line. -->
 
-<!-- Add screenshots to help explaining. If a screenshot is not provided, the issue will be closed. -->
+### Screenshot / blame
+
+<!-- Add screenshot or blame to help explaining. No screenshot, no blame and no error log === closed issue. -->
 
 #### Expected behavior
 
-<!-- A clear & concise description of what you expected to happen. -->
+<!-- A clear & concise description of what you expected to happen. If not applicable remove this section. -->
 
 ### Possible solution
 
@@ -31,13 +32,7 @@ REPL or a link to your sample code if applicable.
 <!-- Add any other context about the problem here (, , ...). -->
 <!-- Use https://stackoverflow.com/a/49398449 to grab the extension list. -->
 - VSC version:
-- Extensions:
-  <details>
-  <summary><code>code --list-extensions</code></summary>
-
-  ```
-
-  ```
+- Dependent extension ID: <!-- In extension pane 🧱, please search, "Copy Extension ID" then right-click . -->
 - OS version:
 
 <!-- Checklist -->
