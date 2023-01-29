@@ -1,7 +1,7 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate language service for Visual Studio Code.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",

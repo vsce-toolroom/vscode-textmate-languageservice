@@ -9,7 +9,7 @@
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.1/assets/demo-outline.png" height="320"></p>
+<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.2/assets/demo-outline.png" height="320"></p>
 
 In order to be supported by this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
@@ -153,7 +153,7 @@ export async function activate(context: vscode.ExtensionContext) {
 [tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
 [macromates-scope-selector-spec]: https://macromates.com/manual/en/language_grammars#naming_conventions
 [vscode-known-language-ids]: https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
-[github-vscode-anycode]: https://github.com/microsoft/vscode-anycode/issues
+[github-vscode-anycode-issues]: https://github.com/microsoft/vscode-anycode/issues
 [github-epeshkov-syntax-highlighter]: https://github.com/EvgeniyPeshkov/syntax-highlighter
 <!-- Configuration -->
 [vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
