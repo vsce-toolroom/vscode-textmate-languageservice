@@ -21,7 +21,8 @@
   "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
     "test": "npm-run-all reset patch stage mocha",
-    "prepack": "npm run compile",
+    "prepack": "tsc",
+    "prepublishOnly": "del-cli out/test",
     "posttest": "npm-run-all dump reset",
     "build": "npm-run-all pegjs compile",
     "precompile": "del-cli out",
