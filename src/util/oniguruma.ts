@@ -7,7 +7,7 @@
 import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
 import * as bindings from 'vscode-oniguruma';
-import { readFileBytes } from '../util/loader';
+import { getWasmFile } from '../util/loader';
 
 function moduleDirnameToWasmPath(dirname: string): string {
 	return `${vscode.env.appRoot}/${dirname}/vscode-oniguruma/release/onig.wasm`;
@@ -24,12 +24,12 @@ let onigurumaLib: textmate.IOnigLib | null = null;
 
 export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		let wasmBin: Uint8Array;
+		let wasmBin: Uint8Array | ArrayBuffer | Response;
 		let readError: Error;
 		for (let i = 0; i < wasmPaths.length; i++) {
 			const wasmPath = wasmPaths[i];
 			try {
-				wasmBin = await readFileBytes(vscode.Uri.file(wasmPath));
+				wasmBin = await getWasmFile(vscode.Uri.file(wasmPath));
 				break;
 			} catch (e) {
 				readError = e as Error;

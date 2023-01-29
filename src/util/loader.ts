@@ -6,22 +6,28 @@ import type { JsonValue } from 'type-fest';
 const decoder = new TextDecoder('utf-8');
 const jsonCommentsRegex = /\/\*[\s\S]*?\*\/|\/\/.*/g;
 
-export async function readFileBytes(uri: vscode.Uri) {
-	// Other libraries such as monaco-tm use `fetch` and pipe a response.
-	// This allows them to use a streaming compiler for WASM.
-	// However these browser APIs require us to aggressively complicate
-	// compiler stack or lock support to 1 env (browser or Node).
-	// The perf payoff is most likely not worth it.
-	return vscode.workspace.fs.readFile(uri);
-}
-
 export async function readFileText(uri: vscode.Uri): Promise<string> {
 	// We assume that the document language is in UTF-8
 	try {
-		return decoder.decode(await readFileBytes(uri));
+		return decoder.decode(await vscode.workspace.fs.readFile(uri));
 	} catch (e) {
 		throw e;
 	}
+}
+
+export async function getWasmFile(uri: vscode.Uri): Promise<Uint8Array | ArrayBuffer | Response> {
+	// Node environment.
+	if (process?.env?.node) return vscode.workspace.fs.readFile(uri);
+	// Web environment.
+	const response = await fetch(uri.toString());
+	const contentType = response.headers.get('content-type');
+	if (contentType === 'application/wasm') {
+		return response;
+	}
+	// Handle non-WASM server mimetype with non-streaming compiler.
+	// Slow to compile and not great but it works.
+	// https://github.com/bolinfest/monaco-tm/blob/908f1c/src/app.ts#L135-L144
+	return await response.arrayBuffer();
 }
 
 export async function loadJsonFile<T = JsonValue>(uri: vscode.Uri): Promise<T> {
