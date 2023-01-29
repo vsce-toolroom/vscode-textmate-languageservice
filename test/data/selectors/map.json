@@ -1,0 +1,138 @@
+[
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "keyword.control.if.matlab"
+    ],
+    "expected": true,
+    "key": "meta.if keyword.control.if",
+    "value": 2
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.class.declaration.matlab",
+      "entity.name.type.class.matlab"
+    ],
+    "expected": true,
+    "key": "meta.class entity.name.type.class",
+    "value": 4
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "keyword.control.enum.matlab"
+    ],
+    "expected": true,
+    "key": "meta.enum keyword.control.enum",
+    "value": 2
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.enum.matlab",
+      "meta.assignment.definition.enummember.matlab",
+      "variable.other.enummember.matlab"
+    ],
+    "expected": true,
+    "key": "meta.enum variable.other.enummember",
+    "value": 21
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.events.matlab",
+      "meta.assignment.definition.event.matlab",
+      "entity.name.type.event.matlab"
+    ],
+    "expected": true,
+    "key": "meta.events entity.name.type.event",
+    "value": 23
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "entity.name.function.matlab"
+    ],
+    "expected": true,
+    "key": "meta.function.declaration entity.name.function",
+    "value": 11
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.properties.matlab",
+      "meta.assignment.definition.property.matlab",
+      "variable.object.property.matlab"
+    ],
+    "expected": true,
+    "key": "meta.assignment.definition.property variable.object.property",
+    "value": 6
+  },
+  {
+    "input": [
+      "source.matlab",
+      "comment.line.double-percentage.matlab",
+      "entity.name.section.matlab"
+    ],
+    "expected": true,
+    "key": "comment.line.double-percentage entity.name.section",
+    "value": 14
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.assignment.variable.group.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "expected": true,
+    "key": "meta.assignment.variable.group variable.other.readwrite",
+    "value": 12
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.assignment.variable.single.matlab",
+      "variable.other.readwrite.matlab"
+    ],
+    "expected": true,
+    "key": "meta.assignment.variable.single variable.other.readwrite",
+    "value": 12
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.assignment.variable.output.matlab",
+      "variable.parameter.output.matlab"
+    ],
+    "expected": false,
+    "key": null,
+    "value": null
+  },
+  {
+    "input": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.function.declaration.matlab",
+      "meta.parameters.matlab",
+      "variable.parameter.input.matlab"
+    ],
+    "expected": false,
+    "key": null,
+    "value": null
+  }
+]

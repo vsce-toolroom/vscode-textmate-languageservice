@@ -19,6 +19,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+vscode-textmate-languageservice incorporates [vscode-matlab](https://github.com/Gimly/vscode-matlab/tree/8ac2c2c/src),
+Copyright (c) 2013-2021 GitHub Inc, https://github.com.
+first-mate is distributed under the terms of the MIT License.
+
 vscode-textmate-languageservice incorporates [first-mate](https://github.com/atom/first-mate/tree/v7.4.2/src),
 Copyright (c) 2013-2021 GitHub Inc, https://github.com.
 first-mate is distributed under the terms of the MIT License.

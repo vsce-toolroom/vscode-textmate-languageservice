@@ -1,25 +1,29 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as glob from 'glob';
 import * as assert from 'assert';
 
-import lsp from '../../util/lsp';
+import lsp from '../util/lsp';
+import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 
-suite('src/services/document.ts (test/suite/services/document.ts)', function() {
+const workspaceDocumentServicePromise = lsp.initWorkspaceDocumentService();
+
+suite('src/services/document.ts (test/suite/document.service.test.ts)', function() {
 	this.timeout(10000);
+
 	test('WorkspaceDocumentService class', async function() {
 		vscode.window.showInformationMessage('WorkspaceDocumentService class (src/services/document.ts)');
 
-		const workspaceDocumentService = await lsp.initWorkspaceDocumentService();
-		const files = glob.sync(path.resolve(__dirname, '../../../../../../samples/*.m'));
+		const workspaceDocumentService = await workspaceDocumentServicePromise;
 
-		for (const file of files) {
-			const resource = vscode.Uri.file(file);
-			const document = await vscode.workspace.openTextDocument(resource);
+		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
 
-			const providerDocument = await workspaceDocumentService.getDocument(resource);
+		for (let index = 0; index < samples.length; index++) {
+			const sample = samples[index];
+
+			const document = await vscode.workspace.openTextDocument(sample);
+
+			const providerDocument = await workspaceDocumentService.getDocument(sample);
 
 			assert.strictEqual(
 				document.uri.toString(),

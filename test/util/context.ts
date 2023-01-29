@@ -1,7 +1,6 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 class MockMemento implements vscode.Memento {
 	keys(): readonly string[] {
@@ -63,18 +62,6 @@ class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCol
 	clear(): void {}
 }
 
-const appRoot = path.normalize(vscode.env.appRoot);
-
-
-function generateGlobalStoragePath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'globalStorage');
-}
-function generateStoragePath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'workspaceStorage');
-}
-function generateLogPath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'logs');
-}
 
 class MockExtensionContext implements vscode.ExtensionContext {
 	constructor(id: string) {
@@ -96,11 +83,12 @@ class MockExtensionContext implements vscode.ExtensionContext {
 
 		this.environmentVariableCollection = new MockEnvironmentVariableCollection();
 
-		this.globalStoragePath = generateGlobalStoragePath();
+		const codeRoot = vscode.env.appRoot.replace(/\\/g, '/').replace(/\/[^/]+]\/[^/]+\/[^/]+$/, '');
+		this.globalStoragePath = `${codeRoot}/user-data/User/globalStorage`;
 		this.globalStorageUri = vscode.Uri.file(this.globalStoragePath);
-		this.storagePath = generateStoragePath();
+		this.storagePath = `${codeRoot}/user-data/User/workspaceStorage`;
 		this.storageUri = vscode.Uri.file(this.globalStoragePath);
-		this.logPath = generateLogPath();
+		this.logPath = `${codeRoot}/user-data/User/logs`;
 		this.logUri = vscode.Uri.file(this.logPath);
 
 		this.extensionMode = vscode.ExtensionMode.Development;

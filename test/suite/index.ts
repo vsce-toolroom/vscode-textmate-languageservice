@@ -1,9 +1,9 @@
 'use strict';
 
-import * as path from 'path';
 import * as vscode from 'vscode';
 import Mocha = require('mocha');
-import glob = require('glob');
+
+import { TEST_COMPONENT_BASENAMES, getComponentFileFsPath } from '../util/files';
 
 export async function run(): Promise<void> {
 	// Create the mocha test
@@ -13,14 +13,15 @@ export async function run(): Promise<void> {
 		timeout: 30000
 	});
 
-	return new Promise(async function(c, e) {
-		const files = glob.sync('**/*.test.js', { cwd: __dirname }).sort(forwardSortServicized);
-		files.forEach(f => { mocha.addFile(path.resolve(__dirname, f)) });
+	const files = TEST_COMPONENT_BASENAMES.map(getComponentFileFsPath);
+	files.forEach(f => { mocha.addFile(f); });
+
+	return new Promise(function(c, e) {
 		try {
 			vscode.window.showInformationMessage('Start all tests.');
 			mocha.run(failures => {
 				if (failures > 0)
-					e(new Error(`${failures} tests failed.`));
+					throw new Error(`${failures} tests failed.`);
 				else
 					c();
 			});
@@ -29,8 +30,4 @@ export async function run(): Promise<void> {
 			e(err);
 		}
 	});
-
-	function forwardSortServicized(filepath: string) {
-		return /[\//]services[\//][^\//]+$/.test(filepath) ? -1 : 1;
-	}
 }
