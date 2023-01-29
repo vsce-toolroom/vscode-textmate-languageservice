@@ -1,8 +1,8 @@
 # Changelog
 
-## 1.0.3
+## 1.0.4
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.3/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Compatibility&message=>=v1.51.0&logo=visualstudio&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.4/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Hotfix for browser support regression - [switch to `fetch`][github-monacotm-app-loadonigwasm] because `readFile` doesn't work for core dependencies.
 - Add script to ignore test files from package before `npm publish` to reduce size by ~20% and commit noise.
@@ -107,7 +107,7 @@ Initial version:
 - Semantic highlighting for variable assignment driven by token types and/or text.
 - Custom entry text/type getter for "Table of Contents" provider.
 
-<!-- 1.0.1 -->
+<!-- 1.0.4 -->
 [github-monacotm-app-loadonigwasm]: https://github.com/bolinfest/monaco-tm/blob/908f1ca0cab3e82823cb465108ae86ee2b4ba3fc/src/app.ts#L141-L143
 <!-- 1.0.0-rc-2 -->
 [github-old-ci-yaml]: https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/blob/v0.2.1/.github/workflows/ci.yml
