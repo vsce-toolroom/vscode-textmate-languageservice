@@ -22,9 +22,10 @@
   "scripts": {
     "test": "npm-run-all reset patch stage mocha",
     "prepack": "tsc",
-    "prepublishOnly": "del-cli out/test",
+    "prepublishOnly": "npm-run-all compile production",
     "posttest": "npm-run-all dump reset",
     "build": "npm-run-all pegjs compile",
+    "production": "del-cli out/test",
     "precompile": "del-cli out",
     "compile": "tsc -p ./",
     "reset": "npm-run-all reset-npm reset-git",
