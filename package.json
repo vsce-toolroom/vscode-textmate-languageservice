@@ -1,7 +1,7 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate language service for Visual Studio Code.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",
@@ -38,7 +38,7 @@
     "stage-touch-samples": "make-dir test/vscode-matlab/samples",
     "stage-samples": "cpy samples/*.m vscode-matlab --cwd=test --parents",
     "stage-pack": "npm pack && cpy *.tgz test/vscode-matlab",
-    "stage-install": "glob-run npm --prefix ./test/vscode-matlab i --production *.tgz",
+    "stage-install": "glob-run npm --prefix ./test/vscode-matlab i --omit=dev *.tgz",
     "stage-mocha": "npm --prefix ./test/vscode-matlab/node_modules/vscode-textmate-languageservice i mocha",
     "stage": "npm-run-all stage-pack stage-install stage-mocha stage-touch-data stage-data stage-touch-samples stage-samples",
     "mocha": "mocha ./test/vscode-matlab/node_modules/vscode-textmate-languageservice/out/test/runner --timeout 0",
