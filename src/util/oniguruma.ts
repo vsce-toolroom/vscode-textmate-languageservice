@@ -24,13 +24,12 @@ let onigurumaLib: textmate.IOnigLib | null = null;
 
 export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		let wasmBin: Uint8Array | ArrayBuffer | Response;
+		let wasmBin: Uint8Array | Response;
 		let readError: Error;
-		for (let i = 0; i < wasmPaths.length; i++) {
+		for (let i = 0; !wasmBin && i < wasmPaths.length; i++) {
 			const wasmPath = wasmPaths[i];
 			try {
 				wasmBin = await getWasmFile(wasmPath);
-				break;
 			} catch (e) {
 				readError = e as Error;
 			}
