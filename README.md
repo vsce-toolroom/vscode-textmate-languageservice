@@ -4,7 +4,7 @@
 
 > This package is stable with browser compatibility. But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
 
-> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][vscode-known-language-ids].
+> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][github-vscode-anycode-issues].
 > Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
