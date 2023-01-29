@@ -17,7 +17,7 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 
 export async function getWasmFile(uri: vscode.Uri): Promise<Uint8Array | ArrayBuffer | Response> {
 	// Node environment.
-	if (process?.env?.node) return vscode.workspace.fs.readFile(uri);
+	if (globalThis.process?.env?.node) return vscode.workspace.fs.readFile(uri);
 	// Web environment.
 	const response = await fetch(uri.toString());
 	const contentType = response.headers.get('content-type');
