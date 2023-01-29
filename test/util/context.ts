@@ -66,10 +66,10 @@ class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCol
 const appRoot = path.normalize(vscode.env.appRoot);
 
 
-function generateStoragePath() {
+function generateGlobalStoragePath() {
 	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'globalStorage');
 }
-function generateGlobalStoragePath() {
+function generateStoragePath() {
 	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'workspaceStorage');
 }
 function generateLogPath() {
@@ -96,7 +96,7 @@ class MockExtensionContext implements vscode.ExtensionContext {
 
 		this.environmentVariableCollection = new MockEnvironmentVariableCollection();
 
-		this.globalStoragePath = generateStoragePath();
+		this.globalStoragePath = generateGlobalStoragePath();
 		this.globalStorageUri = vscode.Uri.file(this.globalStoragePath);
 		this.storagePath = generateStoragePath();
 		this.storageUri = vscode.Uri.file(this.globalStoragePath);
