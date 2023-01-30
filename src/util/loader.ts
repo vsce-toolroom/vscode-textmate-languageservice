@@ -15,20 +15,23 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 	}
 }
 
-export async function getWasmFile(filepath: string): Promise<Uint8Array | Response> {
+export async function getWasmFile(filepath: string): Promise<Uint8Array | Response | ArrayBuffer> {
 	// Node environment.
 	if (vscode.env.appHost === 'desktop') {
 		const uri = vscode.Uri.file(filepath);
 		return vscode.workspace.fs.readFile(uri);
 	}
 	// Web environment.
-	//  Handle non-WASM blob with non-streaming compiler :[
-	//  In VS Code environment we have problem where the response buffer is `<` instead of `asm`.
-	//  This is slower to compile and not great but it always works.
-	//  https://github.com/bolinfest/monaco-tm/blob/908f1c/src/app.ts#L135-L144
 	const response = await fetch(filepath);
 	if (!response.ok) {
 		throw new TypeError(`GET ${filepath} ${response.status || ''}`.trim());
+	}
+	const mimeType = response.headers.get('content-type');
+	// Handle non-WASM blob with non-streaming compiler :[
+	// This is slower to compile and not great but it bypasses wrong MIME type setup.
+	// https://github.com/bolinfest/monaco-tm/blob/908f1c/src/app.ts#L135-L144
+	if (mimeType !== 'application/wasm') {
+		return response.arrayBuffer();
 	}
 	return response;
 }

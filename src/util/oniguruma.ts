@@ -24,7 +24,7 @@ let onigurumaLib: textmate.IOnigLib | null = null;
 
 export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		let wasmBin: Uint8Array | Response;
+		let wasmBin: ArrayBuffer | Uint8Array | Response;
 		let readError: Error;
 		for (let i = 0; !wasmBin && i < wasmPaths.length; i++) {
 			const wasmPath = wasmPaths[i];
