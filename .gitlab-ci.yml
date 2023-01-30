@@ -2,15 +2,10 @@
   tags:
   - shared-windows
   - windows
-  - windows-1809
+  - powershell
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  GIT_SUBMODULE_DEPTH: 0
-
-cache:
-  paths:
-  - node_modules/
 
 stages:
 - test
@@ -19,9 +14,7 @@ test:
   extends:
   - .shared_windows_runners
   stage: test
-  script:
-  - npm install
-  - npm test
+  script: npm install-test
   artifacts:
     paths:
     - test/data/

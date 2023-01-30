@@ -4,7 +4,9 @@
 		"build": "shellscript"
 	},
 	"git.ignoredRepositories": [
-		"./test/vscode-matlab"
+		"./test/vscode-matlab",
+    "./builds/0/project-0",
+    "./builds/0/project-0/test/vscode-matlab"
 	],
 	"search.exclude": {
 		"./test/vscode-matlab/**": true

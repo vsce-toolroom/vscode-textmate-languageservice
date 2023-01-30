@@ -1,6 +1,10 @@
 out/
 node_modules/
-**/.vscode-test/
-**/.vscode-test-web/
-**/*.tgz
+# We target VS Code
+.vscode-test/
+.vscode-test-web/
+*.tgz
 *.vsix
+# We use Gitlab CI
+cache/
+builds/
