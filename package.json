@@ -1,7 +1,7 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate language service for Visual Studio Code.",
-  "version": "1.1.0-alpha.1",
+  "version": "1.1.0-alpha.2",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",
@@ -22,11 +22,12 @@
   "scripts": {
     "test": "npm-run-all reset patch stage mocha",
     "prepack": "npm run compile-dev",
-    "prepublishOnly": "npm-run-all compile-prod",
+    "prepublishOnly": "npm run compile-prod",
     "posttest": "npm-run-all dump reset",
     "build": "npm-run-all pegjs compile",
-    "precompile-dev": "del-cli out",
-    "precompile-prod": "del-cli out",
+    "precompile": "del-cli out",
+    "precompile-dev": "npm run precompile",
+    "precompile-prod": "npm run precompile",
     "compile-dev": "tsc --project tsconfig.dev.json",
     "compile-prod": "tsc --project tsconfig.prod.json",
     "reset": "npm-run-all reset-git reset-npm reset-pack",
@@ -55,8 +56,6 @@
     "@types/deep-equal": "^1.0.1",
     "@types/first-mate": "^7.0.6",
     "@types/mocha": "^9.1.0",
-    "@types/node": "^16.14.2",
-    "@types/vscode": "^1.51.0",
     "@vscode/test-electron": "^2.2.0",
     "@vscode/test-web": "^0.0.34",
     "cpy-cli": "^3.1.1",
@@ -69,10 +68,12 @@
     "peggy": "^2.0.1",
     "rimraf": "^3.0.2",
     "ts-pegjs": "^3.0.0",
-    "type-fest": "^0.6.0",
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "@types/node": "^16.14.2",
+    "@types/vscode": "^1.51.0",
+    "type-fest": "^0.6.0",
     "vscode-oniguruma": "^1.7.0",
     "vscode-textmate": "^7.0.0"
   }

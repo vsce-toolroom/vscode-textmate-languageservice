@@ -25,7 +25,6 @@ async function main() {
 			]
 		});
 		// Web environment.
-		/***
 		await runTestsInBrowser({
 			extensionTestsPath,
 			extensionDevelopmentPath,
@@ -34,7 +33,6 @@ async function main() {
 			devTools,
 			headless
 		});
-		 ***/
 	} catch (err) {
 		console.error('Failed to run tests');
 		process.exit(1);

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "outDir": "out",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "sourceMap": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "types": ["node"]
+  }
+}
