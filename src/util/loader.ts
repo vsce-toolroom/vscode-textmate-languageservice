@@ -15,7 +15,7 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 	}
 }
 
-export async function getWasmFile(filepath: string): Promise<Uint8Array | Response | ArrayBuffer> {
+export async function getWasmFile(filepath: string): Promise<Uint8Array | ArrayBuffer | Response> {
 	// Node environment.
 	if (vscode.env.appHost === 'desktop') {
 		const uri = vscode.Uri.file(filepath);

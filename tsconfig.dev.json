@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "outDir": "out",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "types": ["node"]
+  },
+  "exclude": [
+    "test/vscode-matlab/**",
+    "node_modules/**",
+    ".vscode-test/**",
+    ".vscode-test-web/**",
+    "builds/**",
+    "out/**",
+    "tsconfig.*.json"
+  ]
+}

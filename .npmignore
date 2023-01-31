@@ -2,7 +2,7 @@
 .vscode-test/
 .vscode-test-web/
 .gitlab/
-build/
+builds/
 src/
 test/
 assets/
@@ -21,6 +21,4 @@ assets/
 .mocharc.json
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
-Dockerfile
-tsconfig.json
-wheel
+tsconfig.*.json

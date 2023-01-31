@@ -1,18 +1,22 @@
 {
-	"files.associations": {
-		"textmate-configuration.json": "jsonc",
-		"build": "shellscript"
-	},
-	"git.ignoredRepositories": [
-		"./test/vscode-matlab",
+  "files.associations": {
+    "textmate-configuration.json": "jsonc",
+    "build": "shellscript"
+  },
+  "git.ignoredRepositories": [
+    "./test/vscode-matlab",
     "./builds/0/project-0",
     "./builds/0/project-0/test/vscode-matlab"
-	],
-	"search.exclude": {
-		"./test/vscode-matlab/**": true
-	},
-	"material-icon-theme.folders.associations": {
-		"parser": "functions",
-		"services": "resource"
-	}
+  ],
+  "search.exclude": {
+    "./test/vscode-matlab/**": true
+  },
+  "material-icon-theme.files.associations": {
+    "tsconfig.dev.json": "tsconfig",
+    "tsconfig.prod.json": "tsconfig"
+  },
+  "material-icon-theme.folders.associations": {
+    "parser": "functions",
+    "services": "resource"
+  }
 }
