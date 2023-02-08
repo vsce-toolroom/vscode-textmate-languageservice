@@ -2,8 +2,9 @@
 
 import * as vscode from 'vscode';
 import { readFileText } from '../util/loader';
-import type { ConfigData } from '../config/config';
 import { Disposable } from '../util/dispose';
+
+import type { ConfigData } from '../config/config';
 
 export interface SkinnyTextLine {
 	text: string;
@@ -18,7 +19,7 @@ export interface SkinnyTextDocument {
 	getText(): string;
 }
 
-export interface WorkspaceDocumentServiceInterface {
+export interface DocumentServiceInterface {
 	getAllDocuments(): Thenable<Iterable<SkinnyTextDocument>>;
 	getDocument(resource: vscode.Uri): Thenable<SkinnyTextDocument | undefined>;
 
@@ -27,7 +28,7 @@ export interface WorkspaceDocumentServiceInterface {
 	readonly onDidDeleteDocument: vscode.Event<vscode.Uri>;
 }
 
-export class WorkspaceDocumentService extends Disposable implements WorkspaceDocumentServiceInterface {	
+export class DocumentService extends Disposable implements DocumentServiceInterface {	
 	constructor(private _languageId: string, private _config: ConfigData) {
 		super();
 	}
@@ -44,7 +45,7 @@ export class WorkspaceDocumentService extends Disposable implements WorkspaceDoc
 		return docs.filter(doc => !!doc) as SkinnyTextDocument[];
 	}
 
-	async getDocument(resource: vscode.Uri): Promise<SkinnyTextDocument | undefined> {
+	async getDocument(resource: vscode.Uri): Promise<SkinnyTextDocument> {
 		const matchingDocuments = vscode.workspace.textDocuments.filter(function(document) {
 			return document.uri.toString() === resource.toString();
 		});

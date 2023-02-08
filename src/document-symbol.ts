@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { DocumentOutlineService, OutlineEntry } from './services/outline';
+import type { OutlineService, OutlineEntry } from './services/outline';
 import type { SkinnyTextDocument } from './services/document';
 
 interface LanguageSymbol {
@@ -11,7 +11,7 @@ interface LanguageSymbol {
 }
 
 export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(private _outlineService: DocumentOutlineService) { }
+	constructor(private _outlineService: OutlineService) { }
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);
@@ -30,10 +30,6 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 	}
 
 	private traverseAndCopy(parent: LanguageSymbol, entries: OutlineEntry[]) {
-		if (!entries.length) {
-			return;
-		}
-
 		const entry = entries[0];
 		const symbol = this.toDocumentSymbol(entry);
 		symbol.children = [];
@@ -42,21 +38,25 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			parent = parent.parent!;
 		}
 		parent.children.push(symbol);
-		this.traverseAndCopy(
-			{
-				level: entry.level,
-				children: symbol.children,
-				parent
-			},
-			entries.slice(1)
-		);
+		if (entries.length > 1) {
+			this.traverseAndCopy(
+				{
+					level: entry.level,
+					children: symbol.children,
+					parent
+				},
+				entries.slice(1)
+			);
+		}
 	}
 
 	private toSymbolInformation(this: OutlineEntry[], entry: OutlineEntry, index: number): vscode.SymbolInformation {
+		const previous = index > 0 ? this[index - 1] : void 0;
+		const parent = previous && entry.level > previous.level ? entry.text : '';
 		return new vscode.SymbolInformation(
 			entry.text,
 			entry.type,
-			index > 0 ? this[index - 1].text : '',
+			parent,
 			entry.location
 		);
 	}

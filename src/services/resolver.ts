@@ -4,9 +4,10 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import type { JsonObject } from 'type-fest';
 import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
+
+import type { JsonObject } from 'type-fest';
 
 import { readFileText } from '../util/loader';
 

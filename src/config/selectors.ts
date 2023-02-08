@@ -1,6 +1,7 @@
 'use strict';
 
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from '../util/selectors';
+
 import type { ConfigJson } from './config';
 
 export class ConfigSelectors {

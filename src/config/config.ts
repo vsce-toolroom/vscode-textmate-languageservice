@@ -1,7 +1,8 @@
 'use strict';
 
-import type { JsonObject } from 'type-fest';
 import type * as vscode from 'vscode';
+import type { JsonObject } from 'type-fest';
+
 import type { LanguageContribution } from '../services/resolver';
 import { ConfigSelectors } from './selectors';
 

@@ -7,35 +7,16 @@
 import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
 import * as bindings from 'vscode-oniguruma';
-import { getWasmFile } from '../util/loader';
-
-function moduleDirnameToWasmPath(dirname: string): string {
-	return `${vscode.env.appRoot}/${dirname}/vscode-oniguruma/release/onig.wasm`;
-}
-
-const nodeModulesDirnames = [
-	'node_modules.asar.unpacked',
-	'node_modules.asar',
-	'node_modules'
-];
-const wasmPaths = nodeModulesDirnames.map(moduleDirnameToWasmPath)
 
 let onigurumaLib: textmate.IOnigLib | null = null;
 
-export async function getOniguruma(): Promise<textmate.IOnigLib> {
+export async function getOniguruma(extensionUri: vscode.Uri): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		let wasmBin: ArrayBuffer | Uint8Array | Response;
-		let readError: Error;
-		for (let i = 0; !wasmBin && i < wasmPaths.length; i++) {
-			const wasmPath = wasmPaths[i];
-			try {
-				wasmBin = await getWasmFile(wasmPath);
-			} catch (e) {
-				readError = e as Error;
-			}
-		}
-		if (!wasmBin) throw readError;
-		await bindings.loadWASM(wasmBin);
+		const wasmPath = vscode.Uri.joinPath(extensionUri, './node_modules/vscode-textmate-languageservice', 'dist/onig.wasm');
+		const wasmData = vscode.env.appHost === 'desktop'
+			? await vscode.workspace.fs.readFile(wasmPath)
+			: await fetch(wasmPath.toString());
+		await bindings.loadWASM(wasmData);
 		onigurumaLib = {
 			createOnigScanner(patterns: string[]) { return new bindings.OnigScanner(patterns); },
 			createOnigString(s: string) { return new bindings.OnigString(s); }

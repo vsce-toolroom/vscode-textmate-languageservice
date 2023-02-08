@@ -83,7 +83,7 @@ function isSelectorAtScopeLevel(selector: string) {
 	return (
 		/[a-zA-Z0-9+_]$/.test(selector) &&
 		/^[a-zA-Z0-9+_]/.test(selector) &&
-		/^[a-zA-Z0-9+_\-.]*$/.test(selector)
+		!/[^a-zA-Z0-9+_\-.]/.test(selector)
 	);
 }
 
@@ -98,7 +98,7 @@ function optimizedSelectorFactory(selector: string): ScopeSelector {
 }
 
 export class TextmateScopeSelectorMap {
-	private matchers: Record<string, ScopeSelector | undefined>;
+	private matchers: Record<string, ScopeSelector>;
 
 	constructor(public readonly sourcemap: Record<string, number> | undefined) {
 		this.matchers = {};
@@ -107,28 +107,29 @@ export class TextmateScopeSelectorMap {
 		}
 	}
 
-	key(scopes: string[]): string | undefined {
+	key(scopes: string | string[]): string | void {
 		if (!this.sourcemap) {
-			return;
+			return void 0;
 		}
 		for (const key in this.sourcemap) {
 			if (this.matchers[key].matches(scopes)) return key;
 		}
-		return;
+		return void 0;
 	}
 
-	has(scopes: string[]): boolean {
+	has(scopes: string | string[]): boolean {
 		return typeof this.key(scopes) === 'string';
 	}
 
-	value(scopes: string[]): number | undefined {
-		if (!this.sourcemap) {
-			return;
+	value(scopes: string | string[]): number | void {
+		const key = this.key(scopes);
+		if (!this.sourcemap || !key) {
+			return void 0;
 		}
-		return this.sourcemap[this.key(scopes)];
+		return this.sourcemap[key];
 	}
 
 	toString(): string {
-		return String(this.sourcemap);
+		return JSON.stringify(this.sourcemap);
 	}
 }

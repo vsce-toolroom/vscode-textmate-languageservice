@@ -27,7 +27,7 @@ interface TextmateTokenizerState {
 	stack: number;
 }
 
-export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
+export class TokenizerService extends ServiceBase<TextmateToken[]> {
 	constructor(
 		private _config: ConfigData,
 		private _grammar: textmate.IGrammar

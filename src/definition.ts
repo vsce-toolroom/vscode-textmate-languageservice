@@ -2,14 +2,14 @@
 
 import * as vscode from 'vscode';
 import type { ConfigData } from './config/config';
-import type { DocumentOutlineService } from './services/outline';
+import type { OutlineService } from './services/outline';
 
 export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
-	constructor(private _config: ConfigData, private _outlineService: DocumentOutlineService) {}
+	constructor(private _config: ConfigData, private _outlineService: OutlineService) {}
 
-	private getComponentGlob(document: vscode.TextDocument, position: vscode.Position): string | undefined {
+	private getComponentGlob(document: vscode.TextDocument, position: vscode.Position): string | void {
 		const extensions = this._config.extensions;
-		if (!extensions) return;
+		if (!extensions) return void 0;
 
 		const selection = document.getWordRangeAtPosition(position);
 		const componentName = document.getText(selection);
@@ -17,19 +17,19 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 		return `**/${componentName}${extensionGlob}`;
 	}
 
-	async getNestedPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Position | undefined> {
+	async getNestedPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Position | void> {
 		const range = document.getWordRangeAtPosition(position);
 		const selection = document.getText(range);
 
 		const entry = await this._outlineService.lookup(document, selection);
-		return !entry ? undefined : entry.location.range.start;
+		return !entry ? void 0 : entry.location.range.start;
 	}
 
 	async searchFiles(extensionGlob: string): Promise<vscode.Uri[]> {
 		return vscode.workspace.findFiles(extensionGlob, this._config.exclude, 5);
 	}
 
-	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[] | undefined> {
+	async provideDefinition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location[]> {
 		const locations: vscode.Location[] = [];
 		const filePosition = await this.getNestedPosition(document, position);
 		if (filePosition) locations.push(new vscode.Location(document.uri, filePosition));

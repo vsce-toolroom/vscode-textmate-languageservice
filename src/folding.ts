@@ -2,8 +2,8 @@
 
 import * as vscode from 'vscode';
 import type { ConfigData } from './config/config';
-import type { TextmateToken, TextmateTokenizerService } from './services/tokenizer';
-import type { OutlineEntry, DocumentOutlineService } from './services/outline';
+import type { TextmateToken, TokenizerService } from './services/tokenizer';
+import type { OutlineEntry, OutlineService } from './services/outline';
 import { TextmateScopeSelector } from './util/selectors';
 
 const rangeLimit = 5000;
@@ -19,14 +19,14 @@ export interface FoldingToken {
 }
 
 export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider {
-	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService, private _outlineService: DocumentOutlineService) {}
+	constructor(private _config: ConfigData, private _tokenService: TokenizerService, private _outlineService: OutlineService) {}
 
 	public async provideFoldingRanges(
 		document: vscode.TextDocument,
 		_: vscode.FoldingContext,
 		_token: vscode.CancellationToken
 	): Promise<vscode.FoldingRange[]> {
-		const tokens = await this._tokenizer.fetch(document);
+		const tokens = await this._tokenService.fetch(document);
 		const outline = await this._outlineService.fetch(document);
 
 		const foldables = await Promise.all([

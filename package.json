@@ -36,7 +36,7 @@
     "reset-pack": "del-cli *.tgz test/vscode-matlab/*.tgz",
     "lint": "eslint --ext .ts src",
     "patch": "cpy * ../vscode-matlab --cwd=test/vscode-matlab-patches --parents",
-    "pegjs": "peggy --plugin ts-pegjs --extra-options-file src/scopes/parser.pegconfig.json -o src/scopes/parser.ts src/scopes/parser.pegjs",
+    "pegjs": "peggy --plugin ts-pegjs --extra-options-file src/scopes/pegconfig.json -o src/scopes/parser.ts src/scopes/parser.pegjs",
     "stage": "npm-run-all stage-pack stage-install stage-mocha stage-data stage-samples",
     "stage-pack": "npm-run-all stage-pack-tar stage-pack-copy",
     "stage-pack-tar": "npm pack",

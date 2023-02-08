@@ -5,10 +5,10 @@ import { Disposable } from './util/dispose';
 import type { Lazy } from './util/lazy';
 import { lazy } from './util/lazy';
 import type { TextmateDocumentSymbolProvider } from './document-symbol';
-import type { SkinnyTextDocument, WorkspaceDocumentService } from './services/document';
+import type { SkinnyTextDocument, DocumentService } from './services/document';
 
 export class TextmateWorkspaceSymbolProvider extends Disposable implements vscode.WorkspaceSymbolProvider {
-	constructor(private _documentService: WorkspaceDocumentService, private _documentSymbols: TextmateDocumentSymbolProvider) {
+	constructor(private _documentService: DocumentService, private _documentSymbols: TextmateDocumentSymbolProvider) {
 		super();
 	}
 

@@ -2,10 +2,11 @@
 
 import * as vscode from 'vscode';
 import { TextmateScopeSelector } from '../util/selectors';
+import { ServiceBase } from '../util/service';
+
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
-import type { TextmateTokenizerService, TextmateToken } from './tokenizer';
-import { ServiceBase } from '../util/service';
+import type { TokenizerService, TextmateToken } from './tokenizer';
 
 const entitySelector = new TextmateScopeSelector('entity');
 
@@ -19,8 +20,8 @@ export interface OutlineEntry {
 	readonly anchor: number;
 }
 
-export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
-	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService) {
+export class OutlineService extends ServiceBase<OutlineEntry[]> {
+	constructor(private _config: ConfigData, private _tokenService: TokenizerService) {
 		super();
 	}
 
@@ -31,7 +32,7 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 
 	public async parse(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
 		const outline: OutlineEntry[] = [];
-		const tokens = await this._tokenizer.fetch(document);
+		const tokens = await this._tokenService.fetch(document);
 
 		for (let index = 0; index < tokens.length; index++) {
 			const entry = tokens[index];
@@ -40,6 +41,7 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 			}
 			
 			const lineNumber = entry.line;
+			const symbolKind = this._config.selectors.symbols.value(entry.scopes) as number;
 			outline.push({
 				level: entry.level,
 				line: lineNumber,
@@ -49,7 +51,7 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 				),
 				text: entry.text,
 				token: entry.type,
-				type: this._config.selectors.symbols.value(entry.scopes),
+				type: symbolKind as number,
 				anchor: index
 			});
 		}
