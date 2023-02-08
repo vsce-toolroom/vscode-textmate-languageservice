@@ -53,16 +53,13 @@ async function digest(document: SkinnyTextDocument): Promise<string> {
 			const buffer = await crypto.subtle.digest('SHA-256', bufview);
 			return buf2hex(buffer);
 		}
-	} catch {}
+	} catch (_) {}
 	// Insecure browser context.
-	// This should *never* happen for VS Code but send an invalid 64-bit hash.
-	const epoch = Date.now().toString(16);
-	const reverse = [...epoch].reverse().join('');
-	const hash = new Array(6)
-		.map((_, i) => i % 2 ? epoch : reverse)
-		.join('').substring(0, 64);
-	const digest = `${document.uri.path}-${hash}`;
-	return digest;
+	// This should *never* happen for VS Code but send an random-generated 64-bit hash.
+	return new Array(64).fill(16)
+		.map(a => Math.floor(a * Math.random()).toString(16))
+		.sort(() => Math.random() - 0.5)
+		.join('');
 }
 
 function buf2hex(buffer: ArrayBuffer) {
