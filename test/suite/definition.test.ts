@@ -1,82 +1,87 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as assert from 'assert';
-import type { JsonArray } from 'type-fest';
+import { describe, test, expect } from '@jest/globals';
 
-import { TextmateScopeSelector } from '../../src/util/selectors';
-import type { TextmateToken } from '../../src/services/tokenizer';
-
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
+import { TextmateScopeSelector, TextmateToken } from '../../src';
+import { context, tokenServicePromise, documentServicePromise, definitionProviderPromise } from '../util/factory';
 import { BASE_CLASS_NAME, SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import tester from '../util/tester';
+import { sampler } from '../util/sampler';
 
-const classReferenceSelector = new TextmateScopeSelector([
-	'meta.inherited-class entity.name.type.class',
-	'meta.method-call entity.name.type.class'
-]);
-
-const workspaceDocumentServicePromise = lsp.initWorkspaceDocumentService();
-const definitionProviderPromise = lsp.createDefinitionProvider();
-const tokenizerPromise = lsp.initTokenizerService();
-
-suite('src/definition.ts (test/suite/definition.ts)', async function() {
-	this.timeout(10000);
-
+describe('src/definition.ts', function() {
 	test('TextmateDefinitionProvider class', async function() {
 		vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');
 
-		const workspaceDocumentService = await workspaceDocumentServicePromise;
+		const documentService = await documentServicePromise;
+		const tokenizer = await tokenServicePromise;
 		const definitionProvider = await definitionProviderPromise;
-		const tokenizer = await tokenizerPromise;
 
-		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
+		const classReferenceSelector = new TextmateScopeSelector([
+			'meta.inherited-class entity.name.type.class',
+			'meta.method-call entity.name.type.class'
+		]);
+		
+		function isBaseClassReference(token: TextmateToken) {
+			return classReferenceSelector.match(token.scopes) && token.text === BASE_CLASS_NAME;
+		}
+
+		interface DefinitionTestResult extends TextmateToken {
+			uri: vscode.Uri;
+			definition: vscode.Location | void;
+		}
+
+		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
+		const results: DefinitionTestResult[][] = [];
 
 		for (let index = 0; index < samples.length; index++) {
 			const resource = samples[index];
-			const basename = `${SAMPLE_FILE_BASENAMES[index]}.m`;
 
-			const skinnyDocument = await workspaceDocumentService.getDocument(resource);
+			const skinnyDocument = await documentService.getDocument(resource);
 			const tokens = await tokenizer.fetch(skinnyDocument);
 
 			const document = await vscode.workspace.openTextDocument(resource);
-			await vscode.window.showTextDocument(document);
-			const activeEditor = vscode.window.activeTextEditor;
+			const activeEditor = await vscode.window.showTextDocument(document);
 
-			let definitions = [];
+			const symbols = tokens.filter(isBaseClassReference);
 
-			for (const token of tokens.filter(isClassReferenceToken)) {
-				const startPosition = new vscode.Position(token.line, token.startIndex);
-				const endPosition = new vscode.Position(token.line, token.endIndex);
+			const page: DefinitionTestResult[] = [];
 
-				activeEditor.selection = new vscode.Selection(startPosition, endPosition);
-				const definitionResults = await definitionProvider.provideDefinition(document, startPosition);
+			// Query each instance of `Animal` in the sample MATLAB file.
+			for (const symbol of symbols) {
+				const startPosition = new vscode.Position(symbol.line, symbol.startIndex);
+				const endPosition = new vscode.Position(symbol.line, symbol.endIndex);
 
-				assert.strictEqual(
-					[1, 2].includes(definitionResults.length),
-					true,
-					`Could not go to ${token.text} class from ${basename}.`
-				);
-				definitions.push({
-					...token,
-					uri: resource,
-					definition: definitionResults[0]
-				});
+				activeEditor!.selection = new vscode.Selection(startPosition, endPosition);
+
+				const locations = await definitionProvider.provideDefinition(document, startPosition);
+
+				page.push({ ...symbol, uri: resource, definition: locations[0] });
 			}
-
-			definitions = jsonify<JsonArray>(definitions);
-
-			await tester('definition', basename, definitions);
+			results.push(page);
 		}
 
-		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
-	});
-});
+		test('provideDefinition(): Promise<[vscode.Location,...vscode.Location[]]>', function() {
+			for (let index = 0; index < results.length; index++) {
+				const page = results[index];
+				const filename = `${SAMPLE_FILE_BASENAMES[index]}.m`;
 
-function isClassReferenceToken(token: TextmateToken) {
-	return (
-		classReferenceSelector.match(token.scopes)
-		&& token.text === BASE_CLASS_NAME
-	);
-}
+				for (const entry of page) {
+					test(filename, function() {
+						expect(entry instanceof Object).toStrictEqual(true);
+					});
+				}
+			}
+		});
+
+		test('provideDefinition(): Promise<vscode.Location[]>', async function() {
+			for (let index = 0; index < results.length; index++) {
+				const page = results[index];
+				const basename = SAMPLE_FILE_BASENAMES[index];
+
+				await sampler.call(context, 'definition', basename, page);
+			}
+		});
+
+		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+	}, 10000);
+});

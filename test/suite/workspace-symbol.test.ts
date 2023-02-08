@@ -1,23 +1,20 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import { describe, test } from '@jest/globals';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
-import tester from '../util/tester';
-import type { JsonArray } from 'type-fest';
+import { context, workspaceSymbolProviderPromise } from '../util/factory';
+import { sampler } from '../util/sampler';
 
-const workspaceSymbolProviderPromise = lsp.createWorkspaceSymbolProvider();
-
-suite('src/workspace-symbol.ts (test/suite/workspace-symbol.test.ts)', async function() {
-	this.timeout(10000);
-
+describe('src/workspace-symbol.ts', function() {
 	test('TextmateWorkspaceSymbolProvider class', async function() {
-		vscode.window.showInformationMessage('TextmateTokenizerService class (src/parser/selectors.ts)');
+		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
 
 		const workspaceSymbolProvider = await workspaceSymbolProviderPromise;
-		const symbols = jsonify<JsonArray>(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
+		const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 
-		await tester('workspace-symbol', 'index', symbols);
-	});
+		test('provideWorkspaceSymbols(): Promise<vscode.SymbolInformation[]>', async function() {
+			await sampler.call(context, 'workspace-symbol', 'index', symbols);
+		});
+	}, 10000);
 });

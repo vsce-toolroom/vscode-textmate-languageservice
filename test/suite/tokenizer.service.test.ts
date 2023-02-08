@@ -1,36 +1,39 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import { describe, test } from '@jest/globals';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
-import { SAMPLE_FILE_BASENAMES, getSampleFileUri,  } from '../util/files';
-import tester from '../util/tester';
+import { context, documentServicePromise, tokenServicePromise } from '../util/factory';
+import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
+import { sampler } from '../util/sampler';
 
-import type { JsonArray } from 'type-fest';
+import type { TextmateToken } from '../../src';
 
-const workspaceDocumentServicePromise = lsp.initWorkspaceDocumentService();
-const tokenizerPromise = lsp.initTokenizerService();
+describe('src/services/tokenizer.ts', function() {
+	test('TokenizerService class', async function() {
+		vscode.window.showInformationMessage('TokenizerService class (src/services/tokenizer.ts)');
 
-suite('src/services/tokenizer.ts (test/suite/tokenizer.service.test.ts)', async function() {
-	this.timeout(10000);
-
-	test('TextmateTokenizerService class', async function() {
-		vscode.window.showInformationMessage('TextmateTokenizerService class (src/services/tokenizer.ts)');
-
-		const workspaceDocumentService = await workspaceDocumentServicePromise;
-		const tokenizer = await tokenizerPromise;
+		const documentService = await documentServicePromise;
+		const tokenService = await tokenServicePromise;
 		
 		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
+		const outputs: TextmateToken[][] = [];
 
 		for (let index = 0; index < samples.length; index++) {
 			const resource = samples[index];
-			const basename = `${SAMPLE_FILE_BASENAMES[index]}.m`;
 
-			const document = await workspaceDocumentService.getDocument(resource);
-			const tokens = jsonify<JsonArray>(await tokenizer.fetch(document));
+			const document = await documentService.getDocument(resource);
+			const tokens = await tokenService.fetch(document);
 
-			await tester('tokenizer', basename, tokens);
+			outputs.push(tokens);
 		}
-	});
+		
+		test('fetch(): Promise<TextmateToken[]>', async function() {
+			for (let index = 0; index < samples.length; index++) {
+				const basename = SAMPLE_FILE_BASENAMES[index];
+				const tokens = outputs[index];
+				await sampler.call(context, 'tokenizer', basename, tokens);
+			}
+		});
+	}, 5000);
 });

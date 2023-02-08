@@ -2,21 +2,21 @@
 
 import * as vscode from 'vscode';
 
-class MockMemento implements vscode.Memento {
+export class MockMemento implements vscode.Memento {
 	keys(): readonly string[] {
 		return [];
 	}
 	get<T = void>(_1: string): T;
 	get<T = void>(_1: string, _2: T): T;
 	get<T = void>(_1: string, _2?: T): T {
-		return;
+		return void 0 as T;
 	}
 	update(_1: string, _2: any): Thenable<void> {
-		return;
+		return Promise.resolve();
 	}
 }
 
-class MockGlobalMemento extends MockMemento implements vscode.Memento {
+export class MockGlobalMemento extends MockMemento implements vscode.Memento {
 	setKeysForSync(_: readonly string[]): void {
 		return;
 	}
@@ -35,7 +35,7 @@ export class SecretStorage {
     onDidChange = new vscode.EventEmitter<vscode.SecretStorageChangeEvent>().event;
 }
 
-class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
+export class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
 	readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();
 	private _persistent: boolean = true;
 	public get persistent(): boolean { return this._persistent; }
@@ -62,10 +62,9 @@ class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCol
 	clear(): void {}
 }
 
-
-class MockExtensionContext implements vscode.ExtensionContext {
+export class MockExtensionContext implements vscode.ExtensionContext {
 	constructor(id: string) {
-		const extension = vscode.extensions.getExtension(id);
+		const extension = vscode.extensions.getExtension(id) as vscode.Extension<any>;
 
 		this.subscriptions = [];
 
@@ -118,8 +117,4 @@ class MockExtensionContext implements vscode.ExtensionContext {
 
 	public readonly extensionMode: vscode.ExtensionMode;
 	public readonly extension: vscode.Extension<any>;
-}
-
-const context: vscode.ExtensionContext = new MockExtensionContext('Gimly81.matlab');
-
-export default context;
+};

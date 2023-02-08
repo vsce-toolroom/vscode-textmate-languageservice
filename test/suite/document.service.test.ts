@@ -1,47 +1,59 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as assert from 'assert';
+import { describe, test, expect } from '@jest/globals';
 
-import lsp from '../util/lsp';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
+import { documentServicePromise } from '../util/factory';
+import type { SkinnyTextDocument } from '../../src/services/document';
 
-const workspaceDocumentServicePromise = lsp.initWorkspaceDocumentService();
+describe('src/services/document.ts', function() {
+	test('DocumentService class', async function() {
+		vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
 
-suite('src/services/document.ts (test/suite/document.service.test.ts)', function() {
-	this.timeout(10000);
-
-	test('WorkspaceDocumentService class', async function() {
-		vscode.window.showInformationMessage('WorkspaceDocumentService class (src/services/document.ts)');
-
-		const workspaceDocumentService = await workspaceDocumentServicePromise;
+		const documentService = await documentServicePromise;
 
 		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
 
+		const expecteds: vscode.TextDocument[] = [];
+		const actuals: SkinnyTextDocument[] = [];
+
 		for (let index = 0; index < samples.length; index++) {
-			const sample = samples[index];
+			const resource = samples[index];
 
-			const document = await vscode.workspace.openTextDocument(sample);
+			const textDocument = await vscode.workspace.openTextDocument(resource);
+			const providerDocument = await documentService.getDocument(resource);
 
-			const providerDocument = await workspaceDocumentService.getDocument(sample);
-
-			assert.strictEqual(
-				document.uri.toString(),
-				providerDocument.uri.toString(),
-				`SkinnyTextDocument.uri: expected '${document.uri.path}' but found '${providerDocument.uri.path}'.`
-			);
-			assert.strictEqual(
-				document.lineCount,
-				providerDocument.lineCount,
-				`SkinnyTextDocument.lineCount: expected ${document.lineCount} lines but found ${providerDocument.lineCount} lines.`
-			);
-			assert.strictEqual(
-				document.lineAt(0).text,
-				providerDocument.lineAt(0).text,
-				`SkinnyTextDocument.lineAt(0): expected line 0 to be "'${document.lineAt(0).text}'" but found "'${providerDocument.lineAt(0).text}'".`
-			);
+			expecteds.push(textDocument);
+			actuals.push(providerDocument);
 		}
 
+		test('SkinnyTextDocument.uri', function() {
+			for (let index = 0; index < samples.length; index++) {
+				const textDocument = expecteds[index];
+				const providerDocument = actuals[index];
+				expect(textDocument.uri.toString()).toStrictEqual(providerDocument.uri.toString());
+			}
+		});
+
+		test('SkinnyTextDocument.lineCount', function() {
+			for (let index = 0; index < samples.length; index++) {
+				const textDocument = expecteds[index];
+				const providerDocument = actuals[index];
+				expect(textDocument.lineCount).toStrictEqual(providerDocument.lineCount);
+			}
+		});
+
+		test('SkinnyTextDocument.lineAt(line: number)', function() {
+			for (let index = 0; index < samples.length; index++) {
+				const textDocument = expecteds[index];
+				const providerDocument = actuals[index];
+				expect(textDocument.lineAt(0).text).toStrictEqual(providerDocument.lineAt(0).text);
+			}
+		});
+
 		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
-	});
+
+	}, 5000);
+
 });

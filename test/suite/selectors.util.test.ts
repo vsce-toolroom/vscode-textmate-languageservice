@@ -1,64 +1,87 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as assert from 'assert';
+import { describe, test, expect } from '@jest/globals';
 
 import { loadJsonFile } from '../../src/util/loader';
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from '../../src/util/selectors';
-import { SELECTOR_TEST_DATA_BASENAME, SELECTOR_MAP_TEST_DATA_BASENAME, geComponentDataUri } from '../util/files';
 
-suite('src/util/selectors.ts (test/suite/selectors.util.test.ts)', async function() {
-	this.timeout(10000);
+import { getComponentSampleDataUri } from '../util/files';
+import { context } from '../util/factory';
 
-	test('TextmateScopeSelector class', async function() {
+// Add types for JSON test data to ease development.
+import type * as selectorJson from '../data/selectors/selector.json';
+type SelectorTestData = typeof selectorJson;
+import type * as mapJson from '../data/selectors/map.json';
+type SelectorMapTestData = typeof mapJson;
+
+describe('src/util/selectors.ts', function() {
+
+	describe('TextmateScopeSelector class', async function() {
 		vscode.window.showInformationMessage('TextmateScopeSelector class (src/utils/selectors.ts)');
 
-		const scopeSelectorTestsUri = geComponentDataUri('selectors', SELECTOR_TEST_DATA_BASENAME);
-		type ScopeSelectorData = typeof import('../data/selectors/selector.json');
-		const scopeSelectorTests = await loadJsonFile<ScopeSelectorData>(scopeSelectorTestsUri);
+		const data = getComponentSampleDataUri.call(context, 'selectors', 'selector');
+		const json = await loadJsonFile<SelectorTestData>(data);
 	
-		const testSuite = Object.values(scopeSelectorTests);
-		for (let index = 0; index < testSuite.length; index++) {
-			const testCases = testSuite[index];
-			for (let subindex = 0; subindex < testCases.length; subindex++) {
-				const test = testCases[subindex];
-				const selector = new TextmateScopeSelector(test.selector);
-				const scopes = typeof test.input === 'string'? test.input : test.input.join(' ');
-				assert.strictEqual(
-					selector.match(test.input),
-					test.expected,
-					`TextmateScopeSelector.match: '${test.selector}' failed for the input: '${scopes}'.`
-				);
-			}
+		const testEntries = Object.entries(json);
+		for (const [testFeature, testCases] of testEntries) {
+			test('TextmateScopeSelector.match(scopes): selector ' + testFeature, function() {
+				for (const t of testCases) {
+					test(t.selector, function() {
+						const selector = new TextmateScopeSelector(t.selector);
+						expect(selector.match(t.input)).toEqual(t.expected);
+					});
+				}
+			});
 		}
 	});
-	test('TextmateScopeSelectorMap class', async function() {
+
+	describe('TextmateScopeSelectorMap class', async function() {
 		vscode.window.showInformationMessage('TextmateScopeSelectorMap class (src/utils/selectors.ts)');
 
-		const scopeSelectorMapTestsUri = geComponentDataUri('selectors', SELECTOR_MAP_TEST_DATA_BASENAME);
-		type ScopeSelectorMapData = typeof import('../data/selectors/map.json');
-		const scopeSelectorMapTests = await loadJsonFile<ScopeSelectorMapData>(scopeSelectorMapTestsUri);
-	
-			const testCases = Object.values(scopeSelectorMapTests);
-		for (let index = 0; index < testCases.length; index++) {
-			const test = testCases[index];
-			const selectorMap = new TextmateScopeSelectorMap({ [test.key]: test.value });
-			const scopes = typeof test.input === 'string'? test.input : test.input.join(' ');
-			assert.strictEqual(
-				selectorMap.key(test.input),
-				test.key === null ? undefined : test.key,
-				`TextmateScopeSelectorMap.key: "${test.key}":${test.value}} failed for the input: "${scopes}".`
-			);
-			assert.strictEqual(
-				selectorMap.has(test.input),
-				test.expected,
-				`TextmateScopeSelectorMap.has: "${test.key}":${test.value}} failed for the input: "${scopes}".`
-			);
-			assert.strictEqual(
-				selectorMap.value(test.input),
-				test.value === null ? undefined : test.value,
-				`TextmateScopeSelectorMap.value: {"${test.key}":${test.value}} failed for the input: "${scopes}".`
-			);
+		const data = getComponentSampleDataUri.call(context, 'selectors', 'map');
+		const json = await loadJsonFile<SelectorMapTestData>(data);
+
+		type SelectorMapTestDatum = SelectorMapTestData[number];
+		interface SelectorMapTestCase extends Pick<SelectorMapTestDatum, 'input' | 'expected'> {
+			key: string | void;
+			value: number | void;
+			map: TextmateScopeSelectorMap;
+			scopes: string;
 		}
+
+		const testCases: SelectorMapTestCase[] = [];
+		for (const d of json) {
+			const key = d.key === null ? void 0 : d.key;
+			const value = d.value === null ? void 0 : d.value;
+			const map = new TextmateScopeSelectorMap(d.key === null ? void 0 : { [d.key]: d.value });
+			const scopes = d.input.join(' ');
+			testCases.push({ ...d, key, value, map, scopes });
+		}
+
+		test('key(scopes)', function() {
+			for (const t of testCases) {
+				test('sourcemap: ' + t.map.toString() + ', scopes: "' + t.scopes + '"', function() {
+					expect(t.map.key(t.input)).toStrictEqual(t.key === null ? void 0 : t.key);
+				});
+			}
+		});
+
+		test('has(scopes)', function() {
+			for (const t of testCases) {
+				test('sourcemap "' + t.map.toString() + '", scopes: "' + t.scopes + '"', function() {
+					expect(t.map.has(t.input)).toStrictEqual(t.expected);
+				});
+			}
+		});
+
+		test('value(scopes)', function() {
+			for (const t of testCases) {
+				test('sourcemap: "' + t.map.toString() + '", scopes: "' + t.scopes + '"', function() {
+					expect(t.map.value(t.input)).toStrictEqual(t.value === null ? void 0 : t.value);
+				});
+			}
+		});
 	});
+
 });

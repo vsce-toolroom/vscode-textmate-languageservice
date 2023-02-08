@@ -1,35 +1,38 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { JsonArray } from 'type-fest';
+import { describe, test } from '@jest/globals';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
+import { documentServicePromise, outlineServicePromise, context } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import tester from '../util/tester';
+import { sampler } from '../util/sampler';
+import { OutlineEntry } from '../../src/services/outline';
 
-const workspaceDocumentServicePromise = lsp.initWorkspaceDocumentService();
-const documentOutlineServicePromise = lsp.initDocumentOutlineService();
+describe('src/services/outline.ts', function() {
+	test('OutlineService class', async function() {
+		vscode.window.showInformationMessage('OutlineService class (src/services/outline.ts)');
 
-suite('src/services/outline.ts (test/suite/outline.service.test.ts)', function() {
-	this.timeout(10000);
+		const documentService = await documentServicePromise;
+		const outlineService = await outlineServicePromise;
 
-	test('DocumentOutlineService class', async function() {
-		vscode.window.showInformationMessage('DocumentOutlineService class (src/services/outline.ts)');
-
-		const workspaceDocumentService = await workspaceDocumentServicePromise;
-		const documentOutlineService = await documentOutlineServicePromise;
-
-		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
+		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
+		const outputs: OutlineEntry[][] = [];
 
 		for (let index = 0; index < samples.length; index++) {
 			const resource = samples[index];
-			const basename = `${SAMPLE_FILE_BASENAMES[index]}.m`;
 
-			const document = await workspaceDocumentService.getDocument(resource);
-			const outline = jsonify<JsonArray>(await documentOutlineService.fetch(document));
+			const document = await documentService.getDocument(resource);
+			const outline = await outlineService.fetch(document);
 
-			await tester('outline', basename, outline);
+			outputs.push(outline);
 		}
-	});
+
+		test('fetch(): Promise<OutlineEntry[]>', async function() {
+			for (let index = 0; index < samples.length; index++) {
+				const basename = SAMPLE_FILE_BASENAMES[index];
+				const outline = outputs[index];
+				await sampler.call(context, 'outline', basename, outline);
+			}
+		});
+	}, 5000);
 });
