@@ -9,7 +9,8 @@ module.exports = {
 	target: 'node',
 	entry: {
 		index: './src/index.ts',
-		'runner.test': './test/runner.test.ts',
+		'runner-web.test': './test/runner-web.test.ts',
+		'runner-electron.test': './test/runner-electron.test.ts',
 		'suite.test': './test/suite.test.ts'
 	},
 	externals: {
