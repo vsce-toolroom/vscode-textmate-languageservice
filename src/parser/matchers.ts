@@ -87,7 +87,7 @@ export class GroupMatcher {
 		return this.selector.matches(scopes);
 	}
 
-	getPrefix(scopes: string): GroupPrefix | undefined {
+	getPrefix(scopes: string): GroupPrefix | void {
 		if (this.selector.matches(scopes)) {
 			return this.prefix;
 		}
@@ -98,7 +98,7 @@ export class PathMatcher {
 	prefix?: GroupPrefix;
 	matchers: ScopeMatcher[];
 
-	constructor(prefix: PrefixMatch | null | undefined, first: ScopeMatcher, others: Array<[[], ScopeMatcher]>) {
+	constructor(prefix: PrefixMatch | null | void, first: ScopeMatcher, others: Array<[[], ScopeMatcher]>) {
 		this.prefix = prefix ? prefix[0] : undefined;
 		this.matchers = [first];
 		for (let matcher of others) {
@@ -123,7 +123,7 @@ export class PathMatcher {
 		return false;
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | undefined {
+	getPrefix(scopes: string[]): GroupPrefix | void {
 		if (this.matches(scopes)) {
 			return this.prefix;
 		}
@@ -142,7 +142,7 @@ export class OrMatcher {
 		return this.left.matches(scopes) || this.right.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | undefined {
+	getPrefix(scopes: string[]): GroupPrefix | void {
 		return this.left.getPrefix(scopes) || this.right.getPrefix(scopes) || undefined;
 	}
 }
@@ -150,16 +150,16 @@ export class OrMatcher {
 export class AndMatcher {
 	left: PathMatcher;
 	right: PathMatcher | NegateMatcher;
-	constructor(left1: PathMatcher, right1: PathMatcher | NegateMatcher) {
-		this.left = left1;
-		this.right = right1;
+	constructor(left: PathMatcher, right: PathMatcher | NegateMatcher) {
+		this.left = left;
+		this.right = right;
 	}
 
 	matches(scopes: string[]): boolean {
 		return this.left.matches(scopes) && this.right.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | undefined {
+	getPrefix(scopes: string[]): GroupPrefix | void {
 		if (this.left.matches(scopes) && this.right.matches(scopes)) {
 			return this.left.getPrefix(scopes); // The right side can't have prefixes
 		}
@@ -200,7 +200,7 @@ export class CompositeMatcher {
 		return this.matcher.matches(scopes);
 	}
 
-	getPrefix(scopes: string[]): GroupPrefix | undefined {
+	getPrefix(scopes: string[]): GroupPrefix | void {
 		return this.matcher.getPrefix(scopes);
 	}
 }

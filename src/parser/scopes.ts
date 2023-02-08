@@ -5,6 +5,7 @@
 'use strict';
 
 import * as parser from './parser';
+
 import type { ParsedMatcher, GroupPrefix } from './matchers';
 
 export class FirstMateSelector {

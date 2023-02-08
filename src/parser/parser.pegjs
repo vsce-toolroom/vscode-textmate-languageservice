@@ -1,18 +1,20 @@
+// Copyright (c) GitHub Inc. All rights reserved.
+// Licensed under the MIT License. See LICENSE.md in the project root for license information.
 start = _ selector:(selector) _ {
 	return selector;
 }
 
-segment
+atom
 	= _ segment:([a-zA-Z0-9+_]+[a-zA-Z0-9-+_]*) _ {
 		return new matchers.SegmentMatcher(segment);
 	}
 
-	/ _ scopeName:[\*] _ {
+	/ _ asterisk:[\*] _ {
 		return new matchers.TrueMatcher();
 	}
 
 scope
-	= first:segment others:("." segment)* {
+	= first:atom others:("." atom)* {
 		return new matchers.ScopeMatcher(first, others);
 	}
 

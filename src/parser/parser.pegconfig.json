@@ -1,16 +1,13 @@
 {
-	"tspegjs": {
-		"customHeader": "// Copyright (c) GitHub Inc.\n// Reserved (r) MIT License - see ./LICENSE.md.\n'use strict';\n\nimport * as matchers from '../matchers';"
-	},
-	"returnTypes": {
-		"start": "matchers.ParsedMatcher",
-		"segment": "matchers.AtomMatcher",
-		"scope": "matchers.ScopeMatcher",
-		"path": "matchers.PathMatcher",
-		"group": "matchers.GroupMatcher",
-		"expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
-		"composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
-		"selector": "matchers.ParsedMatcher",
-		"_": "Array<' ' | '\t'>"
-	}
+  "returnTypes": {
+    "start": "matchers.ParsedMatcher",
+    "segment": "matchers.AtomMatcher",
+    "scope": "matchers.ScopeMatcher",
+    "path": "matchers.PathMatcher",
+    "group": "matchers.GroupMatcher",
+    "expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "selector": "matchers.ParsedMatcher",
+    "_": "Array<' ' | '\t'>"
+  }
 }
