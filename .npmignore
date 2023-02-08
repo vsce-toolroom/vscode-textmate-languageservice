@@ -6,6 +6,7 @@ builds/
 src/
 test/
 assets/
+out/
 *.tgz
 *.vsix
 **/*.pegjs
@@ -18,7 +19,6 @@ assets/
 .travis.yml
 .eslintignore
 .eslintrc.json
-.mocharc.json
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
-tsconfig.*.json
+tsconfig.json

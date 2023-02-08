@@ -18,7 +18,8 @@
   "plugins": [
     "eslint-plugin-jsdoc",
     "eslint-plugin-import",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
     "@typescript-eslint/adjacent-overload-signatures": "error",

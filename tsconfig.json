@@ -3,6 +3,7 @@
     "module": "commonjs",
     "target": "es2017",
     "outDir": "out",
+    "declarationDir": "dist/types",
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
     "sourceMap": true,
@@ -10,5 +11,14 @@
     "resolveJsonModule": true,
     "rootDir": ".",
     "types": ["node"]
-  }
+  },
+  "include": [
+    "src",
+    "test/*.ts",
+    "test/suite/*.test.ts",
+    "test/util/*.ts"
+  ],
+  "exclude": [
+    "test/data/*/*.json"
+  ]
 }
