@@ -1,12 +1,12 @@
 {
-  "asterisk": [
+  "atom~asterisk": [
     { "selector": "*", "input": ["a"], "expected": true },
     { "selector": "*", "input": ["b", "c"], "expected": true },
     { "selector": "a.*.c", "input": ["a.b.c"], "expected": true },
     { "selector": "a.*.c", "input": ["a.b.c.d"], "expected": true },
     { "selector": "a.*.c", "input": ["a.b.d.c"], "expected": false }
   ],
-  "segment": [
+  "atom": [
     { "selector": "a", "input": ["a"], "expected": true },
     { "selector": "a", "input": ["a.b"], "expected": true },
     { "selector": "a.b", "input": ["a.b.c"], "expected": true },
@@ -18,16 +18,16 @@
     { "selector": "a_b_c", "input": ["a_b_c"], "expected": true },
     { "selector": "a_b_c", "input": ["a_b"], "expected": false }
   ],
-  "prefix": [
+  "path~prefix": [
     { "selector": "R:g", "input": ["g"], "expected": true },
     { "selector": "R:g", "input": ["R:g"], "expected": false }
   ],
-  "disjunction": [
+  "composite~operator~| (disjunct)": [
     { "selector": "a | b", "input": ["b"], "expected": true },
     { "selector": "a|b|c", "input": ["c"], "expected": true },
     { "selector": "a|b|c", "input": ["d"], "expected": false }
   ],
-  "negation": [
+  "composite~operator~- (negation)": [
     { "selector": "a - c", "input": ["a", "b"], "expected": true },
     { "selector": "a - c", "input": ["a"], "expected": true },
     { "selector": "-c", "input": ["b"], "expected": true },
@@ -37,34 +37,34 @@
     { "selector": "a -c", "input": ["a", "b"], "expected": true },
     { "selector": "a-c", "input": ["a", "b"], "expected": false }
   ],
-  "conjunction": [
+  "composite~operator~& (conjunction)": [
     { "selector": "a & b", "input": ["b", "a"], "expected": true },
     { "selector": "a&b&c", "input": ["c"], "expected": false },
     { "selector": "a&b&c", "input": ["a", "b", "d"], "expected": false },
     { "selector": "a & -b", "input": ["a", "b", "d"], "expected": false },
     { "selector": "a & -b", "input": ["a", "d"], "expected": true }
   ],
-  "composites": [
+  "selector~,": [
     { "selector": "a,b,c", "input": ["b", "c"], "expected": true },
     { "selector": "a, b, c", "input": ["d", "e"], "expected": false },
     { "selector": "a, b, c", "input": ["d", "c.e"], "expected": true },
     { "selector": "a,", "input": ["a", "c"], "expected": true },
     { "selector": "a,", "input": ["b", "c"], "expected": false }
   ],
-  "groups": [
+  "group~()": [
     { "selector": "(a,b) | (c, d)", "input": ["a"], "expected": true },
     { "selector": "(a,b) | (c, d)", "input": ["b"], "expected": true },
     { "selector": "(a,b) | (c, d)", "input": ["c"], "expected": true },
     { "selector": "(a,b) | (c, d)", "input": ["d"], "expected": true },
     { "selector": "(a,b) | (c, d)", "input": ["e"], "expected": false }
   ],
-  "paths": [
+  "path~others~_ (descendant)": [
     { "selector": "a b", "input": ["a", "b"], "expected": true },
     { "selector": "a b", "input": ["b", "a"], "expected": false },
     { "selector": "a c", "input": ["a", "b", "c", "d", "e"], "expected": true },
     { "selector": "a b e", "input": ["a", "b", "c", "d", "e"], "expected": true }
   ],
-  "string": [
+  "matches~scope:string": [
     { "selector": "a|b", "input": "a", "expected": true },
     { "selector": "a|b", "input": "b", "expected": true },
     { "selector": "a|b", "input": "c", "expected": false },
