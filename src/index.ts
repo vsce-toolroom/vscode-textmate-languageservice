@@ -29,6 +29,7 @@ export class LSP {
 	private _tokenService: TokenizerService;
 	private _outlineService?: OutlineService;
 	private _documentService?: DocumentService;
+	private _foldingRangeProvider?: TextmateFoldingRangeProvider;
 	private _documentSymbolProvider?: TextmateDocumentSymbolProvider;
 	private _workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
 	private _definitionProvider?: TextmateDefinitionProvider;
@@ -83,10 +84,14 @@ export class LSP {
 	}
 
 	public async createFoldingRangeProvider(): Promise<TextmateFoldingRangeProvider> {
+		if (this._foldingRangeProvider) return this._foldingRangeProvider;
+
 		const config = await this._configPromise;
 		const tokenService = await this.initTokenService();
 		const outlineService = await this.initOutlineService();
-		return new TextmateFoldingRangeProvider(config, tokenService, outlineService);
+		this._foldingRangeProvider = new TextmateFoldingRangeProvider(config, tokenService, outlineService);
+
+		return this._foldingRangeProvider;
 	}
 
 	public async createDocumentSymbolProvider(): Promise<TextmateDocumentSymbolProvider> {
