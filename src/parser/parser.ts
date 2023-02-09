@@ -232,7 +232,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 	};
 	const peg$c6 = /^[*]/;
 	const peg$c7 = peg$classExpectation(['*'], false, false);
-	const peg$c8 = function (scopeName: any): any {
+	const peg$c8 = function (asterisk: any): any {
 		return new matchers.TrueMatcher();
 	};
 	const peg$c9 = '.';
@@ -441,7 +441,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 		return s0;
 	}
 
-	function peg$parsesegment(): matchers.AtomMatcher {
+	function peg$parseatom(): matchers.AtomMatcher {
 		let s0, s1, s2, s3, s4, s5;
 
 		s0 = peg$currPos;
@@ -566,7 +566,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 		let s0, s1, s2, s3, s4, s5;
 
 		s0 = peg$currPos;
-		s1 = peg$parsesegment();
+		s1 = peg$parseatom();
 		if ((s1 as any) !== peg$FAILED) {
 			s2 = [];
 			s3 = peg$currPos;
@@ -580,7 +580,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 				}
 			}
 			if ((s4 as any) !== peg$FAILED) {
-				s5 = peg$parsesegment();
+				s5 = peg$parseatom();
 				if ((s5 as any) !== peg$FAILED) {
 					s4 = [s4, s5];
 					s3 = s4;
@@ -605,7 +605,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 					}
 				}
 				if ((s4 as any) !== peg$FAILED) {
-					s5 = peg$parsesegment();
+					s5 = peg$parseatom();
 					if ((s5 as any) !== peg$FAILED) {
 						s4 = [s4, s5];
 						s3 = s4;
