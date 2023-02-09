@@ -2,22 +2,23 @@
 
 import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
+
 import { TokenizerService } from './services/tokenizer';
 import { ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
+import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
 import { GrammarLanguageContribution, ResolverService } from './services/resolver';
 import { OutlineService } from './services/outline';
+import { DocumentService } from './services/document';
 import { TextmateFoldingRangeProvider } from './folding';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
-import { DocumentService } from './services/document';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { TextmateDefinitionProvider } from './definition';
-import type { TextmateToken } from './services/tokenizer';
-import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
 
 import type { ConfigJson } from './config/config';
 import type { PackageJSON } from './services/resolver';
+import type { TextmateToken } from './services/tokenizer';
 
 export class LSP {
 	private _packageJSON?: PackageJSON;
@@ -61,16 +62,6 @@ export class LSP {
 		return this._tokenService;
 	}
 
-	public async initDocumentService(): Promise<DocumentService> {
-		if (this._documentService) return this._documentService;
-
-		const id = this.languageId;
-		const config = await this._configPromise;
-		this._documentService = new DocumentService(id, config);
-
-		return this._documentService;
-	}
-
 	public async initOutlineService(): Promise<OutlineService> {
 		if (this._outlineService) return this._outlineService;
 
@@ -79,6 +70,16 @@ export class LSP {
 		this._outlineService = new OutlineService(config, tokenService);
 
 		return this._outlineService;
+	}
+
+	public async initDocumentService(): Promise<DocumentService> {
+		if (this._documentService) return this._documentService;
+
+		const id = this.languageId;
+		const config = await this._configPromise;
+		this._documentService = new DocumentService(id, config);
+
+		return this._documentService;
 	}
 
 	public async createFoldingRangeProvider(): Promise<TextmateFoldingRangeProvider> {
