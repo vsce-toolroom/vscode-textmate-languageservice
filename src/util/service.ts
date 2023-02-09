@@ -1,5 +1,7 @@
 'use strict';
 
+import * as vscode from 'vscode';
+
 import type { SkinnyTextDocument } from '../services/document';
 
 const encoder = new TextEncoder();
@@ -42,14 +44,14 @@ async function digest(document: SkinnyTextDocument): Promise<string> {
 	const bufview = encoder.encode(text);
 	try {
 		// Node environment.
-		if (!crypto) {
-			const { createHash } = require('crypto') as typeof import('crypto');
+		if (vscode.env.appHost === 'desktop') {
+			const { createHash } = require('node:crypto') as typeof import('node:crypto');
 			const hash = createHash('sha256');
 			hash.update(text, 'utf8');
 			return hash.digest('hex');
 		}
 		// Secure browser environment.
-		if (crypto && crypto.subtle) {
+		if (vscode.env.appHost !== 'desktop' && crypto && crypto.subtle) {
 			const buffer = await crypto.subtle.digest('SHA-256', bufview);
 			return buf2hex(buffer);
 		}
