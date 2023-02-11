@@ -12,7 +12,7 @@ let onigurumaLib: textmate.IOnigLib | null = null;
 
 export async function getOniguruma(extensionUri: vscode.Uri): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		const wasmPath = vscode.Uri.joinPath(extensionUri, './node_modules/vscode-textmate-languageservice', 'dist/onig.wasm');
+		const wasmPath = vscode.Uri.joinPath(extensionUri, './node_modules/vscode-textmate-languageservice', 'dist/bin', '/onig.wasm');
 		const wasmData = vscode.env.appHost === 'desktop'
 			? await vscode.workspace.fs.readFile(wasmPath)
 			: await fetch(wasmPath.toString());

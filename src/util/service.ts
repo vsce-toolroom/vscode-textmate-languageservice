@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as crypto from 'crypto';
 
 import type { SkinnyTextDocument } from '../services/document';
 
@@ -41,27 +42,9 @@ export abstract class ServiceBase<T> {
 
 async function digest(document: SkinnyTextDocument): Promise<string> {
 	const text = document.getText();
-	const bufview = encoder.encode(text);
-	try {
-		// Node environment.
-		if (vscode.env.appHost === 'desktop') {
-			const { createHash } = require('node:crypto') as typeof import('node:crypto');
-			const hash = createHash('sha256');
-			hash.update(text, 'utf8');
-			return hash.digest('hex');
-		}
-		// Secure browser environment.
-		if (vscode.env.appHost !== 'desktop' && crypto && crypto.subtle) {
-			const buffer = await crypto.subtle.digest('SHA-256', bufview);
-			return buf2hex(buffer);
-		}
-	} catch (_) {}
-	// Insecure browser context.
-	// This should *never* happen for VS Code but send an random-generated 64-bit hash.
-	return new Array(64).fill(16)
-		.map(a => Math.floor(a * Math.random()).toString(16))
-		.sort(() => Math.random() - 0.5)
-		.join('');
+	const hash = crypto.createHash('sha256');
+	hash.update(text, 'utf8');
+	return hash.digest('hex');
 }
 
 function buf2hex(buffer: ArrayBuffer) {

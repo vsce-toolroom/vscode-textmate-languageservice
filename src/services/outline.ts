@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+
 import { TextmateScopeSelector } from '../util/selectors';
 import { ServiceBase } from '../util/service';
 

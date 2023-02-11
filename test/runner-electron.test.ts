@@ -1,33 +1,33 @@
-'use strict';
+import * as Mocha from 'mocha';
 
-import { runTests as runTestsInElectron } from '@vscode/test-electron';
+const files = [
+	require.resolve('./suite/selectors.util.test'),
+	require.resolve('./suite/tokenizer.service.test'),
+	require.resolve('./suite/outline.service.test'),
+	require.resolve('./suite/document.service.test'),
+	require.resolve('./suite/folding.test'),
+	require.resolve('./suite/definition.test'),
+	require.resolve('./suite/document-symbol.test'),
+	require.resolve('./suite/workspace-symbol.test')
+];
 
-const pathSep = __dirname.match(/\/|\\/)![0];
+export function run(): Promise<void> {
+	const mocha = new Mocha({ ui: 'tdd', reporter: 'spec' });
 
-async function main() {
-	try {
-		const relativeExtensionPath = `../../..`;
-		const extensionDevelopmentPath = __dirname
-			.split(pathSep)
-			.slice(-1 * relativeExtensionPath.split('/').length)
-			.join(pathSep);
-		const extensionTestsPath = extensionDevelopmentPath + '/node_modules/vscode-textmate-languageservice/dist/suite.test';
-		// Node environment.
-		await runTestsInElectron({
-			extensionTestsPath,
-			extensionDevelopmentPath,
-			launchArgs: [
-				'--disable-extensions',
-				'--disable-gpu',
-				'--disable-workspace-trust',
-				'--no-xshm',
-				extensionDevelopmentPath
-			]
-		});
-	} catch (err) {
-		console.error('Failed to run tests');
-		process.exit(1);
-	}
+	return new Promise((c, e) => {
+		files.forEach(f => mocha.addFile(f));
+
+		try {
+			mocha.run(failures => {
+				if (failures > 0) {
+					e(new Error(`${failures} tests failed.`));
+				} else {
+					c();
+				}
+			});
+		} catch (err) {
+			console.error(err);
+			e(err);
+		}
+	});
 }
-
-main();

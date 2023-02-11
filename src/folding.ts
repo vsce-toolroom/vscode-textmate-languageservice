@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { ConfigData } from './config/config';
+import type { ConfigData } from 'src/config/config';
 import type { TextmateToken, TokenizerService } from './services/tokenizer';
 import type { OutlineEntry, OutlineService } from './services/outline';
 import { TextmateScopeSelector } from './util/selectors';

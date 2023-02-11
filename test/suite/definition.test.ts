@@ -1,15 +1,17 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test, expect } from '@jest/globals';
+import * as assert from 'assert';
 
-import { TextmateScopeSelector, TextmateToken } from '../../src';
-import { context, tokenServicePromise, documentServicePromise, definitionProviderPromise } from '../util/factory';
+import { context, tokenServicePromise, documentServicePromise, definitionProviderPromise, TextmateScopeSelector } from '../util/factory';
 import { BASE_CLASS_NAME, SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { sampler } from '../util/sampler';
 
-describe('src/definition.ts', function() {
+import type { TextmateToken } from '../../src/services/tokenizer';
+
+suite('src/definition.ts', function() {
 	test('TextmateDefinitionProvider class', async function() {
+		this.timeout(10000);
 		vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');
 
 		const documentService = await documentServicePromise;
@@ -67,7 +69,7 @@ describe('src/definition.ts', function() {
 
 				for (const entry of page) {
 					test(filename, function() {
-						expect(entry instanceof Object).toStrictEqual(true);
+						assert.strictEqual(entry instanceof Object, true);
 					});
 				}
 			}
@@ -83,5 +85,5 @@ describe('src/definition.ts', function() {
 		});
 
 		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
-	}, 10000);
+	});
 });

@@ -22,3 +22,5 @@ out/
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 tsconfig.json
+tsconfig.*.json
+webpack.config.*.js

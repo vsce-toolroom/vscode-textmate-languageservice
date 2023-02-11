@@ -12,8 +12,8 @@
     "test/vscode-matlab/**": true
   },
   "material-icon-theme.files.associations": {
-    "tsconfig.dev.json": "tsconfig",
-    "tsconfig.prod.json": "tsconfig"
+    "webpack.config.node.js": "webpack",
+    "webpack.config.web.js": "webpack"
   },
   "material-icon-theme.folders.associations": {
     "parser": "functions",

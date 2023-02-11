@@ -4,7 +4,7 @@
 
 'use strict';
 
-import matchers = require('./matchers');
+import * as matchers from './matchers';
 
 export interface FilePosition {
 	offset: number;

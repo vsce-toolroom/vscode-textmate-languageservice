@@ -3,15 +3,15 @@
 import * as vscode from 'vscode';
 import type { JsonValue } from 'type-fest';
 
+const encoder = new TextEncoder();
+
 export async function writeJsonFile(uri: vscode.Uri, json: JsonValue): Promise<void> {
 	try {
 		const text = JSON.stringify(json, null, 2) + '\n';
-		if (vscode.env.appHost === 'desktop') {
-			const fs = require('fs') as typeof import('fs');
-			await fs.promises.writeFile(uri.fsPath, text);
-		}
+		const bufview = encoder.encode(text);
+		await vscode.workspace.fs.writeFile(uri, bufview);
 	} catch (e) {
-		if (e && e.hasOwnProperty?.('stack')) {
+		if (e && e.stack) {
 			e.stack += `\n    in ${uri.path}`;
 		}
 		throw e;

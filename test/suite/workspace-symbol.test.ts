@@ -1,13 +1,13 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test } from '@jest/globals';
 
 import { context, workspaceSymbolProviderPromise } from '../util/factory';
 import { sampler } from '../util/sampler';
 
-describe('src/workspace-symbol.ts', function() {
+suite('src/workspace-symbol.ts', function() {
 	test('TextmateWorkspaceSymbolProvider class', async function() {
+		this.timeout(10000);
 		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
 
 		const workspaceSymbolProvider = await workspaceSymbolProviderPromise;
@@ -16,5 +16,5 @@ describe('src/workspace-symbol.ts', function() {
 		test('provideWorkspaceSymbols(): Promise<vscode.SymbolInformation[]>', async function() {
 			await sampler.call(context, 'workspace-symbol', 'index', symbols);
 		});
-	}, 10000);
+	});
 });

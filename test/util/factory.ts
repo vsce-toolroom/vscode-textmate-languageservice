@@ -1,7 +1,7 @@
 'use strict';
 
 import { MockExtensionContext } from './context';
-import { LSP } from '../../src/index';
+import LSP from '../../src/main';
 
 export const context = new MockExtensionContext('Gimly81.matlab');
 export const lsp = new LSP('matlab', context);
@@ -13,3 +13,7 @@ export const foldingRangeProviderPromise = lsp.createFoldingRangeProvider();
 export const definitionProviderPromise = lsp.createDefinitionProvider();
 export const documentSymbolProviderPromise = lsp.createDocumentSymbolProvider();
 export const workspaceSymbolProviderPromise = lsp.createWorkspaceSymbolProvider();
+
+export const loadJsonFile = LSP.utils.loadJsonFile;
+export const TextmateScopeSelector = LSP.utils.TextmateScopeSelector;
+export const TextmateScopeSelectorMap = LSP.utils.TextmateScopeSelectorMap;

@@ -3,20 +3,23 @@
     "target": "es2017",
     "lib": ["es2017", "dom"],
     "sourceMap": true,
-    "outDir": "out",
-    "declarationDir": "dist/types",
-    "declaration": true,
-    "types": ["node", "webpack-env"],
+    "outDir": "dist",
+    "types": ["node", "webpack-env", "mocha"],
     "rootDir": ".",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "module": "commonjs",
-    "baseUrl": "."
+    "baseUrl": ".",
   },
   "include": [
     "src/**/*.ts",
     "test/*.test.ts",
     "test/suite/*.test.ts",
     "test/util/*.ts"
+  ],
+  "exclude": [
+    "src/main.ts",
+    "test/runner-web.test.ts",
+    "test/data/*/*"
   ]
 }

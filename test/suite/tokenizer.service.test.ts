@@ -1,22 +1,22 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test } from '@jest/globals';
 
 import { context, documentServicePromise, tokenServicePromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { sampler } from '../util/sampler';
 
-import type { TextmateToken } from '../../src';
+import type { TextmateToken } from '../../src/services/tokenizer';
 
-describe('src/services/tokenizer.ts', function() {
+suite('src/services/tokenizer.ts', function() {
 	test('TokenizerService class', async function() {
+		this.timeout(5000);
 		vscode.window.showInformationMessage('TokenizerService class (src/services/tokenizer.ts)');
 
 		const documentService = await documentServicePromise;
 		const tokenService = await tokenServicePromise;
 		
-		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
+		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
 		const outputs: TextmateToken[][] = [];
 
 		for (let index = 0; index < samples.length; index++) {
@@ -35,5 +35,5 @@ describe('src/services/tokenizer.ts', function() {
 				await sampler.call(context, 'tokenizer', basename, tokens);
 			}
 		});
-	}, 5000);
+	});
 });

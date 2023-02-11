@@ -12,28 +12,14 @@ import { GrammarLanguageContribution, ResolverService } from './services/resolve
 import { OutlineService } from './services/outline';
 import { DocumentService } from './services/document';
 import { TextmateFoldingRangeProvider } from './folding';
+import { TextmateDefinitionProvider } from './definition';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
-import { TextmateDefinitionProvider } from './definition';
 
 import type { ConfigJson } from './config/config';
 import type { PackageJSON } from './services/resolver';
-import type { TextmateToken } from './services/tokenizer';
 
-export class LSP {
-	private _packageJSON?: PackageJSON;
-	private _resolver: ResolverService;
-	private _registry: textmate.Registry;
-	private _configPromise: Promise<ConfigData>;
-	private _grammarPromise: Promise<textmate.IGrammar>;
-	private _tokenService: TokenizerService;
-	private _outlineService?: OutlineService;
-	private _documentService?: DocumentService;
-	private _foldingRangeProvider?: TextmateFoldingRangeProvider;
-	private _documentSymbolProvider?: TextmateDocumentSymbolProvider;
-	private _workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
-	private _definitionProvider?: TextmateDefinitionProvider;
-
+export default class LSP {
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
 		this._packageJSON = this.context.extension.packageJSON as PackageJSON;
 
@@ -54,6 +40,21 @@ export class LSP {
 		const languageData = this._resolver.findLanguageById(this.languageId);
 		this._configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
 	}
+
+	static utils = { loadJsonFile, TextmateScopeSelector, TextmateScopeSelectorMap };
+
+	private _packageJSON?: PackageJSON;
+	private _resolver: ResolverService;
+	private _registry: textmate.Registry;
+	private _configPromise: Promise<ConfigData>;
+	private _grammarPromise: Promise<textmate.IGrammar>;
+	private _tokenService: TokenizerService;
+	private _outlineService?: OutlineService;
+	private _documentService?: DocumentService;
+	private _foldingRangeProvider?: TextmateFoldingRangeProvider;
+	private _documentSymbolProvider?: TextmateDocumentSymbolProvider;
+	private _workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
+	private _definitionProvider?: TextmateDefinitionProvider;
 
 	public async initTokenService(): Promise<TokenizerService> {
 		if (this._tokenService) return this._tokenService;
@@ -123,6 +124,3 @@ export class LSP {
 		return this._definitionProvider;
 	}
 }
-
-// Test utilities and interfaces.
-export { loadJsonFile, TextmateScopeSelector, TextmateScopeSelectorMap, TextmateToken };

@@ -1,9 +1,9 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { test, expect } from '@jest/globals';
+import * as assert from 'assert';
 
-import { loadJsonFile } from '../../src/util/loader';
+import { loadJsonFile } from './factory';
 import { writeJsonFile, getComponentSampleDataUri } from './files';
 import { jsonify } from './jsonify';
 
@@ -19,7 +19,7 @@ export async function sampler(this: vscode.ExtensionContext, component: string, 
 		let error: TypeError | undefined;
 		try {
 			if (stat) {
-				expect(jsonify(output)).toEqual(await loadJsonFile(data));
+				assert.deepEqual(jsonify(output), await loadJsonFile(data));
 			}
 		} catch(e) {
 			error = e;

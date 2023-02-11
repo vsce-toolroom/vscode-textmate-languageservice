@@ -1,17 +1,17 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test } from '@jest/globals';
 
-import { context, documentSymbolProviderPromise, documentServicePromise } from '../util/factory';
+import { context, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { sampler } from '../util/sampler';
 
-describe('src/document-symbol.ts', function() {
+suite('src/document-symbol.ts', function() {
 	test('TextmateDocumentSymbolProvider class', async function() {
+		this.timeout(10000);
 		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
 
-		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri);
+		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
 
 		const documentService = await documentServicePromise;
 		const documentSymbolProvider = await documentSymbolProviderPromise;
@@ -33,5 +33,5 @@ describe('src/document-symbol.ts', function() {
 				await sampler.call(context, 'document-symbol', basename, symbols);
 			}
 		});
-	}, 10000);
+	});
 });

@@ -1,15 +1,16 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test } from '@jest/globals';
 
-import { documentServicePromise, outlineServicePromise, context } from '../util/factory';
+import { context, documentServicePromise, outlineServicePromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { sampler } from '../util/sampler';
-import { OutlineEntry } from '../../src/services/outline';
 
-describe('src/services/outline.ts', function() {
+import type { OutlineEntry } from 'src/services/outline';
+
+suite('src/services/outline.ts', function() {
 	test('OutlineService class', async function() {
+		this.timeout(5000);
 		vscode.window.showInformationMessage('OutlineService class (src/services/outline.ts)');
 
 		const documentService = await documentServicePromise;
@@ -34,5 +35,5 @@ describe('src/services/outline.ts', function() {
 				await sampler.call(context, 'outline', basename, outline);
 			}
 		});
-	}, 5000);
+	});
 });

@@ -1,14 +1,14 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { describe, test } from '@jest/globals';
 
 import { context, foldingRangeProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { sampler } from '../util/sampler';
 
-describe('src/folding.ts', function() {
+suite('src/folding.ts', function() {
 	test('TextmateFoldingRangeProvider class', async function() {
+		this.timeout(10000);
 		vscode.window.showInformationMessage('TextmateFoldingRangeProvider class (src/folding.ts)');
 
 		const foldingRangeProvider = await foldingRangeProviderPromise;
@@ -36,5 +36,5 @@ describe('src/folding.ts', function() {
 
 		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
 
-	}, 10000);
+	});
 });
