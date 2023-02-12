@@ -19,7 +19,7 @@ const configuration = {
 	module: {
 		rules: [
 			{ test: /\.ts$/, loader: 'ts-loader' },
-			{ test: /\.wasm$/, loader: 'arraybuffer-loader' }
+			{ test: /\.wasm$/, type: 'javascript/auto', loader: 'encoded-uint8array-loader' }
 		]
 	},
 	output: {

@@ -1,2 +1,2 @@
-// wiring from webpack `arraybuffer-loader` loader to wasm
-declare module '*.wasm' { const buffer: ArrayBuffer; export default buffer; }
+// wiring from webpack `encoded-uint8array-loader` to inline WASM buffer view
+declare module '*.wasm' { const bytes: Uint8Array; export = bytes; }
