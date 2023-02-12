@@ -29,14 +29,14 @@ interface TextmateTokenizerState {
 }
 
 export class TokenizerService extends ServiceBase<TextmateToken[]> {
+	private _states: Record<string, TextmateTokenizerState> = {};
+
 	constructor(
 		private _config: ConfigData,
 		private _grammar: textmate.IGrammar
 	) {
 		super();
 	}
-
-	private _states: Record<string, TextmateTokenizerState> = {};
 
 	public async parse(document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		const tokens: TextmateToken[] = [];
@@ -130,6 +130,6 @@ export class TokenizerService extends ServiceBase<TextmateToken[]> {
 		}
 
 		delete this._states[document.uri.path];
-		return tokens;
+		return Promise.resolve(tokens);
 	}
 }

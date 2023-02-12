@@ -61,7 +61,9 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 }
 
 function generateIncludePattern(language: LanguageContribution): string {
-	if (!language.extensions && !language.filenames) { return '**/*'; }
+	if (!language.extensions && !language.filenames) {
+		return '**/*';
+	}
 	let extensions: string;
 	let filenames: string;
 	if (language.extensions?.length) {

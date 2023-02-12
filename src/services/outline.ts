@@ -53,7 +53,7 @@ export class OutlineService extends ServiceBase<OutlineEntry[]> {
 				),
 				text: entry.text,
 				token: entry.type,
-				type: symbolKind as number
+				type: symbolKind
 			});
 		}
 

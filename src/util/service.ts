@@ -2,20 +2,18 @@
 
 import * as vscode from 'vscode';
 import * as crypto from './crypto';
-
 import type { SkinnyTextDocument } from '../services/document';
 
 const encoder = new TextEncoder();
 
 export interface ServiceInterface<T> {
 	fetch(document: SkinnyTextDocument): Promise<T>;
-	parse: (document: SkinnyTextDocument) => Promise<T>;
+	parse(document: SkinnyTextDocument): Promise<T>;
 }
 
 export abstract class ServiceBase<T> {
 	private _cache: Record<string, Promise<T>> = {};
 	private _integrity: Record<string, string> = {};
-	abstract parse(document: SkinnyTextDocument): Promise<T>;
 
 	public async fetch(document: SkinnyTextDocument): Promise<T> {
 		const filepath = document.uri.path;
@@ -29,13 +27,19 @@ export abstract class ServiceBase<T> {
 			return this._cache[filepath];
 		}
 
-		if (this._integrity[filepath]) delete this._integrity[filepath];
-		if (this._cache[filepath]) delete this._cache[filepath];
+		if (typeof this._integrity[filepath] !== 'undefined') {
+			delete this._integrity[filepath];
+		}
+		if (typeof this._cache[filepath] !== 'undefined') {
+			delete this._cache[filepath];
+		}
 
 		const output = this._cache[filepath] = this.parse(document);
 		this._integrity[filepath] = hash;
 		return output;
 	}
+
+	public abstract parse(document: SkinnyTextDocument): Promise<T>;
 }
 
 async function hashify(document: SkinnyTextDocument): Promise<string> {

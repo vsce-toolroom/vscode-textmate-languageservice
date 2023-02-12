@@ -15,14 +15,14 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);
-		return outline.map(this.toSymbolInformation, outline);
+		return outline.map(this.toSymbolInformation.bind(this) as typeof this.toSymbolInformation, outline);
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
 		const outline = await this._outlineService.fetch(document);
 		const root: LanguageSymbol = {
-			level: -Infinity,
 			children: [],
+			level: -Infinity,
 			parent: undefined
 		};
 		this.traverseAndCopy(root, outline);
@@ -41,8 +41,8 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 		if (entries.length > 1) {
 			this.traverseAndCopy(
 				{
-					level: entry.level,
 					children: symbol.children,
+					level: entry.level,
 					parent
 				},
 				entries.slice(1)

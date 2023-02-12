@@ -1,9 +1,10 @@
 'use strict';
 
-export const web = (typeof window !== 'undefined' ? window : {}).crypto as Crypto;
+export const web = (typeof window !== 'undefined' ? window : {}).crypto;
 
 // Compiler hack for require in DOM ts environment.
-const id = (_: string): any => { return {}; };
+const id = (_: string): any => ({});
 const r = require || id;
 
-export const node = r('crypto') as typeof import('crypto');
+type NodeCrypto = typeof import('crypto');
+export const node = r('crypto') as NodeCrypto;

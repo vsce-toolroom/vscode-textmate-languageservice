@@ -4,8 +4,8 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as textmate from 'vscode-textmate';
 import * as bindings from 'vscode-oniguruma';
+import type * as textmate from 'vscode-textmate';
 
 // Use webpack + encoded-uint8array-loader to generate an `Uint8Array` WASM module.
 // This is not streaming :[ but vscode libs must bundle WASM deps to support web ecosystem.
@@ -18,8 +18,12 @@ export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
 		await bindings.loadWASM({ data });
 		onigurumaLib = {
-			createOnigScanner(patterns: string[]) { return new bindings.OnigScanner(patterns); },
-			createOnigString(str: string) { return new bindings.OnigString(str); }
+			createOnigScanner(patterns: string[]) {
+				return new bindings.OnigScanner(patterns);
+			},
+			createOnigString(str: string) {
+				return new bindings.OnigString(str);
+			}
 		};
 	}
 	return onigurumaLib;

@@ -47,8 +47,8 @@ export class ConfigSelectors {
 		const start = this._data.markers?.start;
 		const end = this._data.markers?.end;
 		return (this._markers = this._markers || {
-			start: start ? new RegExp(start) : /.^/,
-			end: end ? new RegExp(end) : /.^/
+			end: end ? new RegExp(end) : /.^/,
+			start: start ? new RegExp(start) : /.^/
 		});
 	}
 	public get symbols() {

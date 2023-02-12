@@ -39,11 +39,12 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 			this.getBlockFoldingRanges(tokens)
 		]);
 
-		return [].concat(...foldables).slice<vscode.FoldingRange>(0, rangeLimit);
+		const output: vscode.FoldingRange[] = [];
+		return output.concat(...foldables).slice(0, rangeLimit);
 	}
 
 	private getRegions(tokens: TextmateToken[]): vscode.FoldingRange[] {
-		const regions = tokens.filter(this.isRegion, this);
+		const regions = tokens.filter(this.isRegion.bind(this) as typeof this.isRegion, this);
 		const markers = regions.map(function(this: TextmateFoldingRangeProvider, token): FoldingToken {
 			return {
 				isStart: this.isStartRegion(token),

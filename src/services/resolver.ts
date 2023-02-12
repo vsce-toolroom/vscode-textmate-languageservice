@@ -41,7 +41,7 @@ export interface PackageJSON extends JsonObject {
 	name: string;
 	version: string;
 	contributes?: Contributes;
-	'textmate-languageservices'?: { [languageId: string]: string; };
+	'textmate-languageservices'?: { [languageId: string]: string };
 }
 
 export class ResolverService implements textmate.RegistryOptions {
@@ -80,7 +80,9 @@ export class ResolverService implements textmate.RegistryOptions {
 	public findScopeByFilename(filename: string): string | null {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const language = this.findLanguageByExtension(extname) || this.findLanguageByFilename(filename);
-		if (!language) { return null; }
+		if (!language) {
+			return null;
+		}
 
 		const grammar = this.findGrammarByLanguageId(language);
 		return grammar ? grammar.scopeName : null;
@@ -109,17 +111,13 @@ export class ResolverService implements textmate.RegistryOptions {
 			if (grammar.scopeName !== scopeName) {
 				continue;
 			}
-			if (this._grammars[scopeName]) {
-				return this._grammars[scopeName];
-			}
 			try {
 				const uri = vscode.Uri.joinPath(this._context.extensionUri, grammar.path);
 				const text = await readFileText(uri);
-				this._grammars[scopeName] = textmate.parseRawGrammar(text, uri.path);
+				return textmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
 				throw e;
 			}
-			return this._grammars[scopeName];
 		}
 		return null;
 	}

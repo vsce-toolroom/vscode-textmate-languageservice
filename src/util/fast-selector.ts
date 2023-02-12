@@ -5,8 +5,10 @@ export class FastScopeSelector {
 
 	constructor(public readonly source: string) {}
 
-	matches(scopes: string | string[]) {
-		if (typeof scopes === 'string') scopes = [scopes];
+	public matches(scopes: string | string[]) {
+		if (typeof scopes === 'string') {
+			scopes = [scopes];
+		}
 		const target = scopes.join(' ');
 		const entry = this._cache[target];
 
@@ -25,15 +27,15 @@ export class FastScopeSelector {
 		}
 	}
 
-	getPrefix(_: string | string[]): undefined {
+	public getPrefix(_: string | string[]): undefined {
 		return void 0;
 	}
 
-	getPriority(_: string | string[]): undefined {
+	public getPriority(_: string | string[]): undefined {
 		return void 0;
 	}
 
-	toString(): string {
+	public toString(): string {
 		return this.source;
 	}
 }

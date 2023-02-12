@@ -14,21 +14,25 @@ export class FirstMateSelector {
 	private matcher: ParsedMatcher;
 
 	/**
-	 *  Create a new scope selector.
-	 *  @param {string} source The string to parse as a scope selector.
-	 *  @return A newly constructed ParsedSelector.
+	 * Create a new scope selector.
+	 *
+	 * @param {string} source The string to parse as a scope selector.
+	 * @return A newly constructed ParsedSelector.
 	 */
 	constructor(public readonly source: string) {
 		this.matcher = parser.parse(source) as ParsedMatcher;
 	}
 
 	/**
-	 *  Check if this scope selector matches the scopes.
-	 *  @param {string|string[]} scopes A single scope or an array of them to be compared against.
-	 *  @return {boolean} Whether or not this ParsedSelector matched.
+	 * Check if this scope selector matches the scopes.
+	 *
+	 * @param {string|string[]} scopes A single scope or an array of them to be compared against.
+	 * @return {boolean} Whether or not this ParsedSelector matched.
 	 */
 	public matches(scopes: string | string[]): boolean {
-		if (typeof scopes === 'string') scopes = [scopes];
+		if (typeof scopes === 'string') {
+			scopes = [scopes];
+		}
 		const target = scopes.join(' ');
 		const entry = this._cache[target];
 
@@ -41,12 +45,15 @@ export class FirstMateSelector {
 	}
 
 	/**
-	 *  Gets the prefix of this scope selector.
-	 *  @param {string|string[]} scopes The scopes to match a prefix against.
-	 *  @return {string|undefined} The matching prefix, if there is one.
+	 * Gets the prefix of this scope selector.
+	 *
+	 * @param {string|string[]} scopes The scopes to match a prefix against.
+	 * @return {string|undefined} The matching prefix, if there is one.
 	 */
 	public getPrefix(scopes: string | string[]): GroupPrefix | undefined {
-		if (typeof scopes === 'string') scopes = [scopes];
+		if (typeof scopes === 'string') {
+			scopes = [scopes];
+		}
 		const target = typeof scopes === 'string' ? scopes : scopes.join(' ');
 		const entry = this._prefixes[target];
 
@@ -60,9 +67,10 @@ export class FirstMateSelector {
 	}
 
 	/**
-	 *  Gets the priority of this scope selector.
-	 *  @param {string|string[]} scopes The scopes to match a priority against.
-	 *  @return {string|undefined} The matching priority, if there is one.
+	 * Gets the priority of this scope selector.
+	 *
+	 * @param {string|string[]} scopes The scopes to match a priority against.
+	 * @return {string|undefined} The matching priority, if there is one.
 	 */
 	public getPriority(scopes: string | string[]): number {
 		switch (this.getPrefix(scopes)) {
