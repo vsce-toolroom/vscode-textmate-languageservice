@@ -9,9 +9,6 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parser": "@typescript-eslint/parser",
-  "ignorePatterns": [
-    ".eslintrc.js"
-  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -127,10 +124,7 @@
     "jsdoc/check-alignment": "error",
     "jsdoc/check-indentation": "error",
     "jsdoc/newline-after-description": "error",
-    "max-classes-per-file": [
-      "warn",
-      2
-    ],
+    "max-classes-per-file": ["off"],
     "max-len": [
       "error",
       {

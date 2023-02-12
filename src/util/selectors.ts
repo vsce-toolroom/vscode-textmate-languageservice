@@ -34,7 +34,7 @@ export class TextmateScopeSelector {
 		if (!this.selector) {
 			return false;
 		}
-		return scopes.some(this.match.bind(this));
+		return scopes.some(this.match.bind(this) as (s: string | string[]) => boolean);
 	}
 
 	public toString(): string {
@@ -56,7 +56,7 @@ function optimizedSelectorFactory(selector: string): ScopeSelector {
 			? new FastScopeSelector(selector)
 			: new FirstMateSelector(selector);
 	} catch (e) {
-		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${e && e.message || ''}`.trim());
+		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${e && (e as Error).message || ''}`.trim());
 	}
 }
 
@@ -66,7 +66,11 @@ export class TextmateScopeSelectorMap {
 	constructor(public readonly sourcemap: Record<string, number> | undefined) {
 		this.matchers = {};
 		if (typeof sourcemap === 'object' && sourcemap?.constructor === Object) {
-			for (const key in sourcemap) this.matchers[key] = optimizedSelectorFactory(key);
+			for (const key in sourcemap) {
+				if ({}.hasOwnProperty.call(sourcemap, key)) {
+					this.matchers[key] = optimizedSelectorFactory(key);
+				}
+			}
 		}
 	}
 
@@ -75,7 +79,9 @@ export class TextmateScopeSelectorMap {
 			return void 0;
 		}
 		for (const key in this.sourcemap) {
-			if (this.matchers[key].matches(scopes)) { return key; }
+			if (this.matchers[key].matches(scopes)) {
+				return key;
+			}
 		}
 		return void 0;
 	}

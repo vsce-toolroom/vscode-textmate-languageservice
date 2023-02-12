@@ -11,8 +11,8 @@ export async function writeJsonFile(uri: vscode.Uri, json: JsonValue): Promise<v
 		const bytes = encoder.encode(text);
 		await vscode.workspace.fs.writeFile(uri, bytes);
 	} catch (e) {
-		if (e && typeof e.stack === 'string') {
-			e.stack += `\n    in ${uri.path}`;
+		if (e && typeof (e as Error).stack === 'string') {
+			(e as Error).stack += `\n    in ${uri.path}`;
 		}
 		throw e;
 	}

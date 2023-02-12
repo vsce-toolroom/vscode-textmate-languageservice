@@ -3,8 +3,8 @@
 
 import type * as vscode from 'vscode';
 import { Disposable } from './util/dispose';
-import type { Lazy } from './util/lazy';
 import { lazy } from './util/lazy';
+import type { Lazy } from './util/lazy';
 import type { TextmateDocumentSymbolProvider } from './document-symbol';
 import type { SkinnyTextDocument, DocumentService } from './services/document';
 

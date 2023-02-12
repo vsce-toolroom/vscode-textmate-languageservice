@@ -20,8 +20,14 @@ export abstract class Disposable {
 
 	private _isDisposed = false;
 
+	protected get isDisposed() {
+		return this._isDisposed;
+	}
+
 	public dispose(): any {
-		if (this._isDisposed) { return void 0; }
+		if (this._isDisposed) {
+			return void 0;
+		}
 		this._isDisposed = true;
 		disposeAll(this._disposables);
 	}
@@ -33,9 +39,5 @@ export abstract class Disposable {
 			this._disposables.push(value);
 		}
 		return value;
-	}
-
-	protected get isDisposed() {
-		return this._isDisposed;
 	}
 }
