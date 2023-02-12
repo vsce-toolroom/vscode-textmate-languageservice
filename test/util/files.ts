@@ -8,8 +8,8 @@ const encoder = new TextEncoder();
 export async function writeJsonFile(uri: vscode.Uri, json: JsonValue): Promise<void> {
 	try {
 		const text = JSON.stringify(json, null, 2) + '\n';
-		const bufview = encoder.encode(text);
-		await vscode.workspace.fs.writeFile(uri, bufview);
+		const bytes = encoder.encode(text);
+		await vscode.workspace.fs.writeFile(uri, bytes);
 	} catch (e) {
 		if (e && typeof e.stack === 'string') {
 			e.stack += `\n    in ${uri.path}`;
