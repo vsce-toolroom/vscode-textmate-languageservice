@@ -93,7 +93,7 @@ function optimizedSelectorFactory(selector: string): ScopeSelector {
 			? new FastScopeSelector(selector)
 			: new FirstMateSelector(selector);
 	} catch (error) {
-		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error?.message || ''}`.trim());
+		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error && error.message || ''}`.trim());
 	}
 }
 

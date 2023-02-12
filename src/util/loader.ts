@@ -21,7 +21,7 @@ export async function loadJsonFile<T = JsonValue>(uri: vscode.Uri): Promise<T> {
 		text = text.replace(jsonCommentsRegex, ''); // support jsonc!
 		return JSON.parse(text) as T;
 	} catch (e) {
-		if (e && e.hasOwnProperty?.('stack')) {
+		if (e && typeof e.stack === 'string') {
 			e.stack += `\n    in ${uri.path}`;
 		}
 		throw e;

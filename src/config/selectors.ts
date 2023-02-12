@@ -57,6 +57,6 @@ export class ConfigSelectors {
 		});
 	}
 	public get symbols() {
-		return (this._symbols = this._symbols || new TextmateScopeSelectorMap(this._data?.symbols));
+		return (this._symbols = this._symbols || new TextmateScopeSelectorMap(this._data.symbols));
 	}
 }
