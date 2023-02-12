@@ -8,8 +8,12 @@
     "builds/0/project-0",
     "builds/0/project-0/test/vscode-matlab"
   ],
+  "files.exclude": {
+    "src/web.ts": true
+  },
   "search.exclude": {
-    "test/vscode-matlab/**": true
+    "test/vscode-matlab/**": true,
+    "src/web.ts": true
   },
   "material-icon-theme.files.associations": {
     "webpack.config.node.js": "webpack",
