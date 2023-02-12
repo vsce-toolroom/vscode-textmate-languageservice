@@ -22,7 +22,7 @@ suite('src/definition.ts', function() {
 			'meta.inherited-class entity.name.type.class',
 			'meta.method-call entity.name.type.class'
 		]);
-		
+
 		function isBaseClassReference(token: TextmateToken) {
 			return classReferenceSelector.match(token.scopes) && token.text === BASE_CLASS_NAME;
 		}

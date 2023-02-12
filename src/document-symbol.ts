@@ -5,13 +5,13 @@ import type { OutlineService, OutlineEntry } from './services/outline';
 import type { SkinnyTextDocument } from './services/document';
 
 interface LanguageSymbol {
+	readonly children: vscode.DocumentSymbol[];
 	readonly level: number;
 	readonly parent: LanguageSymbol | undefined;
-	readonly children: vscode.DocumentSymbol[];
 }
 
 export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(private _outlineService: OutlineService) { }
+	constructor(private _outlineService: OutlineService) {}
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);

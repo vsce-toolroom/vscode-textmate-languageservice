@@ -50,10 +50,11 @@ composite
 
 selector
 	= left:composite _ "," _ right:selector? {
-		if (right)
+		if (right) {
 			return new matchers.OrMatcher(left, right);
-		else
+		} else {
 			return left;
+		}
 	}
 
 	/ composite

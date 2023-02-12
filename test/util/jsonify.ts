@@ -11,7 +11,7 @@ export function jsonify<T = JsonValue>(value: Record<symbol | string | number, a
 }
 
 function stringifyClasses(key: string, value: any) {
-	if (value === null || value === undefined) return value;
+	if (value === null || value === undefined) { return value; }
 	if (value && (value.path || key === 'uri')) {
 		const filepath = (value as vscode.Uri).path.replace(/\\/g, '/');
 		const submoduleNameOffset = (value as vscode.Uri).path.lastIndexOf(SUBMODULE_NAME);

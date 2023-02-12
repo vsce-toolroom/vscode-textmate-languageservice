@@ -40,10 +40,11 @@ export class OutlineService extends ServiceBase<OutlineEntry[]> {
 			if (!this.isSymbolToken(entry)) {
 				continue;
 			}
-			
+
 			const lineNumber = entry.line;
 			const symbolKind = this._config.selectors.symbols.value(entry.scopes) as number;
 			outline.push({
+				anchor: index,
 				level: entry.level,
 				line: lineNumber,
 				location: new vscode.Location(
@@ -52,14 +53,13 @@ export class OutlineService extends ServiceBase<OutlineEntry[]> {
 				),
 				text: entry.text,
 				token: entry.type,
-				type: symbolKind as number,
-				anchor: index
+				type: symbolKind as number
 			});
 		}
 
 		// Get full range of section
 		return outline.map(function(entry: OutlineEntry, startIndex: number): OutlineEntry {
-			let end: number | undefined = undefined;
+			let end: number;
 			for (let i = startIndex + 1; i < outline.length; ++i) {
 				if (outline[i].level <= entry.level) {
 					end = outline[i].line - 1;

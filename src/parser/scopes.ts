@@ -27,7 +27,7 @@ export class FirstMateSelector {
 	 *  @param {string|string[]} scopes A single scope or an array of them to be compared against.
 	 *  @return {boolean} Whether or not this ParsedSelector matched.
 	 */
-	matches(scopes: string | string[]): boolean {
+	public matches(scopes: string | string[]): boolean {
 		if (typeof scopes === 'string') scopes = [scopes];
 		const target = scopes.join(' ');
 		const entry = this._cache[target];
@@ -45,7 +45,7 @@ export class FirstMateSelector {
 	 *  @param {string|string[]} scopes The scopes to match a prefix against.
 	 *  @return {string|undefined} The matching prefix, if there is one.
 	 */
-	getPrefix(scopes: string | string[]): GroupPrefix | undefined {
+	public getPrefix(scopes: string | string[]): GroupPrefix | undefined {
 		if (typeof scopes === 'string') scopes = [scopes];
 		const target = typeof scopes === 'string' ? scopes : scopes.join(' ');
 		const entry = this._prefixes[target];
@@ -64,7 +64,7 @@ export class FirstMateSelector {
 	 *  @param {string|string[]} scopes The scopes to match a priority against.
 	 *  @return {string|undefined} The matching priority, if there is one.
 	 */
-	getPriority(scopes: string | string[]): number {
+	public getPriority(scopes: string | string[]): number {
 		switch (this.getPrefix(scopes)) {
 			case 'L': // left - before non-prefixed rules
 				return -1;
@@ -75,7 +75,7 @@ export class FirstMateSelector {
 		}
 	}
 
-	toString(): string {
+	public toString(): string {
 		return this.source;
 	}
 }

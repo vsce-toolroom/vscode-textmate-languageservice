@@ -17,11 +17,9 @@ export abstract class ServiceBase<T> {
 	private _integrity: Record<string, string> = {};
 	abstract parse(document: SkinnyTextDocument): Promise<T>;
 
-	constructor() {}
-
 	public async fetch(document: SkinnyTextDocument): Promise<T> {
 		const filepath = document.uri.path;
-		const hash = await digest(document);
+		const hash = await hashify(document);
 
 		if (
 			typeof hash === 'string' &&
@@ -40,7 +38,7 @@ export abstract class ServiceBase<T> {
 	}
 }
 
-async function digest(document: SkinnyTextDocument): Promise<string> {
+async function hashify(document: SkinnyTextDocument): Promise<string> {
 	const text = document.getText();
 	if (vscode.env.appHost === 'desktop') {
 		const hash = crypto.node.createHash('sha256');

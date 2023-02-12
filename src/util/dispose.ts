@@ -16,14 +16,12 @@ export function disposeAll(disposables: vscode.Disposable[]) {
 }
 
 export abstract class Disposable {
-	private _isDisposed = false;
-
 	protected _disposables: vscode.Disposable[] = [];
 
+	private _isDisposed = false;
+
 	public dispose(): any {
-		if (this._isDisposed) {
-			return;
-		}
+		if (this._isDisposed) { return void 0; }
 		this._isDisposed = true;
 		disposeAll(this._disposables);
 	}

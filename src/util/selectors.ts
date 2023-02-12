@@ -1,44 +1,7 @@
 'use strict';
 
 import { FirstMateSelector } from '../parser/scopes';
-
-class FastScopeSelector {
-	private _cache: Record<string, boolean | undefined> = {};
-
-	constructor(public readonly source: string) {}
-
-	matches(scopes: string | string[]) {
-		if (typeof scopes === 'string') scopes = [scopes];
-		const target = scopes.join(' ');
-		const entry = this._cache[target];
-
-		if (typeof entry !== 'undefined') {
-			return entry;
-		} else {
-			const position = target.indexOf(this.source);
-			if (position === -1) {
-				return (this._cache[target] = false);
-			}
-			const left = target.charAt(position - 1)
-			const right = target.charAt(position + this.source.length)
-
-			const isScopeBoundary = (c: string) => ['', '.', ' '].includes(c);
-			return (this._cache[target] = [left, right].every(isScopeBoundary));
-		}
-	}
-
-	getPrefix(_: string | string[]): undefined {
-		return;
-	}
-
-	getPriority(_: string | string[]): undefined {
-		return;
-	}
-
-	toString(): string {
-		return this.source;
-	}
-}
+import { FastScopeSelector } from './fast-selector';
 
 type ScopeSelector = FastScopeSelector | FirstMateSelector;
 
@@ -55,7 +18,7 @@ export class TextmateScopeSelector {
 		}
 	}
 
-	match(scopes: string[] | string): boolean {
+	public match(scopes: string[] | string): boolean {
 		if (!this.selector) {
 			return false;
 		}
@@ -67,14 +30,14 @@ export class TextmateScopeSelector {
 		}
 	}
 
-	include(scopes: string[][]): boolean {
+	public include(scopes: string[][]): boolean {
 		if (!this.selector) {
 			return false;
 		}
 		return scopes.some(this.match.bind(this));
 	}
 
-	toString(): string {
+	public toString(): string {
 		return Array.isArray(this.source) ? this.source.join(', ') : String(this.source);
 	}
 }
@@ -107,21 +70,21 @@ export class TextmateScopeSelectorMap {
 		}
 	}
 
-	key(scopes: string | string[]): string | void {
+	public key(scopes: string | string[]): string | void {
 		if (!this.sourcemap) {
 			return void 0;
 		}
 		for (const key in this.sourcemap) {
-			if (this.matchers[key].matches(scopes)) return key;
+			if (this.matchers[key].matches(scopes)) { return key; }
 		}
 		return void 0;
 	}
 
-	has(scopes: string | string[]): boolean {
+	public has(scopes: string | string[]): boolean {
 		return typeof this.key(scopes) === 'string';
 	}
 
-	value(scopes: string | string[]): number | void {
+	public value(scopes: string | string[]): number | void {
 		const key = this.key(scopes);
 		if (!this.sourcemap || !key) {
 			return void 0;
@@ -129,7 +92,7 @@ export class TextmateScopeSelectorMap {
 		return this.sourcemap[key];
 	}
 
-	toString(): string {
+	public toString(): string {
 		return JSON.stringify(this.sourcemap);
 	}
 }

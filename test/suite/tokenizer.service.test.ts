@@ -15,7 +15,7 @@ suite('src/services/tokenizer.ts', function() {
 
 		const documentService = await documentServicePromise;
 		const tokenService = await tokenServicePromise;
-		
+
 		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
 		const outputs: TextmateToken[][] = [];
 
@@ -27,7 +27,7 @@ suite('src/services/tokenizer.ts', function() {
 
 			outputs.push(tokens);
 		}
-		
+
 		test('fetch(): Promise<TextmateToken[]>', async function() {
 			for (let index = 0; index < samples.length; index++) {
 				const basename = SAMPLE_FILE_BASENAMES[index];

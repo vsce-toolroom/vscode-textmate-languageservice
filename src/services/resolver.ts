@@ -32,13 +32,15 @@ export interface LanguageContribution extends JsonObject {
 	filenames?: string[];
 }
 
+interface Contributes extends JsonObject {
+	grammars?: GrammarContribution[];
+	languages?: LanguageContribution[];
+}
+
 export interface PackageJSON extends JsonObject {
 	name: string;
 	version: string;
-	contributes?: {
-		grammars?: GrammarContribution[];
-		languages?: LanguageContribution[];
-	};
+	contributes?: Contributes;
 	'textmate-languageservices'?: { [languageId: string]: string; };
 }
 
@@ -78,7 +80,7 @@ export class ResolverService implements textmate.RegistryOptions {
 	public findScopeByFilename(filename: string): string | null {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const language = this.findLanguageByExtension(extname) || this.findLanguageByFilename(filename);
-		if (!language) return null;
+		if (!language) { return null; }
 
 		const grammar = this.findGrammarByLanguageId(language);
 		return grammar ? grammar.scopeName : null;
@@ -90,7 +92,7 @@ export class ResolverService implements textmate.RegistryOptions {
 				return language;
 			}
 		}
-		throw new Error("Could not find language contribution for language ID '" + id + '"');
+		throw new Error('Could not find language contribution for language ID "' + id + '"');
 	}
 
 	public findGrammarByLanguageId(id: string): GrammarContribution {
@@ -99,7 +101,7 @@ export class ResolverService implements textmate.RegistryOptions {
 				return grammar;
 			}
 		}
-		throw new Error("Could not find grammar contribution for language ID '" + id + '"');
+		throw new Error('Could not find grammar contribution for language ID "' + id + '"');
 	}
 
 	public async loadGrammar(scopeName: string): Promise<textmate.IRawGrammar | null> {

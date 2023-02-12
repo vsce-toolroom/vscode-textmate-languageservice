@@ -10,9 +10,9 @@ export type SelectorSource = string[] | string;
 
 export interface ConfigJson extends JsonObject {
 	assignment?: {
-		single?: SelectorSource;
 		multiple?: SelectorSource;
 		separator?: SelectorSource;
+		single?: SelectorSource;
 	};
 	declarations?: SelectorSource;
 	dedentation?: SelectorSource;
@@ -24,8 +24,8 @@ export interface ConfigJson extends JsonObject {
 		continuation?: SelectorSource;
 	};
 	markers?: {
-		start?: string;
 		end?: string;
+		start?: string;
 	};
 	symbols?: {
 		[selector: string]: vscode.SymbolKind | undefined;
@@ -61,8 +61,9 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 }
 
 function generateIncludePattern(language: LanguageContribution): string {
-	if (!language.extensions && !language.filenames) return '**/*';
-	let extensions: string, filenames: string;
+	if (!language.extensions && !language.filenames) { return '**/*'; }
+	let extensions: string;
+	let filenames: string;
 	if (language.extensions?.length) {
 		extensions = generateExtensionPattern(language.extensions);
 	}

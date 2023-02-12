@@ -18,7 +18,7 @@ export class MockMemento implements vscode.Memento {
 
 export class MockGlobalMemento extends MockMemento implements vscode.Memento {
 	setKeysForSync(_: readonly string[]): void {
-		return;
+		return void 0;
 	}
 }
 
@@ -63,6 +63,30 @@ export class MockEnvironmentVariableCollection implements vscode.EnvironmentVari
 }
 
 export class MockExtensionContext implements vscode.ExtensionContext {
+	public readonly subscriptions: vscode.Disposable[];
+
+	public readonly workspaceState: vscode.Memento;
+	public readonly globalState: vscode.Memento & { setKeysForSync(_: readonly string[]): void; };
+
+	public readonly secrets: vscode.SecretStorage;
+
+	public readonly extensionUri: vscode.Uri;
+	public readonly extensionPath: string;
+
+	asAbsolutePath: (relativePath: string) => string;
+
+	public readonly environmentVariableCollection: vscode.EnvironmentVariableCollection;
+
+	public readonly storageUri: vscode.Uri;
+	public readonly storagePath: string;
+	public readonly globalStorageUri: vscode.Uri;
+	public readonly globalStoragePath: string;
+	public readonly logUri: vscode.Uri;
+	public readonly logPath: string;
+
+	public readonly extensionMode: vscode.ExtensionMode;
+	public readonly extension: vscode.Extension<any>;
+
 	constructor(id: string) {
 		const extension = vscode.extensions.getExtension(id) as vscode.Extension<any>;
 
@@ -93,28 +117,4 @@ export class MockExtensionContext implements vscode.ExtensionContext {
 		this.extensionMode = vscode.ExtensionMode.Development;
 		this.extension = extension;
 	}
-
-	public readonly subscriptions: vscode.Disposable[];
-
-	public readonly workspaceState: vscode.Memento;
-	public readonly globalState: vscode.Memento & { setKeysForSync(_: readonly string[]): void; };
-
-	public readonly secrets: vscode.SecretStorage;
-
-	public readonly extensionUri: vscode.Uri;
-	public readonly extensionPath: string;
-
-	asAbsolutePath: (relativePath: string) => string;
-
-	public readonly environmentVariableCollection: vscode.EnvironmentVariableCollection;
-
-	public readonly storageUri: vscode.Uri;
-	public readonly storagePath: string;
-	public readonly globalStorageUri: vscode.Uri;
-	public readonly globalStoragePath: string;
-	public readonly logUri: vscode.Uri;
-	public readonly logPath: string;
-
-	public readonly extensionMode: vscode.ExtensionMode;
-	public readonly extension: vscode.Extension<any>;
 };

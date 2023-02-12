@@ -393,7 +393,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 
 	function peg$fail(expected1: Expectation) {
 		if (peg$currPos < peg$maxFailPos) {
-			return;
+			return void 0;
 		}
 
 		if (peg$currPos > peg$maxFailPos) {

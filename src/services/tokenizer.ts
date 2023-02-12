@@ -2,10 +2,11 @@
 
 import * as textmate from 'vscode-textmate';
 
-import type { SkinnyTextDocument, SkinnyTextLine } from './document';
-import type { Mutable } from 'type-fest';
-import type { ConfigData } from '../config/config';
 import { ServiceBase } from '../util/service';
+
+import type { Mutable } from 'type-fest';
+import type { SkinnyTextDocument, SkinnyTextLine } from './document';
+import type { ConfigData } from '../config/config';
 
 export interface TextmateToken extends Mutable<textmate.IToken> {
 	level: number;
@@ -15,7 +16,7 @@ export interface TextmateToken extends Mutable<textmate.IToken> {
 }
 
 export interface TextmateTokenizeLineResult extends Omit<textmate.ITokenizeLineResult, 'tokens'> {
-	readonly tokens: TextmateToken[]
+	readonly tokens: TextmateToken[];
 }
 
 interface TextmateTokenizerState {

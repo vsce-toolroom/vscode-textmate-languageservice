@@ -19,7 +19,7 @@ suite('src/util/selectors.ts', function() {
 
 		const data = getComponentSampleDataUri.call(context, 'selectors', 'selector');
 		const json = await loadJsonFile<SelectorTestData>(data);
-	
+
 		const testEntries = Object.entries(json);
 		for (const [testFeature, testCases] of testEntries) {
 			test('TextmateScopeSelector.match(scopes): selector ' + testFeature, function() {
