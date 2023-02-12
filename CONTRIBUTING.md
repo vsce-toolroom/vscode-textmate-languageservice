@@ -29,6 +29,7 @@ If you are reporting bugs, please include the following information in your repo
 
 - Broswer version
 - OS version
+- Dependent extension ID
 - Does this issue occur when other extensions are disabled?
 - Steps to reproduce
 - Code sample or screenshot (MVCE)
@@ -47,12 +48,12 @@ Please limit your description and code sample/screenshot(s) to one MVCE (Minimum
    ```sh
    git checkout -b cool-feature
    ```
-   
+
 4. Commit your changes
 
    You **must** [link your commit to an issue][github-pr-link] to have your commit accepted:
    ```sh
-   git commit -m "Added cool feature (closes #1337)"
+   git commit -m "Added cool feature (#1337)"
    ```
 
 5. Check the scripts work in the [latest version of all Visual Studio Code distribution channels][vscode-download]:

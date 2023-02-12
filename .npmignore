@@ -2,11 +2,11 @@
 .vscode-test/
 .vscode-test-web/
 .gitlab/
+assets/
 builds/
+out/
 src/
 test/
-assets/
-out/
 *.tgz
 *.vsix
 **/*.pegjs
