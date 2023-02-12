@@ -92,8 +92,8 @@ function optimizedSelectorFactory(selector: string): ScopeSelector {
 		return isSelectorAtScopeLevel(selector)
 			? new FastScopeSelector(selector)
 			: new FirstMateSelector(selector);
-	} catch (error) {
-		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${error && error.message || ''}`.trim());
+	} catch (e) {
+		throw new Error(`'${selector}' is an invalid Textmate scope selector. ${e && e.message || ''}`.trim());
 	}
 }
 
