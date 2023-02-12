@@ -1,20 +1,13 @@
 // @ts-check
-const path = require('node:path');
+const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
-const CopyPlugin = require('copy-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-
-const onigWasmSource = path.join(__dirname, 'node_modules', 'vscode-oniguruma', 'release', 'onig.wasm');
-const onigWasmTargetDir = path.join(__dirname, 'dist', 'bin');
 
 /** @type {webpack.Configuration} */
 const configuration = {
 	mode: 'none',
 	target: 'node',
-	entry: {
-		'src/main': './src/main.ts'
-	},
+	entry: './src/main.ts',
 	externals: {
 		'vscode': 'commonjs vscode'
 	},
@@ -23,12 +16,16 @@ const configuration = {
 		plugins: [ new TsconfigPathsPlugin() ]
 	},
 	module: {
-		rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
+		rules: [
+			{ test: /\.ts$/, loader: 'ts-loader' },
+			{ test: /\.wasm$/, loader: 'arraybuffer-loader' }
+		]
 	},
-	plugins: [
-		new CopyPlugin({ patterns: [{ from: onigWasmSource, to: onigWasmTargetDir }] }),
-		new NodePolyfillPlugin()
-	]
+	output: {
+		chunkFormat: 'commonjs',
+		filename: 'main.js',
+		path: path.join(__dirname, 'dist', 'src'),
+	}
 };
 
 module.exports = configuration;

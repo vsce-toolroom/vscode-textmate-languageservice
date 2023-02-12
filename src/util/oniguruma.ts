@@ -4,19 +4,18 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as vscode from 'vscode';
 import * as textmate from 'vscode-textmate';
 import * as bindings from 'vscode-oniguruma';
 
+// Use webpack & arraybuffer-loader to generate an u8 `ArrayBuffer` WASM module.
+import buffer from '../../node_modules/vscode-oniguruma/release/onig.wasm';
+
 let onigurumaLib: textmate.IOnigLib | null = null;
 
-export async function getOniguruma(extensionUri: vscode.Uri): Promise<textmate.IOnigLib> {
+export async function getOniguruma(): Promise<textmate.IOnigLib> {
 	if (!onigurumaLib) {
-		const wasmPath = vscode.Uri.joinPath(extensionUri, './node_modules/vscode-textmate-languageservice', 'dist/bin', '/onig.wasm');
-		const wasmData = vscode.env.appHost === 'desktop'
-			? await vscode.workspace.fs.readFile(wasmPath)
-			: await fetch(wasmPath.toString());
-		await bindings.loadWASM(wasmData);
+		const bytes = new Uint8Array(buffer);
+		await bindings.loadWASM(bytes);
 		onigurumaLib = {
 			createOnigScanner(patterns: string[]) { return new bindings.OnigScanner(patterns); },
 			createOnigString(s: string) { return new bindings.OnigString(s); }

@@ -1,11 +1,8 @@
 'use strict';
 
-import * as vscode from 'vscode';
 import * as crypto from 'crypto';
 
 import type { SkinnyTextDocument } from '../services/document';
-
-const encoder = new TextEncoder();
 
 export interface ServiceInterface<T> {
 	fetch(document: SkinnyTextDocument): Promise<T>;

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es2017",
     "lib": ["es2017", "dom"],
-    "sourceMap": true,
     "outDir": "out",
     "declarationDir": "dist/types",
     "declaration": true,
@@ -15,6 +14,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.js",
     "test/*.test.ts",
     "test/suite/*.test.ts",
     "test/util/*.ts"

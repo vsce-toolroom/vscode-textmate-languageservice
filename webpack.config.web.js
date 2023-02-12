@@ -1,12 +1,12 @@
 // @ts-check
-const path = require('node:path');
+const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
 const CopyPlugin = require('copy-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 const webEntryTypeSource = path.join(__dirname, 'dist', 'types', 'src', 'main.d.ts');
-const webEntryTypeTarget = path.resolve(__dirname, 'dist', 'types', 'src', 'web.d.ts');
+const webEntryTypeTarget = path.join(__dirname, 'dist', 'types', 'src', 'web.d.ts');
 
 /** @type {webpack.Configuration} */
 const configuration = {
@@ -21,19 +21,22 @@ const configuration = {
 	},
 	resolve: {
 		alias: {
-			'src/main': path.resolve(__dirname, 'dist', 'src', 'web')
+			'../../src/main': 'src/web'
 		},
 		extensions: ['.ts', '.js'],
 		plugins: [ new TsconfigPathsPlugin() ]
 	},
 	module: {
-		rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
+		rules: [
+			{ test: /\.ts$/, loader: 'ts-loader' },
+			{ test: /\.wasm$/, loader: 'arraybuffer-loader' }
+		]
 	},
 	plugins: [
 		new CopyPlugin({
 			patterns: [{ from: webEntryTypeSource, to: webEntryTypeTarget, toType: 'file' }]
 		}),
-		new NodePolyfillPlugin()
+		new NodePolyfillPlugin({ includeAliases: ['path', 'crypto', 'stream', 'assert'] })
 	]
 };
 
