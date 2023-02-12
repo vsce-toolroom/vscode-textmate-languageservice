@@ -30,10 +30,9 @@ export function run(): Promise<void> {
 					c();
 				}
 			});
-		} catch (err) {
-			console.error(err);
-			e(err);
-			process.exit(1);
+		} catch (e) {
+			console.error(e);
+			e(e);
 		}
 	});
 }

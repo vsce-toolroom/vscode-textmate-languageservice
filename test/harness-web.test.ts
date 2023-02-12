@@ -1,6 +1,6 @@
 'use strict';
 
-import * as path from 'node:path';
+import * as path from 'path';
 import { runTests as runTestsInBrowser } from '@vscode/test-web';
 
 import type { BrowserType } from '@vscode/test-web';
@@ -19,9 +19,9 @@ async function main() {
 				extensionDevelopmentPath,
 				browserType, port, headless, devTools
 		});
-	} catch (err) {
+	} catch (e) {
 		console.error('Failed to run tests');
-		process.exit(1);
+		throw e;
 	}
 }
 

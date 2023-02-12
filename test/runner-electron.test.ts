@@ -25,9 +25,9 @@ export function run(): Promise<void> {
 					c();
 				}
 			});
-		} catch (err) {
-			console.error(err);
-			e(err);
+		} catch (e) {
+			console.error(e);
+			e(e);
 		}
 	});
 }

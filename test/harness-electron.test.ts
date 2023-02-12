@@ -1,6 +1,6 @@
 'use strict';
 
-import * as path from 'node:path';
+import * as path from 'path';
 import { runTests as runTestsInElectron } from '@vscode/test-electron';
 
 async function main() {
@@ -20,7 +20,7 @@ async function main() {
 			extensionDevelopmentPath,
 			launchArgs
 		});
-	} catch (err) {
+	} catch (_) {
 		console.error('Failed to run tests');
 		process.exit(1);
 	}
