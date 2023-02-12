@@ -15,19 +15,17 @@ export async function sampler(this: vscode.ExtensionContext, component: string, 
 	try { stat = await vscode.workspace.fs.stat(data); } finally {}
 
 	// Run JSON diff assert.
-	test(`./test/data/${component}/${basename}.json`, async function() {
-		let error: TypeError | undefined;
-		try {
-			if (stat) {
-				assert.deepEqual(jsonify(output), await loadJsonFile(data));
-			}
-		} catch(e) {
-			error = e;
-
-		// Dump output to subdirectory for data component.
-		} finally {
-			await writeJsonFile(data, output);
+	let error: TypeError | undefined;
+	try {
+		if (stat) {
+			assert.deepEqual(jsonify(output), await loadJsonFile(data), `./test/data/${component}/${basename}.json`);
 		}
-		if (error) throw error;
-	});
+	} catch(e) {
+		error = e;
+
+	// Dump output to subdirectory for data component.
+	} finally {
+		await writeJsonFile(data, output);
+	}
+	if (error) throw error;
 }

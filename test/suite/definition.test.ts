@@ -68,9 +68,7 @@ suite('src/definition.ts', function() {
 				const filename = `${SAMPLE_FILE_BASENAMES[index]}.m`;
 
 				for (const entry of page) {
-					test(filename, function() {
-						assert.strictEqual(entry instanceof Object, true);
-					});
+					assert.strictEqual(entry instanceof Object, true, filename);
 				}
 			}
 		});
