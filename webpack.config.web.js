@@ -5,25 +5,21 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPat
 const CopyPlugin = require('copy-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
-const webEntryTypeSource = path.join(__dirname, 'dist', 'types', 'src', 'main.d.ts');
-const webEntryTypeTarget = path.join(__dirname, 'dist', 'types', 'src', 'web.d.ts');
-
 /** @type {webpack.Configuration} */
 const configuration = {
 	mode: 'none',
 	target: 'webworker',
 	entry: {
-		'src/web': './src/main.ts',
+		'src/web': './src/web.ts',
 		'test/runner-web.test': { import: './test/runner-web.test.ts', dependOn: 'src/web' }
 	},
 	externals: {
 		'vscode': 'commonjs vscode'
 	},
 	resolve: {
-		alias: {
-			'../../src/main': 'src/web'
-		},
+		alias: { '../../src/main': __dirname },
 		extensions: ['.ts', '.js'],
+		fallback: { crypto: false },
 		plugins: [ new TsconfigPathsPlugin() ]
 	},
 	module: {
@@ -33,10 +29,7 @@ const configuration = {
 		]
 	},
 	plugins: [
-		new CopyPlugin({
-			patterns: [{ from: webEntryTypeSource, to: webEntryTypeTarget, toType: 'file' }]
-		}),
-		new NodePolyfillPlugin({ includeAliases: ['path', 'crypto', 'stream', 'assert'] })
+		new NodePolyfillPlugin({ includeAliases: ['path', 'assert'] })
 	]
 };
 

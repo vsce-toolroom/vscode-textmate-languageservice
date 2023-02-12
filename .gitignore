@@ -1,6 +1,7 @@
 dist/
-out/
 node_modules/
+out/
+src/web.ts
 # We target VS Code
 .vscode-test/
 .vscode-test-web/

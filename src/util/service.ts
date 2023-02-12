@@ -1,8 +1,11 @@
 'use strict';
 
-import * as crypto from 'crypto';
+import * as vscode from 'vscode';
+import * as crypto from './crypto';
 
 import type { SkinnyTextDocument } from '../services/document';
+
+const encoder = new TextEncoder();
 
 export interface ServiceInterface<T> {
 	fetch(document: SkinnyTextDocument): Promise<T>;
@@ -39,13 +42,17 @@ export abstract class ServiceBase<T> {
 
 async function digest(document: SkinnyTextDocument): Promise<string> {
 	const text = document.getText();
-	const hash = crypto.createHash('sha256');
-	hash.update(text, 'utf8');
-	return hash.digest('hex');
+	if (vscode.env.appHost === 'desktop') {
+		const hash = crypto.node.createHash('sha256');
+		hash.update(text);
+		return hash.digest('hex');
+	} else {
+		const buffer = encoder.encode(text);
+		const digest = await crypto.web.subtle.digest('SHA-256', buffer);
+		return buf2hex(digest);
+	}
 }
 
-function buf2hex(buffer: ArrayBuffer) {
-	return [...new Uint8Array(buffer)]
-		.map(x => x.toString(16).padStart(2, '0'))
-		.join('');
+function buf2hex(buffer: ArrayBuffer): string {
+	return [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
 }

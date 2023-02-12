@@ -13,6 +13,7 @@ const configuration = {
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
+		fallback: { crypto: false },
 		plugins: [ new TsconfigPathsPlugin() ]
 	},
 	module: {
@@ -22,9 +23,10 @@ const configuration = {
 		]
 	},
 	output: {
-		chunkFormat: 'commonjs',
+		library: { type: 'commonjs2' },
 		filename: 'main.js',
 		path: path.join(__dirname, 'dist', 'src'),
+		chunkFormat: 'commonjs'
 	}
 };
 
