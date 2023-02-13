@@ -58,7 +58,7 @@
     "stage-samples": "npm-run-all stage-samples-touch stage-samples-copy",
     "stage-samples-touch": "make-dir test/vscode-matlab/samples",
     "stage-samples-copy": "cpy samples/*.m vscode-matlab --cwd=test --parents",
-    "harness": "npm-run-all harness-electron",
+    "harness": "npm-run-all harness-electron harness-web",
     "harness-electron": "mocha ./test/vscode-matlab/node_modules/vscode-textmate-languageservice/dist/test/harness-electron.test",
     "harness-web": "node ./test/vscode-matlab/node_modules/vscode-textmate-languageservice/dist/test/harness-web.test.js",
     "dump": "cpy */*.json ../../data --cwd=test/vscode-matlab/data --parents"

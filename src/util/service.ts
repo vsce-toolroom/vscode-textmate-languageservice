@@ -44,11 +44,12 @@ export abstract class ServiceBase<T> {
 
 async function hashify(document: SkinnyTextDocument): Promise<string> {
 	const text = document.getText();
-	if (vscode.env.appHost === 'desktop') {
+	if (crypto.node) {
 		const hash = crypto.node.createHash('sha256');
 		hash.update(text);
 		return hash.digest('hex');
-	} else {
+	}
+	if (crypto.web) {
 		const buffer = encoder.encode(text);
 		const digest = await crypto.web.subtle.digest('SHA-256', buffer);
 		return buf2hex(digest);

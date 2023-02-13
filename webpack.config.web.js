@@ -1,5 +1,3 @@
-// @ts-check
-const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
@@ -13,7 +11,8 @@ const configuration = {
 		'test/runner-web.test': { import: './test/runner-web.test.ts', dependOn: 'src/web' }
 	},
 	externals: {
-		'vscode': 'commonjs vscode'
+		'vscode': 'commonjs vscode',
+		'crypto': 'commonjs crypto'
 	},
 	resolve: {
 		alias: { '../../src/main': __dirname },

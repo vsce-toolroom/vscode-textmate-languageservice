@@ -1,4 +1,3 @@
-// @ts-check
 const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
@@ -9,11 +8,11 @@ const configuration = {
 	target: 'node',
 	entry: './src/main.ts',
 	externals: {
-		'vscode': 'commonjs vscode'
+		'vscode': 'commonjs vscode',
+		'crypto': 'commonjs crypto'
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
-		fallback: { crypto: false },
 		plugins: [ new TsconfigPathsPlugin() ]
 	},
 	module: {
