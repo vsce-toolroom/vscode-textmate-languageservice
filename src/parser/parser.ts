@@ -4,7 +4,7 @@
 
 'use strict';
 
-import * as matchers from './matchers';
+import matchers = require('./matchers');
 
 export interface FilePosition {
 	offset: number;
@@ -270,8 +270,11 @@ function peg$parse(input: string, options?: ParseOptions) {
 	const peg$c29 = ',';
 	const peg$c30 = peg$literalExpectation(',', false);
 	const peg$c31 = function (left: any, right: any): any {
-		if (right) return new matchers.OrMatcher(left, right);
-		else return left;
+		if (right) {
+			return new matchers.OrMatcher(left, right);
+		} else {
+			return left;
+		}
 	};
 	const peg$c32 = /^[ \t]/;
 	const peg$c33 = peg$classExpectation([' ', '\t'], false, false);
@@ -393,7 +396,7 @@ function peg$parse(input: string, options?: ParseOptions) {
 
 	function peg$fail(expected1: Expectation) {
 		if (peg$currPos < peg$maxFailPos) {
-			return void 0;
+			return;
 		}
 
 		if (peg$currPos > peg$maxFailPos) {

@@ -16,6 +16,7 @@ test/
 .gitignore
 .gitlab-ci.yml
 .gitmodules
+.prettierrc.json
 .travis.yml
 .eslintignore
 .eslintrc.json

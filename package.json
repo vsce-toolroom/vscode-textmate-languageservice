@@ -1,7 +1,7 @@
 {
   "name": "vscode-textmate-languageservice",
   "description": "Textmate token-based language service for Visual Studio Code.",
-  "version": "1.1.0-alpha.4",
+  "version": "1.1.0-alpha.5",
   "license": "MIT",
   "author": {
     "name": "SNDST00M",
@@ -26,11 +26,11 @@
     "posttest": "npm-run-all dump reset",
     "clean": "del-cli dist",
     "clean-production": "del-cli dist/test",
-    "pegjs": "npm-run-all pegjs-pegjs pegjs-prettier pegjs-tspegjs#90-hack",
+    "pegjs": "npm-run-all pegjs-build pegjs-prettier pegjs-tspegjs-90-hack",
     "pegjs-build": "peggy --plugin ts-pegjs --extra-options-file src/parser/pegconfig.json --dependency matchers:./matchers -o src/parser/parser.ts src/parser/parser.pegjs",
     "pegjs-prettier": "prettier --config .prettierrc.json --write src/parser/parser.ts",
-    "pegjs-tspegjs#90-hack": "replace-in-files --regex='let\\s+(\\S+)\\s+=\\srequire' --replacement='import $1 = require' src/parser/parser.ts",
-    "prebundle": "npm run clean",
+    "pegjs-tspegjs-90-hack": "replace-in-files --regex='let(\\s\\S+\\s=\\srequire)' --replacement='import$1' src/parser/parser.ts",
+    "prebundle": "npm-run-all clean pegjs",
     "bundle": "npm-run-all bundle-src bundle-web.ts bundle-web bundle-test",
     "bundle-src": "webpack-cli --config webpack.config.node.js",
     "bundle-web.ts": "cpy src/main.ts src --rename=web.ts",
@@ -60,6 +60,7 @@
     "stage-samples-copy": "cpy samples/*.m vscode-matlab --cwd=test --parents",
     "harness": "npm-run-all harness-electron harness-web",
     "harness-electron": "mocha ./test/vscode-matlab/node_modules/vscode-textmate-languageservice/dist/test/harness-electron.test",
+    "harness-web-rebuild": "npm run --prefix ./test/vscode-matlab vscode:prepublish",
     "harness-web": "node ./test/vscode-matlab/node_modules/vscode-textmate-languageservice/dist/test/harness-web.test.js",
     "dump": "cpy */*.json ../../data --cwd=test/vscode-matlab/data --parents"
   },
