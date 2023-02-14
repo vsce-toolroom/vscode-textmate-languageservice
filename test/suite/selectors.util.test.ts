@@ -41,7 +41,7 @@ suite('src/util/selectors.ts', function() {
 		interface SelectorMapTestCase extends Pick<SelectorMapTestDatum, 'input' | 'expected'> {
 			key: string | void;
 			value: number | void;
-			map: any; // TODO: use TextmateScopeSelectorMap instead of any
+			map: typeof TextmateScopeSelectorMap.prototype;
 			scopes: string;
 		}
 
