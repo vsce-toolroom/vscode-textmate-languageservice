@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as assert from 'assert';
+import * as assert from '../util/assert';
 
 import { getComponentSampleDataUri } from '../util/files';
 import { context, loadJsonFile, TextmateScopeSelector, TextmateScopeSelectorMap } from '../util/factory';
@@ -25,7 +25,7 @@ suite('src/util/selectors.ts', function() {
 			test('TextmateScopeSelector.match(scopes): selector ' + testFeature, function() {
 				for (const t of testCases) {
 					const selector = new TextmateScopeSelector(t.selector);
-					assert.strictEqual(selector.match(t.input), t.expected);
+					assert.strictEqual(selector.match(t.input), t.expected, `"${testFeature}"; (TextmateScopeSelector ${t.selector})`);
 				}
 			});
 		}
@@ -56,25 +56,31 @@ suite('src/util/selectors.ts', function() {
 
 		test('key(scopes)', function() {
 			for (const t of testCases) {
-				test('sourcemap: ' + t.map.toString() + ', scopes: "' + t.scopes + '"', function() {
-					assert.strictEqual(t.map.key(t.input), t.key === null ? void 0 : t.key);
-				});
+				assert.strictEqual(
+					t.map.key(t.input),
+					t.key === null ? void 0 : t.key,
+					'TextmateScopeSelectorMap.key; sourcemap: ' + t.map.toString() + ', scopes: "' + t.scopes + '"'
+				);
 			}
 		});
 
 		test('has(scopes)', function() {
 			for (const t of testCases) {
-				test('sourcemap "' + t.map.toString() + '", scopes: "' + t.scopes + '"', function() {
-					assert.strictEqual(t.map.has(t.input), t.expected);
-				});
+				assert.strictEqual(
+					t.map.has(t.input),
+					t.expected,
+					'TextmateScopeSelectorMap.has; sourcemap "' + t.map.toString() + '", scopes: "' + t.scopes + '"'
+				);
 			}
 		});
 
 		test('value(scopes)', function() {
 			for (const t of testCases) {
-				test('sourcemap: "' + t.map.toString() + '", scopes: "' + t.scopes + '"', function() {
-					assert.strictEqual(t.map.value(t.input), t.value === null ? void 0 : t.value);
-				});
+				assert.strictEqual(
+					t.map.value(t.input),
+					t.value === null ? void 0 : t.value,
+					'TextmateScopeSelectorMap.value; sourcemap: "' + t.map.toString() + '", scopes: "' + t.scopes + '"'
+				);
 			}
 		});
 	});
