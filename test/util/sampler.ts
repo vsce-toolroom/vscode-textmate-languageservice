@@ -7,6 +7,9 @@ import { loadJsonFile } from './factory';
 import { writeJsonFile, getComponentSampleDataUri } from './files';
 import { jsonify } from './jsonify';
 
+const isWeb = vscode.env.uiKind === vscode.UIKind.Web;
+const isRemote = typeof vscode.env.remoteName === 'string';
+
 export async function sampler(this: vscode.ExtensionContext, component: string, basename: string, output: any[]) {
 	const data = getComponentSampleDataUri.call(this, component, basename) as vscode.Uri;
 	let stat: vscode.FileStat | void;
@@ -26,11 +29,16 @@ export async function sampler(this: vscode.ExtensionContext, component: string, 
 	} catch(e) {
 		error = e as assert.AssertionError;
 
-	// Dump output to subdirectory for data component.
-	} finally {
-		await writeJsonFile(data, output);
 	}
 	if (error) {
+		// In web runtime, dump output to terminal console (web runtime).
+		if (isWeb && !isRemote) {
+			console.log(`\n${JSON.stringify(output)}\n`);
+		}
+		// In Node runtime, dump output to data component subdirectory ().
+		if (!isWeb || isRemote) {
+			await writeJsonFile(data, output);
+		}
 		throw error;
 	}
 }
