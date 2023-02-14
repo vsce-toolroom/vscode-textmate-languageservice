@@ -5,7 +5,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as textmate from 'vscode-textmate';
+import * as vscodeTextmate from 'vscode-textmate';
 
 import type { JsonObject } from 'type-fest';
 
@@ -44,8 +44,8 @@ export interface PackageJSON extends JsonObject {
 	'textmate-languageservices'?: { [languageId: string]: string };
 }
 
-export class ResolverService implements textmate.RegistryOptions {
-	constructor(private _context: vscode.ExtensionContext, private _grammars: GrammarContribution[], private _languages: LanguageContribution[], public onigLib: Promise<textmate.IOnigLib>) {
+export class ResolverService implements vscodeTextmate.RegistryOptions {
+	constructor(private _context: vscode.ExtensionContext, private _grammars: GrammarContribution[], private _languages: LanguageContribution[], public onigLib: Promise<vscodeTextmate.IOnigLib>) {
 	}
 
 	public findLanguageByExtension(fileExtension: string): string | null {
@@ -106,7 +106,7 @@ export class ResolverService implements textmate.RegistryOptions {
 		throw new Error('Could not find grammar contribution for language ID "' + id + '"');
 	}
 
-	public async loadGrammar(scopeName: string): Promise<textmate.IRawGrammar | null> {
+	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
 		for (const grammar of this._grammars) {
 			if (grammar.scopeName !== scopeName) {
 				continue;
@@ -114,7 +114,7 @@ export class ResolverService implements textmate.RegistryOptions {
 			try {
 				const uri = vscode.Uri.joinPath(this._context.extensionUri, grammar.path);
 				const text = await readFileText(uri);
-				return textmate.parseRawGrammar(text, uri.path);
+				return vscodeTextmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
 				throw e;
 			}

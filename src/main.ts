@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as textmate from 'vscode-textmate';
+import * as vscodeTextmate from 'vscode-textmate';
 
 import { TokenizerService } from './services/tokenizer';
 import { ConfigData } from './config/config';
@@ -26,9 +26,9 @@ export default class LSP {
 	// Refs: microsoft/TypeScript#30355
 	#_packageJSON?: PackageJSON;
 	#_resolver: ResolverService;
-	#_registry: textmate.Registry;
+	#_registry: vscodeTextmate.Registry;
 	#_configPromise: Promise<ConfigData>;
-	#_grammarPromise: Promise<textmate.IGrammar>;
+	#_grammarPromise: Promise<vscodeTextmate.IGrammar>;
 	#_tokenService: TokenizerService;
 	#_outlineService?: OutlineService;
 	#_documentService?: DocumentService;
@@ -47,7 +47,7 @@ export default class LSP {
 		const onigLibPromise = getOniguruma();
 
 		this.#_resolver = new ResolverService(context, grammars, languages, onigLibPromise);
-		this.#_registry = new textmate.Registry(this.#_resolver);
+		this.#_registry = new vscodeTextmate.Registry(this.#_resolver);
 		const grammarData = this.#_resolver.findGrammarByLanguageId(this.languageId);
 		this.#_grammarPromise = this.#_registry.loadGrammar(grammarData.scopeName);
 

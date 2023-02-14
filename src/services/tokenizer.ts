@@ -1,6 +1,6 @@
 'use strict';
 
-import * as textmate from 'vscode-textmate';
+import * as vscodeTextmate from 'vscode-textmate';
 
 import { ServiceBase } from '../util/service';
 
@@ -8,14 +8,14 @@ import type { Mutable } from 'type-fest';
 import type { SkinnyTextDocument, SkinnyTextLine } from './document';
 import type { ConfigData } from '../config/config';
 
-export interface TextmateToken extends Mutable<textmate.IToken> {
+export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface TextmateTokenizeLineResult extends Omit<textmate.ITokenizeLineResult, 'tokens'> {
+export interface TextmateTokenizeLineResult extends Omit<vscodeTextmate.ITokenizeLineResult, 'tokens'> {
 	readonly tokens: TextmateToken[];
 }
 
@@ -24,7 +24,7 @@ interface TextmateTokenizerState {
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: textmate.StackElement;
+	rule: vscodeTextmate.StackElement;
 	stack: number;
 }
 
@@ -33,7 +33,7 @@ export class TokenizerService extends ServiceBase<TextmateToken[]> {
 
 	constructor(
 		private _config: ConfigData,
-		private _grammar: textmate.IGrammar
+		private _grammar: vscodeTextmate.IGrammar
 	) {
 		super();
 	}
@@ -46,7 +46,7 @@ export class TokenizerService extends ServiceBase<TextmateToken[]> {
 		state.continuation = false;
 		state.declaration = false;
 		state.line = 0;
-		state.rule = textmate.INITIAL;
+		state.rule = vscodeTextmate.INITIAL;
 		state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
