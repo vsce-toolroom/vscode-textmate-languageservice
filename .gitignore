@@ -2,7 +2,6 @@ dist/
 node_modules/
 out/
 .prettierrc.json
-src/web.ts
 # We target VS Code
 .vscode-test/
 .vscode-test-web/

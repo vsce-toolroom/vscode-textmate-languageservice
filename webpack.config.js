@@ -4,7 +4,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPat
 
 /** @type {webpack.Configuration} */
 const configuration = {
-	mode: 'none',
+	mode: 'production',
 	target: 'node',
 	entry: { 'src/main': './src/main.ts' },
 	output: {

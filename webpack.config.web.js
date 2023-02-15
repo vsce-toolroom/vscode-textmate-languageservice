@@ -4,18 +4,15 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPat
 
 /** @type {webpack.Configuration} */
 const configuration = {
-	mode: 'none',
+	mode: 'production',
 	target: 'webworker',
-	entry: {
-		'test/runner-web.test': './test/runner-web.test.ts'
-	},
+	entry: { 'test/runner-web.test': './test/runner-web.test.ts' },
 	output: {
 		globalObject: 'globalThis',
 		libraryTarget: 'commonjs',
 		path: path.join(__dirname, 'dist')
 	},
 	resolve: {
-		//alias: { 'src/main': 'src/web' },
 		extensions: ['.ts', '.js'],
 		fallback: {
 			crypto: false,

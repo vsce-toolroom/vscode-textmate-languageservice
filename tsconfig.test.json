@@ -18,7 +18,6 @@
   ],
   "exclude": [
     "src/main.ts",
-    "src/web.ts",
     "test/runner-web.test.ts",
     "test/data/*/*"
   ]
