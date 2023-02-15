@@ -34,13 +34,11 @@ export interface LanguageContribution extends PartialJsonObject {
 	filenames?: string[];
 }
 
-interface Contributes extends PartialJsonObject {
-	grammars?: GrammarContribution[] & JsonArray;
-	languages?: LanguageContribution[] & JsonArray;
-}
-
-export interface PackageJSON extends PartialDeep<PackageJson> {
-	contributes?: Contributes;
+export interface ExtensionManifest extends PackageJson {
+	contributes?: {
+		grammars?: GrammarContribution[] & JsonArray;
+		languages?: LanguageContribution[] & JsonArray;
+	};
 	'textmate-languageservices'?: { [languageId: string]: string };
 }
 

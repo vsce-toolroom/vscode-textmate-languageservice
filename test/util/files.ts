@@ -1,11 +1,13 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { JsonValue } from 'type-fest';
+import type { JsonValue, PartialDeep } from 'type-fest';
 
 const encoder = new TextEncoder();
 
-export async function writeJsonFile(uri: vscode.Uri, json: JsonValue): Promise<void> {
+type PartialJsonValue = PartialDeep<JsonValue>;
+
+export async function writeJsonFile(uri: vscode.Uri, json: PartialJsonValue): Promise<void> {
 	try {
 		const text = JSON.stringify(json, null, 2) + '\n';
 		const bytes = encoder.encode(text);

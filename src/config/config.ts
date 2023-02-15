@@ -8,7 +8,9 @@ import type { LanguageContribution } from '../services/resolver';
 
 export type SelectorSource = string[] | string;
 
-export interface ConfigJson extends PartialDeep<JsonObject> {
+type PartialJsonObject = PartialDeep<JsonObject>;
+
+export interface ConfigJson extends PartialJsonObject {
 	assignment?: {
 		multiple?: SelectorSource;
 		separator?: SelectorSource;

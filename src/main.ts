@@ -17,14 +17,14 @@ import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 
 import type { ConfigJson } from './config/config';
-import type { PackageJSON, GrammarLanguageContribution } from './services/resolver';
+import type { ExtensionManifest, GrammarLanguageContribution } from './services/resolver';
 
 export default class LSP {
 	public static utils = { TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile };
 
 	// In order to support default class export we need to use `#` private properties.
 	// Refs: microsoft/TypeScript#30355
-	#_packageJSON?: PackageJSON;
+	#_extensionManifest?: ExtensionManifest;
 	#_resolver: ResolverService;
 	#_registry: vscodeTextmate.Registry;
 	#_configPromise: Promise<ConfigData>;
@@ -38,9 +38,9 @@ export default class LSP {
 	#_definitionProvider?: TextmateDefinitionProvider;
 
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
-		this.#_packageJSON = this.context.extension.packageJSON as PackageJSON;
+		this.#_extensionManifest = this.context.extension.packageJSON as ExtensionManifest;
 
-		const contributes = this.#_packageJSON?.contributes || {};
+		const contributes = this.#_extensionManifest?.contributes || {};
 		const grammars = (contributes?.grammars || [])
 			.filter((g): g is GrammarLanguageContribution => g && !g.injectTo);
 		const languages = contributes?.languages || [];
@@ -51,7 +51,7 @@ export default class LSP {
 		const grammarData = this.#_resolver.findGrammarByLanguageId(this.languageId);
 		this.#_grammarPromise = this.#_registry.loadGrammar(grammarData.scopeName);
 
-		const mapping = this.#_packageJSON['textmate-languageservices'] || {};
+		const mapping = this.#_extensionManifest['textmate-languageservices'] || {};
 		const path = mapping[this.languageId] || './textmate-configuration.json';
 		const uri = vscode.Uri.joinPath(this.context.extensionUri, path);
 		const languageData = this.#_resolver.findLanguageById(this.languageId);

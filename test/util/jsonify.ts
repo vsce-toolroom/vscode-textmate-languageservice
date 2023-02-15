@@ -1,12 +1,14 @@
 'use strict';
 
 import type * as vscode from 'vscode';
-import type { JsonValue } from 'type-fest';
+import type { JsonValue, PartialDeep } from 'type-fest';
 
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from './factory';
 import { SUBMODULE_NAME } from './files';
 
-export function jsonify<T = JsonValue>(value: Record<symbol | string | number, any>): T {
+type PartialJsonValue = PartialDeep<JsonValue>;
+
+export function jsonify<T = PartialJsonValue>(value: Record<symbol | string | number, any>): T {
 	return JSON.parse(JSON.stringify(value, stringifyClasses)) as T;
 }
 
