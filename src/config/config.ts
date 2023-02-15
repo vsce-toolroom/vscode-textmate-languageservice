@@ -3,12 +3,12 @@
 import type * as vscode from 'vscode';
 import { ConfigSelectors } from './selectors';
 
-import type { JsonObject } from 'type-fest';
+import type { PartialDeep, JsonObject } from 'type-fest';
 import type { LanguageContribution } from '../services/resolver';
 
 export type SelectorSource = string[] | string;
 
-export interface ConfigJson extends JsonObject {
+export interface ConfigJson extends PartialDeep<JsonObject> {
 	assignment?: {
 		multiple?: SelectorSource;
 		separator?: SelectorSource;

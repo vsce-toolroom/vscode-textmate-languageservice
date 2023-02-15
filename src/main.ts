@@ -42,7 +42,7 @@ export default class LSP {
 
 		const contributes = this.#_packageJSON?.contributes || {};
 		const grammars = (contributes?.grammars || [])
-			.filter((g): g is GrammarLanguageContribution => !g.injectTo);
+			.filter((g): g is GrammarLanguageContribution => g && !g.injectTo);
 		const languages = contributes?.languages || [];
 		const onigLibPromise = getOniguruma();
 

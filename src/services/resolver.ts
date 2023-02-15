@@ -7,18 +7,20 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
-import type { JsonObject } from 'type-fest';
+import type { PartialDeep, JsonObject, JsonArray, PackageJson } from 'type-fest';
 
 import { readFileText } from '../util/loader';
 
-export interface GrammarLanguageContribution extends JsonObject {
+type PartialJsonObject = PartialDeep<JsonObject>;
+
+export interface GrammarLanguageContribution extends PartialJsonObject {
 	language: string;
 	scopeName: string;
 	path: string;
 	embeddedLanguages?: { [scopeName: string]: string };
 }
 
-export interface GrammarInjectionContribution extends JsonObject {
+export interface GrammarInjectionContribution extends PartialJsonObject {
 	scopeName: string;
 	path: string;
 	injectTo: string[];
@@ -26,20 +28,18 @@ export interface GrammarInjectionContribution extends JsonObject {
 
 export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
 
-export interface LanguageContribution extends JsonObject {
+export interface LanguageContribution extends PartialJsonObject {
 	id: string;
 	extensions?: string[];
 	filenames?: string[];
 }
 
-interface Contributes extends JsonObject {
-	grammars?: GrammarContribution[];
-	languages?: LanguageContribution[];
+interface Contributes extends PartialJsonObject {
+	grammars?: GrammarContribution[] & JsonArray;
+	languages?: LanguageContribution[] & JsonArray;
 }
 
-export interface PackageJSON extends JsonObject {
-	name: string;
-	version: string;
+export interface PackageJSON extends PartialDeep<PackageJson> {
 	contributes?: Contributes;
 	'textmate-languageservices'?: { [languageId: string]: string };
 }
