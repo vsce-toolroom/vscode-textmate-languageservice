@@ -6,14 +6,18 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPat
 const configuration = {
 	mode: 'none',
 	target: 'node',
-	entry: './src/main.ts',
-	externals: {
-		'vscode': 'commonjs vscode',
-		'crypto': 'commonjs crypto'
+	entry: { 'src/main': './src/main.ts' },
+	output: {
+		globalObject: 'globalThis',
+		// TODO: rename this to TextmateLanguageService as v2.0.0 release
+		library: 'LSP',
+		libraryTarget: 'umd',
+		path: path.join(__dirname, 'dist')
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
-		plugins: [ new TsconfigPathsPlugin() ]
+		mainFields: ['module', 'main'],
+		plugins: [new TsconfigPathsPlugin()]
 	},
 	module: {
 		rules: [
@@ -21,11 +25,9 @@ const configuration = {
 			{ test: /\.wasm$/, type: 'javascript/auto', loader: 'encoded-uint8array-loader' }
 		]
 	},
-	output: {
-		library: { type: 'commonjs2' },
-		filename: 'main.js',
-		path: path.join(__dirname, 'dist', 'src'),
-		chunkFormat: 'commonjs'
+	externals: {
+		'vscode': 'commonjs vscode',
+		'crypto': 'commonjs crypto'
 	}
 };
 

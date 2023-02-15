@@ -11,13 +11,14 @@
     "baseUrl": ".",
   },
   "include": [
-    "src/**/*.ts",
+    "src/**/**.ts",
     "test/*.test.ts",
     "test/suite/*.test.ts",
     "test/util/*.ts"
   ],
   "exclude": [
     "src/main.ts",
+    "src/web.ts",
     "test/runner-web.test.ts",
     "test/data/*/*"
   ]
