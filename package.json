@@ -34,8 +34,8 @@
     "bundle": "npm-run-all bundle-src bundle-test",
     "bundle-src": "webpack-cli --config webpack.config.js",
     "bundle-test": "npm-run-all bundle-test-build bundle-test-web bundle-test-copy bundle-test-clean",
-    "bundle-test-web": "webpack-cli --config webpack.config.web.js",
-    "bundle-test-build": "tsc --project tsconfig.test.json",
+    "bundle-test-web": "webpack-cli --config webpack.config.web.test.js",
+    "bundle-test-build": "tsc --project tsconfig.node.test.json",
     "bundle-test-copy": "cpy **/* ../../dist/test --cwd=out/test --parents",
     "bundle-test-clean": "del-cli out dist/types/test dist/test/data/selectors",
     "reset": "npm-run-all reset-git reset-npm reset-pack",
@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
+    "@types/node": "^16.14.2",
     "@types/webpack-env": "1.18",
     "@vscode/test-electron": "^2.2.0",
     "@vscode/test-web": "^0.0.34",
@@ -88,9 +89,8 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@types/node": "^16.14.2",
     "@types/vscode": "^1.51.0",
     "type-fest": "^0.8.1",
-    "vscode-textmate": "^7.0.0"
+    "vscode-textmate": "7.0.1"
   }
 }
