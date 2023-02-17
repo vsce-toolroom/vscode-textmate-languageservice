@@ -187,26 +187,5 @@
     "token": "keyword.control.if.matlab",
     "type": 2,
     "anchor": 160
-  },
-  {
-    "level": 1,
-    "line": 21,
-    "location": {
-      "uri": "./samples/Cat.m",
-      "range": [
-        {
-          "line": 21,
-          "character": 43
-        },
-        {
-          "line": 23,
-          "character": 0
-        }
-      ]
-    },
-    "text": "else",
-    "token": "keyword.control.else.matlab",
-    "type": 2,
-    "anchor": 180
   }
 ]
