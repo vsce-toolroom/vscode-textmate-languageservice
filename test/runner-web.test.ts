@@ -4,11 +4,18 @@ import * as vscode from 'vscode';
 
 // import mocha for the browser, defining the `mocha` global
 import 'mocha/mocha';
+import { BASE_CLASS_NAME, getSampleFileUri } from './util/files';
+import { extensionContext } from './util/factory';
 
-export function run(): Promise<void> {
+export async function run(): Promise<void> {
 	vscode.window.showInformationMessage('Start all tests.');
 
-	return new Promise((c, e) => {
+	const resource = getSampleFileUri.call(extensionContext, BASE_CLASS_NAME);
+	const document = await vscode.workspace.openTextDocument(resource);
+	await vscode.window.showTextDocument(document);
+	await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+
+	return new Promise((c, x) => {
 		mocha.setup({ ui: 'tdd', reporter: void 0 });
 
 		// import mocha test files, so that webpack can inline them
@@ -25,14 +32,14 @@ export function run(): Promise<void> {
 			// Run the mocha test
 			mocha.run(failures => {
 				if (failures > 0) {
-					e(new Error(`${failures} tests failed.`));
+					x(new Error(`${failures} tests failed.`));
 				} else {
 					c();
 				}
 			});
 		} catch (e) {
 			console.error(e);
-			e(e);
+			x(e);
 		}
 	});
 }
