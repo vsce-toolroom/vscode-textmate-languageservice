@@ -13,9 +13,7 @@
     "keyword.control.elseif.matlab",
     "keyword.control.else.matlab"
   ],
-  // begin dev change: add "syntaxes,grammars,snap" to filter out noise
-  "exclude": "**/{external,mpm-packages,syntaxes,grammars,snap}/**",
-  // end dev change
+  "exclude": "{external,mpm-packages,syntaxes,grammars,snap}/**",
   "indentation": {
     "punctuation.definition.comment.begin.matlab": 1,
     "punctuation.definition.comment.end.matlab": -1,
