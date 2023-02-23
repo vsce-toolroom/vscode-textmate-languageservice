@@ -24,7 +24,7 @@ interface TextmateTokenizerState {
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: vscodeTextmate.StackElement;
+	rule: vscodeTextmate.StateStack;
 	stack: number;
 }
 

@@ -93,6 +93,6 @@
   "dependencies": {
     "@types/vscode": "^1.51.0",
     "type-fest": "^0.8.1",
-    "vscode-textmate": "7.0.1"
+    "vscode-textmate": "^9.0.0"
   }
 }
