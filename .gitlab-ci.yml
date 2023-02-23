@@ -7,11 +7,15 @@ default:
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+stages:
+  - build
+  - test
+
 build:
-  stage: test
+  stage: build
   script:
     - npm ci
-    - npm run bundle
+    - npm run build
 
 test:
   stage: test
