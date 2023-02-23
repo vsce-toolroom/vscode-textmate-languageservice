@@ -2,7 +2,7 @@
   tags:
   - shared-windows
   - windows
-  - powershell
+  - windows-1809
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
