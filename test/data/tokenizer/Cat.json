@@ -2758,6 +2758,20 @@
       "source.matlab",
       "meta.function.matlab",
       "meta.if.matlab",
+      "punctuation.terminator.semicolon.matlab"
+    ],
+    "type": "punctuation.terminator.semicolon.matlab",
+    "text": ";",
+    "line": 21,
+    "level": 1
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 44,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
       "meta.else.matlab"
     ],
     "type": "meta.else.matlab",
@@ -2766,8 +2780,8 @@
     "level": 1
   },
   {
-    "startIndex": 43,
-    "endIndex": 47,
+    "startIndex": 44,
+    "endIndex": 48,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2781,8 +2795,22 @@
     "level": 1
   },
   {
-    "startIndex": 47,
-    "endIndex": 48,
+    "startIndex": 48,
+    "endIndex": 49,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "punctuation.terminator.semicolon.matlab"
+    ],
+    "type": "punctuation.terminator.semicolon.matlab",
+    "text": ";",
+    "line": 21,
+    "level": 1
+  },
+  {
+    "startIndex": 49,
+    "endIndex": 50,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2794,8 +2822,8 @@
     "level": 1
   },
   {
-    "startIndex": 48,
-    "endIndex": 52,
+    "startIndex": 50,
+    "endIndex": 54,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2809,8 +2837,8 @@
     "level": 1
   },
   {
-    "startIndex": 52,
-    "endIndex": 53,
+    "startIndex": 54,
+    "endIndex": 55,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2824,8 +2852,8 @@
     "level": 1
   },
   {
-    "startIndex": 53,
-    "endIndex": 54,
+    "startIndex": 55,
+    "endIndex": 56,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2840,8 +2868,8 @@
     "level": 1
   },
   {
-    "startIndex": 54,
-    "endIndex": 58,
+    "startIndex": 56,
+    "endIndex": 60,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2855,8 +2883,8 @@
     "level": 1
   },
   {
-    "startIndex": 58,
-    "endIndex": 59,
+    "startIndex": 60,
+    "endIndex": 61,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2871,8 +2899,8 @@
     "level": 1
   },
   {
-    "startIndex": 59,
-    "endIndex": 60,
+    "startIndex": 61,
+    "endIndex": 62,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2886,8 +2914,22 @@
     "level": 1
   },
   {
-    "startIndex": 60,
-    "endIndex": 61,
+    "startIndex": 62,
+    "endIndex": 63,
+    "scopes": [
+      "source.matlab",
+      "meta.function.matlab",
+      "meta.if.matlab",
+      "punctuation.terminator.semicolon.matlab"
+    ],
+    "type": "punctuation.terminator.semicolon.matlab",
+    "text": ";",
+    "line": 21,
+    "level": 1
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 64,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
@@ -2899,8 +2941,8 @@
     "level": 1
   },
   {
-    "startIndex": 61,
-    "endIndex": 64,
+    "startIndex": 64,
+    "endIndex": 67,
     "scopes": [
       "source.matlab",
       "meta.function.matlab",
