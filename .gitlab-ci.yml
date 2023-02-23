@@ -1,23 +1,20 @@
 default:
   tags:
-    - gitlab-org
-
-image: node:16-slim
+    - shared-windows
+    - windows
+    - windows-1809
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
-stages:
-- test
-
-test-e2e:
+build:
   stage: test
-  variables:
-    DISPLAY: ':99.0'
   script:
-    - apt-get update
-    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 libgbm-dev git
     - npm ci
-    - echo $DISPLAY
-    - /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - npm run bundle
+
+test:
+  stage: test
+  script:
+    - npm ci
     - npm test
