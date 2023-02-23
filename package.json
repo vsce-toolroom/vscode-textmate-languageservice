@@ -29,7 +29,7 @@
     "pegjs": "npm-run-all pegjs-build pegjs-prettier pegjs-tspegjs-90-hack",
     "pegjs-build": "peggy --plugin ts-pegjs --extra-options-file src/parser/pegconfig.json --dependency matchers:./matchers -o src/parser/parser.ts src/parser/parser.pegjs",
     "pegjs-prettier": "prettier --config .prettierrc.json --write src/parser/parser.ts",
-    "pegjs-tspegjs-90-hack": "replace-in-files --regex='let(\\s\\S+\\s=\\srequire)' --replacement='import$1' src/parser/parser.ts",
+    "pegjs-tspegjs-90-hack": "replace-in-files --regex=let(\\s\\S+\\s=\\srequire) --replacement=import$1 src/parser/parser.ts",
     "prebundle": "npm-run-all clean pegjs",
     "bundle": "npm-run-all bundle-src bundle-test",
     "bundle-src": "webpack-cli --config webpack.config.js",
