@@ -2,14 +2,14 @@
 
 > **This package is in maintenance mode & superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
 
-> This package is stable with browser compatibility. But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
+> This package is stable with browser compatibility (`1.1.0`). But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
 
 > If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][github-vscode-anycode-issues].
 > Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.0/assets/demo-outline.png" height="320"/></p>
+<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/demo-outline.png" height="320"/></p>
 
 In order to be supported by this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
@@ -18,9 +18,15 @@ In order to be supported by this module, the Textmate grammar must include the f
 
 ## Installation
 
-```bash
+```
 npm install vscode-textmate-languageservice
 ```
+
+Browser support:
+
+- This package supports Webpack and ESBuild.
+- If you use a bundler, you need to set `crypto` as a external (`commonjs crypto` one in webpack).
+  This allows the library to avoid polyfilling the `node:crypto` module.
 
 ## Configuration
 

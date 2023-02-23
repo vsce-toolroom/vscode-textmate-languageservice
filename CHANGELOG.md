@@ -1,15 +1,27 @@
 # Changelog
 
-## 1.1.0-alpha.2
+## 1.1.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
-- Hotfix for browser support regression - [switch to `fetch`][github-monacotm-app-loadonigwasm] because `readFile` doesn't work for core dependencies.
-- Add script to ignore test files from package before `npm publish` to reduce size by ~20% and commit noise.
+- Bundle files using Webpack for performance boost.
+- Add browser production support (bundle `onig.wasm` using `encoded-uint8array-loader` & prevent reliance on `fetch`).
+- Restore typing declaration files for dependent extension consumers.
+- Fix broken Gitlab pipeline so we have CI testing again.
+- Fix line number collisions between entry symbols in the outline service.
+- Fix container name in symbol information output for the document symbol provider.
+- Upgrade `vscode-textmate` from **7.0.4** to **9.0.0** ([microsoft/vscode-textmate#198][github-microsoft-textmate-198]).
+- Ignore test files from package before `npm publish` to reduce size by ~20%.
+- Add a test suite runner for testing compatibility with dependent web extensions.
+- Improve test suite performance by 20% by removing dependencies & bundling.
+
+**NB:**
+- I credited `vscode-matlab` contributors for writing some of the provider algorithms.
+- Apologies and thanks for the support!
 
 ## 1.0.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/3"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/3"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Achieved web readiness by handling hashing. We use native hashing of file text contents to keep it fast.
 - Upgrade from SHA-1 algorithm (a famous collision-attack vector) and adopt stable SHA-256 alternatives.
@@ -17,7 +29,7 @@
 
 ## 1.0.0-rc-2
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/2"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/2"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Fix the line number in the folding provider for top-level declaration folds after the first declaration.
 - Add browser readiness with a cost-benefit tradeoff... we now load `onig.wasm` (Textmate grammar regex parser) [without streaming][github-monacotm-app-loadonigwasm].
@@ -26,7 +38,7 @@
 
 ## 1.0.0-rc-1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - `vscode-textmate-languageservice` codebase republished and migrated to [Gitlab][gitlab-repository-tag-1.0.0.rc.1].
 - Significant changes to the shape of the API exports.
@@ -48,7 +60,7 @@
 
 ## 0.2.3
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-04-01&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-04-01&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Fix performance of header algorithm.
 - Fix ending decrement of 1 line in folding provider top-level blocks.
@@ -56,20 +68,20 @@
 
 ## 0.2.2
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-03-18&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2022-03-18&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Fix performance of folding provider block dedent loop.
 - Port Textmate scope parser to TypeScript and remove caching overheads.
 
 ## 0.2.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-20&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-20&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Boost tokenization performance by adding cache layers to Textmate scope selector logic.
 
 ## 0.2.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-02&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-12-02&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 - Accept limited Textmate scope selectors in all configuration values.
 - Introduce array-string duplicity to all configuration values.
@@ -79,13 +91,13 @@ Major breaking change - `meta.parens` does not match `meta.function-call.parens`
 
 ## 0.1.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-10-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Adds engine tokenization queue to improve performance for large files.
 
 ## 0.1.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="./assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-08-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2021-08-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" />
 
 Initial version:
 
@@ -101,12 +113,13 @@ Initial version:
 
 ## Roadmap
 
-- Browser support for Oniguruma and file system dependencies.
 - Semantic highlighting provider for parameters.
 - Semantic highlighting provider for classes or other "Table of Contents" items.
 - Semantic highlighting for variable assignment driven by token types and/or text.
 - Custom entry text/type getter for "Table of Contents" provider.
 
+<!-- 1.1.0 -->
+[github-microsoft-textmate-198]: https://github.com/microsoft/vscode-textmate/issues/198
 <!-- 1.0.5 -->
 [github-monacotm-app-loadonigwasm]: https://github.com/bolinfest/monaco-tm/blob/908f1ca0cab3e82823cb465108ae86ee2b4ba3fc/src/app.ts#L141-L143
 <!-- 1.0.0-rc-2 -->
