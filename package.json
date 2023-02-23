@@ -21,7 +21,7 @@
   "types": "./dist/types/src/main.d.ts",
   "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
   "scripts": {
-    "prepublishOnly": "npm-run-all bundle clean-production",
+    "prepublishOnly": "npm-run-all test bundle clean-production",
     "test": "npm-run-all reset patch stage harness",
     "posttest": "npm-run-all dump reset",
     "clean": "del-cli dist",
