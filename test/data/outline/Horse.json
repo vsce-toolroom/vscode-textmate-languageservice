@@ -1,5 +1,6 @@
 [
   {
+    "anchor": 2,
     "level": 0,
     "line": 0,
     "location": {
@@ -17,10 +18,10 @@
     },
     "text": "Horse",
     "token": "entity.name.type.class.matlab",
-    "type": 4,
-    "anchor": 2
+    "type": 4
   },
   {
+    "anchor": 8,
     "level": 1,
     "line": 1,
     "location": {
@@ -38,10 +39,10 @@
     },
     "text": "methods",
     "token": "keyword.control.methods.matlab",
-    "type": 2,
-    "anchor": 8
+    "type": 2
   },
   {
+    "anchor": 16,
     "level": 2,
     "line": 2,
     "location": {
@@ -59,10 +60,10 @@
     },
     "text": "Horse",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 16
+    "type": 11
   },
   {
+    "anchor": 55,
     "level": 2,
     "line": 5,
     "location": {
@@ -80,10 +81,10 @@
     },
     "text": "noise",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 55
+    "type": 11
   },
   {
+    "anchor": 76,
     "level": 2,
     "line": 8,
     "location": {
@@ -101,10 +102,10 @@
     },
     "text": "move",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 76
+    "type": 11
   },
   {
+    "anchor": 84,
     "level": 3,
     "line": 9,
     "location": {
@@ -122,10 +123,10 @@
     },
     "text": "if",
     "token": "keyword.control.if.matlab",
-    "type": 2,
-    "anchor": 84
+    "type": 2
   },
   {
+    "anchor": 100,
     "level": 3,
     "line": 11,
     "location": {
@@ -143,10 +144,10 @@
     },
     "text": "elseif",
     "token": "keyword.control.elseif.matlab",
-    "type": 2,
-    "anchor": 100
+    "type": 2
   },
   {
+    "anchor": 116,
     "level": 3,
     "line": 13,
     "location": {
@@ -164,10 +165,10 @@
     },
     "text": "else",
     "token": "keyword.control.else.matlab",
-    "type": 2,
-    "anchor": 116
+    "type": 2
   },
   {
+    "anchor": 151,
     "level": 2,
     "line": 18,
     "location": {
@@ -185,7 +186,6 @@
     },
     "text": "sleep",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 151
+    "type": 11
   }
 ]

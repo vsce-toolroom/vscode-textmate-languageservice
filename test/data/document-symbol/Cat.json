@@ -214,22 +214,22 @@
         "kind": 2,
         "range": [
           {
-            "line": 20,
-            "character": 33
-          },
-          {
             "line": 21,
             "character": 4
+          },
+          {
+            "line": 23,
+            "character": 0
           }
         ],
         "selectionRange": [
           {
-            "line": 20,
-            "character": 33
-          },
-          {
             "line": 21,
             "character": 4
+          },
+          {
+            "line": 23,
+            "character": 0
           }
         ],
         "children": []
