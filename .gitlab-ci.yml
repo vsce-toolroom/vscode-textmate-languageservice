@@ -1,8 +1,8 @@
-.shared_windows_runners:
+default:
   tags:
-  - shared-windows
-  - windows
-  - windows-1809
+    - gitlab-org
+
+image: node:16-slim
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -10,11 +10,14 @@ variables:
 stages:
 - test
 
-test:
-  extends:
-  - .shared_windows_runners
+test-e2e:
   stage: test
-  script: npm install-test
-  artifacts:
-    paths:
-    - test/data/
+  variables:
+    DISPLAY: ':99.0'
+  script:
+    - apt-get update
+    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 libgbm-dev git
+    - npm ci
+    - echo $DISPLAY
+    - /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - npm test
