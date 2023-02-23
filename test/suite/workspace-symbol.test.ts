@@ -1,29 +1,26 @@
 'use strict';
 
-import * as path from 'path';
 import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as assert from 'assert';
-import deepEqual = require('deep-equal');
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
-import type { JsonArray } from 'type-fest';
+import { extensionContext, workspaceSymbolProviderPromise } from '../util/factory';
+import { pass, isWebRuntime } from '../util/bench';
 
-suite('src/workspace-symbol.ts (test/suite/workspace-symbol.ts)', function() {
+suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', async function() {
 	this.timeout(10000);
-	test('TextmateWorkspaceSymbolProvider class', async function() {
-		vscode.window.showInformationMessage('TextmateTokenizerService class (src/parser/selectors.ts)');
-
-		const workspaceSymbolProvider = await lsp.createWorkspaceSymbolProvider();
-		const symbols = jsonify<JsonArray>(await workspaceSymbolProvider.provideWorkspaceSymbols('obj.'));
-		const p = path.resolve(__dirname, '../../../../../data/workspace-symbol', 'index.json');
-
-		if (fs.existsSync(p)) {
-			assert.strictEqual(deepEqual(symbols, loadJsonFile.sync(p)), true, p);
+	test('TextmateWorkspaceSymbolProvider.provideWorkspaceSymbols(): Promise<vscode.SymbolInformation[]>', async function() {
+		// Early exit + pass if we are in web runtime.
+		if (isWebRuntime) {
+			this.skip();
 		}
-		writeJsonFile.sync(p, symbols, { indent: '  ' });
+
+		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
+		const symbols = await workspaceSymbolProviderResult();
+		await pass(extensionContext, 'workspace-symbol', 'index', symbols);
 	});
 });
+
+async function workspaceSymbolProviderResult() {
+	const workspaceSymbolProvider = await workspaceSymbolProviderPromise;
+	const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
+	return symbols;
+}

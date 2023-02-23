@@ -1,17 +1,20 @@
 'use strict';
 
-import type { JsonObject } from 'type-fest';
 import type * as vscode from 'vscode';
-import type { LanguageContribution } from '../services/resolver';
 import { ConfigSelectors } from './selectors';
+
+import type { PartialDeep, JsonObject } from 'type-fest';
+import type { LanguageContribution } from '../services/resolver';
 
 export type SelectorSource = string[] | string;
 
-export interface ConfigJson extends JsonObject {
+type PartialJsonObject = PartialDeep<JsonObject>;
+
+export interface ConfigJson extends PartialJsonObject {
 	assignment?: {
-		single?: SelectorSource;
 		multiple?: SelectorSource;
 		separator?: SelectorSource;
+		single?: SelectorSource;
 	};
 	declarations?: SelectorSource;
 	dedentation?: SelectorSource;
@@ -23,8 +26,8 @@ export interface ConfigJson extends JsonObject {
 		continuation?: SelectorSource;
 	};
 	markers?: {
-		start?: string;
 		end?: string;
+		start?: string;
 	};
 	symbols?: {
 		[selector: string]: vscode.SymbolKind | undefined;
@@ -60,8 +63,11 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 }
 
 function generateIncludePattern(language: LanguageContribution): string {
-	if (!language.extensions && !language.filenames) return '**/*';
-	let extensions: string, filenames: string;
+	if (!language.extensions && !language.filenames) {
+		return '**/*';
+	}
+	let extensions: string;
+	let filenames: string;
 	if (language.extensions?.length) {
 		extensions = generateExtensionPattern(language.extensions);
 	}

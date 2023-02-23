@@ -1,42 +1,54 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as glob from 'glob';
-import * as fs from 'fs';
-import * as assert from 'assert';
-import deepEqual = require('deep-equal');
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
-import type { JsonArray } from 'type-fest';
+import { extensionContext, foldingRangeProviderPromise } from '../util/factory';
+import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
+import { pass } from '../util/bench';
 
-suite('src/folding.ts (test/suite/folding.ts)', function() {
+suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/folding.ts)', async function() {
 	this.timeout(10000);
-	test('TextmateFoldingRangeProvider class', async function() {
+
+	test('TextmateFoldingRangeProvider.provideFoldingRanges(): Promise<vscode.FoldingRange[]>', async function() {
 		vscode.window.showInformationMessage('TextmateFoldingRangeProvider class (src/folding.ts)');
+		const { results, samples } = await foldingRangeProviderResult();
 
-		const foldingRangeProvider = await lsp.createFoldingRangeProvider();
-		const foldingContext = {};
-		const cancelToken = new vscode.CancellationTokenSource().token;
+		let error: TypeError | void;
+		for (let index = 0; index < samples.length; index++) {
+			const basename = SAMPLE_FILE_BASENAMES[index];
+			const folds = results[index];
 
-		const files = glob.sync(path.resolve(__dirname, '../../../../../samples/*.m'));
-
-		for (const file of files) {
-			const resource = vscode.Uri.file(file);
-			const document = await vscode.workspace.openTextDocument(resource);
-
-			const p = path.resolve(__dirname, '../../../../../data/folding', path.basename(file)).replace(/\.m$/, '.json');
-			const folds = jsonify<JsonArray>(await foldingRangeProvider.provideFoldingRanges(document, foldingContext, cancelToken));
-
-			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(folds, loadJsonFile.sync(p)), true, p);
+			try {
+				await pass(extensionContext, 'folding', basename, folds);
+			} catch (e) {
+				error = error || e as TypeError;
 			}
-			writeJsonFile.sync(p, folds, { indent: '  ' });
 		}
-
-		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+		if (error) {
+			throw error;
+		}
 	});
+
+	await vscode.commands.executeCommand('workbench.action.closeAllEditors');
 });
+
+async function foldingRangeProviderResult() {
+	const foldingRangeProvider = await foldingRangeProviderPromise;
+
+	const foldingContext = {};
+	const cancelToken = new vscode.CancellationTokenSource().token;
+
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+	const results: vscode.FoldingRange[][] = [];
+
+	for (let index = 0; index < samples.length; index++) {
+		const resource = samples[index];
+		const document = await vscode.workspace.openTextDocument(resource);
+
+		const folds = await foldingRangeProvider.provideFoldingRanges(document, foldingContext, cancelToken);
+
+		results.push(folds);
+	}
+
+	return { results, samples };
+}

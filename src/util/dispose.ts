@@ -16,13 +16,17 @@ export function disposeAll(disposables: vscode.Disposable[]) {
 }
 
 export abstract class Disposable {
+	protected _disposables: vscode.Disposable[] = [];
+
 	private _isDisposed = false;
 
-	protected _disposables: vscode.Disposable[] = [];
+	protected get isDisposed() {
+		return this._isDisposed;
+	}
 
 	public dispose(): any {
 		if (this._isDisposed) {
-			return;
+			return void 0;
 		}
 		this._isDisposed = true;
 		disposeAll(this._disposables);
@@ -35,9 +39,5 @@ export abstract class Disposable {
 			this._disposables.push(value);
 		}
 		return value;
-	}
-
-	protected get isDisposed() {
-		return this._isDisposed;
 	}
 }

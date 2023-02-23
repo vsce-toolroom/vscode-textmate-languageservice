@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017", "dom"],
+    "outDir": "out",
+    "types": ["node", "webpack-env", "mocha"],
+    "rootDir": ".",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "baseUrl": ".",
+  },
+  "include": [
+    "src/**/**.ts",
+    "test/*.test.ts",
+    "test/suite/*.test.ts",
+    "test/util/*.ts"
+  ],
+  "exclude": [
+    "src/main.ts",
+    "test/runner-web.test.ts",
+    "test/data/*/*"
+  ]
+}

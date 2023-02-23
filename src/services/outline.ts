@@ -1,11 +1,13 @@
 'use strict';
 
 import * as vscode from 'vscode';
+
 import { TextmateScopeSelector } from '../util/selectors';
+import { ServiceBase } from '../util/service';
+
 import type { ConfigData } from '../config/config';
 import type { SkinnyTextDocument } from './document';
-import type { TextmateTokenizerService, TextmateToken } from './tokenizer';
-import { ServiceBase } from '../util/service';
+import type { TokenizerService, TextmateToken } from './tokenizer';
 
 const entitySelector = new TextmateScopeSelector('entity');
 
@@ -19,8 +21,8 @@ export interface OutlineEntry {
 	readonly anchor: number;
 }
 
-export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
-	constructor(private _config: ConfigData, private _tokenizer: TextmateTokenizerService) {
+export class OutlineService extends ServiceBase<OutlineEntry[]> {
+	constructor(private _config: ConfigData, private _tokenService: TokenizerService) {
 		super();
 	}
 
@@ -31,16 +33,23 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 
 	public async parse(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
 		const outline: OutlineEntry[] = [];
-		const tokens = await this._tokenizer.fetch(document);
+		const tokens = await this._tokenService.fetch(document);
 
 		for (let index = 0; index < tokens.length; index++) {
 			const entry = tokens[index];
 			if (!this.isSymbolToken(entry)) {
 				continue;
 			}
-			
+
 			const lineNumber = entry.line;
+			const symbolKind = this._config.selectors.symbols.value(entry.scopes) as number;
+
+			if (outline.length > 0 && lineNumber === outline[outline.length - 1].line) {
+				continue;
+			}
+
 			outline.push({
+				anchor: index,
 				level: entry.level,
 				line: lineNumber,
 				location: new vscode.Location(
@@ -49,14 +58,13 @@ export class DocumentOutlineService extends ServiceBase<OutlineEntry[]> {
 				),
 				text: entry.text,
 				token: entry.type,
-				type: this._config.selectors.symbols.value(entry.scopes),
-				anchor: index
+				type: symbolKind
 			});
 		}
 
 		// Get full range of section
 		return outline.map(function(entry: OutlineEntry, startIndex: number): OutlineEntry {
-			let end: number | undefined = undefined;
+			let end: number;
 			for (let i = startIndex + 1; i < outline.length; ++i) {
 				if (outline[i].level <= entry.level) {
 					end = outline[i].line - 1;

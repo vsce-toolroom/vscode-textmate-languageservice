@@ -4,20 +4,23 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import type { JsonObject } from 'type-fest';
 import * as vscode from 'vscode';
-import * as textmate from 'vscode-textmate';
+import * as vscodeTextmate from 'vscode-textmate';
+
+import type { PartialDeep, JsonObject, JsonArray, PackageJson } from 'type-fest';
 
 import { readFileText } from '../util/loader';
 
-export interface GrammarLanguageContribution extends JsonObject {
+type PartialJsonObject = PartialDeep<JsonObject>;
+
+export interface GrammarLanguageContribution extends PartialJsonObject {
 	language: string;
 	scopeName: string;
 	path: string;
 	embeddedLanguages?: { [scopeName: string]: string };
 }
 
-export interface GrammarInjectionContribution extends JsonObject {
+export interface GrammarInjectionContribution extends PartialJsonObject {
 	scopeName: string;
 	path: string;
 	injectTo: string[];
@@ -25,24 +28,22 @@ export interface GrammarInjectionContribution extends JsonObject {
 
 export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
 
-export interface LanguageContribution extends JsonObject {
+export interface LanguageContribution extends PartialJsonObject {
 	id: string;
 	extensions?: string[];
 	filenames?: string[];
 }
 
-export interface PackageJSON extends JsonObject {
-	name: string;
-	version: string;
+export interface ExtensionManifest extends PackageJson {
 	contributes?: {
-		grammars?: GrammarContribution[];
-		languages?: LanguageContribution[];
+		grammars?: GrammarContribution[] & JsonArray;
+		languages?: LanguageContribution[] & JsonArray;
 	};
-	'textmate-languageservices'?: { [languageId: string]: string; };
+	'textmate-languageservices'?: { [languageId: string]: string };
 }
 
-export class ResolverService implements textmate.RegistryOptions {
-	constructor(private _context: vscode.ExtensionContext, private _grammars: GrammarContribution[], private _languages: LanguageContribution[], public onigLib: Promise<textmate.IOnigLib>) {
+export class ResolverService implements vscodeTextmate.RegistryOptions {
+	constructor(private _context: vscode.ExtensionContext, private _grammars: GrammarContribution[], private _languages: LanguageContribution[], public onigLib: Promise<vscodeTextmate.IOnigLib>) {
 	}
 
 	public findLanguageByExtension(fileExtension: string): string | null {
@@ -77,7 +78,9 @@ export class ResolverService implements textmate.RegistryOptions {
 	public findScopeByFilename(filename: string): string | null {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const language = this.findLanguageByExtension(extname) || this.findLanguageByFilename(filename);
-		if (!language) return null;
+		if (!language) {
+			return null;
+		}
 
 		const grammar = this.findGrammarByLanguageId(language);
 		return grammar ? grammar.scopeName : null;
@@ -89,7 +92,7 @@ export class ResolverService implements textmate.RegistryOptions {
 				return language;
 			}
 		}
-		throw new Error("Could not find language contribution for language ID '" + id + '"');
+		throw new Error('Could not find language contribution for language ID "' + id + '"');
 	}
 
 	public findGrammarByLanguageId(id: string): GrammarContribution {
@@ -98,25 +101,21 @@ export class ResolverService implements textmate.RegistryOptions {
 				return grammar;
 			}
 		}
-		throw new Error("Could not find grammar contribution for language ID '" + id + '"');
+		throw new Error('Could not find grammar contribution for language ID "' + id + '"');
 	}
 
-	public async loadGrammar(scopeName: string): Promise<textmate.IRawGrammar | null> {
+	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
 		for (const grammar of this._grammars) {
 			if (grammar.scopeName !== scopeName) {
 				continue;
 			}
-			if (this._grammars[scopeName]) {
-				return this._grammars[scopeName];
-			}
 			try {
 				const uri = vscode.Uri.joinPath(this._context.extensionUri, grammar.path);
 				const text = await readFileText(uri);
-				this._grammars[scopeName] = textmate.parseRawGrammar(text, uri.path);
+				return vscodeTextmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
 				throw e;
 			}
-			return this._grammars[scopeName];
 		}
 		return null;
 	}

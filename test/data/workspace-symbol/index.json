@@ -11,7 +11,7 @@
         },
         {
           "line": 10,
-          "character": 80
+          "character": 81
         }
       ]
     },
@@ -33,7 +33,7 @@
         }
       ]
     },
-    "containerName": "obj.Locale"
+    "containerName": "Animal"
   },
   {
     "name": "obj.Order",
@@ -51,7 +51,7 @@
         }
       ]
     },
-    "containerName": "obj.Name"
+    "containerName": "Animal"
   },
   {
     "name": "obj.Age",
@@ -69,7 +69,7 @@
         }
       ]
     },
-    "containerName": "obj.Order"
+    "containerName": "Animal"
   },
   {
     "name": "obj.Tameable",
@@ -87,6 +87,6 @@
         }
       ]
     },
-    "containerName": "obj.Age"
+    "containerName": "Animal"
   }
 ]

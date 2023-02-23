@@ -1,123 +1,93 @@
 'use strict';
 
-import * as vscode from 'vscode';
 import * as path from 'path';
+import * as vscode from 'vscode';
 
-class MockMemento implements vscode.Memento {
-	keys(): readonly string[] {
+export class MockMemento implements vscode.Memento {
+	public keys(): readonly string[] {
 		return [];
 	}
-	get<T = void>(_1: string): T;
-	get<T = void>(_1: string, _2: T): T;
-	get<T = void>(_1: string, _2?: T): T {
-		return;
+	public get<T = void>(_1: string): T;
+	public get<T = void>(_1: string, _2?: T): T {
+		return void 0 as T;
 	}
-	update(_1: string, _2: any): Thenable<void> {
-		return;
+	public update(_1: string, _2: any): Thenable<void> {
+		return Promise.resolve();
 	}
 }
 
-class MockGlobalMemento extends MockMemento implements vscode.Memento {
-	setKeysForSync(_: readonly string[]): void {
-		return;
+export class MockGlobalMemento extends MockMemento implements vscode.Memento {
+	public setKeysForSync(_: readonly string[]): void {
+		return void 0;
 	}
 }
 
 export class SecretStorage {
-    get(_: string): Thenable<string | undefined> {
-        return Promise.resolve('●●●●●●●●●●●●●●●●');
-    }
-    store(_1: string, _2: string): Thenable<void> {
-        return Promise.resolve();
-    }
-    delete(_1: string): Thenable<void> {
-        return Promise.resolve();
-    }
-    onDidChange = new vscode.EventEmitter<vscode.SecretStorageChangeEvent>().event;
+	public onDidChange = new vscode.EventEmitter<vscode.SecretStorageChangeEvent>().event;
+	public get(_: string): Thenable<string | undefined> {
+		return Promise.resolve('●●●●●●●●●●●●●●●●');
+	}
+	public store(_1: string, _2: string): Thenable<void> {
+		return Promise.resolve();
+	}
+	public delete(_1: string): Thenable<void> {
+		return Promise.resolve();
+	}
 }
 
-class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
-	readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();
-	private _persistent: boolean = true;
-	public get persistent(): boolean { return this._persistent; }
+export class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
+	private readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();
+	private _persistent = true;
+	constructor(serialized?: Array<[string, vscode.EnvironmentVariableMutator]>) {
+		this.map = new Map(serialized);
+	}
+	public get size(): number {
+		return this.map.size;
+	}
+	public get persistent(): boolean {
+		return this._persistent;
+	}
 	public set persistent(value: boolean) {
 		this._persistent = value;
 	}
-	constructor(serialized?: [string, vscode.EnvironmentVariableMutator][]) {
-		this.map = new Map(serialized);
+	public replace(_1: string, _2: string): void {
+		return void 0;
 	}
-	get size(): number {
-		return this.map.size;
+	public append(_1: string, _2: string): void {
+		return void 0;
 	}
-	replace(_1: string, _2: string): void {}
-	append(_1: string, _2: string): void {}
-	prepend(_1: string, _2: string): void {}
-	get(variable: string): vscode.EnvironmentVariableMutator | undefined {
+	public prepend(_1: string, _2: string): void {
+		return void 0;
+	}
+	public get(variable: string): vscode.EnvironmentVariableMutator | undefined {
 		return this.map.get(variable);
 	}
-	forEach(_1: Parameters<vscode.EnvironmentVariableCollection['forEach']>[0], _2?: any): void {}
-	[Symbol.iterator](): IterableIterator<[variable: string, mutator: vscode.EnvironmentVariableMutator]> {
+	public forEach(_1: Parameters<vscode.EnvironmentVariableCollection['forEach']>[0], _2?: any): void {
+		return void 0;
+	}
+	public [Symbol.iterator](): IterableIterator<[variable: string, mutator: vscode.EnvironmentVariableMutator]> {
 		return this.map.entries();
 	}
-	delete(_1: string): void {}
-	clear(): void {}
-}
-
-const appRoot = path.normalize(vscode.env.appRoot);
-
-
-function generateStoragePath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'globalStorage');
-}
-function generateGlobalStoragePath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'workspaceStorage');
-}
-function generateLogPath() {
-	return path.join(appRoot, '..', '..', '..', 'user-data', 'User', 'logs');
-}
-
-class MockExtensionContext implements vscode.ExtensionContext {
-	constructor(id: string) {
-		const extension = vscode.extensions.getExtension(id);
-
-		this.subscriptions = [];
-
-		this.workspaceState = new MockMemento();
-		this.globalState = new MockGlobalMemento();
-
-		this.secrets = new SecretStorage();
-
-		this.extensionUri = extension.extensionUri;
-		this.extensionPath = extension.extensionUri.path;
-
-		this.asAbsolutePath = function(relativePath: string): string {
-			return vscode.Uri.joinPath(this.extensionUri, relativePath).toString();
-		};
-
-		this.environmentVariableCollection = new MockEnvironmentVariableCollection();
-
-		this.globalStoragePath = generateStoragePath();
-		this.globalStorageUri = vscode.Uri.file(this.globalStoragePath);
-		this.storagePath = generateStoragePath();
-		this.storageUri = vscode.Uri.file(this.globalStoragePath);
-		this.logPath = generateLogPath();
-		this.logUri = vscode.Uri.file(this.logPath);
-
-		this.extensionMode = vscode.ExtensionMode.Development;
-		this.extension = extension;
+	public delete(_1: string): void {
+		return void 0;
 	}
+	public clear(): void {
+		return void 0;
+	}
+}
 
+export class MockExtensionContext<ExtensionExports = void> implements vscode.ExtensionContext {
 	public readonly subscriptions: vscode.Disposable[];
 
 	public readonly workspaceState: vscode.Memento;
-	public readonly globalState: vscode.Memento & { setKeysForSync(_: readonly string[]): void; };
+	public readonly globalState: vscode.Memento & { setKeysForSync(_: readonly string[]): void };
 
 	public readonly secrets: vscode.SecretStorage;
 
 	public readonly extensionUri: vscode.Uri;
 	public readonly extensionPath: string;
 
-	asAbsolutePath: (relativePath: string) => string;
+	public asAbsolutePath: (relativePath: string) => string;
 
 	public readonly environmentVariableCollection: vscode.EnvironmentVariableCollection;
 
@@ -129,9 +99,36 @@ class MockExtensionContext implements vscode.ExtensionContext {
 	public readonly logPath: string;
 
 	public readonly extensionMode: vscode.ExtensionMode;
-	public readonly extension: vscode.Extension<any>;
+	public readonly extension: vscode.Extension<ExtensionExports>;
+
+	constructor(id: string) {
+		const extension = vscode.extensions.getExtension<ExtensionExports>(id);
+
+		this.subscriptions = [];
+
+		this.workspaceState = new MockMemento();
+		this.globalState = new MockGlobalMemento();
+
+		this.secrets = new SecretStorage();
+
+		const extensionUri = this.extensionUri = extension.extensionUri;
+		this.extensionPath = extension.extensionUri.path;
+
+		this.asAbsolutePath = function(relativePath: string): string {
+			return vscode.Uri.joinPath(extensionUri, relativePath).toString();
+		};
+
+		this.environmentVariableCollection = new MockEnvironmentVariableCollection();
+
+		const codeRoot = path.posix.resolve(path.posix.normalize(vscode.env.appRoot), '../../..');
+		this.globalStoragePath = `${codeRoot}/user-data/User/globalStorage`;
+		this.globalStorageUri = vscode.Uri.file(this.globalStoragePath);
+		this.storagePath = `${codeRoot}/user-data/User/workspaceStorage`;
+		this.storageUri = vscode.Uri.file(this.globalStoragePath);
+		this.logPath = `${codeRoot}/user-data/User/logs`;
+		this.logUri = vscode.Uri.file(this.logPath);
+
+		this.extensionMode = vscode.ExtensionMode.Development;
+		this.extension = extension;
+	}
 }
-
-const context: vscode.ExtensionContext = new MockExtensionContext('Gimly81.matlab');
-
-export default context;

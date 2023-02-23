@@ -1,0 +1,13 @@
+{
+  "returnTypes": {
+    "start": "matchers.ParsedMatcher",
+    "atom": "matchers.AtomMatcher",
+    "scope": "matchers.ScopeMatcher",
+    "path": "matchers.PathMatcher",
+    "group": "matchers.GroupMatcher",
+    "expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "selector": "matchers.ParsedMatcher",
+    "_": "Array<' ' | '\t'>"
+  }
+}

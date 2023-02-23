@@ -4,42 +4,26 @@
  * -------------------------------------------------------------------------------------------*/
 'use strict';
 
-import * as vscode from 'vscode';
-import * as textmate from 'vscode-textmate';
-import * as bindings from 'vscode-oniguruma';
-import { readFileBytes } from '../util/loader';
+import * as vscodeOniguruma from 'vscode-oniguruma';
+import type * as vscodeTextmate from 'vscode-textmate';
 
-function moduleDirnameToWasmPath(dirname: string): string {
-	return `${vscode.env.appRoot}/${dirname}/vscode-oniguruma/release/onig.wasm`;
-}
+// Use webpack + encoded-uint8array-loader to generate a `Uint8Array` WASM module.
+// This is not streaming :[ but vscode libs must bundle WASM deps to support web ecosystem.
+// Better alternative is using copy-webpack-plugin + fetch to include the WASM file.
+import * as data from '../../node_modules/vscode-oniguruma/release/onig.wasm';
 
-const nodeModulesDirnames = [
-	'node_modules.asar.unpacked',
-	'node_modules.asar',
-	'node_modules'
-];
-const wasmPaths = nodeModulesDirnames.map(moduleDirnameToWasmPath)
+let onigurumaLib: vscodeTextmate.IOnigLib | null = null;
 
-let onigurumaLib: textmate.IOnigLib | null = null;
-
-export async function getOniguruma(): Promise<textmate.IOnigLib> {
+export async function getOniguruma(): Promise<vscodeTextmate.IOnigLib> {
 	if (!onigurumaLib) {
-		let wasmBin: Uint8Array;
-		let readError: Error;
-		for (let i = 0; i < wasmPaths.length; i++) {
-			const wasmPath = wasmPaths[i];
-			try {
-				wasmBin = await readFileBytes(vscode.Uri.file(wasmPath));
-				break;
-			} catch (e) {
-				readError = e as Error;
-			}
-		}
-		if (!wasmBin) throw readError;
-		await bindings.loadWASM(wasmBin);
+		await vscodeOniguruma.loadWASM({ data });
 		onigurumaLib = {
-			createOnigScanner(patterns: string[]) { return new bindings.OnigScanner(patterns); },
-			createOnigString(s: string) { return new bindings.OnigString(s); }
+			createOnigScanner(patterns: string[]) {
+				return new vscodeOniguruma.OnigScanner(patterns);
+			},
+			createOnigString(str: string) {
+				return new vscodeOniguruma.OnigString(str);
+			}
 		};
 	}
 	return onigurumaLib;

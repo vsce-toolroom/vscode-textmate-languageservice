@@ -1,5 +1,6 @@
 [
   {
+    "anchor": 2,
     "level": 0,
     "line": 0,
     "location": {
@@ -17,10 +18,10 @@
     },
     "text": "Animal",
     "token": "entity.name.type.class.matlab",
-    "type": 4,
-    "anchor": 2
+    "type": 4
   },
   {
+    "anchor": 12,
     "level": 1,
     "line": 1,
     "location": {
@@ -38,10 +39,10 @@
     },
     "text": "properties",
     "token": "keyword.control.properties.matlab",
-    "type": 2,
-    "anchor": 12
+    "type": 2
   },
   {
+    "anchor": 14,
     "level": 2,
     "line": 2,
     "location": {
@@ -59,10 +60,10 @@
     },
     "text": "Locale",
     "token": "variable.object.property.matlab",
-    "type": 6,
-    "anchor": 14
+    "type": 6
   },
   {
+    "anchor": 18,
     "level": 2,
     "line": 3,
     "location": {
@@ -80,10 +81,10 @@
     },
     "text": "Name",
     "token": "variable.object.property.matlab",
-    "type": 6,
-    "anchor": 18
+    "type": 6
   },
   {
+    "anchor": 22,
     "level": 2,
     "line": 4,
     "location": {
@@ -101,10 +102,10 @@
     },
     "text": "Order",
     "token": "variable.object.property.matlab",
-    "type": 6,
-    "anchor": 22
+    "type": 6
   },
   {
+    "anchor": 26,
     "level": 2,
     "line": 5,
     "location": {
@@ -122,10 +123,10 @@
     },
     "text": "Age",
     "token": "variable.object.property.matlab",
-    "type": 6,
-    "anchor": 26
+    "type": 6
   },
   {
+    "anchor": 30,
     "level": 2,
     "line": 6,
     "location": {
@@ -143,10 +144,10 @@
     },
     "text": "Tameable",
     "token": "variable.object.property.matlab",
-    "type": 6,
-    "anchor": 30
+    "type": 6
   },
   {
+    "anchor": 36,
     "level": 1,
     "line": 8,
     "location": {
@@ -164,10 +165,10 @@
     },
     "text": "methods",
     "token": "keyword.control.methods.matlab",
-    "type": 2,
-    "anchor": 36
+    "type": 2
   },
   {
+    "anchor": 44,
     "level": 2,
     "line": 9,
     "location": {
@@ -185,10 +186,10 @@
     },
     "text": "Animal",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 44
+    "type": 11
   },
   {
+    "anchor": 58,
     "level": 3,
     "line": 10,
     "location": {
@@ -200,16 +201,16 @@
         },
         {
           "line": 10,
-          "character": 80
+          "character": 81
         }
       ]
     },
     "text": "obj.Locale",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 58
+    "type": 12
   },
   {
+    "anchor": 89,
     "level": 3,
     "line": 11,
     "location": {
@@ -227,10 +228,10 @@
     },
     "text": "obj.Name",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 88
+    "type": 12
   },
   {
+    "anchor": 96,
     "level": 3,
     "line": 12,
     "location": {
@@ -248,10 +249,10 @@
     },
     "text": "obj.Order",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 95
+    "type": 12
   },
   {
+    "anchor": 103,
     "level": 3,
     "line": 13,
     "location": {
@@ -269,10 +270,10 @@
     },
     "text": "obj.Age",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 102
+    "type": 12
   },
   {
+    "anchor": 110,
     "level": 3,
     "line": 14,
     "location": {
@@ -290,10 +291,10 @@
     },
     "text": "obj.Tameable",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 109
+    "type": 12
   },
   {
+    "anchor": 125,
     "level": 2,
     "line": 16,
     "location": {
@@ -311,10 +312,10 @@
     },
     "text": "copy",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 124
+    "type": 11
   },
   {
+    "anchor": 130,
     "level": 3,
     "line": 17,
     "location": {
@@ -332,10 +333,10 @@
     },
     "text": "obj",
     "token": "variable.other.readwrite.matlab",
-    "type": 12,
-    "anchor": 129
+    "type": 12
   },
   {
+    "anchor": 154,
     "level": 2,
     "line": 19,
     "location": {
@@ -353,10 +354,10 @@
     },
     "text": "noise",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 153
+    "type": 11
   },
   {
+    "anchor": 175,
     "level": 2,
     "line": 22,
     "location": {
@@ -374,10 +375,10 @@
     },
     "text": "move",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 174
+    "type": 11
   },
   {
+    "anchor": 214,
     "level": 2,
     "line": 25,
     "location": {
@@ -395,7 +396,6 @@
     },
     "text": "sleep",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 213
+    "type": 11
   }
 ]

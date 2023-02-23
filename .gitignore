@@ -1,5 +1,12 @@
-out/
+dist/
 node_modules/
-**/.vscode-test/
-**/*.tgz
+out/
+.prettierrc.json
+# We target VS Code
+.vscode-test/
+.vscode-test-web/
+*.tgz
 *.vsix
+# We use Gitlab CI
+cache/
+builds/

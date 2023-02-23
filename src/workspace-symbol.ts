@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 'use strict';
 
 import type * as vscode from 'vscode';
 import { Disposable } from './util/dispose';
-import type { Lazy } from './util/lazy';
 import { lazy } from './util/lazy';
+import type { Lazy } from './util/lazy';
 import type { TextmateDocumentSymbolProvider } from './document-symbol';
-import type { SkinnyTextDocument, WorkspaceDocumentService } from './services/document';
+import type { SkinnyTextDocument, DocumentService } from './services/document';
 
 export class TextmateWorkspaceSymbolProvider extends Disposable implements vscode.WorkspaceSymbolProvider {
-	constructor(private _documentService: WorkspaceDocumentService, private _documentSymbols: TextmateDocumentSymbolProvider) {
+	private _symbolCache = new Map<string, Lazy<Thenable<vscode.SymbolInformation[]>>>();
+	private _symbolCachePopulated = false;
+
+	constructor(private _documentService: DocumentService, private _documentSymbols: TextmateDocumentSymbolProvider) {
 		super();
 	}
-
-	private _symbolCache = new Map<string, Lazy<Thenable<vscode.SymbolInformation[]>>>();
-	private _symbolCachePopulated: boolean = false;
 
 	public async provideWorkspaceSymbols(query: string): Promise<vscode.SymbolInformation[]> {
 		if (!this._symbolCachePopulated) {
@@ -26,7 +27,7 @@ export class TextmateWorkspaceSymbolProvider extends Disposable implements vscod
 
 		const allSymbolsSets = await Promise.all(Array.from(this._symbolCache.values(), x => x.value));
 		const allSymbols = [].concat(...allSymbolsSets);
-		return allSymbols.filter(symbolInformation => symbolInformation.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+		return allSymbols.filter<vscode.SymbolInformation>(symbolNameMatchesQuery(query.toLowerCase()), allSymbols);
 	}
 
 	private async populateSymbolCache(): Promise<void> {
@@ -37,8 +38,9 @@ export class TextmateWorkspaceSymbolProvider extends Disposable implements vscod
 	}
 
 	private getSymbols(document: SkinnyTextDocument): Lazy<Thenable<vscode.SymbolInformation[]>> {
-		const that = this._documentSymbols;
-		return lazy(that.provideDocumentSymbolInformation.bind(that, document));
+		const provideDocumentSymbolInformation = this._documentSymbols.provideDocumentSymbolInformation
+			.bind(this._documentSymbols, document) as () => Promise<vscode.SymbolInformation[]>;
+		return lazy(provideDocumentSymbolInformation);
 	}
 
 	private onDidChangeDocument(document: SkinnyTextDocument) {
@@ -48,4 +50,10 @@ export class TextmateWorkspaceSymbolProvider extends Disposable implements vscod
 	private onDidDeleteDocument(resource: vscode.Uri) {
 		this._symbolCache.delete(resource.fsPath);
 	}
+}
+
+function symbolNameMatchesQuery(query: string): (s: vscode.SymbolInformation) => s is vscode.SymbolInformation {
+	return function(symbol: vscode.SymbolInformation): symbol is vscode.SymbolInformation {
+		return symbol.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+	};
 }

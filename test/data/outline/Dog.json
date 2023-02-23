@@ -1,5 +1,6 @@
 [
   {
+    "anchor": 2,
     "level": 0,
     "line": 0,
     "location": {
@@ -17,10 +18,10 @@
     },
     "text": "Dog",
     "token": "entity.name.type.class.matlab",
-    "type": 4,
-    "anchor": 2
+    "type": 4
   },
   {
+    "anchor": 8,
     "level": 1,
     "line": 1,
     "location": {
@@ -38,10 +39,10 @@
     },
     "text": "methods",
     "token": "keyword.control.methods.matlab",
-    "type": 2,
-    "anchor": 8
+    "type": 2
   },
   {
+    "anchor": 16,
     "level": 2,
     "line": 2,
     "location": {
@@ -59,10 +60,10 @@
     },
     "text": "Dog",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 16
+    "type": 11
   },
   {
+    "anchor": 55,
     "level": 2,
     "line": 5,
     "location": {
@@ -80,10 +81,10 @@
     },
     "text": "noise",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 55
+    "type": 11
   },
   {
+    "anchor": 76,
     "level": 2,
     "line": 8,
     "location": {
@@ -101,10 +102,10 @@
     },
     "text": "move",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 76
+    "type": 11
   },
   {
+    "anchor": 115,
     "level": 2,
     "line": 12,
     "location": {
@@ -122,7 +123,6 @@
     },
     "text": "sleep",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 115
+    "type": 11
   }
 ]

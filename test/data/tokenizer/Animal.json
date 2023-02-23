@@ -1355,6 +1355,21 @@
     "level": 3
   },
   {
+    "startIndex": 80,
+    "endIndex": 81,
+    "scopes": [
+      "source.matlab",
+      "meta.class.matlab",
+      "meta.methods.matlab",
+      "meta.function.matlab",
+      "punctuation.terminator.semicolon.matlab"
+    ],
+    "type": "punctuation.terminator.semicolon.matlab",
+    "text": ";",
+    "line": 10,
+    "level": 3
+  },
+  {
     "startIndex": 0,
     "endIndex": 12,
     "scopes": [

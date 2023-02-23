@@ -1,39 +1,50 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as glob from 'glob';
-import * as fs from 'fs';
-import * as assert from 'assert';
-import deepEqual = require('deep-equal');
-import * as writeJsonFile from 'write-json-file';
-import * as loadJsonFile from 'load-json-file';
 
-import lsp from '../util/lsp';
-import jsonify from '../util/jsonify';
-import type { JsonArray } from 'type-fest';
+import { extensionContext, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
+import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
+import { pass } from '../util/bench';
 
-suite('src/document-symbol.ts (test/suite/document-symbol.ts)', function() {
+suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class (src/document-symbol.ts)', async function() {
 	this.timeout(10000);
-	test('TextmateDocumentSymbolProvider class', async function() {
+
+	test('TextmateDocumentSymbolProvider.provideDocumentSymbols(): Promise<vscode.DocumentSymbol[]>', async function() {
 		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
+		const samples = await documentSymbolProviderResult();
 
-		const workspaceDocumentService = await lsp.initWorkspaceDocumentService();
-		const documentSymbolProvider = await lsp.createDocumentSymbolProvider();
+		let error: TypeError | void;
+		for (let index = 0; index < samples.length; index++) {
+			const basename = SAMPLE_FILE_BASENAMES[index];
+			const symbols = samples[index];
 
-		const files = glob.sync(path.resolve(__dirname, '../../../../../samples/*.m'));
-
-		for (const file of files) {
-			const resource = vscode.Uri.file(file);
-			const document = await workspaceDocumentService.getDocument(resource);
-
-			const p = path.resolve(__dirname, '../../../../../data/document-symbol', path.basename(file)).replace(/\.m$/, '.json');
-			const symbols = jsonify<JsonArray>(await documentSymbolProvider.provideDocumentSymbols(document));
-
-			if (fs.existsSync(p)) {
-				assert.strictEqual(deepEqual(symbols, loadJsonFile.sync(p)), true, p);
+			try {
+				await pass(extensionContext, 'document-symbol', basename, symbols);
+			} catch (e) {
+				error = error || e as TypeError;
 			}
-			writeJsonFile.sync(p, symbols, { indent: '  ' });
+		}
+		if (error) {
+			throw error;
 		}
 	});
 });
+
+async function documentSymbolProviderResult() {
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+
+	const documentService = await documentServicePromise;
+	const documentSymbolProvider = await documentSymbolProviderPromise;
+	const results: vscode.DocumentSymbol[][] = [];
+
+	for (let index = 0; index < samples.length; index++) {
+		const resource = samples[index];
+		const document = await documentService.getDocument(resource);
+
+		const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
+
+		results.push(symbols);
+	}
+
+	return results;
+}

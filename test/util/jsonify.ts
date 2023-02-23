@@ -2,29 +2,60 @@
 
 import * as vscode from 'vscode';
 import * as path from 'path';
+import type { JsonValue, PartialDeep } from 'type-fest';
 
-import type { JsonValue } from 'type-fest';
+import { extensionContext, TextmateScopeSelector, TextmateScopeSelectorMap } from './factory';
 
-import { TextmateScopeSelector, TextmateScopeSelectorMap } from '../../src/util/selectors';
+type PartialJsonValue = PartialDeep<JsonValue>;
 
-export default function<T = JsonValue>(value: object): T {
-	return JSON.parse(JSON.stringify(value, stringifyClasses));
+export function jsonify<T = PartialJsonValue>(value: Record<symbol | string | number, any>): T {
+	return JSON.parse(JSON.stringify(value, replaceClassesWithStrings)) as T;
 }
 
-const SUBMODULE_NAME = 'vscode-matlab';
-
-function stringifyClasses(key: string, value: any) {
-	if (value === null || value === undefined) return value;
-	if (value && (value.path || key === 'uri')) {
-		const filepath = path.posix.normalize((value as vscode.Uri).path);
-		const submoduleNameOffset = (value as vscode.Uri).path.lastIndexOf(SUBMODULE_NAME);
-		return '.' + filepath.substring(SUBMODULE_NAME.length + submoduleNameOffset);
+function replaceClassesWithStrings(key: string, value: any): any {
+	if (value === null || value === undefined) {
+		return value;
 	}
+
+	// Internal {@link vscode.Uri} class has the constructor type Object.
+	// Sometimes numerous fields are missing also.
+	if (
+		['', 'uri'].includes(key) &&
+		!!value && typeof value === 'object' &&
+		Object.prototype.hasOwnProperty.call(value, 'path')
+	) {
+		const externalPath = getNormalizedPathFor(value as vscode.Uri);
+		const extensionPath = getNormalizedPathFor(extensionContext.extensionUri);
+		return './' + path.posix.relative(extensionPath, externalPath);
+	}
+
 	if (value instanceof TextmateScopeSelector) {
 		return value.toString();
- 	}
+	}
+
 	if (value instanceof TextmateScopeSelectorMap) {
 		return value.toString();
 	}
+
 	return value;
+}
+
+/**
+ * Corrects inconsistent drive letters in {@link @vscode.Uri} factories.
+ * @param {vscode.Uri} file URI object with a `path` property.
+ * @returns {string} Normalized path property.
+ */
+function getNormalizedPathFor(file: vscode.Uri) {
+	const filepath = path.posix.normalize(file.path);
+
+	const driveLetterIndex = filepath.indexOf('/', 1);
+
+	if (driveLetterIndex >= 5) {
+		return filepath;
+	}
+
+	const driveLetter = filepath.substring(0, driveLetterIndex).toLowerCase();
+	const fileSystemPath = filepath.substring(driveLetterIndex);
+
+	return `${driveLetter}${fileSystemPath}`;
 }

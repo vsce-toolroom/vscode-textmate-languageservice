@@ -1,28 +1,28 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { DocumentOutlineService, OutlineEntry } from './services/outline';
+import type { OutlineService, OutlineEntry } from './services/outline';
 import type { SkinnyTextDocument } from './services/document';
 
 interface LanguageSymbol {
+	readonly children: vscode.DocumentSymbol[];
 	readonly level: number;
 	readonly parent: LanguageSymbol | undefined;
-	readonly children: vscode.DocumentSymbol[];
 }
 
 export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
-	constructor(private _outlineService: DocumentOutlineService) { }
+	constructor(private _outlineService: OutlineService) {}
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);
-		return outline.map(this.toSymbolInformation, outline);
+		return outline.map(this.toSymbolInformation.bind(outline) as typeof this.toSymbolInformation, outline);
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
 		const outline = await this._outlineService.fetch(document);
 		const root: LanguageSymbol = {
-			level: -Infinity,
 			children: [],
+			level: -Infinity,
 			parent: undefined
 		};
 		this.traverseAndCopy(root, outline);
@@ -30,10 +30,6 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 	}
 
 	private traverseAndCopy(parent: LanguageSymbol, entries: OutlineEntry[]) {
-		if (!entries.length) {
-			return;
-		}
-
 		const entry = entries[0];
 		const symbol = this.toDocumentSymbol(entry);
 		symbol.children = [];
@@ -42,23 +38,28 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			parent = parent.parent!;
 		}
 		parent.children.push(symbol);
-		this.traverseAndCopy(
-			{
-				level: entry.level,
-				children: symbol.children,
-				parent
-			},
-			entries.slice(1)
-		);
+		if (entries.length > 1) {
+			this.traverseAndCopy(
+				{
+					children: symbol.children,
+					level: entry.level,
+					parent
+				},
+				entries.slice(1)
+			);
+		}
 	}
 
 	private toSymbolInformation(this: OutlineEntry[], entry: OutlineEntry, index: number): vscode.SymbolInformation {
-		return new vscode.SymbolInformation(
-			entry.text,
-			entry.type,
-			index > 0 ? this[index - 1].text : '',
-			entry.location
-		);
+		let container: string | void;
+		for (let subindex = index - 1; subindex > -1; subindex--) {
+			const subentry = this[subindex];
+			if (subentry.level < entry.level) {
+				container = subentry.text;
+				break;
+			}
+		}
+		return new vscode.SymbolInformation(entry.text, entry.type, container || '', entry.location);
 	}
 
 	private toDocumentSymbol(entry: OutlineEntry) {

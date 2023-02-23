@@ -1,15 +1,15 @@
 # `vscode-textmate-languageservice`
 
-> **This package is now superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
+> **This package is in maintenance mode & superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
 
 > This package is stable with browser compatibility. But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
 
-> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][vscode-known-language-ids].
+> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][github-vscode-anycode-issues].
 > Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.0/assets/demo-outline.png" height="320"></p>
+<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.0.0/assets/demo-outline.png" height="320"/></p>
 
 In order to be supported by this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
@@ -153,7 +153,7 @@ export async function activate(context: vscode.ExtensionContext) {
 [tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
 [macromates-scope-selector-spec]: https://macromates.com/manual/en/language_grammars#naming_conventions
 [vscode-known-language-ids]: https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
-[github-vscode-anycode]: https://github.com/microsoft/vscode-anycode/issues
+[github-vscode-anycode-issues]: https://github.com/microsoft/vscode-anycode/issues
 [github-epeshkov-syntax-highlighter]: https://github.com/EvgeniyPeshkov/syntax-highlighter
 <!-- Configuration -->
 [vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest

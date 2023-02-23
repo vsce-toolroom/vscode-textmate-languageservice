@@ -1,21 +1,22 @@
 'use strict';
 
-import * as textmate from 'vscode-textmate';
+import * as vscodeTextmate from 'vscode-textmate';
 
-import type { SkinnyTextDocument, SkinnyTextLine } from './document';
-import type { Mutable } from 'type-fest';
-import type { ConfigData } from '../config/config';
 import { ServiceBase } from '../util/service';
 
-export interface TextmateToken extends Mutable<textmate.IToken> {
+import type { Mutable } from 'type-fest';
+import type { SkinnyTextDocument, SkinnyTextLine } from './document';
+import type { ConfigData } from '../config/config';
+
+export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
 	level: number;
 	line: number;
 	text: string;
 	type: string;
 }
 
-export interface TextmateTokenizeLineResult extends Omit<textmate.ITokenizeLineResult, 'tokens'> {
-	readonly tokens: TextmateToken[]
+export interface TextmateTokenizeLineResult extends Omit<vscodeTextmate.ITokenizeLineResult, 'tokens'> {
+	readonly tokens: TextmateToken[];
 }
 
 interface TextmateTokenizerState {
@@ -23,19 +24,19 @@ interface TextmateTokenizerState {
 	continuation: boolean;
 	declaration: boolean;
 	line: number;
-	rule: textmate.StackElement;
+	rule: vscodeTextmate.StateStack;
 	stack: number;
 }
 
-export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
+export class TokenizerService extends ServiceBase<TextmateToken[]> {
+	private _states: Record<string, TextmateTokenizerState> = {};
+
 	constructor(
 		private _config: ConfigData,
-		private _grammar: textmate.IGrammar
+		private _grammar: vscodeTextmate.IGrammar
 	) {
 		super();
 	}
-
-	private _states: Record<string, TextmateTokenizerState> = {};
 
 	public async parse(document: SkinnyTextDocument): Promise<TextmateToken[]> {
 		const tokens: TextmateToken[] = [];
@@ -45,7 +46,7 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 		state.continuation = false;
 		state.declaration = false;
 		state.line = 0;
-		state.rule = textmate.INITIAL;
+		state.rule = vscodeTextmate.INITIAL;
 		state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
@@ -129,6 +130,6 @@ export class TextmateTokenizerService extends ServiceBase<TextmateToken[]> {
 		}
 
 		delete this._states[document.uri.path];
-		return tokens;
+		return Promise.resolve(tokens);
 	}
 }
