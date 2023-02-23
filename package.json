@@ -49,7 +49,7 @@
     "stage-pack-tar": "npm pack",
     "stage-pack-copy": "cpy *.tgz test/vscode-matlab",
     "stage-pack-install": "glob-run npm --prefix ./test/vscode-matlab install --omit=dev *.tgz",
-    "stage-dependencies": "npm install --prefix ./test/vscode-matlab --package-lock false mocha@^10.2.0 @vscode/test-electron@^2.2.0 @vscode/test-web@^0.0.34",
+    "stage-dependencies": "npm install --prefix ./test/vscode-matlab --save-dev --package-lock false mocha@^10.2.0 @vscode/test-electron@^2.2.0 @vscode/test-web@^0.0.34",
     "stage-data": "npm-run-all stage-data-touch stage-data-copy",
     "stage-data-touch": "make-dir test/vscode-matlab/data",
     "stage-data-copy": "cpy data/*/*.json vscode-matlab --cwd=test --parents",
