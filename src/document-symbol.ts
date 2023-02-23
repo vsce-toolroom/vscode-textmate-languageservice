@@ -51,7 +51,7 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 	}
 
 	private toSymbolInformation(this: OutlineEntry[], entry: OutlineEntry, index: number): vscode.SymbolInformation {
-		const previous = index > 0 ? this[index - 1] : void 0;
+		const previous: OutlineEntry | void = index > 0 ? this[index - 1] : void 0;
 		const parent = previous && entry.level > previous.level ? entry.text : '';
 		return new vscode.SymbolInformation(
 			entry.text,

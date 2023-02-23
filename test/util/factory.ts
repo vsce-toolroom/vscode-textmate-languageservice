@@ -3,8 +3,8 @@
 import { MockExtensionContext } from './context';
 import LSP from '../../src/main';
 
-export const context = new MockExtensionContext('Gimly81.matlab');
-export const lsp = new LSP('matlab', context);
+export const extensionContext = new MockExtensionContext('Gimly81.matlab');
+export const lsp = new LSP('matlab', extensionContext);
 
 export const documentServicePromise = lsp.initDocumentService();
 export const tokenServicePromise = lsp.initTokenService();

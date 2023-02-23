@@ -39,8 +39,8 @@ export class TextmateFoldingRangeProvider implements vscode.FoldingRangeProvider
 			this.getBlockFoldingRanges(tokens)
 		]);
 
-		const output: vscode.FoldingRange[] = [];
-		return output.concat(...foldables).slice(0, rangeLimit);
+		const results: vscode.FoldingRange[] = [];
+		return results.concat(...foldables).slice(0, rangeLimit);
 	}
 
 	private getRegions(tokens: TextmateToken[]): vscode.FoldingRange[] {

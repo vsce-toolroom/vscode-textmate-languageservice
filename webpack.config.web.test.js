@@ -29,6 +29,7 @@ const configuration = {
 	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+        new webpack.ProvidePlugin({ process: 'process/browser' })
 	],
 	externals: {
 		'vscode': 'commonjs vscode',

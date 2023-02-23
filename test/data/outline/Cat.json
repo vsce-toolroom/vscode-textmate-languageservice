@@ -1,5 +1,6 @@
 [
   {
+    "anchor": 2,
     "level": 0,
     "line": 0,
     "location": {
@@ -17,10 +18,10 @@
     },
     "text": "Cat",
     "token": "entity.name.type.class.matlab",
-    "type": 4,
-    "anchor": 2
+    "type": 4
   },
   {
+    "anchor": 8,
     "level": 1,
     "line": 1,
     "location": {
@@ -38,10 +39,10 @@
     },
     "text": "methods",
     "token": "keyword.control.methods.matlab",
-    "type": 2,
-    "anchor": 8
+    "type": 2
   },
   {
+    "anchor": 16,
     "level": 2,
     "line": 2,
     "location": {
@@ -59,10 +60,10 @@
     },
     "text": "Cat",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 16
+    "type": 11
   },
   {
+    "anchor": 55,
     "level": 2,
     "line": 5,
     "location": {
@@ -80,10 +81,10 @@
     },
     "text": "noise",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 55
+    "type": 11
   },
   {
+    "anchor": 75,
     "level": 2,
     "line": 8,
     "location": {
@@ -101,10 +102,10 @@
     },
     "text": "move",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 75
+    "type": 11
   },
   {
+    "anchor": 114,
     "level": 2,
     "line": 12,
     "location": {
@@ -122,10 +123,10 @@
     },
     "text": "sleep",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 114
+    "type": 11
   },
   {
+    "anchor": 152,
     "level": 0,
     "line": 19,
     "location": {
@@ -143,10 +144,10 @@
     },
     "text": "Test header folding and level=0&line!=0",
     "token": "entity.name.section.matlab",
-    "type": 14,
-    "anchor": 152
+    "type": 14
   },
   {
+    "anchor": 155,
     "level": 1,
     "line": 20,
     "location": {
@@ -164,39 +165,18 @@
     },
     "text": "handleCatNoiseKo",
     "token": "entity.name.function.matlab",
-    "type": 11,
-    "anchor": 155
+    "type": 11
   },
   {
+    "anchor": 160,
     "level": 1,
     "line": 21,
     "location": {
       "uri": "./samples/Cat.m",
       "range": [
-        {
-          "line": 20,
-          "character": 33
-        },
         {
           "line": 21,
           "character": 4
-        }
-      ]
-    },
-    "text": "if",
-    "token": "keyword.control.if.matlab",
-    "type": 2,
-    "anchor": 160
-  },
-  {
-    "level": 1,
-    "line": 21,
-    "location": {
-      "uri": "./samples/Cat.m",
-      "range": [
-        {
-          "line": 21,
-          "character": 43
         },
         {
           "line": 23,
@@ -204,9 +184,8 @@
         }
       ]
     },
-    "text": "else",
-    "token": "keyword.control.else.matlab",
-    "type": 2,
-    "anchor": 180
+    "text": "if",
+    "token": "keyword.control.if.matlab",
+    "type": 2
   }
 ]

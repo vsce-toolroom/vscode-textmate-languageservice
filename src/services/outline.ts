@@ -43,6 +43,11 @@ export class OutlineService extends ServiceBase<OutlineEntry[]> {
 
 			const lineNumber = entry.line;
 			const symbolKind = this._config.selectors.symbols.value(entry.scopes) as number;
+
+			if (outline.length > 0 && lineNumber === outline[outline.length - 1].line) {
+				continue;
+			}
+
 			outline.push({
 				anchor: index,
 				level: entry.level,
