@@ -8,6 +8,7 @@ import type { BrowserType } from '@vscode/test-web';
 async function main() {
 	try {
 		const extensionDevelopmentPath = path.resolve(__dirname, path.normalize('../../../..'));
+		const folderPath = extensionDevelopmentPath; // we don't have argv[1] path in web runner
 		const extensionTestsPath = path.resolve(__dirname, path.normalize('./runner-web.test.js'));
 		const browserType: BrowserType = 'chromium';
 		const port = 8080;
@@ -17,6 +18,7 @@ async function main() {
 		await runTestsInBrowser({
 				extensionTestsPath,
 				extensionDevelopmentPath,
+				folderPath,
 				browserType, port, headless, devTools
 		});
 	} catch (e) {

@@ -1,31 +1,61 @@
 'use strict';
 
-import type * as vscode from 'vscode';
+import * as vscode from 'vscode';
+import * as path from 'path';
 import type { JsonValue, PartialDeep } from 'type-fest';
 
-import { TextmateScopeSelector, TextmateScopeSelectorMap } from './factory';
-import { SUBMODULE_NAME } from './files';
+import { extensionContext, TextmateScopeSelector, TextmateScopeSelectorMap } from './factory';
 
 type PartialJsonValue = PartialDeep<JsonValue>;
 
 export function jsonify<T = PartialJsonValue>(value: Record<symbol | string | number, any>): T {
-	return JSON.parse(JSON.stringify(value, stringifyClasses)) as T;
+	return JSON.parse(JSON.stringify(value, replaceClassesWithStrings)) as T;
 }
 
-function stringifyClasses(key: string, value: any): any {
+function replaceClassesWithStrings(key: string, value: any): any {
 	if (value === null || value === undefined) {
 		return value;
 	}
-	if (value && ((value as vscode.Uri).path || key === 'uri')) {
-		const filepath = (value as vscode.Uri).path.replace(/\\/g, '/');
-		const submoduleNameOffset = (value as vscode.Uri).path.lastIndexOf(SUBMODULE_NAME);
-		return '.' + filepath.substring(SUBMODULE_NAME.length + submoduleNameOffset);
+
+	// Internal {@link vscode.Uri} class has the constructor type Object.
+	// Sometimes numerous fields are missing also.
+	if (
+		['', 'uri'].includes(key) &&
+		!!value && typeof value === 'object' &&
+		Object.prototype.hasOwnProperty.call(value, 'path')
+	) {
+		const externalPath = getNormalizedPathFor(value as vscode.Uri);
+		const extensionPath = getNormalizedPathFor(extensionContext.extensionUri);
+		return './' + path.posix.relative(extensionPath, externalPath);
 	}
+
 	if (value instanceof TextmateScopeSelector) {
 		return value.toString();
- 	}
+	}
+
 	if (value instanceof TextmateScopeSelectorMap) {
 		return value.toString();
 	}
+
 	return value;
+}
+
+/**
+ * Corrects inconsistent drive letters in {@link @vscode.Uri} factories.
+ * @param {vscode.Uri} file URI object with a `path` property.
+ * @returns {string} Normalized path property.
+ */
+function getNormalizedPathFor(file: vscode.Uri) {
+	const filepath = path.posix.normalize(file.path);
+
+	const driveLetterIndex = filepath.indexOf('/', 1);
+
+	if (driveLetterIndex >= 5) {
+		return filepath;
+	}
+
+	const driveLetter = filepath.substring(0, driveLetterIndex).toLowerCase();
+	const fileSystemPath = filepath.substring(driveLetterIndex);
+
+	return `${driveLetter}${fileSystemPath}`;
 }

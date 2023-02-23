@@ -6,6 +6,7 @@
     "declarationDir": "dist/types",
     "declaration": true,
     "types": ["node", "webpack-env"],
+    "typeRoots": ["node_modules/@types"],
     "rootDir": ".",
     "resolveJsonModule": true,
     "moduleResolution": "node",

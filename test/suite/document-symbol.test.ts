@@ -2,36 +2,49 @@
 
 import * as vscode from 'vscode';
 
-import { context, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
+import { extensionContext, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { sampler } from '../util/sampler';
+import { pass } from '../util/bench';
 
-suite('src/document-symbol.ts', function() {
-	test('TextmateDocumentSymbolProvider class', async function() {
-		this.timeout(10000);
+suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class (src/document-symbol.ts)', async function() {
+	this.timeout(10000);
+
+	test('TextmateDocumentSymbolProvider.provideDocumentSymbols(): Promise<vscode.DocumentSymbol[]>', async function() {
 		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
+		const samples = await documentSymbolProviderResult();
 
-		const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, context);
-
-		const documentService = await documentServicePromise;
-		const documentSymbolProvider = await documentSymbolProviderPromise;
-		const outputs: vscode.DocumentSymbol[][] = [];
-
+		let error: TypeError | void;
 		for (let index = 0; index < samples.length; index++) {
-			const resource = samples[index];
-			const document = await documentService.getDocument(resource);
+			const basename = SAMPLE_FILE_BASENAMES[index];
+			const symbols = samples[index];
 
-			const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
-
-			outputs.push(symbols);
-		}
-
-		test('provideDocumentSymbols(): Promise<vscode.DocumentSymbol[]>', async function() {
-			for (let index = 0; index < samples.length; index++) {
-				const basename = SAMPLE_FILE_BASENAMES[index];
-				const symbols = outputs[index];
-				await sampler.call(context, 'document-symbol', basename, symbols);
+			try {
+				await pass(extensionContext, 'document-symbol', basename, symbols);
+			} catch (e) {
+				error = error || e as TypeError;
 			}
-		});
+		}
+		if (error) {
+			throw error;
+		}
 	});
 });
+
+async function documentSymbolProviderResult() {
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+
+	const documentService = await documentServicePromise;
+	const documentSymbolProvider = await documentSymbolProviderPromise;
+	const results: vscode.DocumentSymbol[][] = [];
+
+	for (let index = 0; index < samples.length; index++) {
+		const resource = samples[index];
+		const document = await documentService.getDocument(resource);
+
+		const symbols = await documentSymbolProvider.provideDocumentSymbols(document);
+
+		results.push(symbols);
+	}
+
+	return results;
+}
