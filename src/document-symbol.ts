@@ -15,7 +15,7 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 
 	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);
-		return outline.map(this.toSymbolInformation.bind(this) as typeof this.toSymbolInformation, outline);
+		return outline.map(this.toSymbolInformation.bind(outline) as typeof this.toSymbolInformation, outline);
 	}
 
 	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
@@ -51,14 +51,15 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 	}
 
 	private toSymbolInformation(this: OutlineEntry[], entry: OutlineEntry, index: number): vscode.SymbolInformation {
-		const previous: OutlineEntry | void = index > 0 ? this[index - 1] : void 0;
-		const parent = previous && entry.level > previous.level ? entry.text : '';
-		return new vscode.SymbolInformation(
-			entry.text,
-			entry.type,
-			parent,
-			entry.location
-		);
+		let container: string | void;
+		for (let subindex = index - 1; subindex > -1; subindex--) {
+			const subentry = this[subindex];
+			if (subentry.level < entry.level) {
+				container = subentry.text;
+				break;
+			}
+		}
+		return new vscode.SymbolInformation(entry.text, entry.type, container || '', entry.location);
 	}
 
 	private toDocumentSymbol(entry: OutlineEntry) {
