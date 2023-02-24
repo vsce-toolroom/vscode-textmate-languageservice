@@ -2,7 +2,7 @@
 
 ## 1.1.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.0.5/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.3&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-02-24&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.1.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Bundle files using Webpack for performance boost.
 - Add browser production support (bundle `onig.wasm` using `encoded-uint8array-loader` & prevent reliance on `fetch`).
