@@ -139,8 +139,7 @@ An example configuration file that targets Lua:
 import LSP from 'vscode-textmate-languageservice';
 
 export async function activate(context: vscode.ExtensionContext) {
-	const selector: vscode.DocumentSelector = { language: 'custom', scheme: 'file' };
-
+	const selector: vscode.DocumentSelector = 'custom';
 	const lsp = new LSP('custom', context);
 
 	const foldingProvider = await lsp.createFoldingRangeProvider();
