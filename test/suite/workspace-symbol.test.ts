@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 
 import { isWebRuntime, extensionContext, workspaceSymbolProviderPromise } from '../util/factory';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', async function() {
 	this.timeout(10000);
@@ -15,7 +15,7 @@ suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider cla
 
 		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
 		const symbols = await workspaceSymbolProviderResult();
-		await pass(extensionContext, 'workspace-symbol', 'index', symbols);
+		await runSamplePass(extensionContext, 'workspace-symbol', 'index', symbols);
 	});
 });
 

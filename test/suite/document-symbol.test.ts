@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 import { extensionContext, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class (src/document-symbol.ts)', async function() {
 	this.timeout(10000);
@@ -19,7 +19,7 @@ suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class
 			const symbols = samples[index];
 
 			try {
-				await pass(extensionContext, 'document-symbol', basename, symbols);
+				await runSamplePass(extensionContext, 'document-symbol', basename, symbols);
 			} catch (e) {
 				error = error || e as TypeError;
 			}

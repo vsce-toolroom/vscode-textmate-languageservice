@@ -5,7 +5,7 @@ import { strictEqual } from '../util/assert';
 
 import { isWebRuntime, extensionContext, tokenServicePromise, documentServicePromise, definitionProviderPromise, TextmateScopeSelector } from '../util/factory';
 import { BASE_CLASS_NAME, SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 import type { TextmateToken } from '../../src/services/tokenizer';
 
@@ -45,7 +45,7 @@ suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/def
 			const basename = SAMPLE_FILE_BASENAMES[index];
 
 			try {
-				await pass(extensionContext, 'definition', basename, page);
+				await runSamplePass(extensionContext, 'definition', basename, page);
 			} catch (e) {
 				error = error || e as TypeError;
 			}

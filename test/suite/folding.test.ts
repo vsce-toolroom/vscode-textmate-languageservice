@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 import { extensionContext, foldingRangeProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/folding.ts)', async function() {
 	this.timeout(10000);
@@ -19,7 +19,7 @@ suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/fold
 			const folds = results[index];
 
 			try {
-				await pass(extensionContext, 'folding', basename, folds);
+				await runSamplePass(extensionContext, 'folding', basename, folds);
 			} catch (e) {
 				error = error || e as TypeError;
 			}

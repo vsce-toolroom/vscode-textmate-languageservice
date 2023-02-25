@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 import { extensionContext, documentServicePromise, outlineServicePromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 import type { OutlineEntry } from 'src/services/outline';
 
@@ -21,7 +21,7 @@ suite('test/suite/outline.service.test.ts - OutlineService class (src/services/o
 			const outline = outputs[index];
 
 			try {
-				await pass(extensionContext, 'outline', basename, outline);
+				await runSamplePass(extensionContext, 'outline', basename, outline);
 			} catch (e) {
 				error = error || e as TypeError;
 			}

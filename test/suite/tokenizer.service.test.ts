@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 import { extensionContext, documentServicePromise, tokenServicePromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass } from '../util/bench';
+import { runSamplePass } from '../util/bench';
 
 import type { TextmateToken } from '../../src/services/tokenizer';
 
@@ -21,7 +21,7 @@ suite('test/suite/tokenizer.service.test.ts - TokenizerService class (src/servic
 			const tokens = outputs[index];
 
 			try {
-				await pass(extensionContext, 'tokenizer', basename, tokens);
+				await runSamplePass(extensionContext, 'tokenizer', basename, tokens);
 			} catch (e) {
 				error = error || e as TypeError;
 			}
