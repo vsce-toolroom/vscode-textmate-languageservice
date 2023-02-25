@@ -19,22 +19,28 @@ import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import type { ConfigJson } from './config/config';
 import type { ExtensionManifest, GrammarContribution, LanguageContribution } from './services/resolver';
 
-export default class LSP {
+const _private = Symbol('private');
+
+interface Private {
+	configPromise?: Promise<ConfigData>;
+	grammarPromise?: Promise<vscodeTextmate.IGrammar>;
+
+	tokenService?: TokenizerService;
+	outlineService?: OutlineService;
+	documentService?: DocumentService;
+
+	foldingRangeProvider?: TextmateFoldingRangeProvider;
+	documentSymbolProvider?: TextmateDocumentSymbolProvider;
+	workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
+	definitionProvider?: TextmateDefinitionProvider;
+}
+
+export default class TextmateLanguageService {
 	public static utils = { TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile };
 
-	// In order to support default class export we need to use `#` private properties.
+	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
-	#_resolver: ResolverService;
-	#_registry: vscodeTextmate.Registry;
-	#_configPromise: Promise<ConfigData>;
-	#_grammarPromise: Promise<vscodeTextmate.IGrammar>;
-	#_tokenService: TokenizerService;
-	#_outlineService?: OutlineService;
-	#_documentService?: DocumentService;
-	#_foldingRangeProvider?: TextmateFoldingRangeProvider;
-	#_documentSymbolProvider?: TextmateDocumentSymbolProvider;
-	#_workspaceSymbolProvider?: TextmateWorkspaceSymbolProvider;
-	#_definitionProvider?: TextmateDefinitionProvider;
+	private [_private]: Private = {};
 
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
 		const manifest = context.extension.packageJSON as ExtensionManifest;
@@ -55,102 +61,102 @@ export default class LSP {
 		}
 
 		const onigLibPromise = getOniguruma();
-		this.#_resolver = new ResolverService(context, grammars, languages, onigLibPromise);
+		const resolver = new ResolverService(context, grammars, languages, onigLibPromise);
 
-		this.#_registry = new vscodeTextmate.Registry(this.#_resolver);
+		const registry = new vscodeTextmate.Registry(resolver);
 
-		const grammarData = this.#_resolver.findGrammarByLanguageId(languageId);
-		this.#_grammarPromise = this.#_registry.loadGrammar(grammarData.scopeName);
+		const grammarData = resolver.findGrammarDataByLanguageId(languageId);
+		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
 
 		const paths = manifest['textmate-languageservices'] || {};
 		const path = paths[languageId] || './textmate-configuration.json';
 
 		const uri = vscode.Uri.joinPath(context.extensionUri, path);
-		const languageData = this.#_resolver.findLanguageById(languageId);
-		this.#_configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
+		const languageData = resolver.findLanguageDataById(languageId);
+		this[_private].configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
 	}
 
 	public async initTokenService(): Promise<TokenizerService> {
-		if (this.#_tokenService) {
-			return this.#_tokenService;
+		if (this[_private].tokenService) {
+			return this[_private].tokenService;
 		}
 
-		const config = await this.#_configPromise;
-		const grammar = await this.#_grammarPromise;
-		this.#_tokenService = new TokenizerService(config, grammar);
+		const config = await this[_private].configPromise;
+		const grammar = await this[_private].grammarPromise;
+		this[_private].tokenService = new TokenizerService(config, grammar);
 
-		return this.#_tokenService;
+		return this[_private].tokenService;
 	}
 
 	public async initOutlineService(): Promise<OutlineService> {
-		if (this.#_outlineService) {
-			return this.#_outlineService;
+		if (this[_private].outlineService) {
+			return this[_private].outlineService;
 		}
 
-		const config = await this.#_configPromise;
+		const config = await this[_private].configPromise;
 		const tokenService = await this.initTokenService();
-		this.#_outlineService = new OutlineService(config, tokenService);
+		this[_private].outlineService = new OutlineService(config, tokenService);
 
-		return this.#_outlineService;
+		return this[_private].outlineService;
 	}
 
 	public async initDocumentService(): Promise<DocumentService> {
-		if (this.#_documentService) {
-			return this.#_documentService;
+		if (this[_private].documentService) {
+			return this[_private].documentService;
 		}
 
 		const id = this.languageId;
-		const config = await this.#_configPromise;
-		this.#_documentService = new DocumentService(id, config);
+		const config = await this[_private].configPromise;
+		this[_private].documentService = new DocumentService(id, config);
 
-		return this.#_documentService;
+		return this[_private].documentService;
 	}
 
 	public async createFoldingRangeProvider(): Promise<TextmateFoldingRangeProvider> {
-		if (this.#_foldingRangeProvider) {
-			return this.#_foldingRangeProvider;
+		if (this[_private].foldingRangeProvider) {
+			return this[_private].foldingRangeProvider;
 		}
 
-		const config = await this.#_configPromise;
+		const config = await this[_private].configPromise;
 		const tokenService = await this.initTokenService();
 		const outlineService = await this.initOutlineService();
-		this.#_foldingRangeProvider = new TextmateFoldingRangeProvider(config, tokenService, outlineService);
+		this[_private].foldingRangeProvider = new TextmateFoldingRangeProvider(config, tokenService, outlineService);
 
-		return this.#_foldingRangeProvider;
+		return this[_private].foldingRangeProvider;
 	}
 
 	public async createDocumentSymbolProvider(): Promise<TextmateDocumentSymbolProvider> {
-		if (this.#_documentSymbolProvider) {
-			return this.#_documentSymbolProvider;
+		if (this[_private].documentSymbolProvider) {
+			return this[_private].documentSymbolProvider;
 		}
 
 		const outlineService = await this.initOutlineService();
-		this.#_documentSymbolProvider = new TextmateDocumentSymbolProvider(outlineService);
+		this[_private].documentSymbolProvider = new TextmateDocumentSymbolProvider(outlineService);
 
-		return this.#_documentSymbolProvider;
+		return this[_private].documentSymbolProvider;
 	}
 
 	public async createWorkspaceSymbolProvider(): Promise<TextmateWorkspaceSymbolProvider> {
-		if (this.#_workspaceSymbolProvider) {
-			return this.#_workspaceSymbolProvider;
+		if (this[_private].workspaceSymbolProvider) {
+			return this[_private].workspaceSymbolProvider;
 		}
 
 		const documentService = await this.initDocumentService();
 		const documentSymbolProvider = await this.createDocumentSymbolProvider();
-		this.#_workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(documentService, documentSymbolProvider);
+		this[_private].workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(documentService, documentSymbolProvider);
 
-		return this.#_workspaceSymbolProvider;
+		return this[_private].workspaceSymbolProvider;
 	}
 
 	public async createDefinitionProvider(): Promise<TextmateDefinitionProvider> {
-		if (this.#_definitionProvider) {
-			return this.#_definitionProvider;
+		if (this[_private].definitionProvider) {
+			return this[_private].definitionProvider;
 		}
 
-		const config = await this.#_configPromise;
+		const config = await this[_private].configPromise;
 		const outlineService = await this.initOutlineService();
-		this.#_definitionProvider = new TextmateDefinitionProvider(config, outlineService);
+		this[_private].definitionProvider = new TextmateDefinitionProvider(config, outlineService);
 
-		return this.#_definitionProvider;
+		return this[_private].definitionProvider;
 	}
 }

@@ -107,11 +107,11 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 			return null;
 		}
 
-		const grammar = this.findGrammarByLanguageId(language);
+		const grammar = this.findGrammarDataByLanguageId(language);
 		return grammar ? grammar.scopeName : null;
 	}
 
-	public findLanguageById(id: string): LanguageContribution {
+	public findLanguageDataById(id: string): LanguageContribution {
 		for (const language of this._languages) {
 			if (language.id === id) {
 				return language;
@@ -120,7 +120,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		throw new Error('Could not find language contribution for language ID "' + id + '" in extension manifest');
 	}
 
-	public findGrammarByLanguageId(id: string): GrammarContribution {
+	public findGrammarDataByLanguageId(id: string): GrammarContribution {
 		for (const grammar of this._grammars) {
 			if (grammar.language === id) {
 				return grammar;

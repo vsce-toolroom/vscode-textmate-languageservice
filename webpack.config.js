@@ -9,8 +9,7 @@ const configuration = {
 	entry: { 'src/main': './src/main.ts' },
 	output: {
 		globalObject: 'globalThis',
-		// TODO: rename this to TextmateLanguageService as v2.0.0 release
-		library: 'LSP',
+		library: 'TextmateLanguageService',
 		libraryTarget: 'umd',
 		path: path.join(__dirname, 'dist')
 	},
