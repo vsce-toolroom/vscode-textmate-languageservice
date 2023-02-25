@@ -3,18 +3,11 @@
 import * as vscode from 'vscode';
 
 import { deepEqual } from './assert';
-import { loadJsonFile } from './factory';
+import { isWebRuntime, loadJsonFile } from './factory';
 import { writeJsonFile, getComponentSampleDataUri } from './files';
 import { jsonify } from './jsonify';
 
 type Object = Record<number | string | symbol, any>;
-
-// The API for runtime detection is frankly not sane.
-// This is the best way to detect if we are in a web runtime.
-// microsoft/vscode#104436; microsoft/vscode#134568
-const isWebUI = vscode.env.uiKind === vscode.UIKind.Web;
-const isRemote = typeof vscode.env.remoteName === 'string';
-export const isWebRuntime = isWebUI && !isRemote;
 
 /**
  * Generate test pass for a VS Code language provider's output vs a sample MATLAB class.
