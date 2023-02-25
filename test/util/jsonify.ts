@@ -19,11 +19,7 @@ function replaceClassesWithStrings(key: string, value: any): any {
 
 	// Internal {@link vscode.Uri} class has the constructor type Object.
 	// Sometimes numerous fields are missing also.
-	if (
-		['', 'uri'].includes(key) &&
-		!!value && typeof value === 'object' &&
-		Object.prototype.hasOwnProperty.call(value, 'path')
-	) {
+	if (['', 'uri'].includes(key) && !!value && typeof value === 'object' && 'path' in value) {
 		const externalPath = getNormalizedPathFor(value as vscode.Uri);
 		const extensionPath = getNormalizedPathFor(extensionContext.extensionUri);
 		return './' + path.posix.relative(extensionPath, externalPath);

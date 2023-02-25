@@ -8,7 +8,7 @@ import { ConfigData } from './config/config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
-import { ResolverService } from './services/resolver';
+import { isGrammarLanguageContribution, contributionKeys, ResolverService } from './services/resolver';
 import { OutlineService } from './services/outline';
 import { DocumentService } from './services/document';
 import { TextmateFoldingRangeProvider } from './folding';
@@ -17,14 +17,13 @@ import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 
 import type { ConfigJson } from './config/config';
-import type { ExtensionManifest, GrammarLanguageContribution } from './services/resolver';
+import type { ExtensionManifest, GrammarContribution, LanguageContribution } from './services/resolver';
 
 export default class LSP {
 	public static utils = { TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile };
 
 	// In order to support default class export we need to use `#` private properties.
 	// Refs: microsoft/TypeScript#30355
-	#_extensionManifest?: ExtensionManifest;
 	#_resolver: ResolverService;
 	#_registry: vscodeTextmate.Registry;
 	#_configPromise: Promise<ConfigData>;
@@ -38,23 +37,36 @@ export default class LSP {
 	#_definitionProvider?: TextmateDefinitionProvider;
 
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
-		this.#_extensionManifest = this.context.extension.packageJSON as ExtensionManifest;
+		const manifest = context.extension.packageJSON as ExtensionManifest;
 
-		const contributes = this.#_extensionManifest?.contributes || {};
-		const grammars = (contributes?.grammars || [])
-			.filter((g): g is GrammarLanguageContribution => g && !g.injectTo);
-		const languages = contributes?.languages || [];
+		const grammars: GrammarContribution[] = [];
+		const languages: LanguageContribution[] = [];
+		for (const key of contributionKeys) {
+			if (key in manifest === false) {
+				continue;
+			}
+			const contributes = manifest[key];
+			if (contributes.grammars && contributes.grammars.length) {
+				grammars.push(...contributes.grammars.filter(isGrammarLanguageContribution));
+			}
+			if (contributes.languages && contributes.languages.length) {
+				languages.push(...contributes.languages);
+			}
+		}
+
 		const onigLibPromise = getOniguruma();
-
 		this.#_resolver = new ResolverService(context, grammars, languages, onigLibPromise);
+
 		this.#_registry = new vscodeTextmate.Registry(this.#_resolver);
-		const grammarData = this.#_resolver.findGrammarByLanguageId(this.languageId);
+
+		const grammarData = this.#_resolver.findGrammarByLanguageId(languageId);
 		this.#_grammarPromise = this.#_registry.loadGrammar(grammarData.scopeName);
 
-		const mapping = this.#_extensionManifest['textmate-languageservices'] || {};
-		const path = mapping[this.languageId] || './textmate-configuration.json';
-		const uri = vscode.Uri.joinPath(this.context.extensionUri, path);
-		const languageData = this.#_resolver.findLanguageById(this.languageId);
+		const paths = manifest['textmate-languageservices'] || {};
+		const path = paths[languageId] || './textmate-configuration.json';
+
+		const uri = vscode.Uri.joinPath(context.extensionUri, path);
+		const languageData = this.#_resolver.findLanguageById(languageId);
 		this.#_configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
 	}
 
