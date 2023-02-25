@@ -2,8 +2,8 @@
 
 import * as vscode from 'vscode';
 
-import { extensionContext, workspaceSymbolProviderPromise } from '../util/factory';
-import { pass, isWebRuntime } from '../util/bench';
+import { isWebRuntime, extensionContext, workspaceSymbolProviderPromise } from '../util/factory';
+import { pass } from '../util/bench';
 
 suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', async function() {
 	this.timeout(10000);

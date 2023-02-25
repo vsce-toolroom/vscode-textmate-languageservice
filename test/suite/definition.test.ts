@@ -3,9 +3,9 @@
 import * as vscode from 'vscode';
 import { strictEqual } from '../util/assert';
 
-import { extensionContext, tokenServicePromise, documentServicePromise, definitionProviderPromise, TextmateScopeSelector } from '../util/factory';
+import { isWebRuntime, extensionContext, tokenServicePromise, documentServicePromise, definitionProviderPromise, TextmateScopeSelector } from '../util/factory';
 import { BASE_CLASS_NAME, SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
-import { pass, isWebRuntime } from '../util/bench';
+import { pass } from '../util/bench';
 
 import type { TextmateToken } from '../../src/services/tokenizer';
 

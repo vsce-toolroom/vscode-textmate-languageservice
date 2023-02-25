@@ -28,22 +28,47 @@ export interface GrammarInjectionContribution extends PartialJsonObject {
 
 export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
 
+export function isGrammarLanguageContribution(g: GrammarContribution): g is GrammarLanguageContribution {
+	return g && 'injectTo' in g === false;
+}
+
 export interface LanguageContribution extends PartialJsonObject {
 	id: string;
 	extensions?: string[];
 	filenames?: string[];
 }
 
-export interface ExtensionManifest extends PackageJson {
-	contributes?: {
-		grammars?: GrammarContribution[] & JsonArray;
-		languages?: LanguageContribution[] & JsonArray;
-	};
-	'textmate-languageservices'?: { [languageId: string]: string };
+export interface ExtensionContributions extends PartialJsonObject {
+	grammars?: GrammarContribution[] & JsonArray;
+	languages?: LanguageContribution[] & JsonArray;
 }
 
+export interface LanguageConfigurations {
+	[languageId: string]: string;
+}
+
+export interface ExtensionManifest extends PackageJson {
+	contributes?: ExtensionContributions;
+	/** Mapping from language ID to config path. Default: `./textmate-configuration.json`. */
+	'textmate-languageservices'?: LanguageConfigurations;
+	/** Ersatz extension contributions - a service wiring to any language grammars. */
+	'textmate-languageservice-contributes'?: ExtensionContributions;
+}
+
+export const contributionKeys: ExtensionManifestContributionKey[] = [
+	'contributes',
+	'textmate-languageservice-contributes'
+];
+
+export type ExtensionManifestContributionKey = 'contributes' | 'textmate-languageservice-contributes';
+
 export class ResolverService implements vscodeTextmate.RegistryOptions {
-	constructor(private _context: vscode.ExtensionContext, private _grammars: GrammarContribution[], private _languages: LanguageContribution[], public onigLib: Promise<vscodeTextmate.IOnigLib>) {
+	constructor(
+		private _context: vscode.ExtensionContext,
+		private _grammars: GrammarContribution[],
+		private _languages: LanguageContribution[],
+		public onigLib: Promise<vscodeTextmate.IOnigLib>
+	) {
 	}
 
 	public findLanguageByExtension(fileExtension: string): string | null {
@@ -92,7 +117,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 				return language;
 			}
 		}
-		throw new Error('Could not find language contribution for language ID "' + id + '"');
+		throw new Error('Could not find language contribution for language ID "' + id + '" in extension manifest');
 	}
 
 	public findGrammarByLanguageId(id: string): GrammarContribution {
@@ -101,7 +126,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 				return grammar;
 			}
 		}
-		throw new Error('Could not find grammar contribution for language ID "' + id + '"');
+		throw new Error('Could not find grammar contribution for language ID "' + id + '" in extension manifest');
 	}
 
 	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
