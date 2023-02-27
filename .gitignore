@@ -1,7 +1,10 @@
 dist/
 node_modules/
 out/
-.prettierrc.json
+# We test against `vscode-matlab`
+test/vscode-matlab/data/
+test/vscode-matlab/samples/
+test/vscode-matlab/*.tgz
 # We target VS Code
 .vscode-test/
 .vscode-test-web/
