@@ -7,8 +7,8 @@ import type { BrowserType } from '@vscode/test-web';
 
 async function main() {
 	try {
-		const extensionDevelopmentPath = path.resolve(__dirname, path.normalize('../../../..'));
-		const extensionTestsPath = path.resolve(__dirname, path.normalize('./runner-web.test.js'));
+		const extensionDevelopmentPath = path.resolve(__dirname, '../../../..');
+		const extensionTestsPath = path.resolve(__dirname, `./runner-web.matlab.js`);
 		const extensionPaths = [];
 		const browserType: BrowserType = 'chromium';
 		const port = 8080;

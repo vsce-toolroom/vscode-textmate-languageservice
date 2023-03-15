@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import { readFileText } from '../util/loader';
 import { Disposable } from '../util/dispose';
 
-import type { ConfigData } from '../config/config';
+import type { ConfigData } from '../config';
 
 export interface SkinnyTextLine {
 	text: string;

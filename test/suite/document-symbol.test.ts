@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 
-import { extensionContext, documentServicePromise, documentSymbolProviderPromise } from '../util/factory';
+import { matlabContext, matlabDocumentServicePromise, matlabDocumentSymbolProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { runSamplePass } from '../util/bench';
 
@@ -13,15 +13,15 @@ suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class
 		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
 		const samples = await documentSymbolProviderResult();
 
-		let error: TypeError | void;
+		let error: TypeError | void = void 0;
 		for (let index = 0; index < samples.length; index++) {
 			const basename = SAMPLE_FILE_BASENAMES[index];
 			const symbols = samples[index];
 
 			try {
-				await runSamplePass(extensionContext, 'document-symbol', basename, symbols);
+				await runSamplePass(matlabContext, 'document-symbol', basename, symbols);
 			} catch (e) {
-				error = error || e as TypeError;
+				error = typeof error !== 'undefined' ? error : e as Error;
 			}
 		}
 		if (error) {
@@ -31,10 +31,10 @@ suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class
 });
 
 async function documentSymbolProviderResult() {
-	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, matlabContext);
 
-	const documentService = await documentServicePromise;
-	const documentSymbolProvider = await documentSymbolProviderPromise;
+	const documentService = await matlabDocumentServicePromise;
+	const documentSymbolProvider = await matlabDocumentSymbolProviderPromise;
 	const results: vscode.DocumentSymbol[][] = [];
 
 	for (let index = 0; index < samples.length; index++) {

@@ -5,6 +5,7 @@
 assets/
 builds/
 out/
+scripts/
 src/
 test/
 *.tgz
@@ -25,5 +26,6 @@ CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 tsconfig.json
 tsconfig.*.json
+vscode-web-insider-*-tmp
 webpack.config.js
 webpack.config.*.*.js

@@ -22,6 +22,8 @@ export async function writeJsonFile(uri: vscode.Uri, json: PartialJsonValue): Pr
 
 export const BASE_CLASS_NAME = 'Animal';
 
+export const SERVICE_SAMPLE_BASENAME = 'Pet';
+
 export const SAMPLE_FILE_BASENAMES = ['Animal', 'Cat', 'Dog', 'Horse', 'Snake'];
 
 /**
@@ -29,7 +31,8 @@ export const SAMPLE_FILE_BASENAMES = ['Animal', 'Cat', 'Dog', 'Horse', 'Snake'];
  * @param {string} basename Basename of sample file - `test\samples\*.m`.
 */
 export function getSampleFileUri(this: vscode.ExtensionContext, basename: string): vscode.Uri {
-	return vscode.Uri.joinPath(this.extensionUri, `./samples/${basename}.m`);
+	const ext = basename === SERVICE_SAMPLE_BASENAME ? '.ts' : '.m';
+	return vscode.Uri.joinPath(this.extensionUri, `./samples/${basename}${ext}`);
 }
 
 /**

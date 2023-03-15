@@ -7,7 +7,10 @@ import { isWebRuntime, loadJsonFile } from './factory';
 import { writeJsonFile, getComponentSampleDataUri } from './files';
 import { jsonify } from './jsonify';
 
+import { PartialDeep, JsonObject } from 'type-fest';
+
 type Object = Record<number | string | symbol, any>;
+type PartialJsonObject = PartialDeep<JsonObject>;
 
 /**
  * Generate test pass for a VS Code language provider's output vs a sample MATLAB class.
@@ -20,22 +23,22 @@ export async function runSamplePass(context: vscode.ExtensionContext, component:
 	const data = getComponentSampleDataUri.call(context, component, basename);
 	const filepath = `./test/data/${component}/${basename}.json`;
 	let stat: vscode.FileStat | void;
+	let expectedJson: PartialJsonObject | void;
 
 	// Check if file exists.
-	try {
-		stat = await vscode.workspace.fs.stat(data);
 	// eslint-disable-next-line no-empty
-	} catch (_) {}
+	try { stat = await vscode.workspace.fs.stat(data); } catch (_) {}
+	// eslint-disable-next-line no-empty
+	try { expectedJson = await loadJsonFile(data); } catch (_) {}
 
-	const expectedJson = await loadJsonFile(data);
 	const outputJson = jsonify(output);
 
 	// Run JSON diff assert and record error.
-	let error: TypeError | void;
+	let error: TypeError | void = void 0;
 	try {
-		deepEqual(outputJson, expectedJson, filepath)
+		deepEqual(outputJson, expectedJson, filepath);
 	} catch (e) {
-		error = e as TypeError;
+		error = e as Error;
 	}
 
 	// In Node runtime, dump output to data component subdirectory.

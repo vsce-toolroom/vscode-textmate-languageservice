@@ -5,9 +5,14 @@ out/
 test/vscode-matlab/data/
 test/vscode-matlab/samples/
 test/vscode-matlab/*.tgz
+# We test with `vscode-typescript`
+test/vscode-typescript/data/
+test/vscode-typescript/samples/
+test/vscode-typescript/*.tgz
 # We target VS Code
 .vscode-test/
 .vscode-test-web/
+vscode-web-insider-*-tmp
 *.tgz
 *.vsix
 # We use Gitlab CI

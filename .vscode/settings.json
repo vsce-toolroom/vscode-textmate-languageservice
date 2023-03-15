@@ -8,7 +8,6 @@
     "test/vscode-matlab/**": true
   },
   "material-icon-theme.files.associations": {
-    "tsconfig.node.test.json": "tsconfig",
     "webpack.config.web.test.js": "webpack"
   },
   "material-icon-theme.folders.associations": {

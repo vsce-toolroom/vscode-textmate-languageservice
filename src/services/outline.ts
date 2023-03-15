@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 import { TextmateScopeSelector } from '../util/selectors';
 import { ServiceBase } from '../util/service';
 
-import type { ConfigData } from '../config/config';
+import type { ConfigData } from '../config';
 import type { SkinnyTextDocument } from './document';
 import type { TokenizerService, TextmateToken } from './tokenizer';
 

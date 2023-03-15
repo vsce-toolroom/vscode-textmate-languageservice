@@ -457,7 +457,7 @@
   },
   {
     "startIndex": 17,
-    "endIndex": 23,
+    "endIndex": 24,
     "scopes": [
       "source.matlab",
       "meta.class.matlab",
@@ -466,7 +466,7 @@
       "storage.type.matlab"
     ],
     "type": "storage.type.matlab",
-    "text": "string",
+    "text": "logical",
     "line": 6,
     "level": 2
   },

@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 
-import { isWebRuntime, extensionContext, workspaceSymbolProviderPromise } from '../util/factory';
+import { isWebRuntime, matlabContext, matlabWorkspaceSymbolProviderPromise } from '../util/factory';
 import { runSamplePass } from '../util/bench';
 
 suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', async function() {
@@ -15,12 +15,12 @@ suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider cla
 
 		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
 		const symbols = await workspaceSymbolProviderResult();
-		await runSamplePass(extensionContext, 'workspace-symbol', 'index', symbols);
+		await runSamplePass(matlabContext, 'workspace-symbol', 'index', symbols);
 	});
 });
 
 async function workspaceSymbolProviderResult() {
-	const workspaceSymbolProvider = await workspaceSymbolProviderPromise;
+	const workspaceSymbolProvider = await matlabWorkspaceSymbolProviderPromise;
 	const symbols = await workspaceSymbolProvider.provideWorkspaceSymbols('obj.');
 	return symbols;
 }

@@ -1,3 +1,2 @@
-**/textmate-configuration.json linguist-language=jsonc
-build linguist-language=bash
+**/*.m linguist-language=matlab
 package-lock.json -diff

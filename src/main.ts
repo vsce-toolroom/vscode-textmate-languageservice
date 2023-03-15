@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
 import { TokenizerService } from './services/tokenizer';
-import { ConfigData } from './config/config';
+import { ConfigData } from './config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
@@ -16,7 +16,7 @@ import { TextmateDefinitionProvider } from './definition';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 
-import type { ConfigJson } from './config/config';
+import type { ConfigJson } from './config';
 import type { ExtensionManifest, GrammarContribution, LanguageContribution } from './services/resolver';
 
 const _private = Symbol('private');
@@ -40,9 +40,12 @@ export default class TextmateLanguageService {
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
-	private [_private]: Private = {};
+	private [_private]: Private;
 
 	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
+		if (!context || !context.extension) {
+			return;
+		}
 		const manifest = context.extension.packageJSON as ExtensionManifest;
 
 		const grammars: GrammarContribution[] = [];
@@ -65,13 +68,15 @@ export default class TextmateLanguageService {
 
 		const registry = new vscodeTextmate.Registry(resolver);
 
+		this[_private] = {};
+
 		const grammarData = resolver.findGrammarDataByLanguageId(languageId);
 		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
 
 		const paths = manifest['textmate-languageservices'] || {};
-		const path = paths[languageId] || './textmate-configuration.json';
+		const filepath = paths[languageId] || './textmate-configuration.json';
 
-		const uri = vscode.Uri.joinPath(context.extensionUri, path);
+		const uri = vscode.Uri.joinPath(context.extensionUri, filepath);
 		const languageData = resolver.findLanguageDataById(languageId);
 		this[_private].configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
 	}

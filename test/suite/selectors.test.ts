@@ -4,12 +4,12 @@ import * as vscode from 'vscode';
 import { strictEqual } from '../util/assert';
 
 import { getComponentSampleDataUri } from '../util/files';
-import { extensionContext, loadJsonFile, TextmateScopeSelector, TextmateScopeSelectorMap } from '../util/factory';
+import { matlabContext, loadJsonFile, TextmateScopeSelector, TextmateScopeSelectorMap } from '../util/factory';
 
 // Add types for JSON test data to ease development.
-import type * as selectorJson from 'test/data/selectors/selector.json';
+import type * as selectorJson from '../data/selectors/selector.json';
 type SelectorTestData = typeof selectorJson;
-import type * as mapJson from 'test/data/selectors/map.json';
+import type * as mapJson from '../data/selectors/map.json';
 type SelectorMapTestData = typeof mapJson;
 
 suite('test/suite/selectors.util.test.ts - TextmateScopeSelector class (src/util/selectors.ts)', async function() {
@@ -27,7 +27,7 @@ suite('test/suite/selectors.util.test.ts - TextmateScopeSelector class (src/util
 });
 
 async function scopeInput() {
-	const data = getComponentSampleDataUri.call(extensionContext, 'selectors', 'selector');
+	const data = getComponentSampleDataUri.call(matlabContext, 'selectors', 'selector');
 	const json = await loadJsonFile<SelectorTestData>(data);
 	const tests = Object.entries(json);
 	return tests;
@@ -71,7 +71,7 @@ suite('test/suite/selectors.util.test.ts - TextmateScopeSelectorMap class (src/u
 });
 
 async function mapInput() {
-	const data = getComponentSampleDataUri.call(extensionContext, 'selectors', 'map');
+	const data = getComponentSampleDataUri.call(matlabContext, 'selectors', 'map');
 	const json = await loadJsonFile<SelectorMapTestData>(data);
 
 	type SelectorMapTestDatum = SelectorMapTestData[number];

@@ -1,12 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
 
 /** @type {webpack.Configuration} */
 const configuration = {
-	mode: 'production',
+	mode: 'none',
 	target: 'webworker',
-	entry: { 'test/runner-web.test': './test/runner-web.test.ts' },
+	entry: {
+		'test/runner-web.matlab': './test/runner-web.matlab.ts',
+		'test/runner-web.typescript': './test/runner-web.typescript.ts'
+	},
 	output: {
 		globalObject: 'globalThis',
 		libraryTarget: 'commonjs',
@@ -18,12 +20,11 @@ const configuration = {
 			crypto: false,
 			path: require.resolve('path-browserify')
 		},
-		mainFields: ['browser', 'module', 'main'],
-		plugins: [new TsconfigPathsPlugin()]
+		mainFields: ['browser', 'module', 'main']
 	},
 	module: {
 		rules: [
-			{ test: /\.ts$/, loader: 'ts-loader' },
+			{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'tsconfig.test.json' } },
 			{ test: /\.wasm$/, type: 'javascript/auto', loader: 'encoded-uint8array-loader' }
 		]
 	},

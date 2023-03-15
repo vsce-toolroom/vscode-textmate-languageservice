@@ -5,6 +5,8 @@ import * as vscode from 'vscode';
 import { MockExtensionContext } from './context';
 import TextmateLanguageService from '../../src/main';
 
+type TextmateLanguageServiceType = typeof TextmateLanguageService.prototype;
+
 // The API for runtime detection is frankly not sane.
 // This is the best way to detect if we are in a web runtime.
 // microsoft/vscode#104436; microsoft/vscode#134568
@@ -12,38 +14,81 @@ const isWebUI = vscode.env.uiKind === vscode.UIKind.Web;
 const isRemote = typeof vscode.env.remoteName === 'string';
 export const isWebRuntime = isWebUI && !isRemote;
 
-/** {@link vscode.ExtensionContext} mock. */
-export const extensionContext = new MockExtensionContext('Gimly81.matlab');
+// Factory function for extension context mock.
+function mockupExtensionContext(id: string): MockExtensionContext {
+	if (!vscode.extensions.getExtension(id)) {
+		return void 0 as unknown as MockExtensionContext;
+	}
+	return new MockExtensionContext(id);
+}
 
-/** {@link TextmateLanguageService} factory. */
-export const textmateService = new TextmateLanguageService('matlab', extensionContext);
+// Factory function for language service.
+function constructLanguageService(id: string, context: MockExtensionContext): TextmateLanguageService {
+	if (!context) {
+		return void 0 as unknown as TextmateLanguageService;
+	}
+	return new TextmateLanguageService(id, context);
+}
 
-/** {@link DocumentService} component. */
-export const documentServicePromise = textmateService.initDocumentService();
+// Factory function for language service component.
+function initServiceComponent<T extends NonNullable<object>>(languageService: TextmateLanguageService, methodName: string): T {
+	if (!languageService) {
+		return void 0 as unknown as T;
+	}
+	return languageService[methodName]() as T;
+}
 
-/** {@link TokenizerService} component. */
-export const tokenServicePromise = textmateService.initTokenService();
+/** `vscode.ExtensionContext` mock for MATLAB. */
+export const matlabContext = mockupExtensionContext('Gimly81.matlab');
 
-/** {@link OutlineService} component. */
-export const outlineServicePromise = textmateService.initOutlineService();
+/** `vscode.ExtensionContext` mock for TypeScript. */
+export const typescriptContext = mockupExtensionContext('sndst00m.vscode-typescript-textmate');
 
-/** {@link TextmateFoldingRangeProvider} component. */
-export const foldingRangeProviderPromise = textmateService.createFoldingRangeProvider();
+/** `TextmateLanguageService` factory for `matlab`. */
+export const matlabTextmateService = constructLanguageService('matlab', matlabContext);
 
-/** {@link TextmateDefinitionProvider} component. */
-export const definitionProviderPromise = textmateService.createDefinitionProvider();
+/** `DocumentService` component for `matlab`. */
+type DocumentService = ReturnType<TextmateLanguageServiceType['initDocumentService']>;
+export const matlabDocumentServicePromise = initServiceComponent<DocumentService>(matlabTextmateService, 'initDocumentService');
 
-/** {@link TextmateDocumentSymbolProvider} component. */
-export const documentSymbolProviderPromise = textmateService.createDocumentSymbolProvider();
+/** `TokenizerService` component for `matlab`. */
+type TokenService = ReturnType<TextmateLanguageServiceType['initTokenService']>;
+export const matlabTokenServicePromise = initServiceComponent<TokenService>(matlabTextmateService, 'initTokenService');
 
-/** {@link TextmateWorkspaceSymbolProvider} component. */
-export const workspaceSymbolProviderPromise = textmateService.createWorkspaceSymbolProvider();
+/** `OutlineService` component for `matlab`. */
+type TextmateOutlineService = ReturnType<TextmateLanguageServiceType['initOutlineService']>;
+export const matlabOutlineServicePromise = initServiceComponent<TextmateOutlineService>(matlabTextmateService, 'initOutlineService');
 
-/** {@link loadJsonFile} utility. */
+/** `TextmateFoldingRangeProvider` component for `matlab`. */
+type TextmateFoldingRangeProvider = ReturnType<TextmateLanguageServiceType['createFoldingRangeProvider']>;
+export const matlabFoldingRangeProviderPromise = initServiceComponent<TextmateFoldingRangeProvider>(matlabTextmateService, 'createFoldingRangeProvider');
+
+/** `TextmateDefinitionProvider` component for `matlab`. */
+type TextmateDefinitionProvider = ReturnType<TextmateLanguageServiceType['createDefinitionProvider']>;
+export const matlabDefinitionProviderPromise = initServiceComponent<TextmateDefinitionProvider>(matlabTextmateService, 'createDefinitionProvider');
+
+/** `TextmateDocumentSymbolProvider` component for `matlab`. */
+type TextmateDocumentSymbolProvider = ReturnType<TextmateLanguageServiceType['createDocumentSymbolProvider']>;
+export const matlabDocumentSymbolProviderPromise = initServiceComponent<TextmateDocumentSymbolProvider>(matlabTextmateService, 'createDocumentSymbolProvider');
+
+/** `TextmateWorkspaceSymbolProvider` component for `matlab`. */
+type TextmateWorkspaceSymbolProvider = ReturnType<TextmateLanguageServiceType['createWorkspaceSymbolProvider']>;
+export const matlabWorkspaceSymbolProviderPromise = initServiceComponent<TextmateWorkspaceSymbolProvider>(matlabTextmateService, 'createWorkspaceSymbolProvider');
+
+/** `TextmateLanguageService` `typescript` factory. */
+export const typescriptTextmateService = constructLanguageService('typescript', typescriptContext);
+
+/** `DocumentService` component for lang ID `typescript`. */
+export const typescriptDocumentServicePromise = initServiceComponent<DocumentService>(typescriptTextmateService, 'initDocumentService');
+
+/** `TokenizerService` component for lang ID `typescript`. */
+export const typescriptTokenServicePromise = initServiceComponent<TokenService>(typescriptTextmateService, 'initTokenService');
+
+/** `loadJsonFile` utility. */
 export const loadJsonFile = TextmateLanguageService.utils.loadJsonFile;
 
-/** {@link TextmateScopeSelector} utility. */
+/** `TextmateScopeSelector` utility. */
 export const TextmateScopeSelector = TextmateLanguageService.utils.TextmateScopeSelector;
 
-/** {@link TextmateScopeSelectorMap} utility. */
+/** `TextmateScopeSelectorMap` utility. */
 export const TextmateScopeSelectorMap = TextmateLanguageService.utils.TextmateScopeSelectorMap;

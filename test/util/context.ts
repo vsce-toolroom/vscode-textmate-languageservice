@@ -84,11 +84,6 @@ export class MockExtensionContext<ExtensionExports = void> implements vscode.Ext
 
 	public readonly secrets: vscode.SecretStorage;
 
-	public readonly extensionUri: vscode.Uri;
-	public readonly extensionPath: string;
-
-	public asAbsolutePath: (relativePath: string) => string;
-
 	public readonly environmentVariableCollection: vscode.EnvironmentVariableCollection;
 
 	public readonly storageUri: vscode.Uri;
@@ -98,25 +93,21 @@ export class MockExtensionContext<ExtensionExports = void> implements vscode.Ext
 	public readonly logUri: vscode.Uri;
 	public readonly logPath: string;
 
+	public readonly extensionUri: vscode.Uri;
+	public readonly extensionPath: string;
+
+	public asAbsolutePath: (relativePath: string) => string;
+
 	public readonly extensionMode: vscode.ExtensionMode;
 	public readonly extension: vscode.Extension<ExtensionExports>;
 
 	constructor(id: string) {
-		const extension = vscode.extensions.getExtension<ExtensionExports>(id);
-
 		this.subscriptions = [];
 
 		this.workspaceState = new MockMemento();
 		this.globalState = new MockGlobalMemento();
 
 		this.secrets = new SecretStorage();
-
-		const extensionUri = this.extensionUri = extension.extensionUri;
-		this.extensionPath = extension.extensionUri.path;
-
-		this.asAbsolutePath = function(relativePath: string): string {
-			return vscode.Uri.joinPath(extensionUri, relativePath).toString();
-		};
 
 		this.environmentVariableCollection = new MockEnvironmentVariableCollection();
 
@@ -127,6 +118,19 @@ export class MockExtensionContext<ExtensionExports = void> implements vscode.Ext
 		this.storageUri = vscode.Uri.file(this.globalStoragePath);
 		this.logPath = `${codeRoot}/user-data/User/logs`;
 		this.logUri = vscode.Uri.file(this.logPath);
+
+		const extension = vscode.extensions.getExtension<ExtensionExports>(id);
+		if (typeof extension === 'undefined') {
+			console.log(`extension ID "${id}" not found`);
+			return;
+		}
+
+		const extensionUri = this.extensionUri = extension.extensionUri;
+		this.extensionPath = extension.extensionUri.path;
+
+		this.asAbsolutePath = function(relativePath: string): string {
+			return vscode.Uri.joinPath(extensionUri, relativePath).toString();
+		};
 
 		this.extensionMode = vscode.ExtensionMode.Development;
 		this.extension = extension;

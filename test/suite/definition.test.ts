@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import { strictEqual } from '../util/assert';
 
-import { isWebRuntime, extensionContext, tokenServicePromise, documentServicePromise, definitionProviderPromise, TextmateScopeSelector } from '../util/factory';
+import { isWebRuntime, matlabContext, matlabTokenServicePromise, matlabDocumentServicePromise, matlabDefinitionProviderPromise, TextmateScopeSelector } from '../util/factory';
 import { BASE_CLASS_NAME, SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { runSamplePass } from '../util/bench';
 
@@ -39,15 +39,15 @@ suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/def
 
 		const results = await definitionProviderResult();
 
-		let error: TypeError | void;
+		let error: TypeError | void = void 0;
 		for (let index = 0; index < results.length; index++) {
 			const page = results[index];
 			const basename = SAMPLE_FILE_BASENAMES[index];
 
 			try {
-				await runSamplePass(extensionContext, 'definition', basename, page);
+				await runSamplePass(matlabContext, 'definition', basename, page);
 			} catch (e) {
-				error = error || e as TypeError;
+				error = typeof error !== 'undefined' ? error : e as Error;
 			}
 		}
 		if (error) {
@@ -59,9 +59,9 @@ suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/def
 });
 
 async function definitionProviderResult() {
-	const documentService = await documentServicePromise;
-	const tokenizer = await tokenServicePromise;
-	const definitionProvider = await definitionProviderPromise;
+	const documentService = await matlabDocumentServicePromise;
+	const tokenizer = await matlabTokenServicePromise;
+	const definitionProvider = await matlabDefinitionProviderPromise;
 
 	const classReferenceSelector = new TextmateScopeSelector([
 		'meta.inherited-class entity.name.type.class',
@@ -77,7 +77,7 @@ async function definitionProviderResult() {
 		definition: vscode.Location | void;
 	}
 
-	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, matlabContext);
 	const results: DefinitionTestResult[][] = [];
 
 	for (let index = 0; index < samples.length; index++) {

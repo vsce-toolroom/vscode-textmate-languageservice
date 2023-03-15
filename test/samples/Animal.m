@@ -4,7 +4,7 @@ classdef Animal < matlab.mixin.Copyable
         Name string
         Order string
         Age int8
-        Tameable string
+        Tameable logical
     end
     methods
         function obj = Animal(name, age, order, tameable)

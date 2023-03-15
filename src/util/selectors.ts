@@ -1,6 +1,6 @@
 'use strict';
 
-import { FirstMateSelector } from '../parser/scopes';
+import { FirstMateSelector } from '../scopes';
 import { FastScopeSelector } from './fast-selector';
 
 type ScopeSelector = FastScopeSelector | FirstMateSelector;

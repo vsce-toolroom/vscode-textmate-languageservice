@@ -2,7 +2,7 @@
 
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from '../util/selectors';
 
-import type { ConfigJson } from './config';
+import type { ConfigJson } from '.';
 
 export class ConfigSelectors {
 	private _assignment: {

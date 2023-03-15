@@ -8,17 +8,17 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "module": "commonjs",
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "include": [
     "src/**/**.ts",
-    "test/*.test.ts",
+    "test/*.ts",
     "test/suite/*.test.ts",
     "test/util/*.ts"
   ],
   "exclude": [
     "src/main.ts",
-    "test/runner-web.test.ts",
+    "test/runner-web.*.ts",
     "test/data/*/*"
   ]
 }

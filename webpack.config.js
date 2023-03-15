@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').TsconfigPathsPlugin;
 
 /** @type {webpack.Configuration} */
 const configuration = {
-	mode: 'production',
+	mode: 'none',
 	target: 'node',
-	entry: { 'src/main': './src/main.ts' },
+	entry: {
+		'src/main': './src/main.ts'
+	},
 	output: {
 		globalObject: 'globalThis',
 		library: 'TextmateLanguageService',
@@ -15,8 +16,7 @@ const configuration = {
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
-		mainFields: ['module', 'main'],
-		plugins: [new TsconfigPathsPlugin()]
+		mainFields: ['module', 'main']
 	},
 	module: {
 		rules: [

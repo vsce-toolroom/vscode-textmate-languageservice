@@ -1,7 +1,7 @@
 'use strict';
 
 import { dequal } from 'dequal';
-import LineDiff = require('line-diff');
+import * as LineDiff from 'line-diff';
 import { jsonify } from './jsonify';
 
 export function deepEqual(actual: any, expected: any, message?: string) {
@@ -38,7 +38,7 @@ function generateMessage(actual: any, expected: any, message?: string): string {
 type CustomLineDiffGutterMode = 'insertion' | 'deletion' | 'context';
 
 function generateCustomLineDiff(actual: string, expected: string): string {
-	const lineDiff = new LineDiff(expected, actual).toString();
+	const lineDiff = new LineDiff(expected, actual, 0).toString();
 	const lines = lineDiff.split('\n');
 
 	const modes: CustomLineDiffGutterMode[] = lines.map(fromLineToGutterMode);
@@ -48,10 +48,10 @@ function generateCustomLineDiff(actual: string, expected: string): string {
 		return '';
 	}
 
-	const diff = [];
+	const diff: string[] = [];
 	let buffer: string[] = [];
-	let start: number;
-	let end: number;
+	let start: number | void;
+	let end: number | void;
 	let inserted: number = 0;
 	let deleted: number = 0;
 
@@ -75,9 +75,9 @@ function generateCustomLineDiff(actual: string, expected: string): string {
 		}
 		buffer.push(line);
 
-		if (index === lines.length - 1 || (mode !== modes[index - 1])) {
+		if (buffer.length && (index === lines.length - 1 || mode === 'context')) {
 			const context = `@@ -${lineno + 1},${deleted} +${lineno + 1},${inserted} @@`;
-			diff.push(context, ...buffer);
+			diff.push(...([context].concat(buffer)));
 			buffer = [];
 			start = end = void 0;
 			inserted = deleted = 0;

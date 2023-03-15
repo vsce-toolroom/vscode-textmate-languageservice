@@ -2,10 +2,12 @@
   "printWidth": 120,
   "semi": true,
   "tabWidth": 4,
+  "parser": "typescript",
   "trailingComma": "none",
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "singleQuote": true,
   "eslintIntegration": true,
-  "jsxSingleQuote": true
+  "jsxSingleQuote": true,
+  "endOfLine": "crlf"
 }

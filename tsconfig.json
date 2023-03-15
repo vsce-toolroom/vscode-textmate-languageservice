@@ -6,17 +6,10 @@
     "declarationDir": "dist/types",
     "declaration": true,
     "types": ["node", "webpack-env"],
-    "typeRoots": ["node_modules/@types"],
     "rootDir": ".",
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "module": "commonjs",
-    "baseUrl": "."
+    "module": "commonjs"
   },
-  "include": [
-    "src/**/**.ts",
-    "test/*.test.ts",
-    "test/suite/*.test.ts",
-    "test/util/*.ts"
-  ]
+  "include": ["src/**/**.ts"]
 }

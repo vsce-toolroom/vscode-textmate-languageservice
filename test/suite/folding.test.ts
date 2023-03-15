@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 
-import { extensionContext, foldingRangeProviderPromise } from '../util/factory';
+import { matlabContext, matlabFoldingRangeProviderPromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { runSamplePass } from '../util/bench';
 
@@ -13,15 +13,15 @@ suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/fold
 		vscode.window.showInformationMessage('TextmateFoldingRangeProvider class (src/folding.ts)');
 		const { results, samples } = await foldingRangeProviderResult();
 
-		let error: TypeError | void;
+		let error: TypeError | void = void 0;
 		for (let index = 0; index < samples.length; index++) {
 			const basename = SAMPLE_FILE_BASENAMES[index];
 			const folds = results[index];
 
 			try {
-				await runSamplePass(extensionContext, 'folding', basename, folds);
+				await runSamplePass(matlabContext, 'folding', basename, folds);
 			} catch (e) {
-				error = error || e as TypeError;
+				error = typeof error !== 'undefined' ? error : e as Error;
 			}
 		}
 		if (error) {
@@ -33,12 +33,12 @@ suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/fold
 });
 
 async function foldingRangeProviderResult() {
-	const foldingRangeProvider = await foldingRangeProviderPromise;
+	const foldingRangeProvider = await matlabFoldingRangeProviderPromise;
 
 	const foldingContext = {};
 	const cancelToken = new vscode.CancellationTokenSource().token;
 
-	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, extensionContext);
+	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, matlabContext);
 	const results: vscode.FoldingRange[][] = [];
 
 	for (let index = 0; index < samples.length; index++) {

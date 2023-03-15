@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import type { ConfigData } from './config/config';
+import type { ConfigData } from './config';
 import type { OutlineService } from './services/outline';
 
 export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
