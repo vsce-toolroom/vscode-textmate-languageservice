@@ -11,6 +11,13 @@
   "engines": {
     "vscode": "^1.51.0"
   },
+  "keywords": [
+    "vscode",
+    "vscode-extension",
+    "textmate",
+    "grammar",
+    "tokenizer"
+  ],
   "homepage": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/blob/main/README.md",
   "repository": {
     "type": "git",
