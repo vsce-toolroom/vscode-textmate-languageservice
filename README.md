@@ -1,6 +1,6 @@
 # `vscode-textmate-languageservice`
 
-> **This package is in maintenance mode & superseded by `vscode-anycode`, a quicker LSP which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
+> **This package is in maintenance mode & superseded by `vscode-anycode`, a quicker language service technology which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
 
 > This package is stable with browser compatibility (`1.1.0`). But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
 
@@ -11,7 +11,7 @@ Generate language service providers driven entirely by your Textmate grammar and
 
 <p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/demo-outline.png" height="320"/></p>
 
-In order to be supported by this module, the Textmate grammar must include the following features:
+In order to generate language providers from this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations
 - variable assignment scopes differentiated between `multiple` and `single`
 - granular keyword control tokens with `begin` and `end` scopes
@@ -28,9 +28,49 @@ Browser support:
 - If you use a bundler, you need to set `crypto` as a external (`commonjs crypto` one in webpack).
   This allows the library to avoid polyfilling the `node:crypto` module.
 
+## Setup
+
+- [Language contribution][vscode-language-contributions] and [grammar contribution][vscode-grammar-contributions] defined via `contributes` in the extension manifest (or `textmate-languageservice-contributes`).
+- Your grammar is bundled in the extension source code and is consumable by `vscode-textmate` (which can load PList XML, JSON or YAML grammars).
+- A configuration file is available in the extension, defaulting to `./textmate-configuration.json`. You can also use `textmate-languageservices` property of `package.json` to map language ID to relative path.
+
+Example language extension manifest - `./package.json`:
+
+```json
+{
+	"name": "lua",
+	"displayName": "Textmate language service for Lua",
+	"description": "Lua enhanced support for Visual Studio Code",
+	"version": "0.0.1",
+	"publisher": "",
+	"license": "",
+	"engines": {
+		"vscode": "^1.51.1"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [{
+			"id": "lua",
+			"aliases": ["Lua"],
+			"extensions": [".lua", ".moon", ".luau"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "lua",
+			"scopeName": "source.lua",
+			"path": "./syntaxes/Lua.tmLanguage.json"
+		}]
+	}
+}
+```
+
 ## Configuration
 
 Create a JSON file named `textmate-configuration.json` in the extension directory. The file accepts comments and trailing commas.
+
+If you only want to use the document and/or tokenization services, this file can be as simple as `{}`.
 
 Textmate configuration fields:
 
@@ -65,7 +105,7 @@ Textmate configuration fields:
 
 Template for `textmate-configuration.json` file:
 
-```jsonc
+```json
 {
   "assignment": {
     "single": "",
@@ -77,7 +117,7 @@ Template for `textmate-configuration.json` file:
     "keyword.control.elseif.custom",
     "keyword.control.else.custom"
   ],
-  "exclude": "**/{.modules,.includes}/**",
+  "exclude": "{.modules,.includes}/**",
   "indentation": {
     "punctuation.definition.comment.begin.custom": 1,
     "punctuation.definition.comment.end.custom": -1,
@@ -100,7 +140,7 @@ Template for `textmate-configuration.json` file:
 
 An example configuration file that targets Lua:
 
-```jsonc
+```json
 {
   "assignment": {
     "single": "meta.assignment.variable.single.lua",
@@ -115,7 +155,7 @@ An example configuration file that targets Lua:
     "keyword.control.elseif.lua",
     "keyword.control.else.lua"
   ],
-  "exclude": "**/{.luarocks,lua_modules}/**",
+  "exclude": "{.luarocks,lua_modules}/**",
   "indentation": {
     "punctuation.definition.comment.begin.lua": 1,
     "punctuation.definition.comment.end.lua": -1,
@@ -135,23 +175,43 @@ An example configuration file that targets Lua:
 
 ## Usage
 
+### Language extension
+
+Extension code sample - `./src/extension.ts`:
+
 ```typescript
-import LSP from 'vscode-textmate-languageservice';
+import TextmateLanguageService from 'vscode-textmate-languageservice';
 
 export async function activate(context: vscode.ExtensionContext) {
-	const selector: vscode.DocumentSelector = 'custom';
-	const lsp = new LSP('custom', context);
+	const selector: vscode.DocumentSelector = 'lua';
+	const textmateService = new TextmateLanguageService(selector, context);
 
-	const foldingProvider = await lsp.createFoldingRangeProvider();
-	const documentSymbolProvider = await lsp.createDocumentSymbolProvider();
-	const workspaceSymbolProvider = await lsp.createWorkspaceSymbolProvider();
-	const definitionProvider = await lsp.createDefinitionProvider();
+	const foldingRangeProvider = await textmateService.createFoldingRangeProvider();
+	const documentSymbolProvider = await textmateService.createDocumentSymbolProvider();
+	const workspaceSymbolProvider = await textmateService.createWorkspaceSymbolProvider();
+	const definitionProvider = await textmateService.createDefinitionProvider();
 
 	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(selector, documentSymbolProvider));
-	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingProvider));
+	context.subscriptions.push(vscode.languages.registerFoldingRangeProvider(selector, foldingRangeProvider));
 	context.subscriptions.push(vscode.languages.registerWorkspaceSymbolProvider(workspaceSymbolProvider));
-	context.subscriptions.push(vscode.languages.registerDefinitionProvider(['custom'], peekDefinitionProvider));
-}
+	context.subscriptions.push(vscode.languages.registerDefinitionProvider(selector, peekDefinitionProvider));
+};
+```
+
+### Tokenization
+
+Extension code sample - `./src/extension.ts`:
+
+```typescript
+import TextmateLanguageService from 'vscode-textmate-languageservice';
+
+export async function activate(context: vscode.ExtensionContext) {
+    const selector: vscode.DocumentSelector = 'custom';
+    const textmateService = new TextmateLanguageService('custom', context);
+    const textmateTokenService = await textmateService.initTokenService();
+    const textDocument = vscode.window.activeTextEditor!.document;
+    const tokens = textmateTokenService.fetch(textDocument);
+};
 ```
 
 <!-- `vscode-textmate-languageservice` -->
@@ -160,6 +220,9 @@ export async function activate(context: vscode.ExtensionContext) {
 [vscode-known-language-ids]: https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
 [github-vscode-anycode-issues]: https://github.com/microsoft/vscode-anycode/issues
 [github-epeshkov-syntax-highlighter]: https://github.com/EvgeniyPeshkov/syntax-highlighter
+<!-- Setup -->
+[vscode-language-contributions]: https://code.visualstudio.com/api/references/contribution-points#contributes.languages
+[vscode-grammar-contributions]: https://code.visualstudio.com/api/references/contribution-points#contributes.grammars
 <!-- Configuration -->
 [vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
 [vscode-api-symbolkind]: https://code.visualstudio.com/api/references/vscode-api#SymbolKind
