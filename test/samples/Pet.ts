@@ -5,7 +5,7 @@ class Pet {
     public age: number;
     public tameable: boolean;
     public constructor(name: string, age: number, order: string, tameable: boolean) {
-        this.locale = (navigator || {}).language;
+        this.locale = Intl.DateTimeFormat().resolvedOptions().locale;
         this.name = name;
         this.order = order;
         this.age = age;

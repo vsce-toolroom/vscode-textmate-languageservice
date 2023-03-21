@@ -1162,7 +1162,55 @@
   },
   {
     "startIndex": 22,
-    "endIndex": 23,
+    "endIndex": 26,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.function-call.ts",
+      "variable.other.object.ts"
+    ],
+    "type": "variable.other.object.ts",
+    "text": "Intl",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 27,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.function-call.ts",
+      "punctuation.accessor.ts"
+    ],
+    "type": "punctuation.accessor.ts",
+    "text": ".",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 41,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.function-call.ts",
+      "entity.name.function.ts"
+    ],
+    "type": "entity.name.function.ts",
+    "text": "DateTimeFormat",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 42,
     "scopes": [
       "source.ts",
       "meta.class.ts",
@@ -1176,98 +1224,8 @@
     "level": 0
   },
   {
-    "startIndex": 23,
-    "endIndex": 32,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts",
-      "variable.other.readwrite.ts"
-    ],
-    "type": "variable.other.readwrite.ts",
-    "text": "navigator",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 32,
-    "endIndex": 33,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts"
-    ],
-    "type": "meta.block.ts",
-    "text": " ",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 33,
-    "endIndex": 35,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts",
-      "keyword.operator.logical.ts"
-    ],
-    "type": "keyword.operator.logical.ts",
-    "text": "||",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 35,
-    "endIndex": 36,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts"
-    ],
-    "type": "meta.block.ts",
-    "text": " ",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 36,
-    "endIndex": 37,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts",
-      "meta.objectliteral.ts",
-      "punctuation.definition.block.ts"
-    ],
-    "type": "punctuation.definition.block.ts",
-    "text": "{",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 37,
-    "endIndex": 38,
-    "scopes": [
-      "source.ts",
-      "meta.class.ts",
-      "meta.method.declaration.ts",
-      "meta.block.ts",
-      "meta.objectliteral.ts",
-      "punctuation.definition.block.ts"
-    ],
-    "type": "punctuation.definition.block.ts",
-    "text": "}",
-    "line": 7,
-    "level": 0
-  },
-  {
-    "startIndex": 38,
-    "endIndex": 39,
+    "startIndex": 42,
+    "endIndex": 43,
     "scopes": [
       "source.ts",
       "meta.class.ts",
@@ -1281,8 +1239,70 @@
     "level": 0
   },
   {
-    "startIndex": 39,
-    "endIndex": 40,
+    "startIndex": 43,
+    "endIndex": 44,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.function-call.ts",
+      "punctuation.accessor.ts"
+    ],
+    "type": "punctuation.accessor.ts",
+    "text": ".",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 59,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.function-call.ts",
+      "entity.name.function.ts"
+    ],
+    "type": "entity.name.function.ts",
+    "text": "resolvedOptions",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 59,
+    "endIndex": 60,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.brace.round.ts"
+    ],
+    "type": "meta.brace.round.ts",
+    "text": "(",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 60,
+    "endIndex": 61,
+    "scopes": [
+      "source.ts",
+      "meta.class.ts",
+      "meta.method.declaration.ts",
+      "meta.block.ts",
+      "meta.brace.round.ts"
+    ],
+    "type": "meta.brace.round.ts",
+    "text": ")",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 61,
+    "endIndex": 62,
     "scopes": [
       "source.ts",
       "meta.class.ts",
@@ -1296,8 +1316,8 @@
     "level": 0
   },
   {
-    "startIndex": 40,
-    "endIndex": 48,
+    "startIndex": 62,
+    "endIndex": 68,
     "scopes": [
       "source.ts",
       "meta.class.ts",
@@ -1306,13 +1326,13 @@
       "variable.other.property.ts"
     ],
     "type": "variable.other.property.ts",
-    "text": "language",
+    "text": "locale",
     "line": 7,
     "level": 0
   },
   {
-    "startIndex": 48,
-    "endIndex": 49,
+    "startIndex": 68,
+    "endIndex": 69,
     "scopes": [
       "source.ts",
       "meta.class.ts",
