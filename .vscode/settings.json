@@ -12,6 +12,7 @@
   },
   "material-icon-theme.folders.associations": {
     "parser": "functions",
-    "services": "resource"
+    "services": "resource",
+    "scopes": "context"
   }
 }
