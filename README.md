@@ -214,6 +214,30 @@ export async function activate(context: vscode.ExtensionContext) {
 };
 ```
 
+**NB:** If you would like to:
+- just wire up tokenization or fast document text services to a Textmate grammar,
+- without [(re-)contributing grammar and language configuration to VS Code](#setup),
+- or writing a full [`TextmateLanguageService` provider configuration](#configuration)..
+
+You can use the custom `"textmate-language-contributes"` property in `package.json`:
+
+```json
+{
+	"textmate-language-contributes": {
+		"languages": [{
+			"id": "typescript",
+			"aliases": ["TypeScript"],
+			"extensions": [".ts", ".tsx", ".cts", ".mts"]
+		}],
+		"grammars": [{
+			"language": "typescript",
+			"scopeName": "source.ts",
+			"path": "./syntaxes/TypeScript.tmLanguage.json"
+		}]
+	}
+}
+```
+
 <!-- `vscode-textmate-languageservice` -->
 [tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
 [macromates-scope-selector-spec]: https://macromates.com/manual/en/language_grammars#naming_conventions
