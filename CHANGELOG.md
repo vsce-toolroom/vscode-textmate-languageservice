@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.2.0
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/5"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- Add support for creation of tokenization or light document service.
+  - TL:DR; swap the `"contributes"` key with a 'fake' `"textmate-language-contributes"` key in `package.json`.
+  - Now possible to wire up a fake language and grammar "contribution" to a package service.
+- Add service-only tests for TypeScript in the test suite.
+- Use `TextmateLanguageService` as global key instead of `LSP` in service workers.
+  - [`"LSP"`][wikipedia-languageserver-protocol] is an cross-process and IDE-agnostic message format/standard for language feature data.
+  - This library's just a factory for language feature services in VS Code.
+  - This change is not breaking thanks to Webpack.
+- Improve diff generation for error logging in the sample output validator that's used to test feature providers.
+- Add keywords to the NPM package's metadata for better search engine discovery.
+- Skip web testing of `vscode.DefinitionProvider` and `vscode.WorkspaceSymbolProvider` factory methods.
+
 ## 1.1.0
 
 <a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-02-24&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.1.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
@@ -12,7 +28,8 @@
 - Fix container name in symbol information output for the document symbol provider.
 - Upgrade `vscode-textmate` from **7.0.4** to **9.0.0** ([microsoft/vscode-textmate#198][github-microsoft-textmate-198]).
 - Ignore test files from package before `npm publish` to reduce size by ~20%.
-- Add a test suite runner for testing compatibility with dependent web extensions.
+- Add a web-only test harness for testing compatibility with dependent web extensions.
+- Add diff logging for JSON output sampling in the output sampler.
 - Improve test suite performance by 20% by removing dependencies & bundling.
 
 **NB:**
@@ -48,8 +65,8 @@
   - It also means your `activate` function is better off as an `async` function - the code will be easier to read.
   - Services/generators/engines are now all created behind the scenes to reduce boilerplate.
 - Introduce top-level `"textmate-languageservices"` to support extension manifests with multiple configured languages.
-  This key can map language ID to config path, i.e. `"textmate-languageservices": { "lua": "./syntaxes/lua-textmate-configuration.json" }`.
-  (Without the setting, the package loads `./textmate-configuration.json` targeting the language ID in the `LSP` constructor.)
+  - This key can map language ID to config path, i.e. `"textmate-languageservices": { "lua": "./syntaxes/lua-textmate-configuration.json" }`.
+  - (Without the setting, the package loads `./textmate-configuration.json` targeting the language ID in the `LSP` constructor.)
 - Mostly removed Node dependencies in favour of native VS Code APIs. (Browser support SOON™?)
 - Fix external file search matching in the definition provider, so it now searches in any folder.
 - Invalidate service caches using an asynchronous hash engine - see #1.
@@ -113,11 +130,14 @@ Initial version:
 
 ## Roadmap
 
-- Semantic highlighting provider for parameters.
-- Semantic highlighting provider for classes or other "Table of Contents" items.
-- Semantic highlighting for variable assignment driven by token types and/or text.
-- Custom entry text/type getter for "Table of Contents" provider.
+- `🚀` Adopt native `fetch` (Node 18.x) for loading WASM regexp parser for Oniguruma.
+- `🚀` Investigate rolling PEG parser for Textmate scope selectors in WASM format.
+- `✨` Semantic highlighting provider for parameters.
+- `✨` Semantic highlighting provider for classes or other "Table of Contents" items.
+- `✨` Semantic highlighting for variable assignment driven by token types and/or text.
 
+<!-- 1.2.0 -->
+[wikipedia-languageserver-protocol]: https://en.wikipedia.org/wiki/Language_Server_Protocol
 <!-- 1.1.0 -->
 [github-microsoft-textmate-198]: https://github.com/microsoft/vscode-textmate/issues/198
 <!-- 1.0.5 -->
