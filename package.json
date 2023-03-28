@@ -16,11 +16,14 @@
     "vscode-extension",
     "textmate",
     "grammar",
-    "syntax",
+    "language-features",
+    "language-service",
     "language",
+    "lsp",
+    "parse",
+    "syntax",
     "tokenization",
-    "tokenizer",
-    "parse"
+    "tokenizer"
   ],
   "homepage": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/blob/main/README.md",
   "repository": {
