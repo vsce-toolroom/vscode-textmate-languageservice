@@ -219,11 +219,11 @@ export async function activate(context: vscode.ExtensionContext) {
 - without [(re-)contributing grammar and language configuration to VS Code](#setup),
 - or writing a full [`TextmateLanguageService` provider configuration](#configuration)..
 
-You can use the custom `"textmate-language-contributes"` property in `package.json`:
+You can use the custom `"textmate-languageservice-contributes"` property in `package.json`:
 
 ```json
 {
-	"textmate-language-contributes": {
+	"textmate-languageservice-contributes": {
 		"languages": [{
 			"id": "typescript",
 			"aliases": ["TypeScript"],
