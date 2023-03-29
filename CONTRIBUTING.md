@@ -1,5 +1,7 @@
 # Contributing
 
+<div align="center"><img src="./assets/icon.png" width="150px"></img></div>
+
 This theme follows a bimonthly-to-monthly release schedule. Releases occur on the first day of every month and/or two weeks prior to 12:00AM UTC. This ensures that users will not be spammed with updates from NPM and Dependabot.
 
 Here are a few ways you can contribute to this repository:

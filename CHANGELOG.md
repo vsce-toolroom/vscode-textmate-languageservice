@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1
+
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/6"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmate-languageservice-contributes"`.
+
 ## 1.2.0
 
 <a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/5"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
