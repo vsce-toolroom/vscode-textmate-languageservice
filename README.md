@@ -86,7 +86,7 @@ Textmate configuration fields:
   List of Textmate tokens for dedented code block declarations (e.g. `ELSE`, `ELSEIF`).<br/>
   Tokens still need to be listed in `indentation` with the decrementing value `-1`.
 - **`exclude`** (`string`)
-  VSC glob pattern for files to exclude from workspace symbol search.
+  VS Code glob pattern for files to exclude from workspace symbol search.
 - **`indentation`** - optional (`object`)<br/>
   Indentation level offset for Textmate token types (used to implement folding).
 - **`punctuation`** - optional (`object`)<br/>

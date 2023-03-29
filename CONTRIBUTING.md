@@ -56,10 +56,15 @@ Please limit your description and code sample/screenshot(s) to one MVCE (Minimum
    git commit -m "Added cool feature (#1337)"
    ```
 
-5. Check the scripts work in the [latest version of all Visual Studio Code distribution channels][vscode-download]:
-   - Latest version of [VSC][vscode-download].
-   - Latest version of [VSC Insiders][vscode-insiders-download].
+5. Run tests targeting the [latest version of all Visual Studio Code distribution channels][vscode-download].
+   ```sh
+   npm test
+   ```
+   Installation links:
+   - Latest version of [VS Code][vscode-download].
+   - Latest version of [VS Code Insiders][vscode-insiders-download].
    - Latest version of [VSCodium][vscodium-download].
+
 
 <!-- Create issues -->
 [roadmap]: https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/blob/main/CHANGELOG.md#roadmap

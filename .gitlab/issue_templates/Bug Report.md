@@ -31,7 +31,7 @@ A MVCE (Minimum Verifiable Complete Example) or error log of the problem.
 
 <!-- Add any other context about the problem here (, , ...). -->
 <!-- Use https://stackoverflow.com/a/49398449 to grab the extension list. -->
-- VSC version:
+- VS Code version:
 - Dependent extension ID: <!-- In extension pane 🧱, please search, "Copy Extension ID" then right-click . -->
 - OS version:
 
