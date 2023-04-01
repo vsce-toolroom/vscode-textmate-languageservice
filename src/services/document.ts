@@ -6,31 +6,31 @@ import { Disposable } from '../util/dispose';
 
 import type { ConfigData } from '../config';
 
-export interface SkinnyTextLine {
+export interface LiteTextLine {
 	text: string;
 }
 
-export interface SkinnyTextDocument {
+export interface LiteTextDocument {
 	readonly uri: vscode.Uri;
 	readonly version: number;
 	readonly lineCount: number;
 
-	lineAt(line: number): SkinnyTextLine;
+	lineAt(line: number): LiteTextLine;
 	getText(): string;
 }
 
 export interface DocumentServiceInterface {
-	readonly onDidChangeDocument: vscode.Event<SkinnyTextDocument>;
-	readonly onDidCreateDocument: vscode.Event<SkinnyTextDocument>;
+	readonly onDidChangeDocument: vscode.Event<LiteTextDocument>;
+	readonly onDidCreateDocument: vscode.Event<LiteTextDocument>;
 	readonly onDidDeleteDocument: vscode.Event<vscode.Uri>;
 
-	getAllDocuments(): Thenable<Iterable<SkinnyTextDocument>>;
-	getDocument(resource: vscode.Uri): Thenable<SkinnyTextDocument | undefined>;
+	getAllDocuments(): Thenable<Iterable<LiteTextDocument>>;
+	getDocument(resource: vscode.Uri): Thenable<LiteTextDocument | undefined>;
 }
 
 export class DocumentService extends Disposable implements DocumentServiceInterface {
-	private readonly _onDidChangeDocumentEmitter = this._register(new vscode.EventEmitter<SkinnyTextDocument>());
-	private readonly _onDidCreateDocumentEmitter = this._register(new vscode.EventEmitter<SkinnyTextDocument>());
+	private readonly _onDidChangeDocumentEmitter = this._register(new vscode.EventEmitter<LiteTextDocument>());
+	private readonly _onDidCreateDocumentEmitter = this._register(new vscode.EventEmitter<LiteTextDocument>());
 	private readonly _onDidDeleteDocumentEmitter = this._register(new vscode.EventEmitter<vscode.Uri>());
 
 	private _watcher: vscode.FileSystemWatcher | undefined;
@@ -57,10 +57,10 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 	public async getAllDocuments() {
 		const resources = await vscode.workspace.findFiles(this._config.include, this._config.exclude);
 		const docs = await Promise.all(resources.map(doc => this.getDocument(doc)));
-		return docs.filter((doc): doc is SkinnyTextDocument => !!doc);
+		return docs.filter((doc): doc is LiteTextDocument => !!doc);
 	}
 
-	public async getDocument(resource: vscode.Uri): Promise<SkinnyTextDocument> {
+	public async getDocument(resource: vscode.Uri): Promise<LiteTextDocument> {
 		const matchingDocuments = vscode.workspace.textDocuments.filter(function(document) {
 			return document.uri.toString() === resource.toString();
 		});
@@ -70,7 +70,7 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 
 		const text = await readFileText(resource);
 
-		const lines: SkinnyTextLine[] = [];
+		const lines: LiteTextLine[] = [];
 		const parts = text.split(/(\r?\n)/);
 		const lineCount = Math.floor(parts.length / 2) + 1;
 		for (let line = 0; line < lineCount; line++) {

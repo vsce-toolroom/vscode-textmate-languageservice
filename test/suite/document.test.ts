@@ -7,12 +7,12 @@ import { matlabContext, matlabDocumentServicePromise } from '../util/factory';
 import { SAMPLE_FILE_BASENAMES, getSampleFileUri } from '../util/files';
 import { jsonify } from '../util/jsonify';
 
-import type { SkinnyTextDocument } from '../../src/services/document';
+import type { LiteTextDocument } from '../../src/services/document';
 
 suite('test/suite/document.test.ts - DocumentService class (src/services/document.ts)', async function() {
 	this.timeout(5000);
 
-	test('SkinnyTextDocument.uri', async function() {
+	test('LiteTextDocument.uri', async function() {
 		vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
@@ -23,7 +23,7 @@ suite('test/suite/document.test.ts - DocumentService class (src/services/documen
 		}
 	});
 
-	test('SkinnyTextDocument.lineCount', async function() {
+	test('LiteTextDocument.lineCount', async function() {
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
 		for (let index = 0; index < samples.length; index++) {
@@ -33,7 +33,7 @@ suite('test/suite/document.test.ts - DocumentService class (src/services/documen
 		}
 	});
 
-	test('SkinnyTextDocument.lineAt(line: number)', async function() {
+	test('LiteTextDocument.lineAt(line: number)', async function() {
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
 		for (let index = 0; index < samples.length; index++) {
@@ -52,7 +52,7 @@ async function documentServiceOutput() {
 	const samples = SAMPLE_FILE_BASENAMES.map(getSampleFileUri, matlabContext);
 
 	const expecteds: vscode.TextDocument[] = [];
-	const actuals: SkinnyTextDocument[] = [];
+	const actuals: LiteTextDocument[] = [];
 	let filenames: string[] = [];
 
 	for (let index = 0; index < samples.length; index++) {

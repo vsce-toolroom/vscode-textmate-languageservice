@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 import type { OutlineService, OutlineEntry } from './services/outline';
-import type { SkinnyTextDocument } from './services/document';
+import type { LiteTextDocument } from './services/document';
 
 interface LanguageSymbol {
 	readonly children: vscode.DocumentSymbol[];
@@ -13,12 +13,12 @@ interface LanguageSymbol {
 export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 	constructor(private _outlineService: OutlineService) {}
 
-	public async provideDocumentSymbolInformation(document: SkinnyTextDocument): Promise<vscode.SymbolInformation[]> {
+	public async provideDocumentSymbolInformation(document: LiteTextDocument): Promise<vscode.SymbolInformation[]> {
 		const outline = await this._outlineService.fetch(document);
 		return outline.map(this.toSymbolInformation.bind(outline) as typeof this.toSymbolInformation, outline);
 	}
 
-	public async provideDocumentSymbols(document: SkinnyTextDocument): Promise<vscode.DocumentSymbol[]> {
+	public async provideDocumentSymbols(document: LiteTextDocument): Promise<vscode.DocumentSymbol[]> {
 		const outline = await this._outlineService.fetch(document);
 		const root: LanguageSymbol = {
 			children: [],
