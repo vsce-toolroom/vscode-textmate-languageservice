@@ -6,7 +6,7 @@ import { TextmateScopeSelector } from '../util/selectors';
 import { ServiceBase } from '../util/service';
 
 import type { ConfigData } from '../config';
-import type { SkinnyTextDocument } from './document';
+import type { LiteTextDocument } from './document';
 import type { TokenizerService, TextmateToken } from './tokenizer';
 
 const entitySelector = new TextmateScopeSelector('entity');
@@ -26,12 +26,12 @@ export class OutlineService extends ServiceBase<OutlineEntry[]> {
 		super();
 	}
 
-	public async lookup(document: SkinnyTextDocument, text: string): Promise<OutlineEntry | void> {
+	public async lookup(document: LiteTextDocument, text: string): Promise<OutlineEntry | void> {
 		const outline = await this.fetch(document);
 		return outline.find(entry => entry.text === text);
 	}
 
-	public async parse(document: SkinnyTextDocument): Promise<OutlineEntry[]> {
+	public async parse(document: LiteTextDocument): Promise<OutlineEntry[]> {
 		const outline: OutlineEntry[] = [];
 		const tokens = await this._tokenService.fetch(document);
 

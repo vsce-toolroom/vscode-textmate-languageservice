@@ -6,7 +6,7 @@ import { Disposable } from './util/dispose';
 import { lazy } from './util/lazy';
 import type { Lazy } from './util/lazy';
 import type { TextmateDocumentSymbolProvider } from './document-symbol';
-import type { SkinnyTextDocument, DocumentService } from './services/document';
+import type { LiteTextDocument, DocumentService } from './services/document';
 
 export class TextmateWorkspaceSymbolProvider extends Disposable implements vscode.WorkspaceSymbolProvider {
 	private _symbolCache = new Map<string, Lazy<Thenable<vscode.SymbolInformation[]>>>();
@@ -37,13 +37,13 @@ export class TextmateWorkspaceSymbolProvider extends Disposable implements vscod
 		}
 	}
 
-	private getSymbols(document: SkinnyTextDocument): Lazy<Thenable<vscode.SymbolInformation[]>> {
+	private getSymbols(document: LiteTextDocument): Lazy<Thenable<vscode.SymbolInformation[]>> {
 		const provideDocumentSymbolInformation = this._documentSymbols.provideDocumentSymbolInformation
 			.bind(this._documentSymbols, document) as () => Promise<vscode.SymbolInformation[]>;
 		return lazy(provideDocumentSymbolInformation);
 	}
 
-	private onDidChangeDocument(document: SkinnyTextDocument) {
+	private onDidChangeDocument(document: LiteTextDocument) {
 		this._symbolCache.set(document.uri.fsPath, this.getSymbols(document));
 	}
 

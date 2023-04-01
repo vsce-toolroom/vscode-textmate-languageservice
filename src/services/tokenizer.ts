@@ -5,7 +5,7 @@ import * as vscodeTextmate from 'vscode-textmate';
 import { ServiceBase } from '../util/service';
 
 import type { Mutable } from 'type-fest';
-import type { SkinnyTextDocument, SkinnyTextLine } from './document';
+import type { LiteTextDocument, LiteTextLine } from './document';
 import type { ConfigData } from '../config';
 
 export interface TextmateToken extends Mutable<vscodeTextmate.IToken> {
@@ -38,7 +38,7 @@ export class TokenizerService extends ServiceBase<TextmateToken[]> {
 		super();
 	}
 
-	public async parse(document: SkinnyTextDocument): Promise<TextmateToken[]> {
+	public async parse(document: LiteTextDocument): Promise<TextmateToken[]> {
 		const tokens: TextmateToken[] = [];
 
 		const state = this._states[document.uri.path] = {} as TextmateTokenizerState;
@@ -50,7 +50,7 @@ export class TokenizerService extends ServiceBase<TextmateToken[]> {
 		state.stack = 0;
 
 		for (let lineNumber = 0; lineNumber < document.lineCount; lineNumber++) {
-			const line: SkinnyTextLine = document.lineAt(lineNumber);
+			const line: LiteTextLine = document.lineAt(lineNumber);
 			const lineResult = this._grammar.tokenizeLine(line.text, state.rule) as TextmateTokenizeLineResult;
 
 			for (const token of lineResult.tokens) {

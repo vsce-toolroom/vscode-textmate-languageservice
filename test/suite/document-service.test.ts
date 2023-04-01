@@ -7,12 +7,10 @@ import { typescriptContext, typescriptDocumentServicePromise } from '../util/fac
 import { SERVICE_SAMPLE_BASENAME, getSampleFileUri } from '../util/files';
 import { jsonify } from '../util/jsonify';
 
-import type { SkinnyTextDocument } from '../../src/services/document';
-
 suite('test/suite/document-service.test.ts - DocumentService class (src/services/document.ts)', async function() {
 	this.timeout(5000);
 
-	test('SkinnyTextDocument.uri', async function() {
+	test('LiteTextDocument.uri', async function() {
 		vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
 		const { actual, expected, filename } = await documentServiceOutput();
 		const textDocument = expected;
@@ -20,14 +18,14 @@ suite('test/suite/document-service.test.ts - DocumentService class (src/services
 		strictEqual(textDocument.uri.toString(), providerDocument.uri.toString(), filename);
 	});
 
-	test('SkinnyTextDocument.lineCount', async function() {
+	test('LiteTextDocument.lineCount', async function() {
 		const { actual, expected, filename } = await documentServiceOutput();
 		const textDocument = expected;
 		const providerDocument = actual;
 		strictEqual(textDocument.lineCount, providerDocument.lineCount, filename);
 	});
 
-	test('SkinnyTextDocument.lineAt(line: number)', async function() {
+	test('LiteTextDocument.lineAt(line: number)', async function() {
 		const { actual, expected, filename } = await documentServiceOutput();
 		const textDocument = expected;
 		const providerDocument = actual;
