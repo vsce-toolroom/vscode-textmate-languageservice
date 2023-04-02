@@ -214,8 +214,34 @@
         "kind": 2,
         "range": [
           {
+            "line": 20,
+            "character": 33
+          },
+          {
             "line": 21,
             "character": 4
+          }
+        ],
+        "selectionRange": [
+          {
+            "line": 20,
+            "character": 33
+          },
+          {
+            "line": 21,
+            "character": 4
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "else",
+        "detail": "keyword.control.else.matlab",
+        "kind": 2,
+        "range": [
+          {
+            "line": 21,
+            "character": 44
           },
           {
             "line": 23,
@@ -225,7 +251,7 @@
         "selectionRange": [
           {
             "line": 21,
-            "character": 4
+            "character": 44
           },
           {
             "line": 23,

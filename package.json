@@ -37,7 +37,7 @@
   "scripts": {
     "prepublishOnly": "npm-run-all test bundle clean-production",
     "test": "npm-run-all reset patch stage harness",
-    "posttest": "npm-run-all dump reset",
+    "_posttest": "npm-run-all dump reset",
     "clean": "shx rm -rf dist",
     "clean-production": "shx rm -rf dist/test",
     "pegjs": "node ./scripts/pegjs.js",
