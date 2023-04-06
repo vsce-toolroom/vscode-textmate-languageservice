@@ -42,7 +42,7 @@ export default class TextmateLanguageService {
 	// Refs: microsoft/TypeScript#30355
 	private [_private]: Private;
 
-	constructor(public readonly languageId: string, public readonly context: vscode.ExtensionContext) {
+	constructor(public readonly languageId: string, public readonly context?: vscode.ExtensionContext) {
 		if (!context || !context.extension) {
 			return;
 		}
