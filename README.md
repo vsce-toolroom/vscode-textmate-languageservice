@@ -1,6 +1,6 @@
 # `vscode-textmate-languageservice`
 
-<p align="center"><img src="./logo.png" width="205px" /></p>
+<p align="center"><img src="./assets/logo.png" width="205px" /></p>
 
 > 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
