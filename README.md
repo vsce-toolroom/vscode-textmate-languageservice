@@ -1,11 +1,10 @@
 # `vscode-textmate-languageservice`
 
-> **This package is in maintenance mode & superseded by `vscode-anycode`, a quicker language service technology which leverages the [`tree-sitter` symbolic-expression syntax parser][tree-sitter-parser-guide].**
+<p align="center"><img src="./logo.png" width="205px" /></p>
 
-> This package is stable with browser compatibility (`1.1.0`). But I recommend you leverage `tree-sitter`. Maintainable & with faster retokenization, **it is a Holy Grail** ... whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
+> 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
-> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][github-vscode-anycode-issues].
-> Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
+> *This package is in maintenance mode & the technology is superseded by `vscode-anycode`, a quicker language service which leverages the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide].*
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
@@ -27,6 +26,15 @@ Browser support:
 - This package supports Webpack and ESBuild.
 - If you use a bundler, you need to set `crypto` as a external (`commonjs crypto` one in webpack).
   This allows the library to avoid polyfilling the `node:crypto` module.
+
+**Advisory:**
+
+> This package is stable with browser compatibility (`1.1.0`). But I recommend you watch out for `tree-sitter` [native integration][github-vscode-pull-treesitter] into `vscode` ([issue][github-vscode-issue-treesitter]). Maintainable & with faster retokenization, **it is a Holy Grail** ...
+
+> Whereas this package depends on a [well-written Textmate grammar][macromates-scope-selector-spec] and is a band aid of sorts.
+
+> If there is [native `vscode` support for the language][vscode-known-language-ids], find a Tree-sitter syntax online then suggest it in an [Anycode issue][github-vscode-anycode-issues].
+> Otherwise, please open an issue on the [community-maintained Treesitter syntax highlighter extension][github-epeshkov-syntax-highlighter] and someone might deal with it.
 
 ## Setup
 
@@ -240,6 +248,8 @@ You can use the custom `"textmate-languageservice-contributes"` property in `pac
 
 <!-- `vscode-textmate-languageservice` -->
 [tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
+[github-vscode-pull-treesitter]: https://github.com/microsoft/vscode/pull/161479
+[github-vscode-issue-treesitter]: https://github.com/microsoft/vscode/issues/50140
 [macromates-scope-selector-spec]: https://macromates.com/manual/en/language_grammars#naming_conventions
 [vscode-known-language-ids]: https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
 [github-vscode-anycode-issues]: https://github.com/microsoft/vscode-anycode/issues
