@@ -4,9 +4,9 @@
   "version": "1.2.1",
   "license": "MIT",
   "author": {
-    "name": "SNDST00M",
-    "email": "sndst00m@outlook.com",
-    "url": "https://gitlab.com/SNDST00M/"
+    "name": "vsce-toolroom",
+    "email": "git.vsce-toolroom@outlook.com",
+    "url": "https://github.com/vsce-toolroom/"
   },
   "engines": {
     "vscode": "^1.51.0"
@@ -25,15 +25,15 @@
     "tokenization",
     "tokenizer"
   ],
-  "homepage": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/blob/main/README.md",
+  "homepage": "https://github.com/vsce-toolroom/vscode-textmate-languageservice/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice.git"
+    "url": "https://github.com/vsce-toolroom/vscode-textmate-languageservice.git"
   },
   "main": "./dist/src/main.js",
   "browser": "./dist/src/main.js",
   "types": "./dist/types/src/main.d.ts",
-  "bugs": "https://gitlab.com/SNDST00M/vscode-textmate-languageservice/issues",
+  "bugs": "https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues",
   "scripts": {
     "prepublishOnly": "npm-run-all test bundle clean-production",
     "test": "npm-run-all reset patch stage harness",
@@ -75,13 +75,13 @@
     "mocha": "^10.2.0",
     "npm-run-all": "^4.1.5",
     "path-browserify": "^1.0.1",
-    "peggy": "^2.0.1",
+    "peggy": "^3.0.2",
     "prettier": "^2.3.1",
     "process": "^0.11.10",
     "shelljs": "^0.8.5",
     "shx": "^0.3.4",
     "ts-loader": "^9.4.2",
-    "ts-pegjs": "^3.1.0",
+    "ts-pegjs": "^4.1.0",
     "typescript": "^4.4.3",
     "vscode-oniguruma": "^1.7.0",
     "webpack": "^5.75.0",

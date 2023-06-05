@@ -15,6 +15,3 @@ test/vscode-typescript/*.tgz
 vscode-web-insider-*-tmp
 *.tgz
 *.vsix
-# We use Gitlab CI
-cache/
-builds/

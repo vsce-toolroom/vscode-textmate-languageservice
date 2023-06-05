@@ -8,7 +8,7 @@
 
 Generate language service providers driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/raw/v1.2.1/assets/demo-outline.png" height="320"/></p>
+<p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/raw/v1.2.1/assets/demo-outline.png" height="320"/></p>
 
 In order to generate language providers from this module, the Textmate grammar must include the following features:
 - meta declaration scopes for block level declarations

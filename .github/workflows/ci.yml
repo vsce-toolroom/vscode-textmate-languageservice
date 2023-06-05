@@ -1,0 +1,32 @@
+name: CI
+
+concurrency: vscode_environment
+
+on:
+  push:
+    branches: [ release-candidate/* ]
+  pull_request:
+    branches: [ main, release-candidate/* ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: recursive
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install Dependencies
+      run: npm install
+    - name: Run Tests
+      run: npm test
+    - name: Upload Data Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vscode-textmate-languageservice-test-data
+        path: test/data

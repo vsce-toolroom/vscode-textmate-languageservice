@@ -1,0 +1,22 @@
+name: Issue automation
+
+on:
+  issues:
+    types: [opened, closed]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  automate-issues-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label open issue
+        if: "github.event.action == 'opened'"
+        uses: andymckay/labeler@master
+        with:
+          add-labels: "status-tracking"
+      - name: Label closed issue
+        if: "github.event.action == 'closed'"
+        uses: andymckay/labeler@master
+        with:
+          remove-labels: "status-tracking"
