@@ -1,13 +1,13 @@
 {
   "returnTypes": {
-    "start": "matchers.ParsedMatcher",
-    "atom": "matchers.AtomMatcher",
-    "scope": "matchers.ScopeMatcher",
-    "path": "matchers.PathMatcher",
-    "group": "matchers.GroupMatcher",
-    "expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
-    "composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
-    "selector": "matchers.ParsedMatcher",
+    "Start": "matchers.ParsedMatcher",
+    "Atom": "matchers.AtomMatcher",
+    "Scope": "matchers.ScopeMatcher",
+    "Path": "matchers.PathMatcher",
+    "Group": "matchers.GroupMatcher",
+    "Expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "Composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "Selector": "matchers.ParsedMatcher",
     "_": "Array<' ' | '\t'>"
   }
 }

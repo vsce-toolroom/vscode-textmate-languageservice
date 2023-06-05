@@ -1,3 +1,4 @@
+
 /* --------------------------------------------------------------------------------------------
  *  Copyright (c) GitHub Inc. All rights reserved.
  *  Licensed under the MIT License. See LICENSE.md in the project root for license information.
@@ -79,7 +80,6 @@ export class ScopeMatcher {
 		return void 0;
 	}
 }
-
 
 export class GroupMatcher {
 	public prefix?: GroupPrefix;
