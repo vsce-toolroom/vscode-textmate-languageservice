@@ -1,7 +1,7 @@
 .vscode/
 .vscode-test/
 .vscode-test-web/
-.gitlab/
+.github/
 assets/
 builds/
 out/
@@ -16,7 +16,6 @@ test/
 .gitattributes
 .gitconfig
 .gitignore
-.gitlab-ci.yml
 .gitmodules
 .prettierrc.json
 .travis.yml
