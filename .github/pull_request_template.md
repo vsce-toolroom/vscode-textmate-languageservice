@@ -26,7 +26,7 @@
 
 - [ ] Tested this in Visual Studio Code v.
 - [ ] Tested this in Visual Studio Code Insiders v.
-- [ ] Tested this in GitHub Codespaces v.
+- [ ] Tested this for GitHub Codespaces v.
 - [ ] Tested this in VSCodium v.
 
 #### Anything else worth mentioning?
