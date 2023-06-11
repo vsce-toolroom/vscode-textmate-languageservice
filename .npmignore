@@ -22,7 +22,6 @@ test/
 .eslintignore
 .eslintrc.json
 CODE_OF_CONDUCT.md
-CONTRIBUTING.md
 tsconfig.json
 tsconfig.*.json
 vscode-web-insider-*-tmp
