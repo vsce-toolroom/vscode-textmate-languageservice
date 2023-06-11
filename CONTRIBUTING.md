@@ -69,7 +69,7 @@ Please limit your description and code sample/screenshot(s) to one MVCE (Minimum
 
 
 <!-- Create issues -->
-[roadmap]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/blob/main/CHANGELOG.md#roadmap
+[roadmap]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/blob/main/CHANGELOG.md#roadmap
 <!-- Open pull requests -->
 [github-pr-link]: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
 [vscode-download]: https://code.visualstudio.com/Download

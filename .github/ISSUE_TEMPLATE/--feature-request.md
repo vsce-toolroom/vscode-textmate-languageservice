@@ -4,7 +4,7 @@
 - [ ] I searched [existing issues][vsctmls-issues], open & closed. Yes, my feature request is new.
 
 ### Is your feature request related to a problem?
-<!-- A clear & concise description of what the user-facing problem is. (e.g. I want outlines to show the type category). -->
+<!-- A clear & concise "user story" describing the user-facing problem. (e.g. I want outlines to show the type category). -->
 - **As a:**
 - **I want to:**
 - **So that:**
@@ -16,6 +16,6 @@
 <!-- A clear & concise description of any alternative solutions or features you've considered. -->
 
 <!-- Checklist -->
-[vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/issues/?sort=created_date&state=opened
+[vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues?q=is%3Aopen+sort%3Aupdated-desc
 
 /label ~feature-request

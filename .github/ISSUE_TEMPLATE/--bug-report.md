@@ -36,6 +36,6 @@ A MVCE (Minimum Verifiable Complete Example) or error log of the problem.
 - OS version:
 
 <!-- Checklist -->
-[vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/issues/?sort=created_date&state=opened
+[vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues?q=is%3Aopen+sort%3Aupdated-desc
 
 /label ~bug

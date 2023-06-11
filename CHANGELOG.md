@@ -2,13 +2,13 @@
 
 ## 1.2.1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/6"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/6"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmate-languageservice-contributes"`.
 
 ## 1.2.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/5"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.2.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/5"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Add support for creation of tokenization or light document service.
   - TL:DR; swap the `"contributes"` key with a 'fake' `"textmate-languageservice-contributes"` key in `package.json`.
@@ -24,7 +24,7 @@ Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmat
 
 ## 1.1.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-02-24&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.1.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-02-24&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/4"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.1.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Bundle files using Webpack for performance boost.
 - Add browser production support (bundle `onig.wasm` using `encoded-uint8array-loader` & prevent reliance on `fetch`).
@@ -44,7 +44,7 @@ Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmat
 
 ## 1.0.0
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/3"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.1.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-28&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/3"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Achieved web readiness by handling hashing. We use native hashing of file text contents to keep it fast.
 - Upgrade from SHA-1 algorithm (a famous collision-attack vector) and adopt stable SHA-256 alternatives.
@@ -52,7 +52,7 @@ Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmat
 
 ## 1.0.0-rc-2
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.0.0-rc-2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/2"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.0.0-rc-2/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-27&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/2"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-2&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - Fix the line number in the folding provider for top-level declaration folds after the first declaration.
 - Add browser readiness with a cost-benefit tradeoff... we now load `onig.wasm` (Textmate grammar regex parser) [without streaming][github-monacotm-app-loadonigwasm].
@@ -61,7 +61,7 @@ Hotfix for typo in documentation: `"textmate-language-contributes"` -> `"textmat
 
 ## 1.0.0-rc-1
 
-<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_51" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v1.1.0/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.0.0-rc-1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-01-26&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/1"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.0.0-rc-1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 - `vscode-textmate-languageservice` codebase republished and migrated to [Gitlab][gitlab-repository-tag-1.0.0.rc.1].
 - Significant changes to the shape of the API exports.
@@ -149,8 +149,8 @@ Initial version:
 <!-- 1.0.5 -->
 [github-monacotm-app-loadonigwasm]: https://github.com/bolinfest/monaco-tm/blob/908f1ca0cab3e82823cb465108ae86ee2b4ba3fc/src/app.ts#L141-L143
 <!-- 1.0.0-rc-2 -->
-[github-old-ci-yaml]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/blob/v0.2.1/.github/workflows/ci.yml
+[github-old-ci-yaml]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/blob/v0.2.1/.github/workflows/ci.yml
 <!-- 1.0.0-rc-1 -->
-[gitlab-repository-tag-1.0.0.rc.1]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/tags/v1.0.0-rc-1
+[gitlab-repository-tag-1.0.0.rc.1]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/tags/v1.0.0-rc-1
 <!-- 0.1.0 -->
-[github-vsctmls-index]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/-/blob/v0.1.0/src/index.ts
+[github-vsctmls-index]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/blob/v0.1.0/src/index.ts
