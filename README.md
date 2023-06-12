@@ -246,6 +246,17 @@ You can use the custom `"textmate-languageservice-contributes"` property in `pac
 }
 ```
 
+### Use Oniguruma WASM buffer
+
+This is the `vscode-oniguruma` build of Oniguruma written in C, compiled to WASM format with memory hooks to V8.
+
+This is not streaming 🙁 but `vscode` libs must bundle WebAssembly deps so as to support web ecosystem.
+
+```typescript
+import TextmateLanguageService from 'vscode-textmate-languageservice';
+const onigurumaPromise = TextmateLanguageService.utils.getOniguruma();
+```
+
 <!-- `vscode-textmate-languageservice` -->
 [tree-sitter-parser-guide]: https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries
 [github-vscode-pull-treesitter]: https://github.com/microsoft/vscode/pull/161479
