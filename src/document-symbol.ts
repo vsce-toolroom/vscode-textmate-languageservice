@@ -25,7 +25,9 @@ export class TextmateDocumentSymbolProvider implements vscode.DocumentSymbolProv
 			level: -Infinity,
 			parent: undefined
 		};
-		this.traverseAndCopy(root, outline);
+		if (outline.length !== 0) {
+			this.traverseAndCopy(root, outline);
+		}
 		return root.children;
 	}
 

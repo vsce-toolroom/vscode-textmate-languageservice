@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "lib": ["es2017", "dom"],
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
     "outDir": "out",
     "declarationDir": "dist/types",
     "declaration": true,
-    "types": ["node", "webpack-env"],
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "types": ["node", "webpack-env", "imports", "context"],
     "rootDir": ".",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "module": "commonjs"
   },
-  "include": ["src/**/**.ts"]
+  "include": ["src/**/*", "wasm.d.ts"]
 }

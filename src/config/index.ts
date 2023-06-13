@@ -4,7 +4,7 @@ import type * as vscode from 'vscode';
 import { ConfigSelectors } from './selectors';
 
 import type { PartialDeep, JsonObject } from 'type-fest';
-import type { LanguageContribution } from '../services/resolver';
+import type { LanguageContribution } from '../util/contributes';
 
 export type SelectorSource = string[] | string;
 
@@ -19,7 +19,7 @@ export interface ConfigJson extends PartialJsonObject {
 	declarations?: SelectorSource;
 	dedentation?: SelectorSource;
 	exclude?: string;
-	indentation: {
+	indentation?: {
 		[selector: string]: 1 | -1 | undefined;
 	};
 	punctuation?: {
@@ -58,7 +58,7 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 		return `*${extensions[0]}`;
 	} else {
 		const segments = extensions.map(e => e.substring(1));
-		return `*.{${segments.join(',')}`;
+		return `*.{${segments.join(',')}}`;
 	}
 }
 

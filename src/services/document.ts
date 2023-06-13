@@ -62,7 +62,7 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 
 	public async getDocument(resource: vscode.Uri): Promise<LiteTextDocument> {
 		const matchingDocuments = vscode.workspace.textDocuments.filter(function(document) {
-			return document.uri.toString() === resource.toString();
+			return document.uri.toString(true) === resource.toString(true);
 		});
 		if (matchingDocuments.length !== 0) {
 			return matchingDocuments[0];

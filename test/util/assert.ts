@@ -38,6 +38,7 @@ function generateMessage(actual: any, expected: any, message?: string): string {
 type CustomLineDiffGutterMode = 'insertion' | 'deletion' | 'context';
 
 function generateCustomLineDiff(actual: string, expected: string): string {
+	return '';
 	const lineDiff = new LineDiff(expected, actual, 0).toString();
 	const lines = lineDiff.split('\n');
 

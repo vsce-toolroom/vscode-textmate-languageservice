@@ -6,73 +6,19 @@
 
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
-
-import type { PartialDeep, JsonObject, JsonArray, PackageJson } from 'type-fest';
-
+import * as path from 'path';
 import { readFileText } from '../util/loader';
-
-type PartialJsonObject = PartialDeep<JsonObject>;
-
-export interface GrammarLanguageContribution extends PartialJsonObject {
-	language: string;
-	scopeName: string;
-	path: string;
-	embeddedLanguages?: { [scopeName: string]: string };
-}
-
-export interface GrammarInjectionContribution extends PartialJsonObject {
-	scopeName: string;
-	path: string;
-	injectTo: string[];
-}
-
-export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
-
-export function isGrammarLanguageContribution(g: GrammarContribution): g is GrammarLanguageContribution {
-	return g && 'injectTo' in g === false;
-}
-
-export interface LanguageContribution extends PartialJsonObject {
-	id: string;
-	extensions?: string[];
-	filenames?: string[];
-}
-
-export interface ExtensionContributions extends PartialJsonObject {
-	grammars?: GrammarContribution[] & JsonArray;
-	languages?: LanguageContribution[] & JsonArray;
-}
-
-export interface LanguageConfigurations {
-	[languageId: string]: string;
-}
-
-export interface ExtensionManifest extends PackageJson {
-	contributes?: ExtensionContributions;
-	/** Mapping from language ID to config path. Default: `./textmate-configuration.json`. */
-	'textmate-languageservices'?: LanguageConfigurations;
-	/** Ersatz extension contributions - a service wiring to any language grammars. */
-	'textmate-languageservice-contributes'?: ExtensionContributions;
-}
-
-export const contributionKeys: ExtensionManifestContributionKey[] = [
-	'contributes',
-	'textmate-languageservice-contributes'
-];
-
-export type ExtensionManifestContributionKey = 'contributes' | 'textmate-languageservice-contributes';
+import { ContributorData } from '../util/contributes';
+import type { GrammarLanguageContribution, LanguageContribution } from '../util/contributes';
 
 export class ResolverService implements vscodeTextmate.RegistryOptions {
-	constructor(
-		private _context: vscode.ExtensionContext,
-		private _grammars: GrammarContribution[],
-		private _languages: LanguageContribution[],
-		public onigLib: Promise<vscodeTextmate.IOnigLib>
-	) {
+	private _contributes: ContributorData;
+	constructor(public onigLib: Promise<vscodeTextmate.IOnigLib>, context?: vscode.ExtensionContext) {
+		this._contributes = new ContributorData(context);
 	}
 
 	public findLanguageByExtension(fileExtension: string): string | null {
-		for (const language of this._languages) {
+		for (const language of this._contributes.languages.reverse()) {
 			if (!language.extensions) {
 				continue;
 			}
@@ -86,7 +32,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 	}
 
 	public findLanguageByFilename(fileLabel: string): string | null {
-		for (const language of this._languages) {
+		for (const language of this._contributes.languages.reverse()) {
 			if (!language.filenames) {
 				continue;
 			}
@@ -111,37 +57,56 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		return grammar ? grammar.scopeName : null;
 	}
 
-	public findLanguageDataById(id: string): LanguageContribution {
-		for (const language of this._languages) {
-			if (language.id === id) {
+	public findLanguageDataById(languageId: string): LanguageContribution {
+		for (const language of this._contributes.languages.reverse()) {
+			if (language.id === languageId) {
 				return language;
 			}
 		}
-		throw new Error('Could not find language contribution for language ID "' + id + '" in extension manifest');
+		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
 	}
 
-	public findGrammarDataByLanguageId(id: string): GrammarContribution {
-		for (const grammar of this._grammars) {
-			if (grammar.language === id) {
+	public findGrammarDataByLanguageId(languageId: string): GrammarLanguageContribution {
+		for (const grammar of this._contributes.grammars.reverse()) {
+			if (grammar.language === languageId) {
 				return grammar;
 			}
 		}
-		throw new Error('Could not find grammar contribution for language ID "' + id + '" in extension manifest');
+		throw new Error('Could not find grammar contribution for language ID "' + languageId + '" in extension manifest');
+	}
+
+	public findExtensionByLanguageId(languageId: string): vscode.Extension<any> | undefined {
+		return this._contributes.sources.languages[languageId];
+	}
+
+	public findExtensionByScopeName(scopeName: string): vscode.Extension<any> {
+		return this._contributes.sources.grammars[scopeName];
 	}
 
 	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
-		for (const grammar of this._grammars) {
+		const mapping = this._contributes.sources;
+		const extension = mapping.grammars[scopeName];
+		for (const grammar of this._contributes.grammars.reverse()) {
 			if (grammar.scopeName !== scopeName) {
 				continue;
 			}
 			try {
-				const uri = vscode.Uri.joinPath(this._context.extensionUri, grammar.path);
+				const uri = vscode.Uri.joinPath(extension.extensionUri, grammar.path);
 				const text = await readFileText(uri);
 				return vscodeTextmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
-				throw e;
+				const filepath = extension!.extensionUri?.fsPath.replace(/\\/g, '/') || '';
+				throw new Error('Could not load grammar "' + grammar.path + '" from extension path "' + filepath + '"');
 			}
 		}
-		return null;
+		throw new Error('Could not load grammar for scope name "' + scopeName + '"');
+	}
+
+	public async loadGrammarByLanguageId(languageId: string): Promise<vscodeTextmate.IRawGrammar | null> {
+		const grammar = this._contributes.grammars.find(g => g.language === languageId);
+		if (!grammar) {
+			throw new Error('Could not load grammar for language ID "' + languageId + '"');
+		}
+		return this.loadGrammar(grammar.scopeName);
 	}
 }
