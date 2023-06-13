@@ -8,7 +8,7 @@ import { ConfigData } from './config';
 import { loadJsonFile } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
-import { isGrammarLanguageContribution, contributionKeys, ResolverService } from './services/resolver';
+import { ResolverService } from './services/resolver';
 import { OutlineService } from './services/outline';
 import { DocumentService } from './services/document';
 import { TextmateFoldingRangeProvider } from './folding';
@@ -17,7 +17,7 @@ import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest, GrammarContribution, LanguageContribution } from './services/resolver';
+import type { ExtensionManifest } from './util/contributes';
 
 const _private = Symbol('private');
 
@@ -36,39 +36,26 @@ interface Private {
 }
 
 export default class TextmateLanguageService {
-	public static utils = { TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile };
+	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, getOniguruma };
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
 	private [_private]: Private;
 
 	constructor(public readonly languageId: string, public readonly context?: vscode.ExtensionContext) {
-		if (!context || !context.extension) {
-			return;
-		}
-		const manifest = context.extension.packageJSON as ExtensionManifest;
-
-		const grammars: GrammarContribution[] = [];
-		const languages: LanguageContribution[] = [];
-		for (const key of contributionKeys) {
-			if (key in manifest === false) {
-				continue;
-			}
-			const contributes = manifest[key];
-			if (contributes.grammars && contributes.grammars.length) {
-				grammars.push(...contributes.grammars.filter(isGrammarLanguageContribution));
-			}
-			if (contributes.languages && contributes.languages.length) {
-				languages.push(...contributes.languages);
-			}
-		}
+		this[_private] = {};
 
 		const onigLibPromise = getOniguruma();
-		const resolver = new ResolverService(context, grammars, languages, onigLibPromise);
+		const resolver = new ResolverService(onigLibPromise, context);
+
+		const extension = context?.extension || resolver.findExtensionByLanguageId(languageId);
+		const manifest = extension?.packageJSON as ExtensionManifest | undefined;
+
+		if (!manifest) {
+			throw new Error('could not find extension contributing language ID "' + languageId + '"');
+		}
 
 		const registry = new vscodeTextmate.Registry(resolver);
-
-		this[_private] = {};
 
 		const grammarData = resolver.findGrammarDataByLanguageId(languageId);
 		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
@@ -76,9 +63,11 @@ export default class TextmateLanguageService {
 		const paths = manifest['textmate-languageservices'] || {};
 		const filepath = paths[languageId] || './textmate-configuration.json';
 
-		const uri = vscode.Uri.joinPath(context.extensionUri, filepath);
+		const uri = vscode.Uri.joinPath(extension.extensionUri, filepath);
 		const languageData = resolver.findLanguageDataById(languageId);
-		this[_private].configPromise = loadJsonFile<ConfigJson>(uri).then(json => new ConfigData(json, languageData));
+		this[_private].configPromise = loadJsonFile<ConfigJson>(uri)
+			.then(json => new ConfigData(json, languageData))
+			.catch(() => new ConfigData({}, languageData));
 	}
 
 	public async initTokenService(): Promise<TokenizerService> {

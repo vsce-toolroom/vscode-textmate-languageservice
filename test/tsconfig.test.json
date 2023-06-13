@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
+    "outDir": "../out",
+    "typeRoots": ["../node_modules/@types", "../typings"],
+    "types": ["node", "webpack-env", "mocha", "imports", "context"],
+    "rootDir": "..",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "baseUrl": ".."
+  },
+  "include": ["./*", "./suite/*/*.test", "./util/*"],
+  "exclude": ["../src/main", "./runner-web", "./data/*/*"]
+}

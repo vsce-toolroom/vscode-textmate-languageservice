@@ -1,3 +1,3 @@
 **/*.m linguist-language=matlab
 package-lock.json -diff
-test/vscode-typescript/syntaxes/TypeScript.tmLanguage.json -diff
+test/extensions/vscode-mediawiki/syntaxes/mediawiki.tmLanguage.json -diff

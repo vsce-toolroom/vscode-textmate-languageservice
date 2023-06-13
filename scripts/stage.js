@@ -12,7 +12,6 @@ const extensionTestDevDependencies = [
 ];
 const extensionTestDataFolders = ['data', 'samples'];
 
-shelljs.exec('npm run bundle');
 shelljs.exec('npm pack');
 const tarballPath = path.basename(glob.globSync('*.tgz')[0]);
 shelljs.exec(`npm --prefix ${extensionPath} install --omit=dev ${tarballPath}`);
