@@ -1,4 +1,4 @@
-[submodule "test/vscode-matlab"]
-	path = test/vscode-matlab
+[submodule "test/extensions/vscode-matlab"]
+	path = test/extensions/vscode-matlab
 	url = https://github.com/Gimly/vscode-matlab
 	ignore = all

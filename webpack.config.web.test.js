@@ -6,8 +6,7 @@ const configuration = {
 	mode: 'none',
 	target: 'webworker',
 	entry: {
-		'test/runner-web.matlab': './test/runner-web.matlab.ts',
-		'test/runner-web.typescript': './test/runner-web.typescript.ts'
+		'test/runner-web': './test/runner-web.ts',
 	},
 	output: {
 		globalObject: 'globalThis',
@@ -24,7 +23,7 @@ const configuration = {
 	},
 	module: {
 		rules: [
-			{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'tsconfig.test.json' } },
+			{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'test/tsconfig.test.json' } },
 			{ test: /\.wasm$/, type: 'javascript/auto', loader: 'encoded-uint8array-loader' }
 		]
 	},

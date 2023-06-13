@@ -1,14 +1,15 @@
 dist/
 node_modules/
 out/
+test/extensions/vscode-matlab/*
 # We test against `vscode-matlab`
-test/vscode-matlab/data/
-test/vscode-matlab/samples/
-test/vscode-matlab/*.tgz
+test/extensions/vscode-matlab/data/
+test/extensions/vscode-matlab/samples/
+test/extensions/vscode-matlab/*.tgz
 # We test with `vscode-typescript`
-test/vscode-typescript/data/
-test/vscode-typescript/samples/
-test/vscode-typescript/*.tgz
+test/extensions/vscode-typescript/data/
+test/extensions/vscode-typescript/samples/
+test/extensions/vscode-typescript/*.tgz
 # We target VS Code
 .vscode-test/
 .vscode-test-web/

@@ -1,14 +1,15 @@
 {
   "git.ignoredRepositories": [
-    "test/vscode-matlab",
+    "test/extensions/vscode-matlab",
     "builds/0/project-0",
-    "builds/0/project-0/test/vscode-matlab"
+    "builds/0/project-0/test/extensions/vscode-matlab"
   ],
   "search.exclude": {
-    "test/vscode-matlab/**": true
+    "test/extensions/vscode-matlab/**": true
   },
   "material-icon-theme.files.associations": {
-    "webpack.config.web.test.js": "webpack"
+    "webpack.config.web.test.js": "webpack",
+    "*.mw": "document"
   },
   "material-icon-theme.folders.associations": {
     "parser": "functions",
