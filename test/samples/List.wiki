@@ -1,0 +1,67 @@
+This page gives a '''list of domesticated animals''',<ref name="Table of Domesticated Animals">{{cite web|url=http://archaeology.about.com/od/dterms/a/domestication.htm|title=How did we ever manage to domesticate so many animals?}}</ref> also including a list of [[domestication of animals|animals which are or may be currently undergoing the process of domestication]] and animals that have an extensive relationship with humans beyond simple predation. This includes species which are semi-domesticated, undomesticated but [[Captive breeding|captive-bred]] on a commercial scale, or commonly wild-caught, at least occasionally captive-bred, and [[Tame animal|tameable]]. In order to be considered fully domesticated, most species have undergone significant [[Heredity|genetic]], [[Behavior|behavioural]] and [[Morphology (biology)|morphological]] changes from their wild ancestors, while others have changed very little from their wild ancestors despite hundreds or thousands of years of potential [[selective breeding]]. A number of factors determine how quickly any changes may occur in a species, but there is not always a desire to improve a species from its wild form. Domestication is a gradual process, so there is no precise moment in the history of a given species when it can be considered to have become fully domesticated.
+
+[[Zooarchaeology]] has identified three classes of animal domesticates:
+# [[Pets]] ([[dogs]], [[cats]], [[ferrets]], [[hamsters]], etc.)
+# [[Livestock]] ([[cattle]], [[sheep]], [[pigs]], [[goats]], etc.)
+# [[Beasts of burden]] ([[horses]], [[camels]], [[donkeys]], etc.)<ref>{{cite journal |doi=10.1086/659964 |title=The Origins of Agriculture: New Data, New Ideas |journal=Current Anthropology |volume=52 |pages=S163–S174 |year=2011 |last1=Price |first1=T. Douglas |last2=Bar-Yosef |first2=Ofer |s2cid=128906192 |url=https://semanticscholar.org/paper/e769a0398e3b3b0a10d331c1e556d5582f5d2cd2 }}</ref>
+
+== Domesticated animals ==
+
+{| class="wikitable sortable"
+! Species and subspecies
+! Wild ancestor
+! data-sort-type="number" | Date
+! Location of origin
+! Image
+! Degree and type of domestication
+! [[Taxon]] group
+|-
+| [[Dog|Domestic dog]] (''Canis familiaris'')
+| Extinct [[Pleistocene]] population of the [[Wolf|grey wolf]] (''Canis lupus'' ssp.)
+| data-sort-value="-29999" |[[Origin of the domestic dog#Morphological divergence|13,000]] [[BCE]]
+| style="text-align:center;" |[[China]],
+[[Europe]]
+| [[File:Pembroke Welsh Corgi 600.jpg|130px]]
+| Tame (with exceptions), significant physical changes, probably significant behavioral changes as well
+| '''1c''' ''Carnivora''
+|-
+| colspan="7" |
+* '''Purpose:''' meat, leather, [[Salish Wool Dog|fiber]], hunting, herding, guarding, fighting, racing, working, rescuing, guiding, [[Police dog|policing]], draft, pack, sport, service, therapy, [[Detection dog|narcotics detection]], truffle harvesting, pest control, research, education, show, pets
+* '''Extent in the wild vs. captivity:''' Domestic and [[Free-ranging dog|feral dog]]s both very common, ancestor or nearest wild relative less common, but not rare
+|-
+| [[Cat|Domestic cat]] or house cat (''Felis catus'')
+| [[African wildcat|North African wildcat]] (''Felis lybica lybica'')
+| data-sort-value="-7900" | 8000–7500 BCE
+| style="text-align:center;" |the [[Near East]]
+| [[File:Jammlich crop.jpg|130px]]
+| Tame, some physical changes
+| '''1c''' ''Carnivora''
+|-
+| colspan="7" |
+* '''Purpose:''' meat, pelts, pest control, research, [[show]], pets
+* '''Extent in the wild vs. captivity:''' very abundant in captivity; true wildcat species less abundant, though not rare, [[feral]] populations very common
+|-
+| [[Horse|Domestic horse]] (''Equus caballus'')
+| Extinct unknown population of the [[wild horse]] (''Equus ferus''), possibly the [[tarpan]] or European wild horse (''E. f. ferus'')†
+| data-sort-value="-3500" | 3500 BCE
+| style="text-align:center;" |[[Kazakhstan]]
+| [[File:Nokota Horses cropped.jpg|130px]]
+| Tame, some physical changes, mainly in colouration
+| '''1e''' ''Other mammals''
+|-
+| colspan="7" |
+* '''Purpose:''' milk, meat, hair, manure, working, plowing, fighting, racing, servicing, guiding, draft, pack, mount, execution, lawn mowing, weed control, show, pets
+* '''Extent in the wild vs. captivity:''' common in captivity, very rare in the wild, feral populations common
+|-
+| [[Corn snake|Corn snakes]] (''Pantherophis gutttatus''), [[Pantherophis obsoletus|western rat snakes]] (''P. obsoletus''), and [[Gray ratsnake|grey rat snakes]] (''P. spiloides'')
+| Possibly ''Lampropeltis'' genus
+| the 1960s <small>(uncertain for ''P. obsoletus'' and ''P. spiloides'')</small>
+| the [[United States]]
+| [[File:Kornnatter.jpg|130x130px]]
+| Slight physical changes
+| '''3a''' ''Serpentes''
+|-
+| colspan=7 |
+* '''Purpose:''' ornamental, show, pets
+* '''Extent in the wild vs. capacity:''' somewhat common in captivity, common in the wild
+| }

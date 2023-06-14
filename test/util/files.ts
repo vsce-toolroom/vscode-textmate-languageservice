@@ -6,7 +6,7 @@ import { getTestModeExtension, PartialJsonValue } from './common';
 
 export const LANGUAGES = ['matlab', 'typescript', 'mediawiki'];
 
-export const EXTENSIONS = ['.m', '.ts', '.mw'];
+export const EXTENSIONS = ['.m', '.ts', '.wiki'];
 
 export const BASENAMES = {
 	matlab: ['Animal', 'Cat', 'Dog', 'Horse', 'Snake'],

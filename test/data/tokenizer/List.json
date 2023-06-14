@@ -1,0 +1,7492 @@
+[
+  {
+    "startIndex": 0,
+    "endIndex": 18,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": "This page gives a ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 21,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 49,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "list of domesticated animals",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 49,
+    "endIndex": 52,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 53,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ",",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 53,
+    "endIndex": 54,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "<",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "entity.name.tag.mediawiki"
+    ],
+    "type": "entity.name.tag.mediawiki",
+    "text": "ref",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 58,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 58,
+    "endIndex": 62,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.attribute.name.html",
+      "entity.other.attribute-name.html"
+    ],
+    "type": "entity.other.attribute-name.html",
+    "text": "name",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 62,
+    "endIndex": 63,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.attribute.name.html",
+      "punctuation.separator.key-value.html"
+    ],
+    "type": "punctuation.separator.key-value.html",
+    "text": "=",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 63,
+    "endIndex": 64,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.attribute.name.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.begin.html"
+    ],
+    "type": "punctuation.definition.string.begin.html",
+    "text": "\"",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 64,
+    "endIndex": 93,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.attribute.name.html",
+      "string.quoted.double.html"
+    ],
+    "type": "string.quoted.double.html",
+    "text": "Table of Domesticated Animals",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 93,
+    "endIndex": 94,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.attribute.name.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.end.html"
+    ],
+    "type": "punctuation.definition.string.end.html",
+    "text": "\"",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 94,
+    "endIndex": 95,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "punctuation.definition.tag.end.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.end.mediawiki",
+    "text": ">",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 95,
+    "endIndex": 97,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "punctuation.definition.tag.template.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.template.mediawiki",
+    "text": "{{",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 97,
+    "endIndex": 105,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.name.tag.local-name.mediawiki"
+    ],
+    "type": "entity.name.tag.local-name.mediawiki",
+    "text": "cite web",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 105,
+    "endIndex": 106,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 106,
+    "endIndex": 109,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "url",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 109,
+    "endIndex": 110,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 110,
+    "endIndex": 168,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "http://archaeology.about.com/od/dterms/a/domestication.htm",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 168,
+    "endIndex": 169,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 169,
+    "endIndex": 174,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "title",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 174,
+    "endIndex": 175,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 175,
+    "endIndex": 229,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "How did we ever manage to domesticate so many animals?",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 229,
+    "endIndex": 231,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "punctuation.definition.tag.template.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.template.mediawiki",
+    "text": "}}",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 231,
+    "endIndex": 233,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "</",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 233,
+    "endIndex": 236,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "entity.name.tag.mediawiki"
+    ],
+    "type": "entity.name.tag.mediawiki",
+    "text": "ref",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 236,
+    "endIndex": 237,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "punctuation.definition.tag.end.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.end.mediawiki",
+    "text": ">",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 237,
+    "endIndex": 263,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " also including a list of ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 263,
+    "endIndex": 265,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 265,
+    "endIndex": 289,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "domestication of animals",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 289,
+    "endIndex": 290,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 290,
+    "endIndex": 367,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "animals which are or may be currently undergoing the process of domestication",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 367,
+    "endIndex": 369,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 369,
+    "endIndex": 525,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " and animals that have an extensive relationship with humans beyond simple predation. This includes species which are semi-domesticated, undomesticated but ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 525,
+    "endIndex": 527,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 527,
+    "endIndex": 543,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Captive breeding",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 543,
+    "endIndex": 544,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 544,
+    "endIndex": 556,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "captive-bred",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 556,
+    "endIndex": 558,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 558,
+    "endIndex": 647,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " on a commercial scale, or commonly wild-caught, at least occasionally captive-bred, and ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 647,
+    "endIndex": 649,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 649,
+    "endIndex": 660,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Tame animal",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 660,
+    "endIndex": 661,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 661,
+    "endIndex": 669,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "tameable",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 669,
+    "endIndex": 671,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 671,
+    "endIndex": 759,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ". In order to be considered fully domesticated, most species have undergone significant ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 759,
+    "endIndex": 761,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 761,
+    "endIndex": 769,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Heredity",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 769,
+    "endIndex": 770,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 770,
+    "endIndex": 777,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "genetic",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 777,
+    "endIndex": 779,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 779,
+    "endIndex": 781,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 781,
+    "endIndex": 783,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 783,
+    "endIndex": 791,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Behavior",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 791,
+    "endIndex": 792,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 792,
+    "endIndex": 803,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "behavioural",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 803,
+    "endIndex": 805,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 805,
+    "endIndex": 810,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " and ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 810,
+    "endIndex": 812,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 812,
+    "endIndex": 832,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Morphology (biology)",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 832,
+    "endIndex": 833,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 833,
+    "endIndex": 846,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "morphological",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 846,
+    "endIndex": 848,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 848,
+    "endIndex": 1000,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " changes from their wild ancestors, while others have changed very little from their wild ancestors despite hundreds or thousands of years of potential ",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 1000,
+    "endIndex": 1002,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 1002,
+    "endIndex": 1020,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "selective breeding",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 1020,
+    "endIndex": 1022,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 1022,
+    "endIndex": 1337,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ". A number of factors determine how quickly any changes may occur in a species, but there is not always a desire to improve a species from its wild form. Domestication is a gradual process, so there is no precise moment in the history of a given species when it can be considered to have become fully domesticated.",
+    "line": 0,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": "",
+    "line": 1,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 2,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Zooarchaeology",
+    "line": 2,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 18,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 2,
+    "level": 0
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 72,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " has identified three classes of animal domesticates:",
+    "line": 2,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "#",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " ",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Pets",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 12,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " (",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 14,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 18,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "dogs",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "cats",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "ferrets",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 43,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 45,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 45,
+    "endIndex": 47,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 55,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "hamsters",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 65,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", etc.)",
+    "line": 3,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "#",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " ",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Livestock",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 17,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " (",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 19,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 25,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "cattle",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 27,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 29,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 29,
+    "endIndex": 31,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 31,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "sheep",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 40,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 42,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 42,
+    "endIndex": 46,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "pigs",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 48,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 48,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 52,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "goats",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 59,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 59,
+    "endIndex": 67,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", etc.)",
+    "line": 4,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "#",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Beasts of burden",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": " (",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "horses",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 44,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "camels",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 46,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 48,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 48,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "donkeys",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 59,
+    "scopes": [
+      "text.html.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 59,
+    "endIndex": 66,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": ", etc.)",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 66,
+    "endIndex": 67,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "<",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 67,
+    "endIndex": 70,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "entity.name.tag.mediawiki"
+    ],
+    "type": "entity.name.tag.mediawiki",
+    "text": "ref",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 70,
+    "endIndex": 71,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.start.mediawiki",
+      "punctuation.definition.tag.end.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.end.mediawiki",
+    "text": ">",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 71,
+    "endIndex": 73,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "punctuation.definition.tag.template.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.template.mediawiki",
+    "text": "{{",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 73,
+    "endIndex": 86,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.name.tag.local-name.mediawiki"
+    ],
+    "type": "entity.name.tag.local-name.mediawiki",
+    "text": "cite journal ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 86,
+    "endIndex": 87,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 87,
+    "endIndex": 90,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "doi",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 90,
+    "endIndex": 91,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 91,
+    "endIndex": 106,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "10.1086/659964 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 106,
+    "endIndex": 107,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 107,
+    "endIndex": 112,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "title",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 112,
+    "endIndex": 113,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 113,
+    "endIndex": 161,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "The Origins of Agriculture: New Data, New Ideas ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 161,
+    "endIndex": 162,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 162,
+    "endIndex": 169,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "journal",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 169,
+    "endIndex": 170,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 170,
+    "endIndex": 191,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "Current Anthropology ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 191,
+    "endIndex": 192,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 192,
+    "endIndex": 198,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "volume",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 198,
+    "endIndex": 199,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 199,
+    "endIndex": 202,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "52 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 202,
+    "endIndex": 203,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 203,
+    "endIndex": 208,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "pages",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 208,
+    "endIndex": 209,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 209,
+    "endIndex": 219,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "S163–S174 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 219,
+    "endIndex": 220,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 220,
+    "endIndex": 224,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "year",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 224,
+    "endIndex": 225,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 225,
+    "endIndex": 230,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "2011 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 230,
+    "endIndex": 231,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 231,
+    "endIndex": 236,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "last1",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 236,
+    "endIndex": 237,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 237,
+    "endIndex": 243,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "Price ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 243,
+    "endIndex": 244,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 244,
+    "endIndex": 250,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "first1",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 250,
+    "endIndex": 251,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 251,
+    "endIndex": 262,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "T. Douglas ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 262,
+    "endIndex": 263,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 263,
+    "endIndex": 268,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "last2",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 268,
+    "endIndex": 269,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 269,
+    "endIndex": 279,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "Bar-Yosef ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 279,
+    "endIndex": 280,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 280,
+    "endIndex": 286,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "first2",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 286,
+    "endIndex": 287,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 287,
+    "endIndex": 292,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "Ofer ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 292,
+    "endIndex": 293,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 293,
+    "endIndex": 298,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "s2cid",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 298,
+    "endIndex": 299,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 299,
+    "endIndex": 309,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "128906192 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 309,
+    "endIndex": 310,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 310,
+    "endIndex": 313,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "entity.other.attribute-name.local-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.local-name.mediawiki",
+    "text": "url",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 313,
+    "endIndex": 314,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "keyword.operator.equal.mediawiki"
+    ],
+    "type": "keyword.operator.equal.mediawiki",
+    "text": "=",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 314,
+    "endIndex": 389,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki"
+    ],
+    "type": "meta.block.ref.mediawiki",
+    "text": "https://semanticscholar.org/paper/e769a0398e3b3b0a10d331c1e556d5582f5d2cd2 ",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 389,
+    "endIndex": 391,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.block.ref.mediawiki",
+      "punctuation.definition.tag.template.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.template.mediawiki",
+    "text": "}}",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 391,
+    "endIndex": 393,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "</",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 393,
+    "endIndex": 396,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "entity.name.tag.mediawiki"
+    ],
+    "type": "entity.name.tag.mediawiki",
+    "text": "ref",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 396,
+    "endIndex": 397,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.metadata.ref.end.mediawiki",
+      "punctuation.definition.tag.end.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.end.mediawiki",
+    "text": ">",
+    "line": 5,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": "",
+    "line": 6,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 3,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.heading.mediawiki"
+    ],
+    "type": "markup.heading.mediawiki",
+    "text": "== ",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 3,
+    "endIndex": 23,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.heading.mediawiki",
+      "string.quoted.other.heading.mediawiki"
+    ],
+    "type": "string.quoted.other.heading.mediawiki",
+    "text": "Domesticated animals",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 23,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "markup.heading.mediawiki"
+    ],
+    "type": "markup.heading.mediawiki",
+    "text": " ==",
+    "line": 7,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki"
+    ],
+    "type": "text.html.mediawiki",
+    "text": "",
+    "line": 8,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.table.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.table.mediawiki",
+    "text": "{|",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 3,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 3,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.attribute.class.html",
+      "entity.other.attribute-name.html"
+    ],
+    "type": "entity.other.attribute-name.html",
+    "text": "class",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.attribute.class.html",
+      "punctuation.separator.key-value.html"
+    ],
+    "type": "punctuation.separator.key-value.html",
+    "text": "=",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.attribute.class.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.begin.html"
+    ],
+    "type": "punctuation.definition.string.begin.html",
+    "text": "\"",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.attribute.class.html",
+      "string.quoted.double.html"
+    ],
+    "type": "string.quoted.double.html",
+    "text": "wikitable sortable",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 29,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.attribute.class.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.end.html"
+    ],
+    "type": "punctuation.definition.string.end.html",
+    "text": "\"",
+    "line": 9,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 10,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Species and subspecies",
+    "line": 10,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 11,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Wild ancestor",
+    "line": 11,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading"
+    ],
+    "type": "meta.tag.block.th.heading",
+    "text": " ",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html",
+      "entity.other.attribute-name.html"
+    ],
+    "type": "entity.other.attribute-name.html",
+    "text": "data-sort-type",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 17,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html",
+      "punctuation.separator.key-value.html"
+    ],
+    "type": "punctuation.separator.key-value.html",
+    "text": "=",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 17,
+    "endIndex": 18,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.begin.html"
+    ],
+    "type": "punctuation.definition.string.begin.html",
+    "text": "\"",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html",
+      "string.quoted.double.html"
+    ],
+    "type": "string.quoted.double.html",
+    "text": "number",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 25,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html",
+      "string.quoted.double.html",
+      "punctuation.definition.string.end.html"
+    ],
+    "type": "punctuation.definition.string.end.html",
+    "text": "\"",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "meta.attribute.data-x.data-sort-type.html"
+    ],
+    "type": "meta.attribute.data-x.data-sort-type.html",
+    "text": " ",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 27,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Date",
+    "line": 12,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 13,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Location of origin",
+    "line": 13,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 14,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Image",
+    "line": 14,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 15,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " Degree and type of domestication",
+    "line": 15,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "!",
+    "line": 16,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 17,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.th.heading",
+      "markup.bold.style.mediawiki"
+    ],
+    "type": "markup.bold.style.mediawiki",
+    "text": " [[Taxon]] group",
+    "line": 16,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 17,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Dog",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "Domestic dog",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 42,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Canis familiaris",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 42,
+    "endIndex": 44,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 45,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 18,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Extinct ",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 12,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 23,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Pleistocene",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 23,
+    "endIndex": 25,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 44,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " population of the ",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 46,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Wolf",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 51,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 51,
+    "endIndex": 60,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "grey wolf",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 60,
+    "endIndex": 62,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 62,
+    "endIndex": 64,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 64,
+    "endIndex": 66,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 66,
+    "endIndex": 77,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Canis lupus",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 77,
+    "endIndex": 79,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 79,
+    "endIndex": 85,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ssp.)",
+    "line": 19,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " data-sort-value=\"-29999\" |",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 81,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Origin of the domestic dog#Morphological divergence",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 81,
+    "endIndex": 82,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 82,
+    "endIndex": 88,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "13,000",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 88,
+    "endIndex": 90,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 90,
+    "endIndex": 91,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 91,
+    "endIndex": 93,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 93,
+    "endIndex": 96,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "BCE",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 96,
+    "endIndex": 98,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 20,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " style=\"text-align:center;\" |",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 37,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "China",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 37,
+    "endIndex": 39,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 39,
+    "endIndex": 40,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ",",
+    "line": 21,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 22,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Europe",
+    "line": 22,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 22,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.name.tag.namespace.mediawiki"
+    ],
+    "type": "entity.name.tag.namespace.mediawiki",
+    "text": "File:",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 37,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Pembroke Welsh Corgi 600.jpg",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 37,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 43,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "130px",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 45,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 23,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 24,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 103,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Tame (with exceptions), significant physical changes, probably significant behavioral changes as well",
+    "line": 24,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "1c",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Carnivora",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 25,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 26,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 27,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " colspan=\"7\" |",
+    "line": 27,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Purpose:",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " meat, leather, ",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 49,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Salish Wool Dog",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 49,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 55,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "fiber",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 133,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ", hunting, herding, guarding, fighting, racing, working, rescuing, guiding, ",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 133,
+    "endIndex": 135,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 135,
+    "endIndex": 145,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Police dog",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 145,
+    "endIndex": 146,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 146,
+    "endIndex": 154,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "policing",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 154,
+    "endIndex": 156,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 156,
+    "endIndex": 196,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ", draft, pack, sport, service, therapy, ",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 196,
+    "endIndex": 198,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 198,
+    "endIndex": 211,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Detection dog",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 211,
+    "endIndex": 212,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 212,
+    "endIndex": 231,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "narcotics detection",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 231,
+    "endIndex": 233,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 233,
+    "endIndex": 301,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ", truffle harvesting, pest control, research, education, show, pets",
+    "line": 28,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Extent in the wild vs. captivity:",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 55,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Domestic and ",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 73,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Free-ranging dog",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 73,
+    "endIndex": 74,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 74,
+    "endIndex": 83,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "feral dog",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 83,
+    "endIndex": 85,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 85,
+    "endIndex": 165,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "s both very common, ancestor or nearest wild relative less common, but not rare",
+    "line": 29,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 30,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Cat",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "Domestic cat",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 37,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " or house cat (",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 37,
+    "endIndex": 39,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 39,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Felis catus",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 52,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 53,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 31,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 19,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "African wildcat",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 20,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 20,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "North African wildcat",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 43,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 43,
+    "endIndex": 45,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 45,
+    "endIndex": 47,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 47,
+    "endIndex": 66,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Felis lybica lybica",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 66,
+    "endIndex": 68,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 68,
+    "endIndex": 69,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 32,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 33,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " data-sort-value=\"-7900\" | 8000–7500 BCE",
+    "line": 33,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 34,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " style=\"text-align:center;\" |the ",
+    "line": 34,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 34,
+    "level": 0
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 45,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Near East",
+    "line": 34,
+    "level": 0
+  },
+  {
+    "startIndex": 45,
+    "endIndex": 47,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 34,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.name.tag.namespace.mediawiki"
+    ],
+    "type": "entity.name.tag.namespace.mediawiki",
+    "text": "File:",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Jammlich crop.jpg",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 27,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "130px",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 35,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 36,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 29,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Tame, some physical changes",
+    "line": 36,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "1c",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Carnivora",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 37,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 38,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 39,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " colspan=\"7\" |",
+    "line": 39,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Purpose:",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 54,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " meat, pelts, pest control, research, ",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 56,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 56,
+    "endIndex": 60,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "show",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 60,
+    "endIndex": 62,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 62,
+    "endIndex": 69,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ", pets",
+    "line": 40,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Extent in the wild vs. captivity:",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 123,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " very abundant in captivity; true wildcat species less abundant, though not rare, ",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 123,
+    "endIndex": 125,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 125,
+    "endIndex": 130,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "feral",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 130,
+    "endIndex": 132,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 132,
+    "endIndex": 157,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " populations very common",
+    "line": 41,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 42,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Horse",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "Domestic horse",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 44,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Equus caballus",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 44,
+    "endIndex": 46,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 46,
+    "endIndex": 47,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 43,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Extinct unknown population of the ",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 48,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "wild horse",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 48,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 52,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 52,
+    "endIndex": 54,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 65,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Equus ferus",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 65,
+    "endIndex": 67,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 67,
+    "endIndex": 83,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "), possibly the ",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 83,
+    "endIndex": 85,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 85,
+    "endIndex": 91,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "tarpan",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 91,
+    "endIndex": 93,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 93,
+    "endIndex": 118,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " or European wild horse (",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 118,
+    "endIndex": 120,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 120,
+    "endIndex": 131,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "E. f. ferus",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 131,
+    "endIndex": 133,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 133,
+    "endIndex": 135,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")†",
+    "line": 44,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 45,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " data-sort-value=\"-3500\" | 3500 BCE",
+    "line": 45,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 46,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " style=\"text-align:center;\" |",
+    "line": 46,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 46,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 42,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Kazakhstan",
+    "line": 46,
+    "level": 0
+  },
+  {
+    "startIndex": 42,
+    "endIndex": 44,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 46,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.name.tag.namespace.mediawiki"
+    ],
+    "type": "entity.name.tag.namespace.mediawiki",
+    "text": "File:",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Nokota Horses cropped.jpg",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 35,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 35,
+    "endIndex": 40,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "130px",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 42,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 47,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 48,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 52,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Tame, some physical changes, mainly in colouration",
+    "line": 48,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "1e",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Other mammals",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 49,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 50,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 51,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " colspan=\"7\" |",
+    "line": 51,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Purpose:",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 168,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " milk, meat, hair, manure, working, plowing, fighting, racing, servicing, guiding, draft, pack, mount, execution, lawn mowing, weed control, show, pets",
+    "line": 52,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 38,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Extent in the wild vs. captivity:",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 38,
+    "endIndex": 41,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 41,
+    "endIndex": 111,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " common in captivity, very rare in the wild, feral populations common",
+    "line": 53,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 54,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 14,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Corn snake",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 14,
+    "endIndex": 15,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 15,
+    "endIndex": 26,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "Corn snakes",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 26,
+    "endIndex": 28,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 28,
+    "endIndex": 30,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 30,
+    "endIndex": 32,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 32,
+    "endIndex": 54,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Pantherophis gutttatus",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 54,
+    "endIndex": 56,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 56,
+    "endIndex": 59,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "), ",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 59,
+    "endIndex": 61,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 61,
+    "endIndex": 83,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Pantherophis obsoletus",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 83,
+    "endIndex": 84,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 84,
+    "endIndex": 102,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "western rat snakes",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 102,
+    "endIndex": 104,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 104,
+    "endIndex": 106,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 106,
+    "endIndex": 108,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 108,
+    "endIndex": 120,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "P. obsoletus",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 120,
+    "endIndex": 122,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 122,
+    "endIndex": 129,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "), and ",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 129,
+    "endIndex": 131,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 131,
+    "endIndex": 144,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Gray ratsnake",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 144,
+    "endIndex": 145,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 145,
+    "endIndex": 160,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "grey rat snakes",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 160,
+    "endIndex": 162,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 162,
+    "endIndex": 164,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " (",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 164,
+    "endIndex": 166,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 166,
+    "endIndex": 178,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "P. spiloides",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 178,
+    "endIndex": 180,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 180,
+    "endIndex": 181,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 55,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 11,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Possibly ",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 25,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Lampropeltis",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 25,
+    "endIndex": 27,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 27,
+    "endIndex": 33,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " genus",
+    "line": 56,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 12,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " the 1960s ",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 12,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.start.html",
+      "punctuation.definition.tag.begin.html"
+    ],
+    "type": "punctuation.definition.tag.begin.html",
+    "text": "<",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 18,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.start.html",
+      "entity.name.tag.html"
+    ],
+    "type": "entity.name.tag.html",
+    "text": "small",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 18,
+    "endIndex": 19,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.start.html",
+      "punctuation.definition.tag.end.html"
+    ],
+    "type": "punctuation.definition.tag.end.html",
+    "text": ">",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 19,
+    "endIndex": 34,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "(uncertain for ",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 34,
+    "endIndex": 36,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 36,
+    "endIndex": 48,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "P. obsoletus",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 48,
+    "endIndex": 50,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 50,
+    "endIndex": 55,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " and ",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 55,
+    "endIndex": 57,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 57,
+    "endIndex": 69,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "P. spiloides",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 69,
+    "endIndex": 71,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 71,
+    "endIndex": 72,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": ")",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 72,
+    "endIndex": 74,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.end.html",
+      "punctuation.definition.tag.begin.html"
+    ],
+    "type": "punctuation.definition.tag.begin.html",
+    "text": "</",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 74,
+    "endIndex": 79,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.end.html",
+      "entity.name.tag.html"
+    ],
+    "type": "entity.name.tag.html",
+    "text": "small",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 79,
+    "endIndex": 80,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.inline.small.end.html",
+      "punctuation.definition.tag.end.html"
+    ],
+    "type": "punctuation.definition.tag.end.html",
+    "text": ">",
+    "line": 57,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 58,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 6,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " the ",
+    "line": 58,
+    "level": 0
+  },
+  {
+    "startIndex": 6,
+    "endIndex": 8,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 58,
+    "level": 0
+  },
+  {
+    "startIndex": 8,
+    "endIndex": 21,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "United States",
+    "line": 58,
+    "level": 0
+  },
+  {
+    "startIndex": 21,
+    "endIndex": 23,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 58,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 4,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "[[",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 4,
+    "endIndex": 9,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.name.tag.namespace.mediawiki"
+    ],
+    "type": "entity.name.tag.namespace.mediawiki",
+    "text": "File:",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 9,
+    "endIndex": 23,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "entity.other.attribute-name.mediawiki"
+    ],
+    "type": "entity.other.attribute-name.mediawiki",
+    "text": "Kornnatter.jpg",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 23,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "keyword.operator.mediawiki"
+    ],
+    "type": "keyword.operator.mediawiki",
+    "text": "|",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 24,
+    "endIndex": 33,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki"
+    ],
+    "type": "string.quoted.internal-link.mediawiki",
+    "text": "130x130px",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 33,
+    "endIndex": 35,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "string.quoted.internal-link.mediawiki",
+      "punctuation.definition.tag.link.internal.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.link.internal.mediawiki",
+    "text": "]]",
+    "line": 59,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 60,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 25,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " Slight physical changes",
+    "line": 60,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 7,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "3a",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 7,
+    "endIndex": 10,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 10,
+    "endIndex": 11,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 11,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 22,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "Serpentes",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 22,
+    "endIndex": 24,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.italic.mediawiki"
+    ],
+    "type": "markup.italic.mediawiki",
+    "text": "''",
+    "line": 61,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "meta.tag.block.table-row.mediawiki",
+      "punctuation.definition.tag.begin.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.begin.mediawiki",
+    "text": "|-",
+    "line": 62,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 63,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " colspan=7 |",
+    "line": 63,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 13,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Purpose:",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 13,
+    "endIndex": 16,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 16,
+    "endIndex": 40,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ornamental, show, pets",
+    "line": 64,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.list.begin.markdown.mediawiki"
+    ],
+    "type": "punctuation.definition.list.begin.markdown.mediawiki",
+    "text": "*",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 2,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " ",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 2,
+    "endIndex": 5,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 5,
+    "endIndex": 37,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "Extent in the wild vs. capacity:",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 37,
+    "endIndex": 40,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "markup.bold.mediawiki"
+    ],
+    "type": "markup.bold.mediawiki",
+    "text": "'''",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 40,
+    "endIndex": 90,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " somewhat common in captivity, common in the wild",
+    "line": 65,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki",
+      "punctuation.definition.tag.mediawiki"
+    ],
+    "type": "punctuation.definition.tag.mediawiki",
+    "text": "|",
+    "line": 66,
+    "level": 0
+  },
+  {
+    "startIndex": 1,
+    "endIndex": 3,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": " }",
+    "line": 66,
+    "level": 0
+  },
+  {
+    "startIndex": 0,
+    "endIndex": 1,
+    "scopes": [
+      "text.html.mediawiki",
+      "meta.tag.block.table.mediawiki"
+    ],
+    "type": "meta.tag.block.table.mediawiki",
+    "text": "",
+    "line": 67,
+    "level": 0
+  }
+]

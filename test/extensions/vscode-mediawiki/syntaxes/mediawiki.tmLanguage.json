@@ -1,0 +1,844 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MediaWiki",
+  "scopeName": "text.html.mediawiki",
+  "patterns": [
+    {
+      "include": "#mediawiki"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "mediawiki": {
+      "patterns": [
+        {
+          "include": "#signature"
+        },
+        {
+          "include": "#redirect"
+        },
+        {
+          "include": "#magic-words"
+        },
+        {
+          "include": "#argument"
+        },
+        {
+          "include": "#template"
+        },
+        {
+          "include": "#convert"
+        },
+        {
+          "include": "#list"
+        },
+        {
+          "include": "#table"
+        },
+        {
+          "include": "#font-style"
+        },
+        {
+          "include": "#internal-link"
+        },
+        {
+          "include": "#external-link"
+        },
+        {
+          "include": "#heading"
+        },
+        {
+          "include": "#break"
+        },
+        {
+          "include": "#wikixml"
+        },
+        {
+          "include": "#extension-comments"
+        }
+      ],
+      "repository": {
+        "extension-comments": {
+          "name": "comment.block.documentation.special.extension.mediawiki",
+          "begin": "(<%--)\\s*(\\[)([A-Z_]*)(\\])",
+          "end": "(\\[)([A-Z_]*)(\\])\\s*(--%>)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.comment.extension.mediawiki"
+            },
+            "2": {
+              "name": "punctuation.definition.tag.extension.mediawiki"
+            },
+            "3": {
+              "name": "storage.type.extension.mediawiki"
+            },
+            "4": {
+              "name": "punctuation.definition.tag.extension.mediawiki"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.extension.mediawiki"
+            },
+            "2": {
+              "name": "storage.type.extension.mediawiki"
+            },
+            "3": {
+              "name": "punctuation.definition.tag.extension.mediawiki"
+            },
+            "4": {
+              "name": "punctuation.definition.comment.extension.mediawiki"
+            }
+          },
+          "patterns": [
+            {
+              "match": "(\\w*)\\s*(=)\\s*(#)(.*?)(#)",
+              "captures": {
+                "0": {
+                  "name": "meta.object.member.extension.mediawiki"
+                },
+                "1": {
+                  "name": "meta.object-literal.key.extension.mediawiki"
+                },
+                "2": {
+                  "name": "punctuation.separator.dictionary.key-value.extension.mediawiki"
+                },
+                "3": {
+                  "name": "punctuation.definition.string.begin.extension.mediawiki"
+                },
+                "4": {
+                  "name": "string.quoted.other.extension.mediawiki"
+                },
+                "5": {
+                  "name": "punctuation.definition.string.end.extension.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "convert": {
+          "begin": "(-\\{(?!\\{))([a-zA-Z](\\|))?",
+          "end": "(\\}-)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.template.mediawiki"
+            },
+            "2": {
+              "name": "entity.name.function.type.mediawiki"
+            },
+            "3": {
+              "name": "keyword.operator.mediawiki"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "match": "(?:([a-zA-Z\\-]*)(:))?(.*?)(?:(;)|(?=\\}-))",
+              "captures": {
+                "1": {
+                  "name": "entity.name.tag.language.mediawiki"
+                },
+                "2": {
+                  "name": "punctuation.separator.key-value.mediawiki"
+                },
+                "3": {
+                  "name": "string.unquoted.text.mediawiki",
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.terminator.rule.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "break": {
+          "match": "^-{4,}",
+          "name": "markup.changed.mediawiki"
+        },
+        "template": {
+          "begin": "(\\{\\{)\\s*(([^#:\\|\\[\\]\\{\\}]*(:))*)\\s*((#[^#:\\|\\[\\]\\{\\}]+(:))*)([^#:\\|\\[\\]\\{\\}]*)",
+          "end": "(\\}\\})",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.template.mediawiki"
+            },
+            "2": {
+              "name": "entity.name.tag.local-name.mediawiki"
+            },
+            "4": {
+              "name": "punctuation.separator.namespace.mediawiki"
+            },
+            "5": {
+              "name": "entity.name.function.mediawiki"
+            },
+            "7": {
+              "name": "punctuation.separator.namespace.mediawiki"
+            },
+            "8": {
+              "name": "entity.name.tag.local-name.mediawiki"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "match": "(\\|)",
+              "name": "keyword.operator.mediawiki"
+            },
+            {
+              "match": "(?<=\\|)\\s*(?:([-\\w.]+)(:))?([-\\w\\s\\.:]+)\\s*(=)",
+              "captures": {
+                "1": {
+                  "name": "entity.other.attribute-name.namespace.mediawiki"
+                },
+                "2": {
+                  "name": "punctuation.separator.namespace.mediawiki"
+                },
+                "3": {
+                  "name": "entity.other.attribute-name.local-name.mediawiki"
+                },
+                "4": {
+                  "name": "keyword.operator.equal.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "external-link": {
+          "patterns": [
+            {
+              "name": "meta.link.external.mediawiki",
+              "match": "(\\[)((?:(?:(?:http(?:s)?)|(?:ftp(?:s)?)):\\/\\/)[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\.~:\\/?#%@!\\$&'\\(\\)\\*\\+,;=.]+)\\s*?([^\\]]*)(\\])",
+              "captures": {
+                "1": {
+                  "name": "punctuation.definition.tag.link.external.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.url.mediawiki"
+                },
+                "3": {
+                  "name": "string.other.link.external.title.mediawiki",
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.link.external.mediawiki"
+                }
+              }
+            },
+            {
+              "name": "invalid.illegal.bad-link.mediawiki",
+              "match": "(\\[)([\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\.~:\\/?#%@!\\$&'\\(\\)\\*\\+,;=.]+)\\s*?([^\\]]*)(\\])",
+              "captures": {
+                "1": {
+                  "name": "punctuation.definition.tag.link.external.mediawiki"
+                },
+                "2": {
+                  "name": "invalid.illegal.bad-url.mediawiki"
+                },
+                "3": {
+                  "name": "string.other.link.external.title.mediawiki",
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.link.external.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "redirect": {
+          "patterns": [
+            {
+              "match": "(?i)(^\\s*?#REDIRECT)\\s*(\\[\\[)(([^#:\\|\\[\\]\\{\\}]*?:)*)?([^\\|\\[\\]]*)?(\\|[^\\[\\]]*?)?(\\]\\])",
+              "captures": {
+                "1": {
+                  "name": "keyword.control.redirect.mediawiki"
+                },
+                "2": {
+                  "name": "punctuation.definition.tag.link.internal.begin.mediawiki"
+                },
+                "3": {
+                  "name": "entity.name.tag.namespace.mediawiki"
+                },
+                "4": null,
+                "5": {
+                  "name": "entity.other.attribute-name.mediawiki"
+                },
+                "6": {
+                  "name": "invalid.deprecated.ineffective.mediawiki"
+                },
+                "7": {
+                  "name": "punctuation.definition.tag.link.internal.end.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "magic-words": {
+          "patterns": [
+            {
+              "include": "#behavior-switches"
+            },
+            {
+              "include": "#outdated-behavior-switches"
+            },
+            {
+              "include": "#variables"
+            }
+          ],
+          "repository": {
+            "behavior-switches": {
+              "name": "constant.language.behavior-switcher.mediawiki",
+              "match": "(?x)    # turn on extended mode\n(?i)    # ignore case\n  (__)  # start: __\n    (\n      NOTOC|FORCETOC|TOC|NOEDITSECTION|NEWSECTIONLINK|NOGALLERY|\n      HIDDENCAT|EXPECTUNUSEDCATEGORY|NOCONTENTCONVERT|NOCC|\n      NOTITLECONVERT|NOTC|INDEX|NOINDEX|STATICREDIRECT|NOGLOBAL|\n      DISAMBIG\n    )\n  (__)"
+            },
+            "outdated-behavior-switches": {
+              "name": "invalid.deprecated.behavior-switcher.mediawiki",
+              "match": "(?x)\n(?i)\n  (__)\n    (\n      START|END\n    )\n  (__)"
+            },
+            "variables": {
+              "patterns": [
+                {
+                  "name": "constant.language.variables.time.mediawiki",
+                  "match": "(?x)\n(?i)\n  (\\{\\{)\n    (\n      CURRENTYEAR|CURRENTMONTH|CURRENTMONTH1|CURRENTMONTHNAME|\n      CURRENTMONTHNAMEGEN|CURRENTMONTHABBREV|CURRENTDAY|\n      CURRENTDAY2|CURRENTDOW|CURRENTDAYNAME|CURRENTTIME|\n      CURRENTHOUR|CURRENTWEEK|CURRENTTIMESTAMP|LOCALYEAR|\n      LOCALMONTH|LOCALMONTH1|LOCALMONTHNAME|LOCALMONTHNAMEGEN|\n      LOCALMONTHABBREV|LOCALDAY|LOCALDAY2|LOCALDOW|\n      LOCALDAYNAME|LOCALTIME|LOCALHOUR|LOCALWEEK|\n      LOCALTIMESTAMP\n    )\n  (\\}\\})"
+                },
+                {
+                  "name": "constant.language.variables.metadata.mediawiki",
+                  "match": "(?x)\n(?i)\n  (\\{\\{)\n    (\n      SITENAME|SERVER|SERVERNAME|DIRMARK|DIRECTIONMARK|\n      SCRIPTPATH|STYLEPATH|CURRENTVERSION|CONTENTLANGUAGE|\n      CONTENTLANG|PAGEID|PAGELANGUAGE|CASCADINGSOURCES|\n      REVISIONID|REVISIONDAY|REVISIONDAY2|REVISIONMONTH|\n      REVISIONMONTH1|REVISIONYEAR|REVISIONTIMESTAMP|\n      REVISIONUSER|REVISIONSIZE\n    )\n  (\\}\\})"
+                },
+                {
+                  "name": "constant.language.variables.isbn.mediawiki",
+                  "match": "ISBN\\s+((9[\\-\\s]?7[\\-\\s]?[89][\\-\\s]?)?([0-9][\\-\\s]?){10})"
+                },
+                {
+                  "name": "constant.language.variables.rfc.mediawiki",
+                  "match": "RFC\\s+[0-9]+"
+                },
+                {
+                  "name": "constant.language.variables.pmid.mediawiki",
+                  "match": "PMID\\s+[0-9]+"
+                }
+              ]
+            }
+          }
+        },
+        "signature": {
+          "patterns": [
+            {
+              "name": "keyword.other.signature.mediawiki",
+              "match": "~{3,5}"
+            }
+          ]
+        },
+        "list": {
+          "name": "markup.list.mediawiki",
+          "patterns": [
+            {
+              "match": "^([#*;:]+)",
+              "captures": {
+                "1": {
+                  "name": "punctuation.definition.list.begin.markdown.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "argument": {
+          "name": "variable.parameter.mediawiki",
+          "begin": "({{{)",
+          "end": "(}}})",
+          "patterns": [
+            {
+              "match": "(?:^|\\G)([^#:\\|\\[\\]\\{\\}\\|]*)(\\|)",
+              "captures": {
+                "1": {
+                  "name": "variable.other.mediawiki"
+                },
+                "2": {
+                  "name": "keyword.operator.mediawiki"
+                }
+              }
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        "heading": {
+          "name": "markup.heading.mediawiki",
+          "match": "^(={1,6})\\s*(.+?)\\s*(\\1)$",
+          "captures": {
+            "2": {
+              "name": "string.quoted.other.heading.mediawiki",
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          }
+        },
+        "font-style": {
+          "patterns": [
+            {
+              "include": "#bold"
+            },
+            {
+              "include": "#italic"
+            }
+          ],
+          "repository": {
+            "bold": {
+              "begin": "(''')",
+              "end": "(''')|$",
+              "name": "markup.bold.mediawiki",
+              "patterns": [
+                {
+                  "include": "#italic"
+                },
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            "italic": {
+              "begin": "('')",
+              "end": "((?=[^'])|(?=''))''((?=[^'])|(?=''))|$",
+              "name": "markup.italic.mediawiki",
+              "patterns": [
+                {
+                  "include": "#bold"
+                },
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          }
+        },
+        "internal-link": {
+          "TODO": "SINGLE LINE",
+          "name": "string.quoted.internal-link.mediawiki",
+          "begin": "(\\[\\[)(([^#:\\|\\[\\]\\{\\}]*:)*)?([^\\|\\[\\]]*)?",
+          "end": "(\\]\\])",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.link.internal.mediawiki"
+            },
+            "2": {
+              "name": "entity.name.tag.namespace.mediawiki"
+            },
+            "4": {
+              "name": "entity.other.attribute-name.mediawiki"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "match": "(\\|)|(?:\\s*)(?:([-\\w.]+)((:)))?([-\\w.:]+)\\s*(=)",
+              "captures": {
+                "1": {
+                  "name": "keyword.operator.mediawiki"
+                },
+                "5": {
+                  "name": "entity.other.attribute-name.localname.mediawiki"
+                }
+              }
+            }
+          ]
+        },
+        "table": {
+          "patterns": [
+            {
+              "name": "meta.tag.block.table.mediawiki",
+              "begin": "^\\s*(\\{\\|)(.*)$",
+              "end": "^\\s*(\\|\\})",
+              "captures": {
+                "1": {
+                  "name": "punctuation.definition.tag.table.mediawiki"
+                },
+                "2": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    }
+                  ]
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                },
+                {
+                  "name": "meta.tag.block.table-row.mediawiki",
+                  "begin": "^\\s*(\\|-)\\s*",
+                  "end": "$",
+                  "beginCaptures": {
+                    "1": {
+                      "name": "punctuation.definition.tag.begin.mediawiki"
+                    }
+                  },
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    },
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "name": "invalid.illegal.bad-table-context.mediawiki",
+                      "match": "\\|.*"
+                    }
+                  ]
+                },
+                {
+                  "name": "meta.tag.block.th.heading",
+                  "begin": "^\\s*(!)(([^\\[]*?)(\\|))?(.*?)(?=(!!)|$)",
+                  "end": "$",
+                  "beginCaptures": {
+                    "1": {
+                      "name": "punctuation.definition.tag.begin.mediawiki"
+                    },
+                    "2": null,
+                    "3": {
+                      "patterns": [
+                        {
+                          "include": "$self"
+                        },
+                        {
+                          "include": "text.html.basic#attribute"
+                        }
+                      ]
+                    },
+                    "4": {
+                      "name": "punctuation.definition.tag.mediawiki"
+                    },
+                    "5": {
+                      "name": "markup.bold.style.mediawiki"
+                    }
+                  },
+                  "patterns": [
+                    {
+                      "name": "meta.tag.block.th.inline.mediawiki",
+                      "match": "(!!)(([^\\[]*?)(\\|))?(.*?)(?=(!!)|$)",
+                      "captures": {
+                        "1": {
+                          "name": "punctuation.definition.tag.begin.mediawiki"
+                        },
+                        "3": {
+                          "patterns": [
+                            {
+                              "include": "text.html.basic#attribute"
+                            },
+                            {
+                              "include": "$self"
+                            }
+                          ]
+                        },
+                        "4": {
+                          "name": "punctuation.definition.tag.mediawiki"
+                        },
+                        "5": {
+                          "name": "markup.bold.style.mediawiki"
+                        }
+                      }
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                {
+                  "name": "meta.tag.block.caption.mediawiki",
+                  "match": "^\\s*(\\|\\+)(.*?)$",
+                  "captures": {
+                    "1": {
+                      "name": "punctuation.definition.tag.begin.mediawiki"
+                    },
+                    "2": {
+                      "name": "string.unquoted.caption.mediawiki"
+                    }
+                  },
+                  "end": "$",
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                {
+                  "begin": "^\\s*(\\|)",
+                  "end": "$",
+                  "beginCaptures": {
+                    "1": {
+                      "name": "punctuation.definition.tag.mediawiki"
+                    }
+                  },
+                  "patterns": [
+                    {
+                      "include": "$self"
+                    },
+                    {
+                      "match": "\\|\\|",
+                      "name": "keyword.operator.mediawiki"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "wikixml": {
+          "patterns": [
+            {
+              "include": "#wikitag"
+            },
+            {
+              "include": "#nowiki"
+            },
+            {
+              "include": "#ref"
+            },
+            {
+              "include": "#jsonin"
+            },
+            {
+              "include": "#math"
+            }
+          ],
+          "repository": {
+            "nowiki": {
+              "contentName": "meta.embedded.block.plaintext",
+              "begin": "(?i)(<)(nowiki)(\\s+[^>]+)?\\s*(>)",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.nowiki.start.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "end": "(?i)(</)(nowiki)\\s*(>)",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.nowiki.end.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              }
+            },
+            "wikitag": {
+              "match": "(?i)(<)(templatestyles|ref|nowiki)(\\s+[^>]+)?\\s*(/>)",
+              "captures": {
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": "punctuation.definition.tag.end.mediawiki"
+              },
+              "name": "meta.tag.metedata.void.mediawiki"
+            },
+            "ref": {
+              "contentName": "meta.block.ref.mediawiki",
+              "begin": "(?i)(<)(ref)(\\s+[^>]+)?\\s*(>)",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.ref.start.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "end": "(?i)(</)(ref)\\s*(>)",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.ref.end.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            "jsonin": {
+              "begin": "(?i)(<)(graph|templatedata)(\\s+[^>]+)?\\s*(>)",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.start.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "end": "(?i)(</)(\\2)\\s*(>)",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.end.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "contentName": "meta.embedded.block.json",
+              "patterns": [
+                {
+                  "include": "source.json"
+                }
+              ]
+            },
+            "math": {
+              "begin": "(?i)(<)(math|chem|ce)(\\s+[^>]+)?\\s*(>)",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.start.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "text.html.basic#attribute"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "end": "(?i)(</)(\\2)\\s*(>)",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.tag.metadata.end.mediawiki"
+                },
+                "1": {
+                  "name": "punctuation.definition.tag.begin.mediawiki"
+                },
+                "2": {
+                  "name": "entity.name.tag.mediawiki"
+                },
+                "3": {
+                  "name": "punctuation.definition.tag.end.mediawiki"
+                }
+              },
+              "contentName": "meta.embedded.block.latex",
+              "patterns": [
+                {
+                  "include": "text.html.markdown.math#math"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
