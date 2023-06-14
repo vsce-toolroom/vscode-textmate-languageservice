@@ -36,7 +36,7 @@ export async function runSamplePass(component: string, basename: string, output:
 	// Run JSON diff assert and record error.
 	let error: TypeError | void = void 0;
 	try {
-		deepEqual(outputJson, expectedJson, filepath);
+		deepEqual(outputJson, expectedJson || [], filepath);
 	} catch (e) {
 		error = e as Error;
 	}
