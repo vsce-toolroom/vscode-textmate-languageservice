@@ -4,7 +4,7 @@ import TextmateLanguageService from '../../src/main';
 
 // Factory function for language service.
 function constructLanguageService(id: string): TextmateLanguageService {
-	return new TextmateLanguageService(id, globalThis.extensionContext);
+	return new TextmateLanguageService(id, globalThis.languageId === 'matlab' ? globalThis.extensionContext : void 0);
 }
 
 // Factory function for language service component.

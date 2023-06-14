@@ -9,7 +9,7 @@
   },
   "material-icon-theme.files.associations": {
     "webpack.config.web.test.js": "webpack",
-    "*.mw": "document"
+    "*.wiki": "document"
   },
   "material-icon-theme.folders.associations": {
     "parser": "functions",
