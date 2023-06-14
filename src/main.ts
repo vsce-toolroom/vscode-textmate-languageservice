@@ -36,18 +36,18 @@ interface Private {
 }
 
 export default class TextmateLanguageService {
-	public static utils = { TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, getOniguruma };
+	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, getOniguruma };
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
 	private [_private]: Private;
-	resolverService: ResolverService;
+	public resolver: ResolverService;
 
 	constructor(public readonly languageId: string, public readonly context?: vscode.ExtensionContext) {
 		this[_private] = {};
 
 		const onigLibPromise = getOniguruma();
-		const resolver = this.resolverService = new ResolverService(onigLibPromise, context);
+		const resolver = this.resolver = new ResolverService(onigLibPromise, context);
 
 		const extension = context?.extension || resolver.findExtensionByLanguageId(languageId);
 		const manifest = extension?.packageJSON as ExtensionManifest | undefined;
