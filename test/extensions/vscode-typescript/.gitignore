@@ -1,5 +1,5 @@
+data/
 node_modules/
 out/
-package-lock.json
-data/
 samples/
+package-lock.json
