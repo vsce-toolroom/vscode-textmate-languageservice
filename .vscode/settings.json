@@ -7,6 +7,10 @@
   "search.exclude": {
     "test/extensions/vscode-matlab/**": true
   },
+  "files.exclude": {
+    ".vscode-test": true,
+    ".vscode-test-web": true
+  },
   "material-icon-theme.files.associations": {
     "webpack.config.web.test.js": "webpack",
     "*.wiki": "document"
