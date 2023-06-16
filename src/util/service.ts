@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import * as crypto from './crypto';
 import type { LiteTextDocument } from '../services/document';
+import TextmateLanguageService from '../main';
 
 const encoder = new TextEncoder();
 
@@ -15,8 +16,8 @@ export abstract class ServiceBase<T> {
 	private _cache: Record<string, Promise<T>> = {};
 	private _integrity: Record<string, string> = {};
 
-	public async fetch(document: LiteTextDocument): Promise<T> {
-		const filepath = document.uri.path;
+	public async fetch(document: LiteTextDocument | string): Promise<T> {
+		const filepath = typeof document === 'string' ? document : document.uri.path;
 		const hash = await hashify(document);
 
 		if (
@@ -39,11 +40,11 @@ export abstract class ServiceBase<T> {
 		return output;
 	}
 
-	public abstract parse(document: LiteTextDocument): Promise<T>;
+	public abstract parse(document: LiteTextDocument | string): Promise<T>;
 }
 
-async function hashify(document: LiteTextDocument): Promise<string> {
-	const text = document.getText();
+async function hashify(document: LiteTextDocument | string): Promise<string> {
+	const text = typeof document === 'string' ? document : document.getText();
 	if (crypto.node) {
 		const hash = crypto.node.createHash('sha256');
 		hash.update(text);

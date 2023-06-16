@@ -5,8 +5,8 @@
     "Scope": "matchers.ScopeMatcher",
     "Path": "matchers.PathMatcher",
     "Group": "matchers.GroupMatcher",
-    "Expression": "matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
-    "Composite": "matchers.GroupMatcher | matchers.NegateMatcher | matchers.GroupMatcher | matchers.PathMatcher",
+    "Expression": "matchers.ExpressionMatcherType",
+    "Composite": "matchers.CompositeMatcherType",
     "Selector": "matchers.ParsedMatcher",
     "_": "Array<' ' | '\t'>"
   }

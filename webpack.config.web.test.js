@@ -23,7 +23,7 @@ const configuration = {
 	},
 	module: {
 		rules: [
-			{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'test/tsconfig.test.json' } },
+			{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'test/tsconfig.json' } },
 			{ test: /\.wasm$/, type: 'javascript/auto', loader: 'encoded-uint8array-loader' }
 		]
 	},
