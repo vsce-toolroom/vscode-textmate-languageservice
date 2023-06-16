@@ -3,21 +3,25 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
-import { TokenizerService } from './services/tokenizer';
-import { ConfigData } from './config';
-import { loadJsonFile } from './util/loader';
+import { isGrammarLanguageContribution } from './util/contributes';
+import { loadJsonFile, readFileText } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
+import { ConfigData } from './config';
 import { TextmateScopeSelector, TextmateScopeSelectorMap } from './util/selectors';
 import { ResolverService } from './services/resolver';
+import { TokenizerService } from './services/tokenizer';
 import { OutlineService } from './services/outline';
 import { DocumentService } from './services/document';
 import { TextmateFoldingRangeProvider } from './folding';
 import { TextmateDefinitionProvider } from './definition';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
+import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition } from './api';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest } from './util/contributes';
+import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarContribution, GrammarInjectionContribution, GrammarLanguageContribution, LanguageConfigurations, LanguageContribution } from './util/contributes';
+import type { GeneratorService } from './services/generators';
+import type { TextmateToken } from './services/tokenizer';
 
 const _private = Symbol('private');
 
@@ -36,13 +40,19 @@ interface Private {
 }
 
 export default class TextmateLanguageService {
-	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, getOniguruma };
+	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, readFileText, isGrammarLanguageContribution, getOniguruma };
+
+	public static api = { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition };
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
 	private [_private]: Private;
 	public resolver: ResolverService;
 
+	/**
+	 * @param {string} languageId Language ID of grammar contribution in VS Code.
+	 * @param {vscode.ExtensionContext} context Extension context as supplied to `activate` export of extension entrypoint.
+	 */
 	constructor(public readonly languageId: string, public readonly context?: vscode.ExtensionContext) {
 		this[_private] = {};
 
@@ -155,3 +165,10 @@ export default class TextmateLanguageService {
 		return this[_private].definitionProvider;
 	}
 }
+
+export type { 
+	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
+	GrammarLanguageContribution, GrammarInjectionContribution, GrammarContribution, LanguageContribution,
+	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
+	DocumentService, GeneratorService, OutlineService, ResolverService,
+};
