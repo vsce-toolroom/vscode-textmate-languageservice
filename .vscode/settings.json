@@ -18,6 +18,7 @@
   "material-icon-theme.folders.associations": {
     "parser": "functions",
     "services": "resource",
-    "scopes": "context"
+    "scopes": "context",
+    "definitions": "typescript"
   }
 }

@@ -4,7 +4,7 @@ const shelljs = require('shelljs');
 
 shelljs.exec('webpack-cli --config webpack.config.js --stats-error-details');
 
-shelljs.exec('tsc --project ./test/tsconfig.test.json');
+shelljs.exec('tsc --project ./test/tsconfig.json');
 shelljs.mkdir('./dist/test');
 shelljs.cp('-r', './out/test/*', './dist/test');
 

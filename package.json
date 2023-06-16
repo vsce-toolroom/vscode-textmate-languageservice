@@ -8,6 +8,9 @@
     "email": "git.vsce-toolroom@outlook.com",
     "url": "https://github.com/vsce-toolroom/"
   },
+  "enabledApiProposals": [
+    "tokenInformation"
+  ],
   "engines": {
     "vscode": "^1.51.0"
   },
@@ -41,15 +44,16 @@
     "posttest": "npm-run-all dump reset",
     "clean": "shx rm -rf dist",
     "clean-production": "shx rm -rf dist/test",
+    "prebundle": "npm-run-all clean pegjs proposals",
     "pegjs": "node ./scripts/pegjs.js",
-    "prebundle": "npm-run-all clean pegjs",
+    "proposals": "npx @vscode/dts dev",
     "bundle": "node ./scripts/bundle.js",
     "reset": "npm-run-all reset-matlab reset-typescript",
     "reset-matlab": "node ./scripts/reset.js ./test/extensions/vscode-matlab",
     "reset-typescript": "node ./scripts/reset.js ./test/extensions/vscode-typescript",
     "smoke": "npm-run-all smoke-src smoke-test",
     "smoke-src": "tsc --noEmit --project ./tsconfig.json",
-    "smoke-test": "tsc --noEmit --project ./test/tsconfig.test.json",
+    "smoke-test": "tsc --noEmit --project ./test/tsconfig.json",
     "patch": "shx cp -r test/patches/vscode-matlab/* test/extensions/vscode-matlab",
     "stage": "npm-run-all stage-matlab stage-typescript stage-mediawiki",
     "stage-matlab": "node ./scripts/stage.js ./test/extensions/vscode-matlab",
@@ -76,6 +80,7 @@
     "@types/mocha": "^10.0.1",
     "@types/node": "12.19.16",
     "@types/webpack-env": "1.18",
+    "@vscode/dts": "^0.4.0",
     "@vscode/test-electron": "^2.2.2",
     "@vscode/test-web": "^0.0.34",
     "dequal": "^2.0.3",

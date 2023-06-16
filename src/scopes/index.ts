@@ -87,3 +87,14 @@ export class FirstMateSelector {
 		return this.source;
 	}
 }
+
+export namespace rules {
+	export type Start = parser.Start;
+	export type Atom = parser.Atom;
+	export type Scope = parser.Scope;
+	export type Path = parser.Path;
+	export type Group = parser.Group;
+	export type Expression = parser.Expression;
+	export type Composite = parser.Composite;
+	export type Selector = parser.Selector;
+}
