@@ -3,15 +3,10 @@
 import * as vscode from 'vscode';
 import { GeneratorService } from './services/generators';
 import { TextmateToken } from './services/tokenizer';
-import { ResolverService } from './services/resolver';
-import { getOniguruma } from './util/oniguruma';
 import { TextmateScopeSelector } from './util/selectors';
 import type { GrammarLanguageContribution, LanguageContribution } from './util/contributes';
 
 const generators = new GeneratorService();
-
-const onigLibPromise = getOniguruma();
-const resolver = new ResolverService(onigLibPromise);
 
 const commentScopeSelector = new TextmateScopeSelector('comment');
 const stringScopeSelector = new TextmateScopeSelector('string');
