@@ -12,7 +12,7 @@
     "tokenInformation"
   ],
   "engines": {
-    "vscode": "^1.51.0"
+    "vscode": "^1.55.0"
   },
   "keywords": [
     "vscode",
