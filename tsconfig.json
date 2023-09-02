@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["es2019", "dom"],
+    "moduleResolution": "node",
+    "module": "commonjs",
     "outDir": "out",
     "declarationDir": "dist/types",
     "declaration": true,
@@ -9,8 +9,9 @@
     "types": ["context", "node", "webpack-env", "imports"],
     "rootDir": ".",
     "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "module": "commonjs"
+    "lib": ["es2019", "dom"],
+    "target": "es2019",
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*", "wasm.d.ts"]
+  "include": ["src/**/*", "wasm.d.ts", "typings/**/*"]
 }
