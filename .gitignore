@@ -1,6 +1,13 @@
 dist/
 node_modules/
 out/
+# Mocha hotfix for extension submodules
+test/extensions/*/_mocha
+test/extensions/*/_mocha.*
+test/extensions/*/mocha
+test/extensions/*/mocha.*
+test/extensions/*/vscode-test-web
+test/extensions/*/vscode-test-web.*
 # Performance hotfix for matlab submodule
 test/extensions/vscode-matlab/data/
 test/extensions/vscode-matlab/samples/

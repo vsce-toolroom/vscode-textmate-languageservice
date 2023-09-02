@@ -1,7 +1,5 @@
 'use strict';
 
-/// <reference types="context" />
-
 import * as path from 'path';
 import * as vscode from 'vscode';
 
@@ -9,7 +7,7 @@ import { MockGlobalMemento, MockMemento } from './memento';
 import { StubSecretStorage } from './secret';
 import { MockEnvironmentVariableCollection } from './variables';
 
-const TextmateLanguageService = require('../../src/main').default;
+import { default as TextmateLanguageService } from '../../src/main';
 
 const resolver = new TextmateLanguageService.utils.ResolverService(
 	TextmateLanguageService.utils.getOniguruma()
