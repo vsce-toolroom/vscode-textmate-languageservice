@@ -5,6 +5,11 @@ import { readFileText } from '../util/loader';
 import { Disposable } from '../util/dispose';
 
 import type { ConfigData } from '../config';
+import { ResolverService } from './resolver';
+import { getOniguruma } from '../util/oniguruma';
+
+const onigLibPromise = getOniguruma();
+const resolver = new ResolverService(onigLibPromise);
 
 export interface LiteTextLine {
 	text: string;
@@ -14,6 +19,7 @@ export interface LiteTextDocument {
 	readonly uri: vscode.Uri;
 	readonly version: number;
 	readonly lineCount: number;
+	readonly languageId: string;
 
 	lineAt(line: number): LiteTextLine;
 	getText(): string;
@@ -79,6 +85,10 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 			});
 		}
 
+		const filename = resource.path.split('/').pop();
+		const point = resolver.getLanguagePointFromFilename(filename);
+		const languageId = point?.id;
+
 		return {
 			getText() {
 				return text;
@@ -86,6 +96,7 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 			lineAt(index) {
 				return lines[index];
 			},
+			languageId: languageId,
 			lineCount,
 			uri: resource,
 			version: 0
