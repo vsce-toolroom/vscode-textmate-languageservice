@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
-import { isGrammarLanguageContribution } from './util/contributes';
+import { isGrammarLanguagePoint } from './util/contributes';
 import { loadJsonFile, readFileText } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { ConfigData } from './config';
@@ -19,7 +19,7 @@ import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition } from './api';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarContribution, GrammarInjectionContribution, GrammarLanguageContribution, LanguageConfigurations, LanguageContribution } from './util/contributes';
+import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarPoint, GrammarInjectionContribution, GrammarLanguagePoint, LanguageConfigurations, LanguagePoint } from './util/contributes';
 import type { GeneratorService } from './services/generators';
 import type { TextmateToken } from './services/tokenizer';
 
@@ -40,7 +40,7 @@ interface Private {
 }
 
 export default class TextmateLanguageService {
-	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, readFileText, isGrammarLanguageContribution, getOniguruma };
+	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, readFileText, isGrammarLanguagePoint, getOniguruma };
 
 	public static api = { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition };
 
@@ -59,7 +59,7 @@ export default class TextmateLanguageService {
 		const onigLibPromise = getOniguruma();
 		const resolver = this.resolver = new ResolverService(onigLibPromise, context);
 
-		const extension = context?.extension || resolver.findExtensionByLanguageId(languageId);
+		const extension = context?.extension || resolver.getExtensionFromLanguageId(languageId);
 		const manifest = extension?.packageJSON as ExtensionManifest | undefined;
 
 		if (!manifest) {
@@ -68,14 +68,14 @@ export default class TextmateLanguageService {
 
 		const registry = new vscodeTextmate.Registry(resolver);
 
-		const grammarData = resolver.findGrammarDataByLanguageId(languageId);
+		const grammarData = resolver.getGrammarDataFromLanguageId(languageId);
 		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
 
 		const paths = manifest['textmate-languageservices'] || {};
 		const filepath = paths[languageId] || './textmate-configuration.json';
 
 		const uri = vscode.Uri.joinPath(extension.extensionUri, filepath);
-		const languageData = resolver.findLanguageDataById(languageId);
+		const languageData = resolver.getLanguagePointFromId(languageId);
 		this[_private].configPromise = loadJsonFile<ConfigJson>(uri)
 			.then(json => new ConfigData(json, languageData))
 			.catch(() => new ConfigData({}, languageData));
@@ -168,7 +168,7 @@ export default class TextmateLanguageService {
 
 export type { 
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
-	GrammarLanguageContribution, GrammarInjectionContribution, GrammarContribution, LanguageContribution,
+	GrammarLanguagePoint, GrammarInjectionContribution, GrammarPoint, LanguagePoint,
 	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
 	DocumentService, GeneratorService, OutlineService, ResolverService,
 };
