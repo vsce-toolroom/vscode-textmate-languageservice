@@ -5,13 +5,14 @@
     "outDir": "out",
     "declarationDir": "dist/types",
     "declaration": true,
-    "typeRoots": ["./node_modules/@types", "./typings"],
-    "types": ["context", "node", "webpack-env", "imports"],
-    "rootDir": ".",
+    "types": ["node", "webpack-env"],
     "resolveJsonModule": true,
     "lib": ["es2019", "dom"],
-    "target": "es2019",
-    "allowSyntheticDefaultImports": true
+    "target": "es2019"
   },
-  "include": ["src/**/*", "wasm.d.ts", "typings/**/*"]
+  "include": [
+    "src/**/*",
+    "typings/api.d.ts",
+    "typings/imports.d.ts",
+  ]
 }

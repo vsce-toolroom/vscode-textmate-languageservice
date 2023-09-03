@@ -12,33 +12,38 @@ function initServiceComponent<T>(ls: TextmateLanguageService, name: string): T {
 	return ls[name]() as T;
 }
 
+type DocumentService = ReturnType<TextmateLanguageService['initDocumentService']>;
+type TokenService = ReturnType<TextmateLanguageService['initTokenService']>;
+type TextmateOutlineService = ReturnType<TextmateLanguageService['initOutlineService']>;
+type TextmateFoldingRangeProvider = ReturnType<TextmateLanguageService['createFoldingRangeProvider']>;
+type TextmateDefinitionProvider = ReturnType<TextmateLanguageService['createDefinitionProvider']>;
+type TextmateDocumentSymbolProvider = ReturnType<TextmateLanguageService['createDocumentSymbolProvider']>;
+type TextmateWorkspaceSymbolProvider = ReturnType<TextmateLanguageService['createWorkspaceSymbolProvider']>;
+
 /** `TextmateLanguageService` factory. */
 export const textmateService = constructLanguageService(globalThis.languageId);
 
 /** `DocumentService` component. */
-type DocumentService = ReturnType<TextmateLanguageService['initDocumentService']>;
 export const documentServicePromise = initServiceComponent<DocumentService>(textmateService, 'initDocumentService');
 
 /** `TokenizerService` component. */
-type TokenService = ReturnType<TextmateLanguageService['initTokenService']>;
 export const tokenServicePromise = initServiceComponent<TokenService>(textmateService, 'initTokenService');
 
 /** `OutlineService` component. */
-type TextmateOutlineService = ReturnType<TextmateLanguageService['initOutlineService']>;
 export const outlineServicePromise = initServiceComponent<TextmateOutlineService>(textmateService, 'initOutlineService');
 
 /** `TextmateFoldingRangeProvider` component. */
-type TextmateFoldingRangeProvider = ReturnType<TextmateLanguageService['createFoldingRangeProvider']>;
 export const foldingRangeProviderPromise = initServiceComponent<TextmateFoldingRangeProvider>(textmateService, 'createFoldingRangeProvider');
 
 /** `TextmateDefinitionProvider` component. */
-type TextmateDefinitionProvider = ReturnType<TextmateLanguageService['createDefinitionProvider']>;
 export const definitionProviderPromise = initServiceComponent<TextmateDefinitionProvider>(textmateService, 'createDefinitionProvider');
 
 /** `TextmateDocumentSymbolProvider` component. */
-type TextmateDocumentSymbolProvider = ReturnType<TextmateLanguageService['createDocumentSymbolProvider']>;
 export const documentSymbolProviderPromise = initServiceComponent<TextmateDocumentSymbolProvider>(textmateService, 'createDocumentSymbolProvider');
 
+
 /** `TextmateWorkspaceSymbolProvider` component. */
-type TextmateWorkspaceSymbolProvider = ReturnType<TextmateLanguageService['createWorkspaceSymbolProvider']>;
 export const workspaceSymbolProviderPromise = initServiceComponent<TextmateWorkspaceSymbolProvider>(textmateService, 'createWorkspaceSymbolProvider');
+
+/** API methods for grammar and token scope resolution. */
+export const api = TextmateLanguageService.api;
