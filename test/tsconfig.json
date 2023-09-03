@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["es2019", "dom"],
-    "outDir": "../out",
-    "typeRoots": ["../node_modules/@types", "../typings"],
-    "types": ["node", "webpack-env", "mocha", "imports", "context"],
-    "rootDir": "..",
-    "resolveJsonModule": true,
     "moduleResolution": "node",
     "module": "commonjs",
-    "baseUrl": ".."
+    "outDir": "../out",
+    "types": ["node", "webpack-env", "mocha"],
+    "rootDir": "..",
+    "resolveJsonModule": true,
+    "baseUrl": "..",
+    "lib": ["es2019", "dom"],
+    "target": "es2019",
   },
-  "include": ["./*", "./suite/*/*.test", "./util/*"],
-  "exclude": ["../src/main", "./runner-web", "./data/*/*"]
+  "include": [
+    "../typings/api.d.ts",
+    "../typings/imports.d.ts",
+    "../typings/context.d.ts",
+    "./*",
+    "./suite/*/*.test",
+    "./util/*"
+  ],
+  "exclude": [
+    "../src/main",
+    "./runner-web",
+      "./data/*/*"
+  ]
 }

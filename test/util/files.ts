@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 
-import { getTestModeExtension, PartialJsonValue } from './common';
+import { getTestModeExtension } from './common';
 
 export const LANGUAGES = ['matlab', 'typescript', 'mediawiki'];
 

@@ -4,7 +4,6 @@ import TextmateLanguageService from 'vscode-textmate-languageservice';
 export async function activate(context: vscode.ExtensionContext) {
     const selector: vscode.DocumentSelector = 'typescript';
     const textmateService = new TextmateLanguageService(selector);
-    await textmateService.initTokenService();
 }
 
 export function deactivate() {}

@@ -1,3 +1,6 @@
+/// <reference path="../../../typings/api.d.ts" />
+/// <reference path="../../../typings/context.d.ts" />
+
 'use strict';
 
 import * as vscode from 'vscode';
@@ -9,8 +12,6 @@ import { BASENAMES, getSampleFileUri } from '../../util/files';
 import { TextmateScopeSelector } from '../../util/common';
 
 const { getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition } = TextmateLanguageService.api;
-const resolver = textmateService.resolver;
-
 let titleData: Awaited<ReturnType<typeof getTitleData>>;
 
 type TextmateScopeSelectorType = typeof TextmateScopeSelector.prototype;

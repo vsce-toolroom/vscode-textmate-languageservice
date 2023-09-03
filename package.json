@@ -72,11 +72,11 @@
     "harness-web": "npm-run-all harness-web-matlab harness-web-typescript harness-web-mediawiki",
     "harness-web-matlab": "node ./test/extensions/vscode-matlab/node_modules/vscode-textmate-languageservice/dist/test/harness-web.js",
     "harness-web-typescript": "node ./test/extensions/vscode-typescript/node_modules/vscode-textmate-languageservice/dist/test/harness-web.js",
-    "harness-web-mediawiki": "node ./test/extensions/vscode-typescript/node_modules/vscode-textmate-languageservice/dist/test/harness-web.js",
+    "harness-web-mediawiki": "node ./test/extensions/vscode-mediawiki/node_modules/vscode-textmate-languageservice/dist/test/harness-web.js",
     "dump": "npm-run-all dump-matlab dump-typescript dump-mediawiki",
     "dump-typescript": "shx cp -r ./test/extensions/vscode-typescript/data/* ./test/data",
     "dump-matlab": "shx cp -r ./test/extensions/vscode-matlab/data/* ./test/data",
-    "dump-mediawiki": "shx cp -r ./test/extensions/vscode-matlab/data/* ./test/data"
+    "dump-mediawiki": "shx cp -r ./test/extensions/vscode-mediawiki/data/* ./test/data"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
