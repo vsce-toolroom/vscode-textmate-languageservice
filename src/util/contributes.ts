@@ -6,7 +6,7 @@ import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
 
-export interface GrammarLanguageContribution {
+export interface GrammarLanguagePoint {
 	language: string;
 	scopeName: string;
 	path: string;
@@ -19,20 +19,20 @@ export interface GrammarInjectionContribution {
 	injectTo: string[];
 }
 
-export type GrammarContribution = GrammarLanguageContribution | GrammarInjectionContribution;
+export type GrammarPoint = GrammarLanguagePoint | GrammarInjectionContribution;
 
-export function isGrammarLanguageContribution(g: GrammarContribution): g is GrammarLanguageContribution {
+export function isGrammarLanguagePoint(g: GrammarPoint): g is GrammarLanguagePoint {
 	return g && 'injectTo' in g === false;
 }
 
-export interface LanguageContribution {
+export interface LanguagePoint {
 	id: string;
 	extensions?: string[];
 	filenames?: string[];
 }
 
-export type LanguageData = LanguageContribution[];
-export type GrammarData = GrammarLanguageContribution[];
+export type LanguageData = LanguagePoint[];
+export type GrammarData = GrammarLanguagePoint[];
 
 export interface ExtensionContributions extends PartialJsonObject {
 	languages?: PartialJsonObject & LanguageData;
@@ -44,6 +44,7 @@ export interface LanguageConfigurations {
 }
 
 export interface ExtensionManifest extends PackageJson {
+	enabledApiProposals?: string[];
 	contributes?: ExtensionContributions;
 	/** Mapping from language ID to config path. Default: `./textmate-configuration.json`. */
 	'textmate-languageservices'?: LanguageConfigurations;
@@ -80,7 +81,7 @@ function getAllExtensionContributes() {
 			}
 
 			const l = contributes.languages || [];
-			const g = contributes.grammars?.filter(isGrammarLanguageContribution) || [];
+			const g = contributes.grammars?.filter(isGrammarLanguagePoint) || [];
 			languages.push(...l);
 			grammars.push(...g);
 
@@ -109,7 +110,7 @@ export class ContributorData {
 			return;
 		}
 		this._languages = manifest?.contributes?.languages || [];
-		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageContribution) || [];
+		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguagePoint) || [];
 		this._sources = {
 			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension])),
 			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
