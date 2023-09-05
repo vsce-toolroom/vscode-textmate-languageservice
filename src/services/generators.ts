@@ -7,7 +7,7 @@ export class GeneratorService extends ServiceBase<TextmateLanguageService> {
 		super();
 	}
 
-	public async parse(languageId: string): Promise<TextmateLanguageService> {
-		return new TextmateLanguageService(languageId);
+	public parse(languageId: string): Promise<TextmateLanguageService> {
+		return Promise.resolve(new TextmateLanguageService(languageId));
 	}
 }

@@ -45,7 +45,7 @@ export default class TextmateLanguageService {
 		getOniguruma, isGrammarLanguagePoint, loadJsonFile, readFileText
 	};
 
-	public static api = { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition };
+	public static api = { getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition };
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
@@ -54,7 +54,7 @@ export default class TextmateLanguageService {
 
 	/**
 	 * @param {string} languageId Language ID of grammar contribution in VS Code.
-	 * @param {vscode.ExtensionContext} context Extension context as supplied to `activate` export of extension entrypoint.
+	 * @param {vscode.ExtensionContext} context Extension context from `activate` entrypoint export.
 	 */
 	constructor(public readonly languageId: string, public readonly context?: vscode.ExtensionContext) {
 		this[_private] = {};
@@ -169,7 +169,7 @@ export default class TextmateLanguageService {
 	}
 }
 
-export type { 
+export type {
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
 	GrammarLanguagePoint, GrammarInjectionContribution, GrammarPoint, LanguagePoint,
 	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
