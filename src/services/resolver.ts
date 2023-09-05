@@ -96,11 +96,11 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		throw new Error('Could not find grammar contribution for language ID "' + languageId + '" in extension manifest');
 	}
 
-	public getExtensionFromLanguageId(languageId: string): vscode.Extension<any> | undefined {
+	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
 		return this._contributes.sources.languages[languageId];
 	}
 
-	public getExtensionFromScopeName(scopeName: string): vscode.Extension<any> {
+	public getExtensionFromScopeName(scopeName: string): vscode.Extension<unknown> {
 		return this._contributes.sources.grammars[scopeName];
 	}
 

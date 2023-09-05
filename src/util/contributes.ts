@@ -59,7 +59,7 @@ export const contributionKeys: ExtensionManifestContributionKey[] = [
 
 export type ExtensionManifestContributionKey = 'textmate-languageservice-contributes' | 'contributes';
 
-export type ExtensionData = Record<string, vscode.Extension<any> | undefined>;
+export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
 function getAllExtensionContributes() {
 	const languages: LanguageData = [];

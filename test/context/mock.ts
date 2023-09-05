@@ -36,7 +36,7 @@ export class MockExtensionContext implements vscode.ExtensionContext {
 	public asAbsolutePath: (relativePath: string) => string;
 
 	public readonly extensionMode: vscode.ExtensionMode;
-	public readonly extension: vscode.Extension<any>;
+	public readonly extension: vscode.Extension<unknown>;
 
 	constructor(id: string) {
 		this.subscriptions = [];
@@ -56,7 +56,7 @@ export class MockExtensionContext implements vscode.ExtensionContext {
 		this.logPath = `${codeRoot}/user-data/User/logs`;
 		this.logUri = vscode.Uri.file(this.logPath);
 
-		const extension = resolver.getExtensionFromLanguageId(id) as vscode.Extension<any>;
+		const extension = resolver.getExtensionFromLanguageId(id) as vscode.Extension<unknown>;
 		if (typeof extension === 'undefined') {
 			if (globalThis.languageId === id) {
 				throw new Error('Could not find extension for language ID "' + id +'"');
