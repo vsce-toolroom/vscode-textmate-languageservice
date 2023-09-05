@@ -9,7 +9,7 @@ const extensionTestDataFolders = ['data', 'samples'];
 const root = path.relative(__dirname, '..');
 
 shelljs.cd(extensionPath);
-shelljs.exec('npm un vscode-textmate-languageservice');
+shelljs.exec('npm install vscode-textmate-languageservice@latest');
 shelljs.cd(root);
 
 shelljs.rm('-rf', ...extensionTestDataFolders.map(f => `${extensionPath}/${f}`));

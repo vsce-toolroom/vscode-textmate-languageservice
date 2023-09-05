@@ -40,7 +40,10 @@ interface Private {
 }
 
 export default class TextmateLanguageService {
-	public static utils = { ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap, loadJsonFile, readFileText, isGrammarLanguagePoint, getOniguruma };
+	public static utils = {
+		ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap,
+		getOniguruma, isGrammarLanguagePoint, loadJsonFile, readFileText
+	};
 
 	public static api = { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition };
 
