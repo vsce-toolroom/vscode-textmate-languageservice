@@ -1,9 +1,7 @@
 'use strict';
 
-import * as vscode from 'vscode';
 import * as crypto from './crypto';
 import type { LiteTextDocument } from '../services/document';
-import TextmateLanguageService from '../main';
 
 const encoder = new TextEncoder();
 

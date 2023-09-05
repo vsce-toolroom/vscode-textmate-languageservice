@@ -12,7 +12,7 @@
   },
   "include": [
     "src/**/*",
-    "typings/api.d.ts",
+    "typings/tokenInformation.api.d.ts",
     "typings/imports.d.ts"
   ]
 }

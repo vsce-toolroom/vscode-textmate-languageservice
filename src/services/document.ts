@@ -93,10 +93,10 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 			getText() {
 				return text;
 			},
+			languageId,
 			lineAt(index) {
 				return lines[index];
 			},
-			languageId: languageId,
 			lineCount,
 			uri: resource,
 			version: 0
