@@ -10,7 +10,7 @@ export type AtomMatcher = SegmentMatcher | TrueMatcher;
 
 export type ExpressionMatcherType = NegateMatcher | GroupMatcher | PathMatcher;
 
-export type CompositeMatcherType = GroupMatcher | NegateMatcher | GroupMatcher | PathMatcher; 
+export type CompositeMatcherType = GroupMatcher | NegateMatcher | GroupMatcher | PathMatcher;
 
 export type ParsedMatcher = (
 	| PathMatcher
