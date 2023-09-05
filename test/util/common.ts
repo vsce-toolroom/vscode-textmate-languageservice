@@ -10,7 +10,7 @@ const encoder = new TextEncoder();
 
 export type PartialJsonValue = PartialDeep<JsonValue>;
 
-export function getTestModeExtension(): vscode.Extension<void> {
+export function getTestModeExtension(): vscode.Extension<unknown> {
 	return vscode.extensions.all[vscode.extensions.all.length - 1];
 }
 
