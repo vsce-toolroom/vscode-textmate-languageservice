@@ -71,7 +71,7 @@ export default class TextmateLanguageService {
 
 		const registry = new vscodeTextmate.Registry(resolver);
 
-		const grammarData = resolver.getGrammarDataFromLanguageId(languageId);
+		const grammarData = resolver.getGrammarPointFromLanguageId(languageId);
 		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
 
 		const paths = manifest['textmate-languageservices'] || {};
@@ -173,5 +173,5 @@ export type {
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
 	GrammarLanguagePoint, GrammarInjectionContribution, GrammarPoint, LanguagePoint,
 	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
-	DocumentService, GeneratorService, OutlineService, ResolverService,
+	DocumentService, GeneratorService, OutlineService,
 };
