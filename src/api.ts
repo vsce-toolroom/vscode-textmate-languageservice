@@ -54,7 +54,7 @@ export async function getScopeRangeAtPosition(document: LiteTextDocument, positi
 function findTokenByPosition(position: vscode.Position) {
 	return function(t: TextmateToken) {
 		return position.line === t.line && position.character >= t.startIndex && position.character <= t.endIndex;
-	}
+	};
 }
 
 function getTokenTypeFromScope(scopes: string[]): vscode.StandardTokenType {
