@@ -11,7 +11,7 @@
     "target": "es2019"
   },
   "include": [
-    "../typings/api.d.ts",
+    "../typings/tokenInformation.api.d.ts",
     "../typings/imports.d.ts",
     "../typings/context.d.ts",
     "./*",
