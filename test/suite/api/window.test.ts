@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/api.d.ts" />
+/// <reference path="../../../typings/tokenInformation.api.d.ts" />
 /// <reference path="../../../typings/context.d.ts" />
 
 'use strict';
