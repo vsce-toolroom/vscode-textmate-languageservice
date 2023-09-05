@@ -50,12 +50,12 @@ export async function runSamplePass(component: string, basename: string, output:
 	if (isWebRuntime && error) {
 		console.log(`${filepath} expected contents:`);
 		console.log('');
-		// console.log(`    ${JSON.stringify(expectedJson)}`);
-		// console.log('');
+		console.log(`    ${JSON.stringify(expectedJson)}`);
+		console.log('');
 		console.log(`${filepath} actual contents:`)
 		console.log('');
-		// console.log(`    ${JSON.stringify(outputJson)}`);
-		// console.log('');
+		console.log(`    ${JSON.stringify(outputJson)}`);
+		console.log('');
 	}
 
 	// Throw an uncaught exception to exit Mocha test closure.
