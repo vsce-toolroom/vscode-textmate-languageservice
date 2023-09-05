@@ -2,9 +2,9 @@
 
 import * as vscode from 'vscode';
 import { GeneratorService } from './services/generators';
-import { TextmateToken } from './services/tokenizer';
 import { TextmateScopeSelector } from './util/selectors';
-import { LiteTextDocument } from './services/document';
+import type { LiteTextDocument } from './services/document';
+import type { TextmateToken } from './services/tokenizer';
 
 const generators = new GeneratorService();
 
@@ -24,7 +24,7 @@ export async function getScopeInformationAtPosition(document: LiteTextDocument, 
 	const tokens = await tokenService.fetch(document);
 	const caret = tokens.find(findTokenByPosition(position));
 	return caret;
-}
+};
 
 /**
  * VS Code compatible performant API for token information at a caret position.
@@ -37,7 +37,7 @@ export async function getTokenInformationAtPosition(document: LiteTextDocument, 
 	const range = new vscode.Range(caret.line, caret.startIndex, caret.line, caret.endIndex);
 	const type = getTokenTypeFromScope(caret.scopes);
 	return { range, type };
-}
+};
 
 /**
  * Get matching scope range of the Textmate token intersecting a caret position.
@@ -49,7 +49,7 @@ export async function getScopeRangeAtPosition(document: LiteTextDocument, positi
 	const caret = await getScopeInformationAtPosition(document, position);
 	const range = new vscode.Range(caret.line, caret.startIndex, caret.line, caret.endIndex);
 	return range;
-}
+};
 
 function findTokenByPosition(position: vscode.Position) {
 	return function(t: TextmateToken) {
