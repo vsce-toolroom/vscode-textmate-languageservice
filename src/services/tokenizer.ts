@@ -1,6 +1,5 @@
 'use strict';
 
-import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
 import { ServiceBase } from '../util/service';

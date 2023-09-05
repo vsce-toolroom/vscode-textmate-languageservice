@@ -8,7 +8,7 @@
     "resolveJsonModule": true,
     "baseUrl": "..",
     "lib": ["es2019", "dom"],
-    "target": "es2019",
+    "target": "es2019"
   },
   "include": [
     "../typings/api.d.ts",

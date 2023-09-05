@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 
 import { strictEqual } from '../../util/assert';
 import TextmateLanguageService from '../../../src/main';
-import { textmateService, documentServicePromise, tokenServicePromise } from '../../util/factory';
+import { documentServicePromise, tokenServicePromise } from '../../util/factory';
 import { BASENAMES, getSampleFileUri } from '../../util/files';
 import { TextmateScopeSelector } from '../../util/common';
 
@@ -35,6 +35,10 @@ const languageStandardTypeMap = {
 };
 
 suite('test/suite/tokenizer.test.ts - TokenizerService class (src/services/tokenizer.ts)', async function() {
+	if (globalThis.languageId === 'mediawiki') {
+		return;
+	}
+
 	this.timeout(5000);
 
 	this.beforeAll(async function() {
@@ -87,7 +91,7 @@ async function getTitleData() {
 	const document = await documentService.getDocument(resource);
 	const tokens = await tokenService.fetch(document);
 
-	const selector = languageSelectorMap[basename];
+	const selector = languageSelectorMap[globalThis.languageId];
 	const token = tokens.find(t => t.line === 0 && selector.match(t.scopes));
 
 	if (!token) {

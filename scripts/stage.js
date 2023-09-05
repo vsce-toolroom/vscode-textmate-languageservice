@@ -14,7 +14,7 @@ const extensionTestDataFolders = ['data', 'samples'];
 
 shelljs.exec('npm pack');
 const tarballPath = path.basename(glob.globSync('*.tgz')[0]);
-shelljs.exec(`npm install --prefix ${extensionPath} --omit=dev ${tarballPath} --prefer-offline`);
+shelljs.exec(`npm install --prefix ${extensionPath} --omit=dev ${tarballPath} --force`);
 
 const packageJSON = require('../package.json');
 
@@ -23,7 +23,7 @@ for (let index = 0; index < extensionTestDevDependencies.length; index++) {
 	const packageName = extensionTestDevDependencies[index];
 	const packageVersion = packageJSON.devDependencies[packageName];
 	const testDependency = `${packageName}@${packageVersion}`;
-	shelljs.exec(`npm install --prefix ${extensionPath} --save-dev --package-lock false ${testDependency}`);
+	shelljs.exec(`npm install --prefix ${extensionPath} --save-dev --package-lock false ${testDependency} --force`);
 }
 
 for (let index = 0; index < extensionTestDataFolders.length; index++) {

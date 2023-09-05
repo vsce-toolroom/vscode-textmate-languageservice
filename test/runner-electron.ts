@@ -14,7 +14,8 @@ const files = [
 	require.resolve('./suite/providers/folding.test'),
 	require.resolve('./suite/providers/definition.test'),
 	require.resolve('./suite/providers/document-symbol.test'),
-	require.resolve('./suite/providers/workspace-symbol.test')
+	require.resolve('./suite/providers/workspace-symbol.test'),
+	require.resolve('./suite/api/window.test')
 ];
 
 export async function run(): Promise<void> {
