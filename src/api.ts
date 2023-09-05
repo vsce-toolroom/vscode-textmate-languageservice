@@ -3,14 +3,18 @@
 import * as vscode from 'vscode';
 import { GeneratorService } from './services/generators';
 import { TextmateScopeSelector } from './util/selectors';
+import { ContributorData } from './util/contributes';
 import type { LiteTextDocument } from './services/document';
 import type { TextmateToken } from './services/tokenizer';
+import type { GrammarLanguagePoint, LanguagePoint } from './util/contributes';
 
 const generators = new GeneratorService();
 
 const commentScopeSelector = new TextmateScopeSelector('comment');
 const stringScopeSelector = new TextmateScopeSelector('string');
 const regexScopeSelector = new TextmateScopeSelector('regex');
+
+const contributorData = new ContributorData();
 
 /**
  * Get token scope information at a specific position (caret line and character number).
@@ -49,6 +53,24 @@ export async function getScopeRangeAtPosition(document: LiteTextDocument, positi
 	const caret = await getScopeInformationAtPosition(document, position);
 	const range = new vscode.Range(caret.line, caret.startIndex, caret.line, caret.endIndex);
 	return range;
+};
+
+/**
+ * Get the active language point configuration of a language mode identifier.
+ * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
+ * @returns {LanguagePoint} Language contribution as configured in source VS Code extension.
+ */
+export function getLanguageConfiguration(languageId: string): LanguagePoint {
+	return contributorData.getLanguagePointFromId(languageId);
+};
+
+/**
+ * Get the active language point configuration of a language mode identifier.
+ * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
+ * @returns {GrammarLanguagePoint} Grammar contribution as configured in source VS Code extension.
+ */
+export function getGrammarConfiguration(languageId: string): GrammarLanguagePoint {
+	return contributorData.getGrammarPointFromLanguageId(languageId);
 };
 
 function findTokenByPosition(position: vscode.Position) {
