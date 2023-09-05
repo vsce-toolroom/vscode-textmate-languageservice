@@ -100,6 +100,7 @@ export class ContributorData {
 	private _languages: LanguageData;
 	private _grammars: GrammarData;
 	private _sources: { languages: ExtensionData; grammars: ExtensionData; };
+
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
 		if (!manifest) {
@@ -116,12 +117,101 @@ export class ContributorData {
 			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
 		};
 	}
+
+	public findLanguageByExtension(fileExtension: string): string {
+		for (const language of this.languages.reverse()) {
+			if (!language.extensions) {
+				continue;
+			}
+			for (const extension of language.extensions) {
+				if (extension === fileExtension) {
+					return language.id;
+				}
+			}
+		}
+		return 'plaintext';
+	}
+
+	public findLanguageByFilename(fileLabel: string): string {
+		for (const language of this.languages.reverse()) {
+			if (!language.filenames) {
+				continue;
+			}
+			for (const filename of language.filenames) {
+				if (filename === fileLabel) {
+					return language.id;
+				}
+			}
+		}
+		return 'plaintext';
+	}
+
+	public findGrammarScopeNameFromFilename(fileLabel: string): string | null {
+		const extname = fileLabel.substring(fileLabel.lastIndexOf('.'));
+		const language = this.findLanguageByFilename(fileLabel) || this.findLanguageByExtension(extname);
+		if (!language) {
+			return null;
+		}
+
+		const grammar = this.getGrammarPointFromLanguageId(language);
+		return grammar ? grammar.scopeName : null;
+	}
+
+	public findLanguageIdFromScopeName(scopeName: string): string {
+		const grammarData = this.grammars.find(g => g.scopeName === scopeName);
+		if (grammarData) {
+			return grammarData.language;
+		}
+		throw new Error('Could not find language contribution for scope name "' + scopeName + '" in extension manifest');
+	}
+
+	public getLanguagePointFromId(languageId: string): LanguagePoint {
+		for (const language of this.languages.reverse()) {
+			if (language.id === languageId) {
+				return language;
+			}
+		}
+		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
+	}
+
+	public getLanguagePointFromFilename(filename: string): LanguagePoint | null {
+		const extname = filename.substring(filename.lastIndexOf('.'));
+		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
+		if (!languageId) {
+			return null;
+		}
+		const languageData = this.sources.languages[languageId];
+		if (languageData) {
+			return null;
+		}
+		return languageData;
+	}
+
+	public getGrammarPointFromLanguageId(languageId: string): GrammarLanguagePoint {
+		for (const grammar of this.grammars.reverse()) {
+			if (grammar.language === languageId) {
+				return grammar;
+			}
+		}
+		throw new Error('Could not find grammar contribution for language ID "' + languageId + '" in extension manifest');
+	}
+
+	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
+		return this.sources.languages[languageId];
+	}
+
+	public getExtensionFromScopeName(scopeName: string): vscode.Extension<unknown> {
+		return this.sources.grammars[scopeName];
+	}
+
 	public get languages() {
 		return this._languages;
 	}
+
 	public get grammars() {
 		return this._grammars;
 	}
+
 	public get sources() {
 		return this._sources;
 	}
