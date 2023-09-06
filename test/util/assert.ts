@@ -11,7 +11,7 @@ export function deepEqual(actual: any, expected: any, message?: string) {
 }
 
 export function strictEqual(actual: any, expected: any, message?: string) {
-	if (actual !== expected && isNaN(actual) !== isNaN(expected)) {
+	if (actual !== expected || isNaN(actual) !== isNaN(expected)) {
 		throw new TypeError(generateMessage(actual, expected, message));
 	}
 }
@@ -38,7 +38,6 @@ function generateMessage(actual: any, expected: any, message?: string): string {
 type CustomLineDiffGutterMode = 'insertion' | 'deletion' | 'context';
 
 function generateCustomLineDiff(actual: string, expected: string): string {
-	return '';
 	const lineDiff = new LineDiff(expected, actual, 0).toString();
 	const lines = lineDiff.split('\n');
 
