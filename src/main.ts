@@ -16,7 +16,7 @@ import { TextmateFoldingRangeProvider } from './folding';
 import { TextmateDefinitionProvider } from './definition';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
-import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition } from './api';
+import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarConfiguration, getLanguageConfiguration } from './api';
 
 import type { ConfigJson } from './config';
 import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarPoint, GrammarInjectionContribution, GrammarLanguagePoint, LanguageConfigurations, LanguagePoint } from './util/contributes';
@@ -45,7 +45,10 @@ export default class TextmateLanguageService {
 		getOniguruma, isGrammarLanguagePoint, loadJsonFile, readFileText
 	};
 
-	public static api = { getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition };
+	public static api = {
+		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition,
+		getGrammarConfiguration, getLanguageConfiguration
+	};
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
