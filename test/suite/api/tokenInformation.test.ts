@@ -34,7 +34,7 @@ const languageStandardTypeMap = {
 	'typescript': vscode.StandardTokenType.Other,
 };
 
-suite('test/suite/tokenizer.test.ts - TokenizerService class (src/services/tokenizer.ts)', async function() {
+suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
 	if (globalThis.languageId === 'mediawiki') {
 		return;
 	}
