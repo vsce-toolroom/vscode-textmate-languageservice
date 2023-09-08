@@ -174,15 +174,15 @@ export class ContributorData {
 		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
 	}
 
-	public getLanguagePointFromFilename(filename: string): LanguagePoint | null {
+	public getLanguagePointFromFilename(filename: string): LanguagePoint {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
 		if (!languageId) {
-			return null;
+			return { id: 'plaintext' };
 		}
 		const languageData = this.sources.languages[languageId];
-		if (languageData) {
-			return null;
+		if (!languageData) {
+			return { id: 'plaintext' };
 		}
 		return languageData;
 	}
