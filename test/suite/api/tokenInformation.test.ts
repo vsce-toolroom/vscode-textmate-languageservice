@@ -35,10 +35,6 @@ const languageStandardTypeMap = {
 };
 
 suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
-	if (globalThis.languageId === 'mediawiki') {
-		return;
-	}
-
 	this.timeout(5000);
 
 	this.beforeAll(async function() {
@@ -46,24 +42,31 @@ suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
 	})
 
 	test('getScopeInformationAtPosition(): Promise<TextmateToken>', async function() {
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
+
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const scopeInformation = await getScopeInformationAtPosition(titleData.document, titleData.position);
 
 		strictEqual(scopeInformation.line, 0);
+		strictEqual(scopeInformation.text, titleData.basename);
 
 		strictEqual(scopeInformation.startIndex, titleData.token.startIndex);
 		strictEqual(scopeInformation.endIndex, titleData.token.endIndex);
 
 		strictEqual(scopeInformation.level, 0);
 
-		strictEqual(scopeInformation.text, titleData.basename);
-
 		const scopeType = languageScopeMap[globalThis.languageId];
 		strictEqual(scopeInformation.type, scopeType);			
 	});
 
 	test('getScopeRangeAtPosition(): Promise<TextmateToken>', async function() {
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
+
 		vscode.window.showInformationMessage('API `getScopeRangeAtPosition` method (src/api.ts)');
 
 		const scopeRange = await getScopeRangeAtPosition(titleData.document, titleData.position);
@@ -71,6 +74,10 @@ suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
 	});
 
 	test('getScopeInformationAtPosition(): Promise<TextmateToken>', async function() {
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
+
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const tokenInformation = await getTokenInformationAtPosition(titleData.document, titleData.position);
