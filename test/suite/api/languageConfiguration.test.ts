@@ -22,13 +22,13 @@ const languageScopeNameMap: Record<string, string> = {
 };
 
 suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
-	if (globalThis.languageId === 'mediawiki') {
-		return;
-	}
-
 	this.timeout(5000);
 
 	test('getLanguageConfiguration(): LanguagePoint', async function() {
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
+
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const languageConfiguration = await getLanguageConfiguration(globalThis.languageId);
@@ -40,6 +40,10 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	});
 
 	test('getGrammarConfiguration(): GrammarLanguagePoint', async function() {
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
+
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const grammarConfiguration = await getGrammarConfiguration(globalThis.languageId);
