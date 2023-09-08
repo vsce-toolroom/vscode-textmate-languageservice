@@ -73,6 +73,15 @@ export function getGrammarConfiguration(languageId: string): GrammarLanguagePoin
 	return contributorData.getGrammarPointFromLanguageId(languageId);
 };
 
+/**
+ * Get the VS Code Extension API entry of the extension that contributed a la nguage mode identifier.
+ * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
+ * @returns {vscode.Extension} Extension API instance that contributed the language.
+ */
+export function getContributorExtension(languageId: string): vscode.Extension<unknown> | void {
+	return contributorData.getExtensionFromLanguageId(languageId);
+};
+
 function findTokenByPosition(position: vscode.Position) {
 	return function(t: TextmateToken) {
 		const start = new vscode.Position(t.line, t.startIndex);
