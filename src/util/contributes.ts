@@ -99,7 +99,7 @@ function getAllExtensionContributes() {
 export class ContributorData {
 	private _languages: LanguageData;
 	private _grammars: GrammarData;
-	private _sources: { languages: ExtensionData; grammars: ExtensionData; };
+	private _sources: Record<'grammars' | 'languages', ExtensionData>;
 
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
@@ -117,7 +117,7 @@ export class ContributorData {
 			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension]))
 		};
 	}
-	
+
 	public get languages() {
 		return this._languages;
 	}
