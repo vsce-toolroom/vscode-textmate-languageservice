@@ -7,7 +7,6 @@ const root = path.resolve(__dirname, '..');
 const extensionPath = path.resolve(root, process.argv[2]);
 const extensionTestDataFolders = ['data', 'samples'];
 
-
 shelljs.cd(extensionPath);
 shelljs.exec('npm install vscode-textmate-languageservice@latest');
 shelljs.cd(root);
