@@ -65,8 +65,8 @@ function getAllExtensionContributes() {
 	const languages: LanguageData = [];
 	const grammars: GrammarData = [];
 	const sources = {
-		languages: {} as ExtensionData,
-		grammars: {} as ExtensionData
+		grammars: {} as ExtensionData,
+		languages: {} as ExtensionData
 	};
 	for (const extension of vscode.extensions.all) {
 		const manifest = extension.packageJSON as ExtensionManifest | void;
@@ -90,10 +90,10 @@ function getAllExtensionContributes() {
 			}
 			for (const grammar of g) {
 				sources.grammars[grammar.scopeName] = extension;
-			}				
+			}
 		}
 	}
-	return { languages, grammars, sources };
+	return { grammars, languages, sources };
 }
 
 export class ContributorData {
@@ -113,9 +113,21 @@ export class ContributorData {
 		this._languages = manifest?.contributes?.languages || [];
 		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageDefinition) || [];
 		this._sources = {
-			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension])),
 			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
+			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension]))
 		};
+	}
+	
+	public get languages() {
+		return this._languages;
+	}
+
+	public get grammars() {
+		return this._grammars;
+	}
+
+	public get sources() {
+		return this._sources;
 	}
 
 	public findLanguageByExtension(fileExtension: string): string {
@@ -202,17 +214,5 @@ export class ContributorData {
 
 	public getExtensionFromScopeName(scopeName: string): vscode.Extension<unknown> {
 		return this.sources.grammars[scopeName];
-	}
-
-	public get languages() {
-		return this._languages;
-	}
-
-	public get grammars() {
-		return this._grammars;
-	}
-
-	public get sources() {
-		return this._sources;
 	}
 }

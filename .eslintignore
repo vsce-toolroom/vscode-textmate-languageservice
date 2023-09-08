@@ -1,4 +1,5 @@
 node_modules
 out
 src/parser/parser.ts
+src/scopes/header.ts
 src/typing/*.d.ts

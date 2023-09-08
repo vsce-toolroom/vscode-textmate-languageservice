@@ -46,14 +46,15 @@ export default class TextmateLanguageService {
 	};
 
 	public static api = {
-		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition,
-		getContributorExtension, getGrammarConfiguration, getLanguageConfiguration
+		getContributorExtension, getGrammarConfiguration, getLanguageConfiguration,
+		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition
 	};
+
+	public resolver: ResolverService;
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
 	// Refs: microsoft/TypeScript#30355
 	private [_private]: Private;
-	public resolver: ResolverService;
 
 	/**
 	 * @param {string} languageId Language ID of grammar contribution in VS Code.
