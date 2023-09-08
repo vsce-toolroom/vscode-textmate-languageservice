@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.0.0
+
+<a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v2.0.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-09-08&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/milestone/7"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v2.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+<p align="center"><img src="https://raw.githubusercontent.com/vsce-toolroom/vscode-textmate-languageservice/95579fa/assets/logo.png"/></p>
+
+- **The VSCE Toolroom open-source collective has adopted the Textmate language service project!**
+	- Redesigned the logo, inspired by the V8 engine and the Textmate osteopermum flower.
+
+- Languages can now be tokenized from built-in grammars as well as service-only grammars.
+- Marked `TextmateLanguageService~context` parameter as optional in the API types.
+- Marked the API from 1.0.0 as compatible with 1.55.0, not 1.51.0.
+- Provided community resolution to microsoft/vscode#109919 & microsoft/vscode#99356.
+
+- Implemented API methods in an `api` namespace for developer-friendly logic:
+  - Add `getTokenInformationAtPosition` method for fast positional token polyfill: `vscode.TokenInformation`.
+  - Add `getScopeInformationAtPosition` method to get Textmate token data: `TextmateToken`.
+  - Add `getScopeRangeAtPosition` method to get token range: `vscode.Range`.
+  - Add `getLanguageConfiguration` method for language configuration: `LanguageDefinition`.
+  - Add `getGrammarConfiguration` method to get language grammar wiring: `GrammarLanguageDefinition`.
+  - Add `getContributorExtension` method to get extension source of language ID: `vscode.Extension`.
+
+- Linted the Textmate scope parser correctly & automatically in the test pipeline.
+- Added `getOniguruma` to API utilities, a browser-ready non-streaming build of `vscode-oniguruma`.
+
 ## 1.2.1
 
 <a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v1.2.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-03-29&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://gitlab.com/SNDST00M/vscode-textmate-languageservice/-/milestones/6"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v1.2.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
