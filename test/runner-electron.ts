@@ -27,9 +27,11 @@ export async function run(): Promise<void> {
 	const languageId = getTestModeExtension().id.split('.')[1];
 	setupEnvironmentForLanguageId(languageId);
 
-	await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
-	vscode.languages.setTextDocumentLanguage(vscode.window!.activeTextEditor!.document, languageId);
-	await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+	if (languageId !== 'mediawiki') {
+		await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
+		vscode.languages.setTextDocumentLanguage(vscode.window!.activeTextEditor!.document, languageId);
+		await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+	}
 
 	return new Promise((c, x) => {
 		files.forEach(f => mocha.addFile(f));
