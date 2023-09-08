@@ -51,5 +51,5 @@ export class TextmateDefinitionProvider implements vscode.DefinitionProvider {
 }
 
 function fromUriToLocation(uri: vscode.Uri): vscode.Location {
-	return new vscode.Location(uri, new vscode.Position(0, 1));
+	return new vscode.Location(uri, new vscode.Position(0, 0));
 }

@@ -75,7 +75,9 @@ export function getGrammarConfiguration(languageId: string): GrammarLanguagePoin
 
 function findTokenByPosition(position: vscode.Position) {
 	return function(t: TextmateToken) {
-		return position.line === t.line && position.character >= t.startIndex && position.character <= t.endIndex;
+		const start = new vscode.Position(t.line, t.startIndex);
+		const end = new vscode.Position(t.line, t.endIndex);
+		return position.isAfterOrEqual(start) && position.isBefore(end);
 	};
 }
 
