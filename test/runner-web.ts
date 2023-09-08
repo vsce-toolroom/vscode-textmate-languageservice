@@ -31,8 +31,8 @@ export async function run(): Promise<void> {
 		import('./suite/providers/definition.test');
 		import('./suite/providers/document-symbol.test');
 		import('./suite/providers/workspace-symbol.test');
-		import('./suite/api/tokenInformation.test');
-		import('./suite/api/languageConfiguration.test');
+		import('./suite/api/token-information.test');
+		import('./suite/api/language-configuration.test');
 
 		try {
 			// Run the mocha test
