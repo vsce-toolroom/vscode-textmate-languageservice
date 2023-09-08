@@ -28,7 +28,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 				const text = await readFileText(uri);
 				return vscodeTextmate.parseRawGrammar(text, uri.path);
 			} catch (e) {
-				const filepath = extension!.extensionUri?.fsPath.replace(/\\/g, '/') || '';
+				const filepath = extension.extensionUri?.fsPath.replace(/\\/g, '/') || '';
 				throw new Error('Could not load grammar "' + grammar.path + '" from extension path "' + filepath + '"');
 			}
 		}

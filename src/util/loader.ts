@@ -10,7 +10,7 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 	try {
 		return decoder.decode(await vscode.workspace.fs.readFile(uri));
 	} catch (e) {
-		throw e as TypeError | vscode.FileSystemError;
+		throw e;
 	}
 }
 
