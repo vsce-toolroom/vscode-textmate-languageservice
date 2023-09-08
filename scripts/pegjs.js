@@ -45,4 +45,9 @@ fs.writeFileSync(filePath, parserText);
 
 // For some reason, Prettier-ESLint isn't `--fix`ing keywords & whitespace.
 // Let's brute-force another ESLint run just to get it fixed.
-shelljs.exec('npx eslint src/scopes/parser.ts --fix');
+shelljs.exec('npx eslint ./src/scopes/parser.ts --fix');
+
+// Disable ESLint yet again because the file still has ~30 lint errors.
+parserText = fs.readFileSync('./src/scopes/parser.ts', 'utf8');
+parserText = '/* eslint-disable */\n' + parserText;
+fs.writeFileSync(filePath, parserText);
