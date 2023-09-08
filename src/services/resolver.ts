@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 import { readFileText } from '../util/loader';
 import { ContributorData } from '../util/contributes';
-import type { GrammarLanguagePoint, GrammarPoint, LanguagePoint } from '../util/contributes';
+import type { GrammarLanguagePoint, LanguagePoint } from '../util/contributes';
 
 export class ResolverService implements vscodeTextmate.RegistryOptions {
 	private _contributes: ContributorData;

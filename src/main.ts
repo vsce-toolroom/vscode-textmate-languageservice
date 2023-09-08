@@ -47,7 +47,7 @@ export default class TextmateLanguageService {
 
 	public static api = {
 		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition,
-		getGrammarConfiguration, getLanguageConfiguration, getContributorExtension
+		getContributorExtension, getGrammarConfiguration, getLanguageConfiguration
 	};
 
 	// In order to support default class export cleanly, we use Symbol private keyword.
