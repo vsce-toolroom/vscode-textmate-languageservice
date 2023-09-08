@@ -6,7 +6,7 @@ import { TextmateScopeSelector } from './util/selectors';
 import { ContributorData } from './util/contributes';
 import type { LiteTextDocument } from './services/document';
 import type { TextmateToken } from './services/tokenizer';
-import type { GrammarLanguagePoint, LanguagePoint } from './util/contributes';
+import type { GrammarLanguageDefinition, LanguageDefinition } from './util/contributes';
 
 const generators = new GeneratorService();
 
@@ -58,19 +58,19 @@ export async function getScopeRangeAtPosition(document: LiteTextDocument, positi
 /**
  * Get the active language point configuration of a language mode identifier.
  * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
- * @returns {LanguagePoint} Language contribution as configured in source VS Code extension.
+ * @returns {LanguageDefinition} Language contribution as configured in source VS Code extension.
  */
-export function getLanguageConfiguration(languageId: string): LanguagePoint {
-	return contributorData.getLanguagePointFromId(languageId);
+export function getLanguageConfiguration(languageId: string): LanguageDefinition {
+	return contributorData.getLanguageDefinitionFromId(languageId);
 };
 
 /**
  * Get the active language point configuration of a language mode identifier.
  * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
- * @returns {GrammarLanguagePoint} Grammar contribution as configured in source VS Code extension.
+ * @returns {GrammarLanguageDefinition} Grammar contribution as configured in source VS Code extension.
  */
-export function getGrammarConfiguration(languageId: string): GrammarLanguagePoint {
-	return contributorData.getGrammarPointFromLanguageId(languageId);
+export function getGrammarConfiguration(languageId: string): GrammarLanguageDefinition {
+	return contributorData.getGrammarDefinitionFromLanguageId(languageId);
 };
 
 /**

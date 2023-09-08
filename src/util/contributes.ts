@@ -6,7 +6,7 @@ import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
 
-export interface GrammarLanguagePoint {
+export interface GrammarLanguageDefinition {
 	language: string;
 	scopeName: string;
 	path: string;
@@ -19,20 +19,20 @@ export interface GrammarInjectionContribution {
 	injectTo: string[];
 }
 
-export type GrammarPoint = GrammarLanguagePoint | GrammarInjectionContribution;
+export type GrammarDefinition = GrammarLanguageDefinition | GrammarInjectionContribution;
 
-export function isGrammarLanguagePoint(g: GrammarPoint): g is GrammarLanguagePoint {
+export function isGrammarLanguageDefinition(g: GrammarDefinition): g is GrammarLanguageDefinition {
 	return g && 'injectTo' in g === false;
 }
 
-export interface LanguagePoint {
+export interface LanguageDefinition {
 	id: string;
 	extensions?: string[];
 	filenames?: string[];
 }
 
-export type LanguageData = LanguagePoint[];
-export type GrammarData = GrammarLanguagePoint[];
+export type LanguageData = LanguageDefinition[];
+export type GrammarData = GrammarLanguageDefinition[];
 
 export interface ExtensionContributions extends PartialJsonObject {
 	languages?: PartialJsonObject & LanguageData;
@@ -81,7 +81,7 @@ function getAllExtensionContributes() {
 			}
 
 			const l = contributes.languages || [];
-			const g = contributes.grammars?.filter(isGrammarLanguagePoint) || [];
+			const g = contributes.grammars?.filter(isGrammarLanguageDefinition) || [];
 			languages.push(...l);
 			grammars.push(...g);
 
@@ -111,7 +111,7 @@ export class ContributorData {
 			return;
 		}
 		this._languages = manifest?.contributes?.languages || [];
-		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguagePoint) || [];
+		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageDefinition) || [];
 		this._sources = {
 			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension])),
 			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
@@ -153,7 +153,7 @@ export class ContributorData {
 			return null;
 		}
 
-		const grammar = this.getGrammarPointFromLanguageId(language);
+		const grammar = this.getGrammarDefinitionFromLanguageId(language);
 		return grammar ? grammar.scopeName : null;
 	}
 
@@ -165,7 +165,7 @@ export class ContributorData {
 		throw new Error('Could not find language contribution for scope name "' + scopeName + '" in extension manifest');
 	}
 
-	public getLanguagePointFromId(languageId: string): LanguagePoint {
+	public getLanguageDefinitionFromId(languageId: string): LanguageDefinition {
 		for (const language of this.languages.reverse()) {
 			if (language.id === languageId) {
 				return language;
@@ -174,7 +174,7 @@ export class ContributorData {
 		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
 	}
 
-	public getLanguagePointFromFilename(filename: string): LanguagePoint {
+	public getLanguageDefinitionFromFilename(filename: string): LanguageDefinition {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
 		if (!languageId) {
@@ -187,7 +187,7 @@ export class ContributorData {
 		return languageData;
 	}
 
-	public getGrammarPointFromLanguageId(languageId: string): GrammarLanguagePoint {
+	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {
 		for (const grammar of this.grammars.reverse()) {
 			if (grammar.language === languageId) {
 				return grammar;

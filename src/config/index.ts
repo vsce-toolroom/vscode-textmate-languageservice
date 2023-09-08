@@ -4,7 +4,7 @@ import type * as vscode from 'vscode';
 import { ConfigSelectors } from './selectors';
 
 import type { PartialDeep, JsonObject } from 'type-fest';
-import type { LanguagePoint } from '../util/contributes';
+import type { LanguageDefinition } from '../util/contributes';
 
 export type SelectorSource = string[] | string;
 
@@ -35,13 +35,13 @@ export interface ConfigJson extends PartialJsonObject {
 }
 
 export class ConfigData {
-	public readonly language: LanguagePoint;
+	public readonly language: LanguageDefinition;
 	public readonly extensions?: string;
 	public readonly exclude?: string;
 	public readonly selectors: ConfigSelectors;
 	public readonly include: string;
 
-	constructor(json: ConfigJson, language: LanguagePoint) {
+	constructor(json: ConfigJson, language: LanguageDefinition) {
 		this.include = generateIncludePattern(language);
 		if (language.extensions) {
 			this.extensions = generateExtensionPattern(language.extensions);
@@ -62,7 +62,7 @@ function generateExtensionPattern(extensions: string[] | undefined): string {
 	}
 }
 
-function generateIncludePattern(language: LanguagePoint): string {
+function generateIncludePattern(language: LanguageDefinition): string {
 	if (!language.extensions && !language.filenames) {
 		return '**/*';
 	}
