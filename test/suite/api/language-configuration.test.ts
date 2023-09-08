@@ -30,7 +30,7 @@ const languageContributorMap: Record<string, string> = {
 suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	this.timeout(5000);
 
-	test('getLanguageConfiguration(): LanguagePoint', async function() {
+	test('getLanguageConfiguration(): LanguageDefinition', async function() {
 		if (globalThis.languageId === 'mediawiki') {
 			this.skip();
 		}
@@ -45,7 +45,7 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 		strictEqual(languageConfiguration.extensions?.includes(languageFileExtension), true);
 	});
 
-	test('getGrammarConfiguration(): GrammarLanguagePoint', async function() {
+	test('getGrammarConfiguration(): GrammarLanguageDefinition', async function() {
 		if (globalThis.languageId === 'mediawiki') {
 			this.skip();
 		}

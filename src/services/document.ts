@@ -86,7 +86,7 @@ export class DocumentService extends Disposable implements DocumentServiceInterf
 		}
 
 		const filename = resource.path.split('/').pop();
-		const point = resolver.getLanguagePointFromFilename(filename);
+		const point = resolver.getLanguageDefinitionFromFilename(filename);
 		const languageId = point?.id;
 
 		return {

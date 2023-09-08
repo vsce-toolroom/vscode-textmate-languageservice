@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 import { readFileText } from '../util/loader';
 import { ContributorData } from '../util/contributes';
-import type { GrammarLanguagePoint, LanguagePoint } from '../util/contributes';
+import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
 
 export class ResolverService implements vscodeTextmate.RegistryOptions {
 	private _contributes: ContributorData;
@@ -51,16 +51,16 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		return this._contributes.findLanguageIdFromScopeName(scopeName);
 	}
 
-	public getLanguagePointFromId(languageId: string): LanguagePoint {
-		return this._contributes.getLanguagePointFromId(languageId);
+	public getLanguageDefinitionFromId(languageId: string): LanguageDefinition {
+		return this._contributes.getLanguageDefinitionFromId(languageId);
 	}
 
-	public getLanguagePointFromFilename(fileName: string): LanguagePoint {
-		return this._contributes.getLanguagePointFromFilename(fileName);
+	public getLanguageDefinitionFromFilename(fileName: string): LanguageDefinition {
+		return this._contributes.getLanguageDefinitionFromFilename(fileName);
 	}
 
-	public getGrammarPointFromLanguageId(languageId: string): GrammarLanguagePoint {
-		return this._contributes.getGrammarPointFromLanguageId(languageId);
+	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {
+		return this._contributes.getGrammarDefinitionFromLanguageId(languageId);
 	}
 
 	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
