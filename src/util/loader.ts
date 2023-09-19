@@ -16,11 +16,14 @@ export async function readFileText(uri: vscode.Uri): Promise<string> {
 
 type PartialJsonValue = PartialDeep<JsonValue>;
 
-export async function loadJsonFile<T = PartialJsonValue>(uri: vscode.Uri): Promise<T> {
+export async function loadJsonFile<T = PartialJsonValue>(uri: vscode.Uri, fallback?: string): Promise<T> {
 	try {
 		const text = await readFileText(uri);
 		return JSON.parse(text) as T;
 	} catch (e) {
+		if (fallback) {
+			return JSON.parse(fallback) as T;
+		}
 		if (e && typeof (e as Error).stack === 'string') {
 			(e as Error).stack += `\n    in ${uri.path}`;
 		}

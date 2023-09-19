@@ -83,7 +83,7 @@ export default class TextmateLanguageService {
 
 		const uri = vscode.Uri.joinPath(extension.extensionUri, filepath);
 		const languageData = resolver.getLanguageDefinitionFromId(languageId);
-		this[_private].configPromise = loadJsonFile<ConfigJson>(uri)
+		this[_private].configPromise = loadJsonFile<ConfigJson>(uri, '{}')
 			.then(json => new ConfigData(json, languageData))
 			.catch(() => new ConfigData({}, languageData));
 	}
