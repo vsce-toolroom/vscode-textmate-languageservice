@@ -4,9 +4,9 @@
 
 > 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
-> *This package is in maintenance mode & the technology is superseded by `vscode-anycode`, a quicker language service which leverages the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide].*
+> *This package is in maintenance mode & the Textmate technology is superseded by `vscode-anycode`, a quicker language service which leverages the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide].*
 
-Generate language service providers driven entirely by your Textmate grammar and one configuration file.
+Language service providers & APIs driven entirely by your Textmate grammar and one configuration file.
 
 <p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v2.0.0/assets/demo-outline.png" height="320"/></p>
 
@@ -245,6 +245,78 @@ You can use the custom `"textmate-languageservice-contributes"` property in `pac
 	}
 }
 ```
+
+### API methods
+
+Usage (example is for getting the token at the current cursor position):
+
+```typescript
+const { getScopeInformationAtPosition } = TextmateLanguageService.api;
+
+const editor = vscode.window.activeTextEditor;
+const document = editor.document;
+const position = editor.selection.active;
+
+const token = await getScopeInformationAtPosition(document, position);
+```
+
+#### `getScopeInformationAtPosition`
+
+`api.getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken>`
+
+Get token scope information at a specific position (caret line and character number).
+
+- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** _position_ - Zero-indexed caret position of token in document (`vscode.Position`).
+- **Returns:** Promise resolving to token data for scope selected by caret position (`{Promise<TextmateToken>}`).
+
+#### `getScopeRangeAtPosition`
+
+`getScopeRangeAtPosition(document: LiteTextDocument, position: vscode.Position): vscode.Range;`
+
+Get matching scope range of the Textmate token intersecting a caret position.
+
+- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** _position_ - Zero-indexed caret position to intersect with (`vscode.Position`).
+- **Returns:** Promise resolving to character and line number of the range (`Promise<vscode.Range>`).
+
+
+#### `getTokenInformationAtPosition`
+
+`getTokenInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<vscode.TokenInformation>;`
+
+VS Code compatible performant API for token information at a caret position.
+
+- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** _position_ - Zero-indexed caret position of token in document (`vscode.Position`).
+- **Returns:** Promise resolving to token data compatible with VS Code (`Promise<vscode.TokenInformation>`).
+
+#### `getLanguageConfiguration`
+
+`getLanguageConfiguration(languageId: string): LanguageDefinition;`
+
+Get the active language point configuration of a language mode identifier.
+
+- **Parameter:** _languageId_ - Language ID as shown in brackets in "Change Language Mode" panel (`string`).
+- **Returns:** Language contribution as configured in source VS Code extension (`LanguageDefinition`).
+
+#### `getGrammarConfiguration`
+
+`getGrammarConfiguration(languageId: string): GrammarLanguageDefinition;`
+
+Get the active language point configuration of a language mode identifier.
+
+- **Parameter:** _languageId_ - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
+- **Returns:** Grammar contribution as configured in source VS Code extension (`GrammarLanguageDefinition`).
+
+#### `getContributorExtension`
+
+`getContributorExtension(languageId: string): vscode.Extension<unknown> | void;`
+
+Get the VS Code Extension API entry of the extension that contributed a language mode identifier.
+
+- **Parameter:** _languageId_ - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
+- **Returns:** Extension API instance that contributed the language - (`vscode.Extension`).
 
 ### Use Oniguruma WASM buffer
 
