@@ -1,3 +1,10 @@
+---
+name: "🐛 Bug Report"
+about: "Something isn't working well 🚨"
+labels: [type-bug]
+
+---
+
 ## 🐛 Bug Report
 
 - [ ] I'm using the latest version of `vscode-textmate-languageservice` available.
@@ -37,5 +44,3 @@ A MVCE (Minimum Verifiable Complete Example) or error log of the problem.
 
 <!-- Checklist -->
 [vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues?q=is%3Aopen+sort%3Aupdated-desc
-
-/label ~bug
