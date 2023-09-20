@@ -1,3 +1,10 @@
+---
+name: "🚀 New Release"
+about: "Publish changes 📦"
+labels: [type-release]
+
+---
+
 ## ⚡️️ Feature Request
 
 - [ ] I'm using the latest version of `vscode-textmate-languageservice` available.
@@ -17,5 +24,3 @@
 
 <!-- Checklist -->
 [vsctmls-issues]: https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues?q=is%3Aopen+sort%3Aupdated-desc
-
-/label ~feature-request

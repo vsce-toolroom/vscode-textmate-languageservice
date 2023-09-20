@@ -1,3 +1,10 @@
+---
+name: "❓ Question"
+about: "There's something unclear 😕"
+labels: [type-question]
+
+---
+
 ## ❓ Question
 
 ### Describe your question
@@ -8,5 +15,3 @@
 <!-- Help others find this and upvote it. -->
 <!-- Add meaningful tags for search engines. -->
 <!-- #typescript #merge #incompatible #... -->
-
-/label ~question
