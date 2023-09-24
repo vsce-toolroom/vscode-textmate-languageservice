@@ -11,6 +11,7 @@ Language service providers & APIs driven entirely by your Textmate grammar and o
 <p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v2.0.0/assets/demo-outline.png" height="320"/></p>
 
 In order to generate language providers from this module, the Textmate grammar must include the following features:
+
 - meta declaration scopes for block level declarations
 - variable assignment scopes differentiated between `multiple` and `single`
 - granular keyword control tokens with `begin` and `end` scopes
@@ -38,7 +39,7 @@ Browser support:
 
 ## Setup
 
-- [Language contribution][vscode-language-contributions] and [grammar contribution][vscode-grammar-contributions] defined via `contributes` in the extension manifest (or `textmate-languageservice-contributes`).
+- [Language contribution][vscode-language-contributions] and [grammar contribution][vscode-grammar-contributions] defined via `contributes` in the [extension manifest][vscode-extension-manifest] (or `textmate-languageservice-contributes`).
 - Your grammar is bundled in the extension source code and is consumable by `vscode-textmate` (which can load PList XML, JSON or YAML grammars).
 - A configuration file is available in the extension, defaulting to `./textmate-configuration.json`. You can also use `textmate-languageservices` property of `package.json` to map language ID to relative path.
 
@@ -223,6 +224,7 @@ export async function activate(context: vscode.ExtensionContext) {
 ```
 
 **NB:** If you would like to:
+
 - just wire up tokenization or fast document text services to a Textmate grammar,
 - without [(re-)contributing grammar and language configuration to VS Code](#setup),
 - or writing a full [`TextmateLanguageService` provider configuration](#configuration)..
@@ -262,12 +264,12 @@ const token = await getScopeInformationAtPosition(document, position);
 
 #### `getScopeInformationAtPosition`
 
-`api.getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken>`
+`getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken>`
 
 Get token scope information at a specific position (caret line and character number).
 
-- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
-- **Parameter:** _position_ - Zero-indexed caret position of token in document (`vscode.Position`).
+- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data for scope selected by caret position (`{Promise<TextmateToken>}`).
 
 #### `getScopeRangeAtPosition`
@@ -276,10 +278,9 @@ Get token scope information at a specific position (caret line and character num
 
 Get matching scope range of the Textmate token intersecting a caret position.
 
-- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
-- **Parameter:** _position_ - Zero-indexed caret position to intersect with (`vscode.Position`).
+- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *position* - Zero-indexed caret position to intersect with (`vscode.Position`).
 - **Returns:** Promise resolving to character and line number of the range (`Promise<vscode.Range>`).
-
 
 #### `getTokenInformationAtPosition`
 
@@ -287,8 +288,8 @@ Get matching scope range of the Textmate token intersecting a caret position.
 
 VS Code compatible performant API for token information at a caret position.
 
-- **Parameter:** _document_ - Document to be tokenized (`LiteTextDocument`).
-- **Parameter:** _position_ - Zero-indexed caret position of token in document (`vscode.Position`).
+- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data compatible with VS Code (`Promise<vscode.TokenInformation>`).
 
 #### `getLanguageConfiguration`
@@ -297,7 +298,7 @@ VS Code compatible performant API for token information at a caret position.
 
 Get the active language point configuration of a language mode identifier.
 
-- **Parameter:** _languageId_ - Language ID as shown in brackets in "Change Language Mode" panel (`string`).
+- **Parameter:** *languageId* - Language ID as shown in brackets in "Change Language Mode" panel (`string`).
 - **Returns:** Language contribution as configured in source VS Code extension (`LanguageDefinition`).
 
 #### `getGrammarConfiguration`
@@ -306,7 +307,7 @@ Get the active language point configuration of a language mode identifier.
 
 Get the active language point configuration of a language mode identifier.
 
-- **Parameter:** _languageId_ - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
+- **Parameter:** *languageId* - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
 - **Returns:** Grammar contribution as configured in source VS Code extension (`GrammarLanguageDefinition`).
 
 #### `getContributorExtension`
@@ -315,7 +316,7 @@ Get the active language point configuration of a language mode identifier.
 
 Get the VS Code Extension API entry of the extension that contributed a language mode identifier.
 
-- **Parameter:** _languageId_ - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
+- **Parameter:** *languageId* - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
 - **Returns:** Extension API instance that contributed the language - (`vscode.Extension`).
 
 ### Use Oniguruma WASM buffer
@@ -338,8 +339,8 @@ const onigurumaPromise = TextmateLanguageService.utils.getOniguruma();
 [github-vscode-anycode-issues]: https://github.com/microsoft/vscode-anycode/issues
 [github-epeshkov-syntax-highlighter]: https://github.com/EvgeniyPeshkov/syntax-highlighter
 <!-- Setup -->
+[vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
 [vscode-language-contributions]: https://code.visualstudio.com/api/references/contribution-points#contributes.languages
 [vscode-grammar-contributions]: https://code.visualstudio.com/api/references/contribution-points#contributes.grammars
 <!-- Configuration -->
-[vscode-extension-manifest]: https://code.visualstudio.com/api/references/extension-manifest
 [vscode-api-symbolkind]: https://code.visualstudio.com/api/references/vscode-api#SymbolKind

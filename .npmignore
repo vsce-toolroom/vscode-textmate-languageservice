@@ -17,6 +17,7 @@ test/
 .gitconfig
 .gitignore
 .gitmodules
+.markdownlintignore
 .prettierrc.json
 .travis.yml
 .eslintignore
