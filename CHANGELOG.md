@@ -2,12 +2,12 @@
 
 ## 2.0.0
 
-<a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v2.0.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-09-08&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/milestone/7"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v2.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+<a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v2.0.0-recovery.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-09-08&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/milestone/7"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v2.0.0-recovery.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
 
 <p align="center"><img src="https://raw.githubusercontent.com/vsce-toolroom/vscode-textmate-languageservice/95579fa/assets/logo.png"/></p>
 
 - **The VSCE Toolroom open-source collective has adopted the Textmate language service project!**
-	- Redesigned the logo, inspired by the V8 engine and the Textmate osteopermum flower.
+- Redesigned the logo, inspired by the V8 engine and the Textmate osteopermum flower.
 
 - Languages can now be tokenized from built-in grammars as well as service-only grammars.
 - Marked `TextmateLanguageService~context` parameter as optional in the API types.

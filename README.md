@@ -1,6 +1,6 @@
 # `vscode-textmate-languageservice`
 
-<p align="center"><img src="https://raw.githubusercontent.com/vsce-toolroom/vscode-textmate-languageservice/v2.0.0/assets/logo.png" width="205px" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/vsce-toolroom/vscode-textmate-languageservice/v2.0.0-recovery.1/assets/logo.png" width="205px" /></p>
 
 > 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
@@ -8,7 +8,7 @@
 
 Language service providers & APIs driven entirely by your Textmate grammar and one configuration file.
 
-<p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v2.0.0/assets/demo-outline.png" height="320"/></p>
+<p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v2.0.0-recovery.1/assets/demo-outline.png" height="320"/></p>
 
 In order to generate language providers from this module, the Textmate grammar must include the following features:
 
