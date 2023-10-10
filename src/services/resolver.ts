@@ -6,9 +6,15 @@
 
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
-import { readFileText } from '../util/loader';
+import { readFileText, loadMessageBundle } from '../util/loader';
 import { ContributorData } from '../util/contributes';
 import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
+
+const plainTextGrammar = {
+	name: 'Plain Text',
+	scopeName: 'text',
+	patterns: []
+};
 
 export class ResolverService implements vscodeTextmate.RegistryOptions {
 	private _contributes: ContributorData;
@@ -17,12 +23,18 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 	}
 
 	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
+		if (scopeName === 'text') {
+			const text = JSON.stringify(plainTextGrammar);
+			return vscodeTextmate.parseRawGrammar(text);
+		}
+
 		const mapping = this._contributes.sources;
 		const extension = mapping.grammars[scopeName];
 		for (const grammar of this._contributes.grammars.reverse()) {
 			if (grammar.scopeName !== scopeName) {
 				continue;
 			}
+
 			try {
 				const uri = vscode.Uri.joinPath(extension.extensionUri, grammar.path);
 				const text = await readFileText(uri);
@@ -32,6 +44,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 				throw new Error('Could not load grammar "' + grammar.path + '" from extension path "' + filepath + '"');
 			}
 		}
+
 		throw new Error('Could not load grammar for scope name "' + scopeName + '"');
 	}
 
@@ -73,9 +86,11 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 
 	public async loadGrammarByLanguageId(languageId: string): Promise<vscodeTextmate.IRawGrammar | null> {
 		const grammar = this._contributes.grammars.find(g => g.language === languageId);
+
 		if (!grammar) {
 			throw new Error('Could not load grammar for language ID "' + languageId + '"');
 		}
+
 		return this.loadGrammar(grammar.scopeName);
 	}
 }

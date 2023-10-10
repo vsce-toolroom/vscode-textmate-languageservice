@@ -19,7 +19,7 @@ import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarConfiguration, getLanguageConfiguration, getContributorExtension } from './api';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, LanguageConfigurations, LanguageDefinition } from './util/contributes';
+import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, ConfigurationPaths, LanguageDefinition } from './util/contributes';
 import type { GeneratorService } from './services/generators';
 import type { TextmateToken } from './services/tokenizer';
 
@@ -176,6 +176,6 @@ export default class TextmateLanguageService {
 export type {
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
 	GrammarLanguageDefinition, GrammarInjectionContribution, GrammarDefinition, LanguageDefinition,
-	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
+	ExtensionContributions, ConfigurationPaths, ExtensionManifestContributionKey,
 	DocumentService, GeneratorService, OutlineService,
 };
