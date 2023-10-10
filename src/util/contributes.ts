@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
+import { loadJsonFile } from './loader';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
 
@@ -26,9 +27,14 @@ export function isGrammarLanguageDefinition(g: GrammarDefinition): g is GrammarL
 }
 
 export interface LanguageDefinition {
-	id: string;
+	aliases?: string[];
+	configuration?: string;
 	extensions?: string[];
 	filenames?: string[];
+	firstLine?: string;
+	icon?: string | { light: string; dark: string; };
+	id: string;
+	mimetypes?: string[];
 }
 
 export type LanguageData = LanguageDefinition[];
@@ -39,7 +45,7 @@ export interface ExtensionContributions extends PartialJsonObject {
 	grammars?: PartialJsonObject & GrammarData;
 }
 
-export interface LanguageConfigurations {
+export interface ConfigurationPaths {
 	[languageId: string]: string;
 }
 
@@ -47,7 +53,7 @@ export interface ExtensionManifest extends PackageJson {
 	enabledApiProposals?: string[];
 	contributes?: ExtensionContributions;
 	/** Mapping from language ID to config path. Default: `./textmate-configuration.json`. */
-	'textmate-languageservices'?: LanguageConfigurations;
+	'textmate-languageservices'?: ConfigurationPaths;
 	/** Ersatz extension contributions - a service wiring to any language grammars. */
 	'textmate-languageservice-contributes'?: ExtensionContributions;
 }
@@ -61,9 +67,22 @@ export type ExtensionManifestContributionKey = 'textmate-languageservice-contrib
 
 export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
-function getAllExtensionContributes() {
-	const languages: LanguageData = [];
-	const grammars: GrammarData = [];
+const plaintextLanguage: LanguageDefinition = {
+	id: 'plaintext',
+	extensions: ['.txt'],
+	aliases: ['Plain Text', 'text'],
+	mimetypes: ['text/plain']
+};
+
+const plaintextGrammar = {
+	language: 'plaintext',
+	path: null,
+	scopeName: 'text'
+};
+
+function getAllContributes() {
+	const languages: LanguageData = [plaintextLanguage];
+	const grammars: GrammarData = [plaintextGrammar];
 	const sources = {
 		grammars: {} as ExtensionData,
 		languages: {} as ExtensionData
@@ -96,6 +115,11 @@ function getAllExtensionContributes() {
 	return { grammars, languages, sources };
 }
 
+let vscodeContributes = getAllContributes();
+vscode.extensions.onDidChange(function() {
+	vscodeContributes = getAllContributes();
+});
+
 export class ContributorData {
 	private _languages: LanguageData;
 	private _grammars: GrammarData;
@@ -104,12 +128,12 @@ export class ContributorData {
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
 		if (!manifest) {
-			const data = getAllExtensionContributes();
-			this._languages = data.languages;
-			this._grammars = data.grammars;
-			this._sources = data.sources;
+			this._languages = vscodeContributes.languages;
+			this._grammars = vscodeContributes.grammars;
+			this._sources = vscodeContributes.sources;
 			return;
 		}
+
 		this._languages = manifest?.contributes?.languages || [];
 		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageDefinition) || [];
 		this._sources = {
@@ -190,11 +214,11 @@ export class ContributorData {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
 		if (!languageId) {
-			return { id: 'plaintext' };
+			return plaintextLanguage;
 		}
 		const languageData = this.sources.languages[languageId];
 		if (!languageData) {
-			return { id: 'plaintext' };
+			return plaintextLanguage;
 		}
 		return languageData;
 	}

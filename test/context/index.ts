@@ -10,10 +10,10 @@ export function setupEnvironmentForLanguageId(languageId: string): void {
 			globalThis.extensionContext = new MockExtensionContext(languageId);
 			break;
 		case 'mediawiki':
-			globalThis.extensionContext = new MockExtensionContext(languageId);
+			globalThis.extensionContext = void 0 as unknown as vscode.ExtensionContext;
 			break;
 		case 'typescript':
-			globalThis.extensionContext = void 0 as unknown as vscode.ExtensionContext;
+			globalThis.extensionContext = new MockExtensionContext(languageId);
 			break;
 		default:
 			break;
