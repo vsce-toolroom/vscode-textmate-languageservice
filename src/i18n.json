@@ -1,0 +1,53 @@
+{
+  "cs": {
+    "plainText.alias": "Prostý text"
+  },
+  "de": {
+    "plainText.alias": "Nur-Text"
+  },
+  "es": {
+    "plainText.alias": "Texto sin formato"
+  },
+  "fr": {
+    "plainText.alias": "Texte brut"
+  },
+  "it": {
+    "plainText.alias": "Testo normale"
+  },
+  "ja": {
+    "plainText.alias": "プレーンテキスト"
+  },
+  "ko": {
+    "plainText.alias": "일반 텍스트"
+  },
+  "pl": {
+    "plainText.alias": "Zwykły tekst"
+  },
+  "pt": {
+    "plainText.alias": "Texto sem Formatação"
+  },
+  "pt-BR": {
+    "plainText.alias": "Texto sem Formatação"
+  },
+  "qps": {
+    "plainText.alias": "Plæïñ Tëxt"
+  },
+  "qps-ploc": {
+    "plainText.alias": "Plæïñ Tëxt"
+  },
+  "ru": {
+    "plainText.alias": "Простой текст"
+  },
+  "tr": {
+    "plainText.alias": "Düz Metin"
+  },
+  "zh": {
+    "plainText.alias": "純文字"
+  },
+  "zh-hans": {
+    "plainText.alias": "纯文本"
+  },
+  "zh-hant": {
+    "plainText.alias": "純文字"
+  }
+}
