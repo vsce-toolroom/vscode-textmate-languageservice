@@ -3,9 +3,11 @@
 import * as vscode from 'vscode';
 
 import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
-import { loadJsonFile } from './loader';
+import { loadMessageBundle } from './loader';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
+
+const localize = loadMessageBundle();
 
 export interface GrammarLanguageDefinition {
 	language: string;
@@ -70,13 +72,13 @@ export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined
 const plaintextLanguage: LanguageDefinition = {
 	id: 'plaintext',
 	extensions: ['.txt'],
-	aliases: ['Plain Text', 'text'],
+	aliases: [localize('plainText.alias', 'Plain Text'), 'text'],
 	mimetypes: ['text/plain']
 };
 
 const plaintextGrammar = {
 	language: 'plaintext',
-	path: null,
+	path: 'vscode://blank',
 	scopeName: 'text'
 };
 

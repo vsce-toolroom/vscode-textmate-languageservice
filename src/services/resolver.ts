@@ -10,8 +10,10 @@ import { readFileText, loadMessageBundle } from '../util/loader';
 import { ContributorData } from '../util/contributes';
 import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
 
+const localize = loadMessageBundle();
+
 const plainTextGrammar = {
-	name: 'Plain Text',
+	name: localize('plainText.alias', 'Plain Text'),
 	scopeName: 'text',
 	patterns: []
 };
