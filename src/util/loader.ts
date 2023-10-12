@@ -32,4 +32,12 @@ export async function loadJsonFile<T = PartialJsonValue>(uri: vscode.Uri, fallba
 
 		throw e;
 	}
-}
+};
+
+export function loadMessageBundle() {
+	return function(key: string, message: string): string {
+		const locale = vscode.env.language;
+		const base = locale.split('-')[0];
+		return (i18n[locale] || i18n[base] || {})[key] || message;
+	};
+};
