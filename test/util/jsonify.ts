@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import type { JsonValue, PartialDeep } from 'type-fest';
 
-import { TextmateScopeSelector, TextmateScopeSelectorMap } from './common';
+import { getTestModeExtension, TextmateScopeSelector, TextmateScopeSelectorMap } from './common';
 
 type PartialJsonValue = PartialDeep<JsonValue>;
 
@@ -21,7 +21,7 @@ function replaceClassesWithStrings(key: string, value: any): any {
 	// Sometimes numerous fields are missing also.
 	if (['', 'uri'].includes(key) && !!value && typeof value === 'object' && 'path' in value) {
 		const externalPath = getNormalizedPathFor(value as vscode.Uri);
-		const extensionDevelopmentUri = vscode.extensions.all[vscode.extensions.all.length - 1].extensionUri;
+		const extensionDevelopmentUri = getTestModeExtension().extensionUri;
 		const extensionPath = getNormalizedPathFor(extensionDevelopmentUri);
 		return './' + path.posix.relative(extensionPath, externalPath);
 	}
