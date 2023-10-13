@@ -37,9 +37,12 @@ parserText = parserText.replace(/\/\/$/m, '');
 parserText = parserText.replace('// https://peggyjs.org/', '');
 parserText = parserText.replace('/* eslint-disable */', '')
 
-const prettierOptions = require('../.prettierrc.json');
-const eslintConfig = require('../.eslintrc.json');
-parserText = prettierEslint({ text: parserText, prettierOptions, eslintConfig });
+parserText = prettierEslint({
+	eslintConfig: require('../.eslintrc.json'),
+	text: parserText,
+	logLevel: 'warn',
+	prettierOptions: require('../.prettierrc.json')
+});
 
 fs.writeFileSync(filePath, parserText);
 
