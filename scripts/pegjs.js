@@ -40,7 +40,7 @@ parserText = parserText.replace('/* eslint-disable */', '')
 parserText = prettierEslint({
 	eslintConfig: require('../.eslintrc.json'),
 	text: parserText,
-	logLevel: 'warn',
+	logLevel: 'error',
 	prettierOptions: require('../.prettierrc.json')
 });
 
