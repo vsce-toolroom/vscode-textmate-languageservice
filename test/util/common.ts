@@ -11,7 +11,11 @@ const encoder = new TextEncoder();
 export type PartialJsonValue = PartialDeep<JsonValue>;
 
 export function getTestModeExtension(): vscode.Extension<unknown> {
-	return vscode.extensions.all[vscode.extensions.all.length - 1];
+	const last = vscode.extensions.all[vscode.extensions.all.length - 1];
+	if (!last.id || last.id.split('.')[0] === 'vscode') {
+		throw new Error('No test mode extension found.');
+	}
+	return last;
 }
 
 export async function writeJsonFile(uri: vscode.Uri, json: PartialJsonValue): Promise<void> {
