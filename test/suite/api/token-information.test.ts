@@ -42,13 +42,13 @@ suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
 	})
 
 	test('getScopeInformationAtPosition(): Promise<TextmateToken>', async function() {
-		if (globalThis.languageId === 'mediawiki') {
-			this.skip();
-		}
-
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const scopeInformation = await getScopeInformationAtPosition(titleData.document, titleData.position);
+
+		if (globalThis.languageId === 'mediawiki') {
+			this.skip();
+		}
 
 		strictEqual(scopeInformation.line, 0);
 		strictEqual(scopeInformation.text, titleData.basename);
@@ -63,24 +63,26 @@ suite('test/api/tokenInformation.test.ts (src/api.ts)', async function() {
 	});
 
 	test('getScopeRangeAtPosition(): Promise<TextmateToken>', async function() {
+		vscode.window.showInformationMessage('API `getScopeRangeAtPosition` method (src/api.ts)');
+
+		const scopeRange = await getScopeRangeAtPosition(titleData.document, titleData.position);
+
 		if (globalThis.languageId === 'mediawiki') {
 			this.skip();
 		}
 
-		vscode.window.showInformationMessage('API `getScopeRangeAtPosition` method (src/api.ts)');
-
-		const scopeRange = await getScopeRangeAtPosition(titleData.document, titleData.position);
 		strictEqual(scopeRange.isEqual(titleData.range), true);
 	});
 
 	test('getScopeInformationAtPosition(): Promise<TextmateToken>', async function() {
+		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
+
+		const tokenInformation = await getTokenInformationAtPosition(titleData.document, titleData.position);
+
 		if (globalThis.languageId === 'mediawiki') {
 			this.skip();
 		}
 
-		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
-
-		const tokenInformation = await getTokenInformationAtPosition(titleData.document, titleData.position);
 		strictEqual(tokenInformation.range.isEqual(titleData.range), true);
 
 		const standardType = languageStandardTypeMap[globalThis.languageId];
@@ -100,10 +102,6 @@ async function getTitleData() {
 
 	const selector = languageSelectorMap[globalThis.languageId];
 	const token = tokens.find(t => t.line === 0 && selector.match(t.scopes));
-
-	if (!token) {
-		throw new Error('no title symbol present on first line');
-	}
 
 	const position = new vscode.Position(token.line, token.startIndex);
 	const range = new vscode.Range(token.line, token.startIndex, token.line, token.endIndex);
