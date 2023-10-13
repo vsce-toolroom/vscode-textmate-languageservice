@@ -27,7 +27,9 @@ for (let index = 0; index < extensionTestDevDependencies.length; index++) {
 }
 
 for (let index = 0; index < extensionTestDataFolders.length; index++) {
-	const extensionDir = extensionTestDataFolders[index];
-	shelljs.mkdir(`${extensionPath}/${extensionDir}`);
-	shelljs.cp('-r', `./test/${extensionDir}/*`, `${extensionPath}/${extensionDir}`);		
+	const dataDir = extensionTestDataFolders[index];
+	shelljs.mkdir(`${extensionPath}/${dataDir}`);
+	shelljs.cp('-r', `./test/${dataDir}/*`, `${extensionPath}/${dataDir}`);		
 }
+
+shelljs.exec(`npx playwright install --path ${extensionPath}/node_modules/playwright`)
