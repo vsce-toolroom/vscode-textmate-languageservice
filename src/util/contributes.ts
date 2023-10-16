@@ -167,7 +167,7 @@ export class ContributorData {
 				}
 			}
 		}
-		return 'plaintext';
+		return plaintextLanguageDefinition.id;
 	}
 
 	public findLanguageByFilename(fileLabel: string): string {
@@ -181,18 +181,18 @@ export class ContributorData {
 				}
 			}
 		}
-		return 'plaintext';
+		return plaintextLanguageDefinition.id;
 	}
 
-	public findGrammarScopeNameFromFilename(fileLabel: string): string | null {
+	public findGrammarScopeNameFromFilename(fileLabel: string): string {
 		const extname = fileLabel.substring(fileLabel.lastIndexOf('.'));
 		const language = this.findLanguageByFilename(fileLabel) || this.findLanguageByExtension(extname);
 		if (!language) {
-			return null;
+			return plaintextGrammarDefinition.scopeName;
 		}
 
 		const grammar = this.getGrammarDefinitionFromLanguageId(language);
-		return grammar ? grammar.scopeName : null;
+		return grammar ? grammar.scopeName : plaintextGrammarDefinition.scopeName;
 	}
 
 	public findLanguageIdFromScopeName(scopeName: string): string {
@@ -200,7 +200,7 @@ export class ContributorData {
 		if (grammarData) {
 			return grammarData.language;
 		}
-		throw new Error('Could not find language contribution for scope name "' + scopeName + '" in extension manifest');
+		return plaintextLanguageDefinition.id;
 	}
 
 	public getLanguageDefinitionFromId(languageId: string): LanguageDefinition {
@@ -209,7 +209,7 @@ export class ContributorData {
 				return language;
 			}
 		}
-		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
+		return plaintextLanguageDefinition;
 	}
 
 	public getLanguageDefinitionFromFilename(filename: string): LanguageDefinition {
@@ -231,7 +231,7 @@ export class ContributorData {
 				return grammar;
 			}
 		}
-		throw new Error('Could not find grammar contribution for language ID "' + languageId + '" in extension manifest');
+		return plaintextGrammarDefinition;
 	}
 
 	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
