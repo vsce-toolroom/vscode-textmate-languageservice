@@ -216,11 +216,11 @@ export class ContributorData {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
 		if (!languageId) {
-			return plaintextLanguage;
+			return plaintextLanguageDefinition;
 		}
 		const languageData = this.sources.languages[languageId];
 		if (!languageData) {
-			return plaintextLanguage;
+			return plaintextLanguageDefinition;
 		}
 		return languageData;
 	}
