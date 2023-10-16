@@ -11,7 +11,7 @@ suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider cla
 	this.timeout(10000);
 	test('TextmateWorkspaceSymbolProvider.provideWorkspaceSymbols(): Promise<vscode.SymbolInformation[]>', async function() {
 		// Early exit + pass if we are in web runtime or testing .
-		if (isWebRuntime || BASENAMES[globalThis.languageId].length === 1) {
+		if (isWebRuntime || globalThis.languageId === 'mediawiki') {
 			this.skip();
 		}
 
