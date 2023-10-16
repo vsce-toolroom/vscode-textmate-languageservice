@@ -10,24 +10,22 @@ import TextmateLanguageService from '../../../src/main';
 const { getGrammarConfiguration, getLanguageConfiguration, getContributorExtension } = TextmateLanguageService.api;
 
 const languageExtensionMap: Record<string, string> = {
-	'mediawiki': '.txt',
+	'mediawiki': '.mediawiki',
 	'matlab': '.m',
 	'typescript': '.ts',
 };
 
 const languageScopeNameMap: Record<string, string> = {
-	'mediawiki': 'text',
+	'mediawiki': 'text.html.mediawiki',
 	'matlab': 'source.matlab',
 	'typescript': 'source.ts',
 };
 
 const languageContributorMap: Record<string, string> = {
-	'mediawiki': void 0,
+	'mediawiki': 'sndst00m.mediawiki',
 	'matlab': 'Gimly81.matlab',
 	'typescript': 'vscode.typescript'
 }
-
-const languageId = globalThis.languageId === 'mediawiki' ? 'plaintext' : globalThis.languageId;
 
 suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	this.timeout(5000);
@@ -37,7 +35,7 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 
 		const languageConfiguration = getLanguageConfiguration(globalThis.languageId);
 
-		strictEqual(languageConfiguration.id, languageId);
+		strictEqual(languageConfiguration.id, globalThis.languageId);
 
 		const languageFileExtension = languageExtensionMap[globalThis.languageId];
 		strictEqual(languageConfiguration.extensions?.includes(languageFileExtension), true);
@@ -48,7 +46,7 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 
 		const grammarConfiguration = getGrammarConfiguration(globalThis.languageId);
 
-		strictEqual(grammarConfiguration.language, languageId);
+		strictEqual(grammarConfiguration.language, globalThis.languageId);
 
 		const languageScopeName = languageScopeNameMap[globalThis.languageId]
 		strictEqual(grammarConfiguration.scopeName, languageScopeName);
@@ -59,7 +57,7 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 
 		const extension = getContributorExtension(globalThis.languageId);
 
-		strictEqual(typeof extension === 'object', globalThis.languageId !== 'mediawiki');
+		strictEqual(typeof extension === 'object', true);
 
 		const languageContributorId = languageContributorMap[globalThis.languageId];
 		strictEqual((extension || {}).id, languageContributorId);
