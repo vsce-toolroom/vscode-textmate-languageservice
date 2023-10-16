@@ -69,22 +69,22 @@ export type ExtensionManifestContributionKey = 'textmate-languageservice-contrib
 
 export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
-const plaintextLanguage: LanguageDefinition = {
+export const plaintextLanguageDefinition: LanguageDefinition = {
 	id: 'plaintext',
 	extensions: ['.txt'],
 	aliases: [localize('plainText.alias', 'Plain Text'), 'text'],
 	mimetypes: ['text/plain']
 };
 
-const plaintextGrammar = {
+export const plaintextGrammarDefinition = {
 	language: 'plaintext',
-	path: 'vscode://blank',
+	path: './out/vs/editor/common/languages/plaintext.tmLanguage.json',
 	scopeName: 'text'
 };
 
 function getAllContributes() {
-	const languages: LanguageData = [plaintextLanguage];
-	const grammars: GrammarData = [plaintextGrammar];
+	const languages: LanguageData = [plaintextLanguageDefinition];
+	const grammars: GrammarData = [plaintextGrammarDefinition];
 	const sources = {
 		grammars: {} as ExtensionData,
 		languages: {} as ExtensionData
