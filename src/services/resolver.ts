@@ -7,7 +7,7 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 import { readFileText, loadMessageBundle } from '../util/loader';
-import { ContributorData } from '../util/contributes';
+import { ContributorData, plaintextGrammarDefinition } from '../util/contributes';
 import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
 
 const localize = loadMessageBundle();
@@ -27,7 +27,9 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 	public async loadGrammar(scopeName: string): Promise<vscodeTextmate.IRawGrammar | null> {
 		if (scopeName === 'text') {
 			const text = JSON.stringify(plainTextGrammar);
-			return vscodeTextmate.parseRawGrammar(text);
+			const appRoot = vscode.Uri.file(vscode.env.appRoot);
+			const jsonPath = vscode.Uri.joinPath(appRoot, plaintextGrammarDefinition.path).path
+			return vscodeTextmate.parseRawGrammar(text, jsonPath);
 		}
 
 		const mapping = this._contributes.sources;
