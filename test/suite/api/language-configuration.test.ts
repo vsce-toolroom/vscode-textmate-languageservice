@@ -31,10 +31,6 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	this.timeout(5000);
 
 	test('getLanguageConfiguration(): LanguageDefinition', async function() {
-		if (globalThis.languageId === 'mediawiki') {
-			this.skip();
-		}
-
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const languageConfiguration = getLanguageConfiguration(globalThis.languageId);
@@ -46,10 +42,6 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	});
 
 	test('getGrammarConfiguration(): GrammarLanguageDefinition', async function() {
-		if (globalThis.languageId === 'mediawiki') {
-			this.skip();
-		}
-
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
 		const grammarConfiguration = getGrammarConfiguration(globalThis.languageId);
@@ -61,10 +53,6 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	});
 
 	test('getContributorExtension(): vscode.Extension | void', async function () {
-		if (globalThis.languageId === 'mediawiki') {
-			this.skip();
-		}
-
 		vscode.window.showInformationMessage('API `getContributorExtension` method (src/api.ts)');
 
 		const extension = getContributorExtension(globalThis.languageId);
@@ -72,6 +60,6 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 		strictEqual(typeof extension === 'object', true);
 
 		const languageContributorId = languageContributorMap[globalThis.languageId];
-		strictEqual((extension as vscode.Extension<unknown>).id, languageContributorId);
+		strictEqual((extension || {}).id, languageContributorId);
 	});
 });

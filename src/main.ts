@@ -19,7 +19,7 @@ import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarConfiguration, getLanguageConfiguration, getContributorExtension } from './api';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, LanguageConfigurations, LanguageDefinition } from './util/contributes';
+import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, ConfigurationPaths, LanguageDefinition } from './util/contributes';
 import type { GeneratorService } from './services/generators';
 import type { TextmateToken } from './services/tokenizer';
 
@@ -69,7 +69,7 @@ export default class TextmateLanguageService {
 		const extension = context?.extension || resolver.getExtensionFromLanguageId(languageId);
 		const manifest = extension?.packageJSON as ExtensionManifest | undefined;
 
-		if (!manifest) {
+		if (languageId !== 'plaintext' && !manifest) {
 			throw new Error('could not find extension contributing language ID "' + languageId + '"');
 		}
 
@@ -78,14 +78,19 @@ export default class TextmateLanguageService {
 		const grammarData = resolver.getGrammarDefinitionFromLanguageId(languageId);
 		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
 
-		const paths = manifest['textmate-languageservices'] || {};
-		const filepath = paths[languageId] || './textmate-configuration.json';
-
-		const uri = vscode.Uri.joinPath(extension.extensionUri, filepath);
 		const languageData = resolver.getLanguageDefinitionFromId(languageId);
-		this[_private].configPromise = loadJsonFile<ConfigJson>(uri, '{}')
-			.then(json => new ConfigData(json, languageData))
-			.catch(() => new ConfigData({}, languageData));
+
+		if (languageId !== 'plaintext') {
+			const paths = manifest['textmate-languageservices'] || {};
+			const filepath = paths[languageId] || './textmate-configuration.json';
+
+			const uri = vscode.Uri.joinPath(extension.extensionUri, filepath);
+			this[_private].configPromise = loadJsonFile<ConfigJson>(uri, '{}')
+				.then(json => new ConfigData(json, languageData))
+				.catch(() => new ConfigData({}, languageData));
+		} else {
+			this[_private].configPromise = Promise.resolve(new ConfigData({}, languageData));
+		}
 	}
 
 	public async initTokenService(): Promise<TokenizerService> {
@@ -176,6 +181,6 @@ export default class TextmateLanguageService {
 export type {
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
 	GrammarLanguageDefinition, GrammarInjectionContribution, GrammarDefinition, LanguageDefinition,
-	ExtensionContributions, LanguageConfigurations, ExtensionManifestContributionKey,
+	ExtensionContributions, ConfigurationPaths, ExtensionManifestContributionKey,
 	DocumentService, GeneratorService, OutlineService,
 };

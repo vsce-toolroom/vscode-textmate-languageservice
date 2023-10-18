@@ -17,14 +17,14 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
-    - name: Install Node.js
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: '14'
-    - name: Install Dependencies
+        node-version: '18'
+    - name: Install dependencies
       run: npm install
-    - name: Run Tests
-      run: npm test
+    - name: Run tests
+      run: xvfb-run --server-args "-screen 0 1920x1080x24" npm test
     - name: Upload Data Artifact
       uses: actions/upload-artifact@v2
       with:

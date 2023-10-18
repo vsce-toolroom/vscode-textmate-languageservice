@@ -3,8 +3,11 @@
 import * as vscode from 'vscode';
 
 import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
+import { loadMessageBundle } from './loader';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
+
+const localize = loadMessageBundle();
 
 export interface GrammarLanguageDefinition {
 	language: string;
@@ -26,9 +29,14 @@ export function isGrammarLanguageDefinition(g: GrammarDefinition): g is GrammarL
 }
 
 export interface LanguageDefinition {
-	id: string;
+	aliases?: string[];
+	configuration?: string;
 	extensions?: string[];
 	filenames?: string[];
+	firstLine?: string;
+	icon?: string | { light: string; dark: string; };
+	id: string;
+	mimetypes?: string[];
 }
 
 export type LanguageData = LanguageDefinition[];
@@ -39,7 +47,7 @@ export interface ExtensionContributions extends PartialJsonObject {
 	grammars?: PartialJsonObject & GrammarData;
 }
 
-export interface LanguageConfigurations {
+export interface ConfigurationPaths {
 	[languageId: string]: string;
 }
 
@@ -47,7 +55,7 @@ export interface ExtensionManifest extends PackageJson {
 	enabledApiProposals?: string[];
 	contributes?: ExtensionContributions;
 	/** Mapping from language ID to config path. Default: `./textmate-configuration.json`. */
-	'textmate-languageservices'?: LanguageConfigurations;
+	'textmate-languageservices'?: ConfigurationPaths;
 	/** Ersatz extension contributions - a service wiring to any language grammars. */
 	'textmate-languageservice-contributes'?: ExtensionContributions;
 }
@@ -61,9 +69,22 @@ export type ExtensionManifestContributionKey = 'textmate-languageservice-contrib
 
 export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
-function getAllExtensionContributes() {
-	const languages: LanguageData = [];
-	const grammars: GrammarData = [];
+export const plaintextLanguageDefinition: LanguageDefinition = {
+	id: 'plaintext',
+	extensions: ['.txt'],
+	aliases: [localize('plainText.alias', 'Plain Text'), 'text'],
+	mimetypes: ['text/plain']
+};
+
+export const plaintextGrammarDefinition = {
+	language: 'plaintext',
+	path: './out/vs/editor/common/languages/plaintext.tmLanguage.json',
+	scopeName: 'text'
+};
+
+function getAllContributes() {
+	const languages: LanguageData = [plaintextLanguageDefinition];
+	const grammars: GrammarData = [plaintextGrammarDefinition];
 	const sources = {
 		grammars: {} as ExtensionData,
 		languages: {} as ExtensionData
@@ -96,6 +117,11 @@ function getAllExtensionContributes() {
 	return { grammars, languages, sources };
 }
 
+let vscodeContributes = getAllContributes();
+vscode.extensions.onDidChange(function() {
+	vscodeContributes = getAllContributes();
+});
+
 export class ContributorData {
 	private _languages: LanguageData;
 	private _grammars: GrammarData;
@@ -104,12 +130,12 @@ export class ContributorData {
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
 		if (!manifest) {
-			const data = getAllExtensionContributes();
-			this._languages = data.languages;
-			this._grammars = data.grammars;
-			this._sources = data.sources;
+			this._languages = vscodeContributes.languages;
+			this._grammars = vscodeContributes.grammars;
+			this._sources = vscodeContributes.sources;
 			return;
 		}
+
 		this._languages = manifest?.contributes?.languages || [];
 		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageDefinition) || [];
 		this._sources = {
@@ -141,7 +167,7 @@ export class ContributorData {
 				}
 			}
 		}
-		return 'plaintext';
+		return plaintextLanguageDefinition.id;
 	}
 
 	public findLanguageByFilename(fileLabel: string): string {
@@ -155,18 +181,18 @@ export class ContributorData {
 				}
 			}
 		}
-		return 'plaintext';
+		return plaintextLanguageDefinition.id;
 	}
 
-	public findGrammarScopeNameFromFilename(fileLabel: string): string | null {
+	public findGrammarScopeNameFromFilename(fileLabel: string): string {
 		const extname = fileLabel.substring(fileLabel.lastIndexOf('.'));
 		const language = this.findLanguageByFilename(fileLabel) || this.findLanguageByExtension(extname);
 		if (!language) {
-			return null;
+			return plaintextGrammarDefinition.scopeName;
 		}
 
 		const grammar = this.getGrammarDefinitionFromLanguageId(language);
-		return grammar ? grammar.scopeName : null;
+		return grammar ? grammar.scopeName : plaintextGrammarDefinition.scopeName;
 	}
 
 	public findLanguageIdFromScopeName(scopeName: string): string {
@@ -174,7 +200,7 @@ export class ContributorData {
 		if (grammarData) {
 			return grammarData.language;
 		}
-		throw new Error('Could not find language contribution for scope name "' + scopeName + '" in extension manifest');
+		return plaintextLanguageDefinition.id;
 	}
 
 	public getLanguageDefinitionFromId(languageId: string): LanguageDefinition {
@@ -183,18 +209,18 @@ export class ContributorData {
 				return language;
 			}
 		}
-		throw new Error('Could not find language contribution for language ID "' + languageId + '" in extension manifest');
+		return plaintextLanguageDefinition;
 	}
 
 	public getLanguageDefinitionFromFilename(filename: string): LanguageDefinition {
 		const extname = filename.substring(filename.lastIndexOf('.'));
 		const languageId = this.findLanguageByFilename(filename) || this.findLanguageByExtension(extname);
 		if (!languageId) {
-			return { id: 'plaintext' };
+			return plaintextLanguageDefinition;
 		}
 		const languageData = this.sources.languages[languageId];
 		if (!languageData) {
-			return { id: 'plaintext' };
+			return plaintextLanguageDefinition;
 		}
 		return languageData;
 	}
@@ -205,7 +231,7 @@ export class ContributorData {
 				return grammar;
 			}
 		}
-		throw new Error('Could not find grammar contribution for language ID "' + languageId + '" in extension manifest');
+		return plaintextGrammarDefinition;
 	}
 
 	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
