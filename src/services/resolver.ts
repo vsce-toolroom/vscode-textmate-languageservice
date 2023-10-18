@@ -28,7 +28,7 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		if (scopeName === 'text') {
 			const text = JSON.stringify(plainTextGrammar);
 			const appRoot = vscode.Uri.file(vscode.env.appRoot);
-			const jsonPath = vscode.Uri.joinPath(appRoot, plaintextGrammarDefinition.path).path
+			const jsonPath = vscode.Uri.joinPath(appRoot, plaintextGrammarDefinition.path).path;
 			return vscodeTextmate.parseRawGrammar(text, jsonPath);
 		}
 
