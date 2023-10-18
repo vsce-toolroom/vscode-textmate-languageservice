@@ -32,4 +32,4 @@ for (let index = 0; index < extensionTestDataFolders.length; index++) {
 	shelljs.cp('-r', `./test/${dataDir}/*`, `${extensionPath}/${dataDir}`);		
 }
 
-shelljs.exec(`npm exec --prefix ${extensionPath} playwright install`)
+shelljs.exec(`npm exec --prefix ${extensionPath} playwright install`);
