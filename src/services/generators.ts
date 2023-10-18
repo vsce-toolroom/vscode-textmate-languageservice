@@ -1,3 +1,5 @@
+'use strict';
+
 import TextmateLanguageService from '../main';
 import { ServiceBase } from '../util/service';
 
