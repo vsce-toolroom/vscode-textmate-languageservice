@@ -29,7 +29,8 @@
           ".wiki",
           ".wikitext",
           ".wt"
-        ]
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [

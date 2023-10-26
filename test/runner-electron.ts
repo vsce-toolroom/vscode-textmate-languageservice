@@ -16,7 +16,7 @@ const files = [
 	require.resolve('./suite/providers/document-symbol.test'),
 	require.resolve('./suite/providers/workspace-symbol.test'),
 	require.resolve('./suite/api/token-information.test'),
-	require.resolve('./suite/api/language-configuration.test')
+	require.resolve('./suite/api/language-contribution.test')
 ];
 
 export async function run(): Promise<void> {
