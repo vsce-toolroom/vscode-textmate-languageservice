@@ -3,9 +3,13 @@
 import * as vscode from 'vscode';
 
 import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
-import { loadMessageBundle } from './loader';
+import { loadJsonFile, loadMessageBundle } from './loader';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
+
+type RegExpConfiguration = { pattern: string; flags?: string; };
+
+type RegExpsStringified<T> = T extends RegExp ? string | RegExpConfiguration : { [K in keyof T]: RegExpsStringified<T[K]> };
 
 const localize = loadMessageBundle();
 
@@ -69,6 +73,40 @@ export type ExtensionManifestContributionKey = 'textmate-languageservice-contrib
 
 export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
+class IndentationRule implements vscode.IndentationRule {
+	decreaseIndentPattern: RegExp;
+	increaseIndentPattern: RegExp;
+	indentNextLinePattern?: RegExp;
+	unIndentedLinePattern?: RegExp;
+	constructor(data: RegExpsStringified<vscode.IndentationRule>) {
+		this.decreaseIndentPattern = fromEntryToRegExp(data.decreaseIndentPattern);
+		this.increaseIndentPattern = fromEntryToRegExp(data.increaseIndentPattern);
+		if (this.indentNextLinePattern) {
+			this.indentNextLinePattern = fromEntryToRegExp(data.indentNextLinePattern);
+		}
+		if (this.unIndentedLinePattern) {
+			this.unIndentedLinePattern = fromEntryToRegExp(data.unIndentedLinePattern);
+		}
+	}
+}
+
+class OnEnterRule implements vscode.OnEnterRule {
+	action: vscode.EnterAction;
+	afterText?: RegExp;
+	beforeText: RegExp;
+	previousLineText?: RegExp;
+	constructor(data: RegExpsStringified<vscode.OnEnterRule>) {
+		this.beforeText = fromEntryToRegExp(data.beforeText);
+		this.action = data.action;
+		if (data.afterText) {
+			this.afterText = fromEntryToRegExp(data.afterText);
+		}
+		if (data.afterText) {
+			this.previousLineText = fromEntryToRegExp(data.previousLineText);
+		}
+	}
+}
+
 export const plaintextLanguageDefinition: LanguageDefinition = {
 	id: 'plaintext',
 	extensions: ['.txt'],
@@ -80,6 +118,14 @@ export const plaintextGrammarDefinition = {
 	language: 'plaintext',
 	path: './out/vs/editor/common/languages/plaintext.tmLanguage.json',
 	scopeName: 'text'
+};
+
+export const plaintextLanguageConfiguration: vscode.LanguageConfiguration = {
+	brackets: [
+		['(', ')'],
+		['[', ']'],
+		['{', '}']
+	]
 };
 
 function getAllContributes() {
@@ -241,4 +287,30 @@ export class ContributorData {
 	public getExtensionFromScopeName(scopeName: string): vscode.Extension<unknown> {
 		return this.sources.grammars[scopeName];
 	}
+
+	public async getLanguageConfigurationFromLanguageId(languageId: string): Promise<vscode.LanguageConfiguration> {
+		if (languageId === 'plaintext') {
+			return plaintextLanguageConfiguration;
+		}
+
+		const definition = this.getLanguageDefinitionFromId(languageId);
+		const extension = this.getExtensionFromLanguageId(languageId);
+		if (!extension || !definition) {
+			throw new Error(`Could not find definition for language ${languageId}`);
+		}
+
+		const path = vscode.Uri.joinPath(extension.extensionUri, definition.configuration);
+		const json = await loadJsonFile<RegExpsStringified<vscode.LanguageConfiguration>>(path);
+
+		const { comments, brackets, wordPattern: w, indentationRules: i, onEnterRules: o } = json;
+		const wordPattern = w ? fromEntryToRegExp(w): void 0;
+		const indentationRules = i ? new IndentationRule(i) : void 0;
+		const onEnterRules = o ? o.map(r => new OnEnterRule(r)): void 0;
+
+		return { comments, brackets, indentationRules, onEnterRules, wordPattern };
+	}
+}
+
+function fromEntryToRegExp(entry: string | RegExpConfiguration) {
+	return new RegExp(typeof entry === 'string' ? entry : entry.pattern, typeof entry === 'object' ? entry.flags : void 0);
 }
