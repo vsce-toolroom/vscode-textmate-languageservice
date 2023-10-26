@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 import { strictEqual } from '../../util/assert';
 import TextmateLanguageService from '../../../src/main';
 
-const { getGrammarConfiguration, getLanguageConfiguration, getContributorExtension } = TextmateLanguageService.api;
+const { getGrammarContribution, getLanguageContribution, getLanguageConfiguration, getContributorExtension } = TextmateLanguageService.api;
 
 const languageExtensionMap: Record<string, string> = {
 	'mediawiki': '.mediawiki',
@@ -30,26 +30,39 @@ const languageContributorMap: Record<string, string> = {
 suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 	this.timeout(5000);
 
-	test('getLanguageConfiguration(): LanguageDefinition', async function() {
-		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
+	test('getLanguageConfiguration(): Promise<vscode.LanguageConfiguration>', async function() {
 
-		const languageConfiguration = getLanguageConfiguration(globalThis.languageId);
+		vscode.window.showInformationMessage('API `getLanguageConfiguration` method (src/api.ts)');
 
-		strictEqual(languageConfiguration.id, globalThis.languageId);
+		const languageConfiguration = await getLanguageConfiguration(globalThis.languageId);
 
-		const languageFileExtension = languageExtensionMap[globalThis.languageId];
-		strictEqual(languageConfiguration.extensions?.includes(languageFileExtension), true);
+		strictEqual(languageConfiguration.wordPattern instanceof RegExp, globalThis.languageId === 'typescript');
+
+		strictEqual(Array.isArray(languageConfiguration.brackets), true);
+
+		strictEqual(Array.isArray(languageConfiguration.comments.blockComment), true);
 	});
 
-	test('getGrammarConfiguration(): GrammarLanguageDefinition', async function() {
+	test('getLanguageContribution(): LanguageDefinition', async function() {
 		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
 
-		const grammarConfiguration = getGrammarConfiguration(globalThis.languageId);
+		const languageContribution = getLanguageContribution(globalThis.languageId);
 
-		strictEqual(grammarConfiguration.language, globalThis.languageId);
+		strictEqual(languageContribution.id, globalThis.languageId);
+
+		const languageFileExtension = languageExtensionMap[globalThis.languageId];
+		strictEqual(languageContribution.extensions?.includes(languageFileExtension), true);
+	});
+
+	test('getGrammarContribution(): GrammarLanguageDefinition', async function() {
+		vscode.window.showInformationMessage('API `getScopeInformationAtPosition` method (src/api.ts)');
+
+		const grammarContribution = getGrammarContribution(globalThis.languageId);
+
+		strictEqual(grammarContribution.language, globalThis.languageId);
 
 		const languageScopeName = languageScopeNameMap[globalThis.languageId]
-		strictEqual(grammarConfiguration.scopeName, languageScopeName);
+		strictEqual(grammarContribution.scopeName, languageScopeName);
 	});
 
 	test('getContributorExtension(): vscode.Extension | void', async function () {
