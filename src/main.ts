@@ -16,7 +16,7 @@ import { TextmateFoldingRangeProvider } from './folding';
 import { TextmateDefinitionProvider } from './definition';
 import { TextmateDocumentSymbolProvider } from './document-symbol';
 import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
-import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarConfiguration, getLanguageConfiguration, getContributorExtension } from './api';
+import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarContribution, getLanguageConfiguration, getLanguageContribution, getContributorExtension } from './api';
 
 import type { ConfigJson } from './config';
 import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, ConfigurationPaths, LanguageDefinition } from './util/contributes';
@@ -46,7 +46,7 @@ export default class TextmateLanguageService {
 	};
 
 	public static api = {
-		getContributorExtension, getGrammarConfiguration, getLanguageConfiguration,
+		getContributorExtension, getGrammarContribution, getLanguageConfiguration, getLanguageContribution,
 		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition
 	};
 

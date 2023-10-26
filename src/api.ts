@@ -56,21 +56,30 @@ export async function getScopeRangeAtPosition(document: LiteTextDocument, positi
 };
 
 /**
- * Get the active language point configuration of a language mode identifier.
+ * Get the active language definition point of a language mode identifier.
  * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
  * @returns {LanguageDefinition} Language contribution as configured in source VS Code extension.
  */
-export function getLanguageConfiguration(languageId: string): LanguageDefinition {
+export function getLanguageContribution(languageId: string): LanguageDefinition {
 	return contributorData.getLanguageDefinitionFromId(languageId);
 };
 
 /**
- * Get the active language point configuration of a language mode identifier.
+ * Get the active language definition point of a language mode identifier.
  * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
  * @returns {GrammarLanguageDefinition} Grammar contribution as configured in source VS Code extension.
  */
-export function getGrammarConfiguration(languageId: string): GrammarLanguageDefinition {
+export function getGrammarContribution(languageId: string): GrammarLanguageDefinition {
 	return contributorData.getGrammarDefinitionFromLanguageId(languageId);
+};
+
+/**
+ * Get the active language point of a language mode identifier.
+ * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
+ * @returns {LanguageDefinition} Language contribution as configured in source VS Code extension.
+ */
+export function getLanguageConfiguration(languageId: string): Promise<vscode.LanguageConfiguration> {
+	return contributorData.getLanguageConfigurationFromLanguageId(languageId);
 };
 
 /**
