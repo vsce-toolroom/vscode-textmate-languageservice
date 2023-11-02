@@ -305,7 +305,7 @@ export class ContributorData {
 		const { comments, brackets, wordPattern: w, indentationRules: i, onEnterRules: o } = json;
 		const wordPattern = w ? fromEntryToRegExp(w): void 0;
 		const indentationRules = i ? new IndentationRule(i) : void 0;
-		const onEnterRules = o ? o.map(r => new OnEnterRule(r)): void 0;
+		const onEnterRules = o ? o.map(r => r ? new OnEnterRule(r) : void 0): void 0;
 
 		return { comments, brackets, indentationRules, onEnterRules, wordPattern };
 	}
