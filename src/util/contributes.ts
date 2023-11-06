@@ -7,9 +7,14 @@ import { loadJsonFile, loadMessageBundle } from './loader';
 
 type PartialJsonObject = PartialDeep<JsonObject>;
 
-type RegExpConfiguration = { pattern: string; flags?: string; };
+interface RegExpConfiguration {
+	flags?: string;
+	pattern: string;
+};
 
-type RegExpsStringified<T> = T extends RegExp ? string | RegExpConfiguration : { [K in keyof T]: RegExpsStringified<T[K]> };
+type RegExpsStringified<T> = T extends RegExp
+	? string | RegExpConfiguration
+	: { [K in keyof T]: RegExpsStringified<T[K]> };
 
 const localize = loadMessageBundle();
 
@@ -78,10 +83,10 @@ export type ExtensionManifestContributionKey = 'textmate-languageservice-contrib
 export type ExtensionData = Record<string, vscode.Extension<unknown> | undefined>;
 
 class IndentationRule implements vscode.IndentationRule {
-	decreaseIndentPattern: RegExp;
-	increaseIndentPattern: RegExp;
-	indentNextLinePattern?: RegExp;
-	unIndentedLinePattern?: RegExp;
+	public decreaseIndentPattern: RegExp;
+	public increaseIndentPattern: RegExp;
+	public indentNextLinePattern?: RegExp;
+	public unIndentedLinePattern?: RegExp;
 	constructor(data: RegExpsStringified<vscode.IndentationRule>) {
 		this.decreaseIndentPattern = fromEntryToRegExp(data.decreaseIndentPattern);
 		this.increaseIndentPattern = fromEntryToRegExp(data.increaseIndentPattern);
@@ -95,10 +100,10 @@ class IndentationRule implements vscode.IndentationRule {
 }
 
 class OnEnterRule implements vscode.OnEnterRule {
-	action: vscode.EnterAction;
-	afterText?: RegExp;
-	beforeText: RegExp;
-	previousLineText?: RegExp;
+	public action: vscode.EnterAction;
+	public afterText?: RegExp;
+	public beforeText: RegExp;
+	public previousLineText?: RegExp;
 	constructor(data: RegExpsStringified<vscode.OnEnterRule>) {
 		this.beforeText = fromEntryToRegExp(data.beforeText);
 		this.action = data.action;
@@ -311,7 +316,7 @@ export class ContributorData {
 		const indentationRules = i ? new IndentationRule(i) : void 0;
 		const onEnterRules = o ? o.map(r => r ? new OnEnterRule(r) : void 0): void 0;
 
-		return { comments, brackets, indentationRules, onEnterRules, wordPattern };
+		return { brackets, comments, indentationRules, onEnterRules, wordPattern };
 	}
 }
 
