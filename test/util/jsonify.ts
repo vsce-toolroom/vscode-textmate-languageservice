@@ -34,6 +34,10 @@ function replaceClassesWithStrings(key: string, value: any): any {
 		return value.toString();
 	}
 
+	if (value instanceof RegExp) {
+		return value.toString();
+	}
+
 	return value;
 }
 

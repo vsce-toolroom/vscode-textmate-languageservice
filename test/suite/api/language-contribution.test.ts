@@ -6,6 +6,8 @@ import * as vscode from 'vscode';
 
 import { strictEqual } from '../../util/assert';
 import TextmateLanguageService from '../../../src/main';
+import { jsonify } from '../../util/jsonify';
+import { isWebRuntime } from '../../util/runtime';
 
 const { getGrammarContribution, getLanguageContribution, getLanguageConfiguration, getContributorExtension } = TextmateLanguageService.api;
 
@@ -35,6 +37,10 @@ suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
 		vscode.window.showInformationMessage('API `getLanguageConfiguration` method (src/api.ts)');
 
 		const languageConfiguration = await getLanguageConfiguration(globalThis.languageId);
+
+		if (isWebRuntime) {
+			console.log(jsonify(languageConfiguration));
+		}
 
 		strictEqual(languageConfiguration.wordPattern instanceof RegExp, globalThis.languageId === 'typescript');
 
