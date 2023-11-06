@@ -27,7 +27,7 @@ const languageContributorMap: Record<string, string> = {
 	'typescript': 'vscode.typescript'
 }
 
-suite('test/api/languageConfiguration.test.ts (src/api.ts)', async function() {
+suite('test/api/language-contribution.test.ts (src/api.ts)', async function() {
 	this.timeout(5000);
 
 	test('getLanguageConfiguration(): Promise<vscode.LanguageConfiguration>', async function() {
