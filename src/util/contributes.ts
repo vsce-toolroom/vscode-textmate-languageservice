@@ -47,7 +47,7 @@ export interface LanguageDefinition {
 	extensions?: string[];
 	filenames?: string[];
 	firstLine?: string;
-	icon?: string | { light: string; dark: string; };
+	icon?: string | { light: string; dark: string };
 	id: string;
 	mimetypes?: string[];
 }
@@ -117,9 +117,9 @@ class OnEnterRule implements vscode.OnEnterRule {
 }
 
 export const plaintextLanguageDefinition: LanguageDefinition = {
-	id: 'plaintext',
-	extensions: ['.txt'],
 	aliases: [localize('plainText.alias', 'Plain Text'), 'text'],
+	extensions: ['.txt'],
+	id: 'plaintext',
 	mimetypes: ['text/plain']
 };
 
