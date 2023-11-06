@@ -105,7 +105,7 @@ class OnEnterRule implements vscode.OnEnterRule {
 		if (data.afterText) {
 			this.afterText = fromEntryToRegExp(data.afterText);
 		}
-		if (data.afterText) {
+		if (data.previousLineText) {
 			this.previousLineText = fromEntryToRegExp(data.previousLineText);
 		}
 	}
@@ -306,10 +306,6 @@ export class ContributorData {
 		const path = vscode.Uri.joinPath(extension.extensionUri, definition.configuration);
 		const json = await loadJsonFile<RegExpsStringified<vscode.LanguageConfiguration>>(path);
 
-		if (isWebRuntime) {
-			console.log(JSON.stringify(jsonify(json), null, 2));
-		}
-
 		const { comments, brackets, wordPattern: w, indentationRules: i, onEnterRules: o } = json;
 		const wordPattern = w ? fromEntryToRegExp(w): void 0;
 		const indentationRules = i ? new IndentationRule(i) : void 0;
@@ -317,22 +313,6 @@ export class ContributorData {
 
 		return { comments, brackets, indentationRules, onEnterRules, wordPattern };
 	}
-}
-
-function jsonify<T = PartialJsonObject>(value: Record<symbol | string | number, any>): T {
-	return JSON.parse(JSON.stringify(value, replaceClassesWithStrings)) as T;
-}
-
-function replaceClassesWithStrings(key: string, value: any): any {
-	if (value === null || value === undefined) {
-		return value;
-	}
-
-	if (value instanceof RegExp) {
-		return value.toString();
-	}
-
-	return value;
 }
 
 function fromEntryToRegExp(entry: string | RegExpConfiguration) {
