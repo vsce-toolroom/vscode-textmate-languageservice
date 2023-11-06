@@ -14,8 +14,8 @@ const localize = loadMessageBundle();
 
 const plainTextGrammar = {
 	name: localize('plainText.alias', 'Plain Text'),
-	scopeName: 'text',
-	patterns: []
+	patterns: [],
+	scopeName: 'text'
 };
 
 export class ResolverService implements vscodeTextmate.RegistryOptions {
