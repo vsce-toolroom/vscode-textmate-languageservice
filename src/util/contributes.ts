@@ -18,10 +18,6 @@ type RegExpsStringified<T> = T extends RegExp
 
 const localize = loadMessageBundle();
 
-const isWebUI = vscode.env.uiKind === vscode.UIKind.Web;
-const isRemote = typeof vscode.env.remoteName === 'string';
-const isWebRuntime = isWebUI && !isRemote;
-
 export interface GrammarLanguageDefinition {
 	language: string;
 	scopeName: string;
