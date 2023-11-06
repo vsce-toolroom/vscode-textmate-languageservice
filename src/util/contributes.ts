@@ -13,6 +13,10 @@ type RegExpsStringified<T> = T extends RegExp ? string | RegExpConfiguration : {
 
 const localize = loadMessageBundle();
 
+const isWebUI = vscode.env.uiKind === vscode.UIKind.Web;
+const isRemote = typeof vscode.env.remoteName === 'string';
+const isWebRuntime = isWebUI && !isRemote;
+
 export interface GrammarLanguageDefinition {
 	language: string;
 	scopeName: string;
@@ -302,6 +306,10 @@ export class ContributorData {
 		const path = vscode.Uri.joinPath(extension.extensionUri, definition.configuration);
 		const json = await loadJsonFile<RegExpsStringified<vscode.LanguageConfiguration>>(path);
 
+		if (isWebRuntime) {
+			console.log(JSON.stringify(jsonify(json), null, 2));
+		}
+
 		const { comments, brackets, wordPattern: w, indentationRules: i, onEnterRules: o } = json;
 		const wordPattern = w ? fromEntryToRegExp(w): void 0;
 		const indentationRules = i ? new IndentationRule(i) : void 0;
@@ -309,6 +317,22 @@ export class ContributorData {
 
 		return { comments, brackets, indentationRules, onEnterRules, wordPattern };
 	}
+}
+
+function jsonify<T = PartialJsonObject>(value: Record<symbol | string | number, any>): T {
+	return JSON.parse(JSON.stringify(value, replaceClassesWithStrings)) as T;
+}
+
+function replaceClassesWithStrings(key: string, value: any): any {
+	if (value === null || value === undefined) {
+		return value;
+	}
+
+	if (value instanceof RegExp) {
+		return value.toString();
+	}
+
+	return value;
 }
 
 function fromEntryToRegExp(entry: string | RegExpConfiguration) {
