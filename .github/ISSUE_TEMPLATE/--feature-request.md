@@ -1,7 +1,7 @@
 ---
-name: "🚀 New Release"
-about: "Publish changes 📦"
-labels: [type-release]
+name: "⚡️️ Feature Request"
+about: "Suggest an idea for this project ✨"
+labels: [type-feature]
 
 ---
 
