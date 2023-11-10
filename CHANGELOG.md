@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.0
+
+<a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v3.0.0/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-11-07&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/milestone/8"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v3.0.0&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
+
+- **[BREAKING]** Rename `api.getLanguageConfiguration` to `api.getLanguageContribution`.
+- **[BREAKING]** Rename `api.getGrammarConfiguration` to `api.getGrammarContribution`.
+- Add `getLanguageConfiguration` API method to load `vscode.LanguageConfiguration`.
+- Add `plaintext` language tokenization and grammar resolution.
+- Hotfix for "unrecognized language" error for `plaintext` documents in API token methods.
+
+
 ## 2.0.0
 
 <a href="https://code.visualstudio.com/updates/v1_55" target="_blank"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/95579fa/assets/compatibility-badge.svg" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/tree/v2.0.0-recovery.1/"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Release%20Date&message=2023-09-08&logo=googlecalendar&logoColor=cacde2&labelColor=333333&color=2196f3" /></a> <a href="https://github.com/vsce-toolroom/vscode-textmate-languageservice/milestone/7"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Milestone&message=v2.0.0-recovery.1&logo=github&logoColor=cacde2&labelColor=333333&color=2196f3" /></a>
