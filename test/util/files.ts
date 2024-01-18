@@ -10,13 +10,13 @@ export const EXTENSIONS = ['.m', '.ts', '.wiki'];
 
 export const BASENAMES = {
 	matlab: ['Animal', 'Cat', 'Dog', 'Horse', 'Snake'],
-	typescript: ['Pet'],
-	mediawiki: ['List']
+	mediawiki: ['List'],
+	typescript: ['Pet']
 };
 
 /**
  * @param {string} basename Basename of sample file - `test\samples\*.m`.
-*/
+ */
 export function getSampleFileUri(basename: string): vscode.Uri {
 	const ext = EXTENSIONS[LANGUAGES.indexOf(globalThis.languageId)];
 	return vscode.Uri.joinPath(getTestModeExtension().extensionUri, `./samples/${basename}${ext}`);

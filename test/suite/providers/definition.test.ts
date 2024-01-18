@@ -11,7 +11,7 @@ import { runSamplePass } from '../../util/bench';
 import type { TextmateToken } from '../../../src/services/tokenizer';
 import { TextmateScopeSelector } from '../../util/common';
 
-suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/definition.ts)', async function() {
+suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/definition.ts)', function() {
 	this.timeout(10000);
 
 	test('TextmateDefinitionProvider.provideDefinition(): Promise<[vscode.Location,...vscode.Location[]]>', async function() {
@@ -20,7 +20,7 @@ suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/def
 			this.skip();
 		}
 
-		vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');
+		void vscode.window.showInformationMessage('TextmateDefinitionProvider class (src/definition.ts)');
 		const results = await definitionProviderResult();
 
 		for (let index = 0; index < results.length; index++) {
@@ -57,7 +57,9 @@ suite('test/suite/definition.test.ts - TextmateDefinitionProvider class (src/def
 		}
 	});
 
-	await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+	this.afterAll(async function() {
+		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+	});
 });
 
 async function definitionProviderResult() {
@@ -86,9 +88,7 @@ async function definitionProviderResult() {
 	const samples = BASENAMES[globalThis.languageId].map(getSampleFileUri);
 	const results: DefinitionTestResult[][] = [];
 
-	for (let index = 0; index < samples.length; index++) {
-		const resource = samples[index];
-
+	for (const resource of samples) {
 		const skinnyDocument = await documentService.getDocument(resource);
 		const tokens = await tokenizer.fetch(skinnyDocument);
 
@@ -104,11 +104,11 @@ async function definitionProviderResult() {
 			const startPosition = new vscode.Position(symbol.line, symbol.startIndex);
 			const endPosition = new vscode.Position(symbol.line, symbol.endIndex);
 
-			activeEditor!.selection = new vscode.Selection(startPosition, endPosition);
+			activeEditor.selection = new vscode.Selection(startPosition, endPosition);
 
 			const locations = await definitionProvider.provideDefinition(document, startPosition);
 
-			page.push({ ...symbol, uri: resource, definition: locations[0] });
+			page.push({ ...symbol, definition: locations[0], uri: resource });
 		}
 		results.push(page);
 	}

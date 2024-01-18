@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 import { MockExtensionContext } from './mock';
 
 export function setupEnvironmentForLanguageId(languageId: string): void {

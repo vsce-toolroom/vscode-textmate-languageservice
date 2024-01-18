@@ -41,13 +41,23 @@ interface Private {
 
 export default class TextmateLanguageService {
 	public static utils = {
-		ResolverService, TextmateScopeSelector, TextmateScopeSelectorMap,
-		getOniguruma, isGrammarLanguageDefinition, loadJsonFile, readFileText
+		ResolverService,
+		TextmateScopeSelector,
+		TextmateScopeSelectorMap,
+		getOniguruma,
+		isGrammarLanguageDefinition,
+		loadJsonFile,
+		readFileText
 	};
 
 	public static api = {
-		getContributorExtension, getGrammarContribution, getLanguageConfiguration, getLanguageContribution,
-		getScopeInformationAtPosition, getScopeRangeAtPosition, getTokenInformationAtPosition
+		getContributorExtension,
+		getGrammarContribution,
+		getLanguageConfiguration,
+		getLanguageContribution,
+		getScopeInformationAtPosition,
+		getScopeRangeAtPosition,
+		getTokenInformationAtPosition
 	};
 
 	public resolver: ResolverService;
@@ -160,7 +170,10 @@ export default class TextmateLanguageService {
 
 		const documentService = await this.initDocumentService();
 		const documentSymbolProvider = await this.createDocumentSymbolProvider();
-		this[_private].workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(documentService, documentSymbolProvider);
+		this[_private].workspaceSymbolProvider = new TextmateWorkspaceSymbolProvider(
+			documentService,
+			documentSymbolProvider
+		);
 
 		return this[_private].workspaceSymbolProvider;
 	}

@@ -6,11 +6,11 @@ import { documentServicePromise, documentSymbolProviderPromise } from '../../uti
 import { BASENAMES, getSampleFileUri } from '../../util/files';
 import { runSamplePass } from '../../util/bench';
 
-suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class (src/document-symbol.ts)', async function() {
+suite('test/suite/document-symbol.test.ts - TextmateDocumentSymbolProvider class (src/document-symbol.ts)', function() {
 	this.timeout(10000);
 
 	test('TextmateDocumentSymbolProvider.provideDocumentSymbols(): Promise<vscode.DocumentSymbol[]>', async function() {
-		vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
+		void vscode.window.showInformationMessage('TextmateDocumentSymbolProvider class (src/document-symbol.ts)');
 		const samples = await documentSymbolProviderResult();
 
 		let error: TypeError | void = void 0;
@@ -37,8 +37,7 @@ async function documentSymbolProviderResult() {
 	const documentSymbolProvider = await documentSymbolProviderPromise;
 	const results: vscode.DocumentSymbol[][] = [];
 
-	for (let index = 0; index < samples.length; index++) {
-		const resource = samples[index];
+	for (const resource of samples) {
 		const document = await documentService.getDocument(resource);
 
 		const symbols = await documentSymbolProvider.provideDocumentSymbols(document);

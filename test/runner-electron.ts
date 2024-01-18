@@ -20,16 +20,16 @@ const files = [
 ];
 
 export async function run(): Promise<void> {
-	vscode.window.showInformationMessage('Start all tests.');
+	void vscode.window.showInformationMessage('Start all tests.');
 
-	const mocha = new Mocha({ ui: 'tdd', reporter: 'spec' });
+	const mocha = new Mocha({ reporter: 'spec', ui: 'tdd' });
 
 	const languageId = getTestModeExtension().id.split('.')[1];
 	setupEnvironmentForLanguageId(languageId);
 
 	if (languageId !== 'mediawiki') {
 		await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
-		vscode.languages.setTextDocumentLanguage(vscode.window!.activeTextEditor!.document, languageId);
+		await vscode.languages.setTextDocumentLanguage(vscode.window.activeTextEditor.document, languageId);
 		await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
 	}
 
@@ -45,12 +45,9 @@ export async function run(): Promise<void> {
 				}
 			});
 		} catch (e) {
+			// eslint-disable-next-line no-console
 			console.error(e);
 			x(e);
 		}
 	});
-}
-
-function getDevelopmentModeLanguageName() {
-	return getTestModeExtension().id.split('.')[1];
-}
+};
