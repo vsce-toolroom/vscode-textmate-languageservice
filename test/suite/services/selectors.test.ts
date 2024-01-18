@@ -12,9 +12,9 @@ type SelectorTestData = typeof selectorJson;
 import type * as mapJson from '../../data/selectors/map.json';
 type SelectorMapTestData = typeof mapJson;
 
-suite('test/suite/selectors.util.test.ts - TextmateScopeSelector class (src/../util/selectors.ts)', async function() {
+suite('test/suite/selectors.util.test.ts - TextmateScopeSelector class (src/../util/selectors.ts)', function() {
 	test('TextmateScopeSelector.match(scopes) - Macromates spec', async function() {
-		vscode.window.showInformationMessage('TextmateScopeSelector class (src/utils/selectors.ts)');
+		void vscode.window.showInformationMessage('TextmateScopeSelector class (src/utils/selectors.ts)');
 		const tests = await scopeInput();
 
 		for (const [feature, cases] of tests) {
@@ -35,9 +35,9 @@ async function scopeInput() {
 
 suite('test/suite/selectors.util.test.ts - TextmateScopeSelectorMap class (src/utils/selectors.ts)', function() {
 	test('TextmateScopeSelectorMap.key(scopes)', async function() {
-		vscode.window.showInformationMessage('TextmateScopeSelectorMap class (src/utils/selectors.ts)');
+		void vscode.window.showInformationMessage('TextmateScopeSelectorMap class (src/utils/selectors.ts)');
 		const testCases = await mapInput();
-	
+
 		for (const t of testCases) {
 			strictEqual(
 				t.map.key(t.input),
@@ -88,7 +88,7 @@ async function mapInput() {
 		const value = d.value === null ? void 0 : d.value;
 		const map = new TextmateScopeSelectorMap(d.key === null ? void 0 : { [d.key]: d.value });
 		const scopes = d.input.join(' ');
-		testCases.push({ ...d, key, value, map, scopes });
+		testCases.push({ ...d, key, map, scopes, value });
 	}
 
 	return testCases;

@@ -9,11 +9,11 @@ import { jsonify } from '../../util/jsonify';
 
 import type { LiteTextDocument } from '../../../src/services/document';
 
-suite('test/suite/document.test.ts - DocumentService class (src/services/document.ts)', async function() {
+suite('test/suite/document.test.ts - DocumentService class (src/services/document.ts)', function() {
 	this.timeout(5000);
 
 	test('LiteTextDocument.uri', async function() {
-		vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
+		void vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
 		for (let index = 0; index < samples.length; index++) {
@@ -43,7 +43,9 @@ suite('test/suite/document.test.ts - DocumentService class (src/services/documen
 		}
 	});
 
-	await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+	this.afterAll(async function() {
+		await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+	});
 });
 
 async function documentServiceOutput() {
@@ -53,11 +55,9 @@ async function documentServiceOutput() {
 
 	const expecteds: vscode.TextDocument[] = [];
 	const actuals: LiteTextDocument[] = [];
-	let filenames: string[] = [];
+	const filenames: string[] = [];
 
-	for (let index = 0; index < samples.length; index++) {
-		const resource = samples[index];
-
+	for (const resource of samples) {
 		const textDocument = await vscode.workspace.openTextDocument(resource);
 		const providerDocument = await documentService.getDocument(resource);
 

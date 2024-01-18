@@ -12,7 +12,7 @@ suite('test/suite/outline.test.ts - OutlineService class (src/services/outline.t
 	this.timeout(5000);
 
 	test('OutlineService.fetch(): Promise<OutlineEntry[]>', async function() {
-		vscode.window.showInformationMessage('OutlineService class (src/services/outline.ts)');
+		void vscode.window.showInformationMessage('OutlineService class (src/services/outline.ts)');
 		const { outputs, samples } = await outlineServiceOutput();
 
 		let error: TypeError | void = void 0;
@@ -39,14 +39,12 @@ async function outlineServiceOutput() {
 	const samples = BASENAMES[globalThis.languageId].map(getSampleFileUri);
 	const outputs: OutlineEntry[][] = [];
 
-	for (let index = 0; index < samples.length; index++) {
-		const resource = samples[index];
-
+	for (const resource of samples) {
 		const document = await documentService.getDocument(resource);
 		const outline = await outlineService.fetch(document);
 
 		outputs.push(outline);
 	}
 
-	return { samples, outputs };
+	return { outputs, samples };
 }

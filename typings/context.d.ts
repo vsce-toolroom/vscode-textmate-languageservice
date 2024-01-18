@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import type * as vscode from 'vscode';
 
 // wiring for global test variables in runtimes

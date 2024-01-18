@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 
 export class MockMemento implements vscode.Memento {
 	public keys(): readonly string[] {

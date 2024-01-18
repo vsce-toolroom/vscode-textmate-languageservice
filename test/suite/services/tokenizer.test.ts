@@ -8,11 +8,11 @@ import { runSamplePass } from '../../util/bench';
 
 import type { TextmateToken } from '../../../src/services/tokenizer';
 
-suite('test/suite/tokenizer.test.ts - TokenizerService class (src/services/tokenizer.ts)', async function() {
+suite('test/suite/tokenizer.test.ts - TokenizerService class (src/services/tokenizer.ts)', function() {
 	this.timeout(5000);
 
 	test('TokenizerService.fetch(): Promise<TextmateToken[]>', async function() {
-		vscode.window.showInformationMessage('TokenizerService class (src/services/tokenizer.ts)');
+		void vscode.window.showInformationMessage('TokenizerService class (src/services/tokenizer.ts)');
 		const { samples, outputs } = await tokenServiceOutput();
 
 		let error: TypeError | void = void 0;
@@ -39,14 +39,12 @@ async function tokenServiceOutput() {
 	const samples = BASENAMES[globalThis.languageId].map(getSampleFileUri);
 	const outputs: TextmateToken[][] = [];
 
-	for (let index = 0; index < samples.length; index++) {
-		const resource = samples[index];
-
+	for (const resource of samples) {
 		const document = await documentService.getDocument(resource);
 		const tokens = await tokenService.fetch(document);
 
 		outputs.push(tokens);
 	}
 
-	return { samples, outputs };
+	return { outputs, samples };
 }

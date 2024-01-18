@@ -83,7 +83,7 @@ export function getLanguageConfiguration(languageId: string): Promise<vscode.Lan
 };
 
 /**
- * Get the VS Code Extension API entry of the extension that contributed a la nguage mode identifier.
+ * Get the VS Code Extension API entry of the extension that contributed a language mode identifier.
  * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
  * @returns {vscode.Extension} Extension API instance that contributed the language.
  */

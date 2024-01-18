@@ -21,6 +21,6 @@
   "exclude": [
     "../src/main",
     "./runner-web",
-      "./data/*/*"
+    "./data/*/*"
   ]
 }

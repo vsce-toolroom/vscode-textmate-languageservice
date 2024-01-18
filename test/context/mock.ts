@@ -56,7 +56,7 @@ export class MockExtensionContext implements vscode.ExtensionContext {
 		this.logPath = `${codeRoot}/user-data/User/logs`;
 		this.logUri = vscode.Uri.file(this.logPath);
 
-		const extension = resolver.getExtensionFromLanguageId(id) as vscode.Extension<unknown>;
+		const extension = resolver.getExtensionFromLanguageId(id);
 		if (typeof extension === 'undefined') {
 			if (globalThis.languageId === id) {
 				throw new Error('Could not find extension for language ID "' + id +'"');

@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 
 export class MockEnvironmentVariableCollection implements vscode.EnvironmentVariableCollection {
 	private readonly map: Map<string, vscode.EnvironmentVariableMutator> = new Map();

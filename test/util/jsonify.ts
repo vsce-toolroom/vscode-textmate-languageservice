@@ -1,6 +1,6 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 import * as path from 'path';
 import type { JsonValue, PartialDeep } from 'type-fest';
 
