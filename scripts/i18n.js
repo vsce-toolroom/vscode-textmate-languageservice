@@ -35,4 +35,4 @@ async function main() {
 	fs.writeFileSync(path.resolve(__dirname, '..', 'src', 'i18n.json'), i18nJson);
 }
 
-main();
+void main();

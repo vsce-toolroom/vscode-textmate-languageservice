@@ -50,8 +50,6 @@ function generateCustomLineDiff(actual: string, expected: string): string {
 
 	const diff: string[] = [];
 	let buffer: string[] = [];
-	let start: number | void;
-	let end: number | void;
 	let inserted: number = 0;
 	let deleted: number = 0;
 
@@ -79,7 +77,6 @@ function generateCustomLineDiff(actual: string, expected: string): string {
 			const context = `@@ -${lineno + 1},${deleted} +${lineno + 1},${inserted} @@`;
 			diff.push(...([context].concat(buffer)));
 			buffer = [];
-			start = end = void 0;
 			inserted = deleted = 0;
 		}
 	}

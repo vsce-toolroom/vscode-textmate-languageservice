@@ -20,7 +20,7 @@ export class FirstMateSelector {
 	 * @return A newly constructed ParsedSelector.
 	 */
 	constructor(public readonly source: string) {
-		this.matcher = parser.parse(source) as ParsedMatcher;
+		this.matcher = parser.parse(source);
 	}
 
 	/**

@@ -8,7 +8,7 @@ import type { BrowserType } from '@vscode/test-web';
 async function main() {
 	try {
 		const extensionDevelopmentPath = path.resolve(__dirname, '../../../..');
-		const extensionTestsPath = path.resolve(__dirname, `./runner-web.js`);
+		const extensionTestsPath = path.resolve(__dirname, './runner-web.js');
 		const extensionPaths = [];
 		const browserType: BrowserType = 'chromium';
 		const port = 8080;
@@ -16,15 +16,19 @@ async function main() {
 		const devTools = false;
 		// Web environment.
 		await runTestsInBrowser({
-				extensionDevelopmentPath,
-				extensionTestsPath,
-				extensionPaths,
-				browserType, port, headless, devTools
+			browserType,
+			devTools,
+			extensionDevelopmentPath,
+			extensionPaths,
+			extensionTestsPath,
+			headless,
+			port
 		});
 	} catch (e) {
+		// eslint-disable-next-line no-console
 		console.error('Failed to run tests');
 		throw e;
 	}
 }
 
-main();
+void main();

@@ -7,15 +7,16 @@ import { workspaceSymbolProviderPromise } from '../../util/factory';
 import { runSamplePass } from '../../util/bench';
 import { BASENAMES } from '../../util/files';
 
-suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', async function() {
+suite('test/suite/workspace-symbol.test.ts - TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)', function() {
 	this.timeout(10000);
+
 	test('TextmateWorkspaceSymbolProvider.provideWorkspaceSymbols(): Promise<vscode.SymbolInformation[]>', async function() {
 		// Early exit + pass if we are in web runtime or testing .
 		if (isWebRuntime || BASENAMES[globalThis.languageId].length === 1) {
 			this.skip();
 		}
 
-		vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
+		void vscode.window.showInformationMessage('TextmateWorkspaceSymbolProvider class (src/workspace-symbol.ts)');
 		const symbols = await workspaceSymbolProviderResult();
 		await runSamplePass('workspace-symbol', 'index', symbols);
 	});

@@ -10,17 +10,17 @@ import { getTestModeExtension } from './util/common';
 import 'mocha/mocha';
 
 export async function run(): Promise<void> {
-	vscode.window.showInformationMessage('Start all tests.');
+	void vscode.window.showInformationMessage('Start all tests.');
 
 	const languageId = getTestModeExtension().id.split('.')[1];
 	setupEnvironmentForLanguageId(languageId);
 
 	await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
-	vscode.languages.setTextDocumentLanguage(vscode.window!.activeTextEditor!.document, languageId);
+	await vscode.languages.setTextDocumentLanguage(vscode.window.activeTextEditor.document, languageId);
 	await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
 
 	return new Promise((c, x) => {
-		mocha.setup({ ui: 'tdd', reporter: void 0 });
+		mocha.setup({ reporter: void 0, ui: 'tdd' });
 
 		// import mocha test files, so that webpack can inline them
 		import('./suite/services/selectors.test');
@@ -44,6 +44,7 @@ export async function run(): Promise<void> {
 				}
 			});
 		} catch (e) {
+			// eslint-disable-next-line no-console
 			console.error(e);
 			x(e);
 		}
