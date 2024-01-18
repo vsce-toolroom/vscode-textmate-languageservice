@@ -6,17 +6,23 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:expect-type/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": [
+      "./tsconfig.json",
+      "./test/tsconfig.json",
+      "./test/types/tsconfig.json"
+    ]
   },
   "plugins": [
     "eslint-plugin-jsdoc",
     "eslint-plugin-import",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "eslint-plugin-expect-type"
   ],
   "ignorePatterns": [
     "typings/*.api.d.ts"
@@ -80,7 +86,7 @@
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
     "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/prefer-for-of": "error",
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
@@ -133,7 +139,6 @@
     ],
     "jsdoc/check-alignment": "error",
     "jsdoc/check-indentation": "error",
-    "jsdoc/newline-after-description": "error",
     "max-classes-per-file": ["off"],
     "max-len": [
       "error",

@@ -1,5 +1,10 @@
 node_modules
+dist
 out
+scripts
 src/parser/parser.ts
 src/scopes/header.ts
 src/typing/*.d.ts
+test/extensions
+test/samples
+webpack.*.js
