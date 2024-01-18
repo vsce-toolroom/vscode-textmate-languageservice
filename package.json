@@ -35,7 +35,7 @@
   },
   "main": "./dist/src/main.js",
   "browser": "./dist/src/main.js",
-  "types": "./dist/types/src/main.d.ts",
+  "types": "./dist/types/main.d.ts",
   "bugs": "https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues",
   "scripts": {
     "preinstall": "git submodule update --init",
