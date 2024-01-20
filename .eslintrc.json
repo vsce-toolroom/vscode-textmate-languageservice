@@ -6,23 +6,20 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:expect-type/recommended"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": [
       "./tsconfig.json",
-      "./test/tsconfig.json",
-      "./test/types/tsconfig.json"
+      "./test/tsconfig.json"
     ]
   },
   "plugins": [
     "eslint-plugin-jsdoc",
     "eslint-plugin-import",
     "@typescript-eslint",
-    "prettier",
-    "eslint-plugin-expect-type"
+    "prettier"
   ],
   "ignorePatterns": [
     "typings/*.api.d.ts"
@@ -209,5 +206,13 @@
     "use-isnan": "error",
     "valid-typeof": "off",
     "sort-keys": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**.d.ts"],
+      "rules": {
+        "no-var": "off"
+      }
+    }
+  ]
 }
