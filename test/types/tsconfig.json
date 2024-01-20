@@ -7,5 +7,9 @@
     "moduleResolution": "node",
     "module": "esnext"
   },
-  "include": ["./*"]
+  "include": [
+    "../../test/types/*.ts",
+    "../../typings/token-information.api.d.ts",
+    "../../typings/imports.d.ts"
+  ]
 }

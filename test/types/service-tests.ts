@@ -19,6 +19,7 @@ const typescriptService = new TextmateLanguageService('typescript');
 const textmateTokenService = await typescriptService.initTokenService();
 
 const textDocument = vscode.window.activeTextEditor.document;
+
 // $ExpectType TextmateToken[]
 const tokens = await textmateTokenService.fetch(textDocument);
 
