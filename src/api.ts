@@ -1,3 +1,4 @@
+/// <reference path="../typings/token-information.api.d.ts"/>
 'use strict';
 
 import * as vscode from 'vscode';
