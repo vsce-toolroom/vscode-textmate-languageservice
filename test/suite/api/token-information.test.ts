@@ -24,6 +24,7 @@ const languageScopeMap: Record<string, string> = {
 	matlab: 'entity.name.type.class.matlab',
 	mediawiki: 'string.quoted.other.heading.mediawiki',
 	typescript: 'entity.name.type.class.ts',
+	vue: 'entity.name.type.class.ts',
 };
 
 const languageSelectorMap: Record<string, TextmateScopeSelectorType> =
@@ -36,9 +37,10 @@ const languageStandardTypeMap = {
 	matlab: vscode.StandardTokenType.Other,
 	mediawiki: vscode.StandardTokenType.String,
 	typescript: vscode.StandardTokenType.Other,
+	vue: vscode.StandardTokenType.Other,
 };
 
-suite('test/api/tokenInformation.test.ts (src/api.ts)', function() {
+suite('test/api/token-information.test.ts (src/api.ts)', function() {
 	this.timeout(5000);
 
 	this.beforeAll(async function() {

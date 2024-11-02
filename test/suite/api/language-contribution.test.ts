@@ -18,18 +18,21 @@ const languageExtensionMap: Record<string, string> = {
 	matlab: '.m',
 	mediawiki: '.mediawiki',
 	typescript: '.ts',
+	vue: '.vue',
 };
 
 const languageScopeNameMap: Record<string, string> = {
 	matlab: 'source.matlab',
 	mediawiki: 'text.html.mediawiki',
 	typescript: 'source.ts',
+	vue: 'source.vue',
 };
 
 const languageContributorMap: Record<string, string> = {
 	matlab: 'Gimly81.matlab',
 	mediawiki: 'sndst00m.mediawiki',
-	typescript: 'vscode.typescript'
+	typescript: 'vscode.typescript',
+	vue: 'sndst00m.vue',
 };
 
 suite('test/api/language-contribution.test.ts (src/api.ts)', function() {
@@ -40,7 +43,7 @@ suite('test/api/language-contribution.test.ts (src/api.ts)', function() {
 
 		const languageConfiguration = await getLanguageConfiguration(globalThis.languageId);
 
-		strictEqual(languageConfiguration.wordPattern instanceof RegExp, globalThis.languageId === 'typescript');
+		strictEqual(languageConfiguration.wordPattern instanceof RegExp, ['typescript', 'vue'].includes(globalThis.languageId));
 
 		strictEqual(Array.isArray(languageConfiguration.brackets), true);
 
