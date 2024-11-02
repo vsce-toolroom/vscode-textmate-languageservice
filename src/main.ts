@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
-import { isGrammarLanguageDefinition } from './util/contributes';
+import { isGrammarLanguageDefinition, isGrammarInjectionContribution } from './util/contributes';
 import { loadJsonFile, readFileText } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { ConfigData } from './config';
@@ -45,6 +45,7 @@ export default class TextmateLanguageService {
 		TextmateScopeSelector,
 		TextmateScopeSelectorMap,
 		getOniguruma,
+		isGrammarInjectionContribution,
 		isGrammarLanguageDefinition,
 		loadJsonFile,
 		readFileText
@@ -86,7 +87,16 @@ export default class TextmateLanguageService {
 		const registry = new vscodeTextmate.Registry(resolver);
 
 		const grammarData = resolver.getGrammarDefinitionFromLanguageId(languageId);
-		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
+		this[_private].grammarPromise = registry.loadGrammarWithConfiguration(
+			grammarData.scopeName,
+			resolver.getEncodedLanguageId(languageId),
+			{
+				balancedBracketSelectors: grammarData.balancedBracketSelectors,
+				embeddedLanguages: resolver.getEmbeddedLanguagesFromLanguageId(languageId),
+				tokenTypes: resolver.getTokenTypesFromLanguageId(languageId),
+				unbalancedBracketSelectors: grammarData.unbalancedBracketSelectors,
+			}
+		);
 
 		const languageData = resolver.getLanguageDefinitionFromId(languageId);
 
