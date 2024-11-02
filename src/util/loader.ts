@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import JSONC from 'tiny-jsonc';
 import * as i18n from '../i18n.json';
 import type { JsonValue, PartialDeep } from 'type-fest';
 
@@ -20,10 +21,10 @@ type PartialJsonValue = PartialDeep<JsonValue>;
 export async function loadJsonFile<T = PartialJsonValue>(uri: vscode.Uri, fallback?: string): Promise<T> {
 	try {
 		const text = await readFileText(uri);
-		return JSON.parse(text) as T;
+		return JSONC.parse(text) as T;
 	} catch (e) {
 		if (fallback) {
-			return JSON.parse(fallback) as T;
+			return JSONC.parse(fallback) as T;
 		}
 
 		if (e && typeof (e as Error).stack === 'string') {
