@@ -930,9 +930,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 6,
     "level": 3
@@ -1309,9 +1310,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 9,
     "level": 3
@@ -1436,9 +1438,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.method-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.external.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.external.matlab",
     "text": "move",
     "line": 10,
     "level": 3
@@ -1922,9 +1925,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 13,
     "level": 3
