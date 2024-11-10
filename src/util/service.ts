@@ -1,20 +1,21 @@
 'use strict';
 
+import type * as vscode from 'vscode';
+
 import * as crypto from './crypto';
-import type { LiteTextDocument } from '../services/document';
 
 const encoder = new TextEncoder();
 
 export interface ServiceInterface<T> {
-	fetch(document: LiteTextDocument): Promise<T>;
-	parse(document: LiteTextDocument): Promise<T>;
+	fetch(document: vscode.TextDocument): Promise<T>;
+	parse(document: vscode.TextDocument): Promise<T>;
 }
 
 export abstract class ServiceBase<T> {
 	private _cache: Record<string, Promise<T>> = {};
 	private _integrity: Record<string, string> = {};
 
-	public async fetch(document: LiteTextDocument | string): Promise<T> {
+	public async fetch(document: vscode.TextDocument | string): Promise<T> {
 		const filepath = typeof document === 'string' ? document : document.uri.path;
 		const hash = await hashify(document);
 
@@ -38,10 +39,10 @@ export abstract class ServiceBase<T> {
 		return output;
 	}
 
-	public abstract parse(document: LiteTextDocument | string): Promise<T>;
+	public abstract parse(document: vscode.TextDocument | string): Promise<T>;
 }
 
-async function hashify(document: LiteTextDocument | string): Promise<string> {
+async function hashify(document: vscode.TextDocument | string): Promise<string> {
 	const text = typeof document === 'string' ? document : document.getText();
 	if (crypto.node) {
 		const hash = crypto.node.createHash('sha256');

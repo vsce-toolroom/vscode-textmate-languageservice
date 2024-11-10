@@ -5,7 +5,6 @@ import * as vscode from 'vscode';
 import { GeneratorService } from './services/generators';
 import { TextmateScopeSelector } from './util/selectors';
 import { ContributorData } from './util/contributes';
-import type { LiteTextDocument } from './services/document';
 import type { TextmateToken } from './services/tokenizer';
 import type { GrammarLanguageDefinition, LanguageDefinition } from './util/contributes';
 
@@ -19,11 +18,11 @@ const contributorData = new ContributorData();
 
 /**
  * Get token scope information at a specific position (caret line and character number).
- * @param {LiteTextDocument} document Document to be tokenized.
+ * @param {vscode.TextDocument} document Document to be tokenized.
  * @param {vscode.Position} position Zero-indexed caret position of token in document.
  * @returns {Promise<TextmateToken>} Promise resolving to token data for scope selected by caret position.
  */
-export async function getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken> {
+export async function getScopeInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<TextmateToken> {
 	const generator = await generators.fetch(document.languageId);
 	const tokenService = await generator.initTokenService();
 	const tokens = await tokenService.fetch(document);
@@ -33,11 +32,11 @@ export async function getScopeInformationAtPosition(document: LiteTextDocument, 
 
 /**
  * VS Code compatible performant API for token information at a caret position.
- * @param {LiteTextDocument} document Document to be tokenized.
+ * @param {vscode.TextDocument} document Document to be tokenized.
  * @param {vscode.Position} position Zero-indexed caret position of token in document.
  * @returns {Promise<vscode.TokenInformation>} Promise resolving to token data compatible with VS Code.
  */
-export async function getTokenInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<vscode.TokenInformation> {
+export async function getTokenInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.TokenInformation> {
 	const caret = await getScopeInformationAtPosition(document, position);
 	const range = new vscode.Range(caret.line, caret.startIndex, caret.line, caret.endIndex);
 	const type = getTokenTypeFromScope(caret.scopes);
@@ -46,11 +45,11 @@ export async function getTokenInformationAtPosition(document: LiteTextDocument, 
 
 /**
  * Get matching scope range of the Textmate token intersecting a caret position.
- * @param {LiteTextDocument} document Document to be tokenized.
+ * @param {vscode.TextDocument} document Document to be tokenized.
  * @param {vscode.Position} position Zero-indexed caret position to intersect with.
  * @returns {Promise<vscode.Range>} Promise resolving to character and line number of the range.
  */
-export async function getScopeRangeAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<vscode.Range> {
+export async function getScopeRangeAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Range> {
 	const caret = await getScopeInformationAtPosition(document, position);
 	const range = new vscode.Range(caret.line, caret.startIndex, caret.line, caret.endIndex);
 	return range;

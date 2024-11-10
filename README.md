@@ -264,31 +264,31 @@ const token = await getScopeInformationAtPosition(document, position);
 
 #### `getScopeInformationAtPosition`
 
-`getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken>`
+`getScopeInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<TextmateToken>`
 
 Get token scope information at a specific position (caret line and character number).
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data for scope selected by caret position (`{Promise<TextmateToken>}`).
 
 #### `getScopeRangeAtPosition`
 
-`getScopeRangeAtPosition(document: LiteTextDocument, position: vscode.Position): vscode.Range;`
+`getScopeRangeAtPosition(document: vscode.TextDocument, position: vscode.Position): vscode.Range;`
 
 Get matching scope range of the Textmate token intersecting a caret position.
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position to intersect with (`vscode.Position`).
 - **Returns:** Promise resolving to character and line number of the range (`Promise<vscode.Range>`).
 
 #### `getTokenInformationAtPosition`
 
-`getTokenInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<vscode.TokenInformation>;`
+`getTokenInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.TokenInformation>;`
 
 VS Code compatible performant API for token information at a caret position.
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data compatible with VS Code (`Promise<vscode.TokenInformation>`).
 
