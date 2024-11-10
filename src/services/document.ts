@@ -68,7 +68,7 @@ export class FullTextDocument implements vscode.TextDocument {
 				isEmptyOrWhitespace: !/\S/.test(text),
 				lineNumber,
 				range,
-				rangeIncludingLineBreak: ws.endsWith('\r')
+				rangeIncludingLineBreak: ws?.endsWith('\r')
 					? range.with(start, end.translate(-1))
 					: range,
 				text
