@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 
-import { foldingRangeProviderPromise } from '../../util/factory';
+import { documentServicePromise, foldingRangeProviderPromise } from '../../util/factory';
 import { BASENAMES, getSampleFileUri } from '../../util/files';
 import { runSamplePass } from '../../util/bench';
 
@@ -35,6 +35,7 @@ suite('test/suite/folding.test.ts - TextmateFoldingRangeProvider class (src/fold
 });
 
 async function foldingRangeProviderResult() {
+	const documentService = await documentServicePromise;
 	const foldingRangeProvider = await foldingRangeProviderPromise;
 
 	const foldingContext = {};
@@ -44,7 +45,7 @@ async function foldingRangeProviderResult() {
 	const results: vscode.FoldingRange[][] = [];
 
 	for (const resource of samples) {
-		const document = await vscode.workspace.openTextDocument(resource);
+		const document = await documentService.getDocument(resource);
 
 		const folds = await foldingRangeProvider.provideFoldingRanges(document, foldingContext, cancelToken);
 
