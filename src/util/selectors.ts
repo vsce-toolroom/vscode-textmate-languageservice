@@ -67,7 +67,7 @@ export class TextmateScopeSelectorMap {
 		this.matchers = {};
 		if (typeof sourcemap === 'object' && sourcemap?.constructor === Object) {
 			for (const key in sourcemap) {
-				if ({}.hasOwnProperty.call(sourcemap, key)) {
+				if (Object.prototype.hasOwnProperty.call(sourcemap, key)) {
 					this.matchers[key] = optimizedSelectorFactory(key);
 				}
 			}

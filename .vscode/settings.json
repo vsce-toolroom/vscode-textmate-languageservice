@@ -1,6 +1,7 @@
 {
   "git.ignoredRepositories": [
     "test/extensions/vscode-matlab",
+    "test/extensions/vscode-matlab/syntaxes/MATLAB-Language-grammar",
     "builds/0/project-0",
     "builds/0/project-0/test/extensions/vscode-matlab"
   ],

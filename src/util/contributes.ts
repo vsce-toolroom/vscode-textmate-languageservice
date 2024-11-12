@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import type * as vscodeTextmate from 'vscode-textmate';
 
 import type { PartialDeep, JsonObject, PackageJson } from 'type-fest';
 import { loadJsonFile, loadMessageBundle } from './loader';
@@ -18,23 +19,40 @@ type RegExpsStringified<T> = T extends RegExp
 
 const localize = loadMessageBundle();
 
+export interface EmbeddedLanguagesDefinition {
+	[scopeName: string]: string;
+}
+
+export interface TokenTypeDefinition {
+	[scopeName: string]: string;
+}
+
 export interface GrammarLanguageDefinition {
 	language: string;
 	scopeName: string;
 	path: string;
-	embeddedLanguages?: { [scopeName: string]: string };
+	embeddedLanguages?: EmbeddedLanguagesDefinition;
+	tokenTypes?: TokenTypeDefinition;
+    balancedBracketSelectors?: string[];
+    unbalancedBracketSelectors?: string[];
 }
 
 export interface GrammarInjectionContribution {
 	scopeName: string;
 	path: string;
 	injectTo: string[];
+	embeddedLanguages?: EmbeddedLanguagesDefinition;
+	tokenTypes?: TokenTypeDefinition;
 }
 
 export type GrammarDefinition = GrammarLanguageDefinition | GrammarInjectionContribution;
 
 export function isGrammarLanguageDefinition(g: GrammarDefinition): g is GrammarLanguageDefinition {
-	return g && 'injectTo' in g === false;
+	return g && 'language' in g === true;
+}
+
+export function isGrammarInjectionContribution(g: GrammarDefinition): g is GrammarInjectionContribution {
+	return g && 'injectTo' in g === true;
 }
 
 export interface LanguageDefinition {
@@ -49,7 +67,7 @@ export interface LanguageDefinition {
 }
 
 export type LanguageData = LanguageDefinition[];
-export type GrammarData = GrammarLanguageDefinition[];
+export type GrammarData = GrammarDefinition[];
 
 export interface ExtensionContributions extends PartialJsonObject {
 	languages?: PartialJsonObject & LanguageData;
@@ -153,7 +171,7 @@ function getAllContributes() {
 			}
 
 			const l = contributes.languages || [];
-			const g = contributes.grammars?.filter(isGrammarLanguageDefinition) || [];
+			const g = contributes.grammars || [];
 			languages.push(...l);
 			grammars.push(...g);
 
@@ -168,15 +186,14 @@ function getAllContributes() {
 	return { grammars, languages, sources };
 }
 
-let vscodeContributes = getAllContributes();
-vscode.extensions.onDidChange(function() {
-	vscodeContributes = getAllContributes();
-});
+const vscodeContributes = getAllContributes();
 
 export class ContributorData {
 	private _languages: LanguageData;
 	private _grammars: GrammarData;
+	private _injections: { [scopeName: string]: string[] };
 	private _sources: Record<'grammars' | 'languages', ExtensionData>;
+	private _injectedEmbeddedLanguages: Record<string, EmbeddedLanguagesDefinition[]>;
 
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
@@ -184,11 +201,15 @@ export class ContributorData {
 			this._languages = vscodeContributes.languages;
 			this._grammars = vscodeContributes.grammars;
 			this._sources = vscodeContributes.sources;
+			this._injections = computeInjections(this._grammars);
+			this._injectedEmbeddedLanguages = computeInjectedEmbeddedLanguages(this._grammars);
 			return;
 		}
 
 		this._languages = manifest?.contributes?.languages || [];
-		this._grammars = manifest?.contributes?.grammars?.filter(isGrammarLanguageDefinition) || [];
+		this._grammars = manifest?.contributes?.grammars || [];
+		this._injections = computeInjections(this._grammars);
+		this._injectedEmbeddedLanguages = computeInjectedEmbeddedLanguages(this._grammars);
 		this._sources = {
 			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
 			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension]))
@@ -201,6 +222,10 @@ export class ContributorData {
 
 	public get grammars() {
 		return this._grammars;
+	}
+
+	public get injections() {
+		return this._injections;
 	}
 
 	public get sources() {
@@ -248,10 +273,25 @@ export class ContributorData {
 
 	public findLanguageIdFromScopeName(scopeName: string): string {
 		const grammarData = this.grammars.find(g => g.scopeName === scopeName);
-		if (grammarData) {
+		if (grammarData && isGrammarLanguageDefinition(grammarData)) {
 			return grammarData.language;
 		}
 		return plaintextLanguageDefinition.id;
+	}
+
+	public getInjections(scopeName: string): string[] {
+		const injections: string[] = [];
+		const scopeParts = scopeName.split('.');
+		for (let i = 1; i <= scopeParts.length; i++) { // order matters
+			const subScopeName = scopeParts.slice(0, i).join('.');
+			injections.push(...(this._injections[subScopeName] || []));
+		}
+		return injections;
+	}
+
+	public getEncodedLanguageId(languageId: string): number | undefined {
+		const index = vscodeContributes.languages.findIndex(l => l.id === languageId);
+		return index !== -1 ? index + 1 : void 0; // cannot be 0 per vscode-textmate API
 	}
 
 	public getLanguageDefinitionFromId(languageId: string): LanguageDefinition {
@@ -278,11 +318,73 @@ export class ContributorData {
 
 	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {
 		for (const grammar of this.grammars.reverse()) {
-			if (grammar.language === languageId) {
+			if (isGrammarLanguageDefinition(grammar) && grammar.language === languageId) {
 				return grammar;
 			}
 		}
 		return plaintextGrammarDefinition;
+	}
+
+	public getEmbeddedLanguagesFromLanguageId(languageId: string): vscodeTextmate.IEmbeddedLanguagesMap {
+		const grammarData = this.getGrammarDefinitionFromLanguageId(languageId);
+		const embeddedLanguagesDefinition = grammarData.embeddedLanguages || {};
+		const injectedEmbeddedLanguages = this._injectedEmbeddedLanguages[grammarData.scopeName];
+
+		const languageMap = {};
+
+		for (const key in embeddedLanguagesDefinition) {
+			if (Object.prototype.hasOwnProperty.call(embeddedLanguagesDefinition, key)) {
+				const encodedLanguageId = this.getEncodedLanguageId(embeddedLanguagesDefinition[key]);
+				if (encodedLanguageId) {
+					languageMap[key] = encodedLanguageId;
+				}
+			}
+		}
+
+		if (injectedEmbeddedLanguages) {
+			for (const injected of (injectedEmbeddedLanguages || [])) {
+				for (const key in injected) {
+					if (Object.prototype.hasOwnProperty.call(injected, key)) {
+						const encodedLanguageId = this.getEncodedLanguageId(injected[key]);
+						if (encodedLanguageId) {
+							languageMap[key] = encodedLanguageId;
+						}
+					}
+				}
+			}
+		}
+
+		return languageMap;
+	}
+
+	public getTokenTypesFromLanguageId(languageId: string): vscodeTextmate.ITokenTypeMap {
+		const grammarData = this.getGrammarDefinitionFromLanguageId(languageId);
+		const tokenTypeDefinition = grammarData.tokenTypes;
+
+		const tokenTypeMap = {};
+
+		if (!tokenTypeDefinition) {
+			return tokenTypeMap;
+		}
+
+		for (const scopeName in tokenTypeDefinition) {
+			if (Object.prototype.hasOwnProperty.call(tokenTypeDefinition, scopeName)) {
+				switch (tokenTypeDefinition[scopeName]) {
+					case 'other':
+						tokenTypeMap[scopeName] = vscode.StandardTokenType.Other;
+					case 'comment':
+						tokenTypeMap[scopeName] = vscode.StandardTokenType.Comment;
+					case 'string':
+						tokenTypeMap[scopeName] = vscode.StandardTokenType.String;
+					case 'regex':
+						tokenTypeMap[scopeName] = vscode.StandardTokenType.RegEx;
+					case 'regexp':
+						tokenTypeMap[scopeName] = vscode.StandardTokenType.RegEx;
+				}
+			}
+		}
+
+		return tokenTypeMap;
 	}
 
 	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
@@ -318,4 +420,35 @@ export class ContributorData {
 
 function fromEntryToRegExp(entry: string | RegExpConfiguration) {
 	return new RegExp(typeof entry === 'string' ? entry : entry.pattern, typeof entry === 'object' ? entry.flags : void 0);
+}
+
+function computeInjections(grammars: GrammarData): Record<string, string[]> {
+	const injectionMap = {};
+	for (const grammar of grammars.filter(isGrammarInjectionContribution)) {
+		for (const injectScope of grammar.injectTo) {
+			let injections = injectionMap[injectScope];
+			if (!injections) {
+				injectionMap[injectScope] = injections = [];
+			}
+			injections.push(grammar.scopeName);
+		}
+	}
+	return injectionMap;
+}
+
+function computeInjectedEmbeddedLanguages(grammars: GrammarData): Record<string, EmbeddedLanguagesDefinition[]> {
+	const injectedEmbeddedLanguagesMap = {};
+	for (const grammar of grammars) {
+		if (!grammar.embeddedLanguages || !isGrammarInjectionContribution(grammar)) {
+			continue;
+		}
+		for (const injectScope of grammar.injectTo) {
+			let injectedEmbeddedLanguages = injectedEmbeddedLanguagesMap[injectScope];
+			if (!injectedEmbeddedLanguages) {
+				injectedEmbeddedLanguagesMap[injectScope] = injectedEmbeddedLanguages = [];
+			}
+			injectedEmbeddedLanguages.push(grammar.embeddedLanguages);
+		}
+	}
+	return injectedEmbeddedLanguagesMap;
 }

@@ -4,14 +4,15 @@ import * as vscode from 'vscode';
 
 import { getTestModeExtension } from './common';
 
-export const LANGUAGES = ['matlab', 'typescript', 'mediawiki'];
+export const LANGUAGES = ['matlab', 'typescript', 'mediawiki', 'vue'];
 
-export const EXTENSIONS = ['.m', '.ts', '.wiki'];
+export const EXTENSIONS = ['.m', '.ts', '.wiki', '.vue'];
 
 export const BASENAMES = {
 	matlab: ['Animal', 'Cat', 'Dog', 'Horse', 'Snake'],
 	mediawiki: ['List'],
-	typescript: ['Pet']
+	typescript: ['Pet'],
+	vue: ['Hello']
 };
 
 /**

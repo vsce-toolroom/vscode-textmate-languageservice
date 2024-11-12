@@ -929,9 +929,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "storage.modifier.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "storage.modifier.matlab",
     "text": "char",
     "line": 10,
     "level": 3
@@ -962,9 +963,10 @@
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.string.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.string.matlab",
     "text": "regexp",
     "line": 10,
     "level": 3
@@ -997,9 +999,10 @@
       "meta.function-call.parens.matlab",
       "meta.function-call.parens.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.graphics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.graphics.matlab",
     "text": "get",
     "line": 10,
     "level": 3
@@ -2065,9 +2068,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.method-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.toolbox.rf.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.toolbox.rf.matlab",
     "text": "copy",
     "line": 17,
     "level": 3
@@ -2456,9 +2460,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 20,
     "level": 3
@@ -2835,9 +2840,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 23,
     "level": 3
@@ -3021,9 +3027,10 @@
       "meta.function-call.parens.matlab",
       "meta.brackets.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "storage.modifier.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "storage.modifier.matlab",
     "text": "num2str",
     "line": 23,
     "level": 3
@@ -3473,9 +3480,10 @@
       "meta.methods.matlab",
       "meta.function.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "support.function.mathematics.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "support.function.mathematics.matlab",
     "text": "disp",
     "line": 26,
     "level": 3
@@ -3659,9 +3667,10 @@
       "meta.function-call.parens.matlab",
       "meta.brackets.matlab",
       "meta.function-call.parens.matlab",
-      "entity.name.function.matlab"
+      "entity.name.function.matlab",
+      "storage.modifier.matlab"
     ],
-    "type": "entity.name.function.matlab",
+    "type": "storage.modifier.matlab",
     "text": "num2str",
     "line": 26,
     "level": 3
