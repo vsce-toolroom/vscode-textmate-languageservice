@@ -89,10 +89,9 @@ async function definitionProviderResult() {
 	const results: DefinitionTestResult[][] = [];
 
 	for (const resource of samples) {
-		const skinnyDocument = await documentService.getDocument(resource);
-		const tokens = await tokenizer.fetch(skinnyDocument);
+		const document = await documentService.getDocument(resource);
+		const tokens = await tokenizer.fetch(document);
 
-		const document = await vscode.workspace.openTextDocument(resource);
 		const activeEditor = await vscode.window.showTextDocument(document);
 
 		const symbols = tokens.filter(isBaseClassReference);
