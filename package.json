@@ -90,7 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "@vscode/test-electron": "^2.3.6",
-    "@vscode/test-web": "^0.0.48",
+    "@vscode/test-web": "^0.0.63",
     "dequal": "^2.0.3",
     "encoded-uint8array-loader": "^1.0.3",
     "eslint": "^8.56.0",
