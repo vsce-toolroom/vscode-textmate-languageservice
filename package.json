@@ -38,7 +38,6 @@
   "types": "./dist/types/main.d.ts",
   "bugs": "https://github.com/vsce-toolroom/vscode-textmate-languageservice/issues",
   "scripts": {
-    "preinstall": "git submodule update --init",
     "prepublishOnly": "npm-run-all test bundle clean-production",
     "test": "npm-run-all lint smoke reset patch bundle expect stage harness",
     "posttest": "npm-run-all dump reset",

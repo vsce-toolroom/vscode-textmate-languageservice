@@ -8,6 +8,7 @@ out/
 scripts/
 src/
 test/
+!dist/**
 *.tgz
 *.vsix
 **/*.pegjs
@@ -18,6 +19,7 @@ test/
 .gitignore
 .gitmodules
 .markdownlintignore
+.markdownlint.json
 .prettierrc.json
 .travis.yml
 .eslintignore
