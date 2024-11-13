@@ -56,7 +56,7 @@ export async function getScopeRangeAtPosition(document: vscode.TextDocument, pos
 };
 
 /**
- * Get the active language definition point of a language mode identifier.
+ * Get the language definition point of a language mode identifier.
  * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
  * @returns {LanguageDefinition} Language contribution as configured in source VS Code extension.
  */
@@ -65,7 +65,7 @@ export function getLanguageContribution(languageId: string): LanguageDefinition 
 };
 
 /**
- * Get the active language definition point of a language mode identifier.
+ * Get the language definition point of a language mode identifier.
  * @param {string} languageId Language identifier, shown in brackets in "Change Language Mode" panel.
  * @returns {GrammarLanguageDefinition} Grammar contribution as configured in source VS Code extension.
  */
@@ -74,7 +74,7 @@ export function getGrammarContribution(languageId: string): GrammarLanguageDefin
 };
 
 /**
- * Get the active language point of a language mode identifier.
+ * Get the language point of a language mode identifier.
  * @param {string} languageId Language ID as shown in brackets in "Change Language Mode" panel.
  * @returns {LanguageDefinition} Language contribution as configured in source VS Code extension.
  */
