@@ -33,8 +33,8 @@ export interface GrammarLanguageDefinition {
 	path: string;
 	embeddedLanguages?: EmbeddedLanguagesDefinition;
 	tokenTypes?: TokenTypeDefinition;
-    balancedBracketSelectors?: string[];
-    unbalancedBracketSelectors?: string[];
+	balancedBracketSelectors?: string[];
+	unbalancedBracketSelectors?: string[];
 }
 
 export interface GrammarInjectionContribution {
