@@ -4,7 +4,7 @@
 
 > 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
-> *This package is in maintenance mode & the Textmate technology is superseded by `vscode-anycode`, a quicker language service which leverages the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide].*
+> *This package is in LTS mode & the Textmate technology is superseded by the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide], as used in `vscode-anycode`.*
 
 Language service providers & APIs driven entirely by your Textmate grammar and one configuration file.
 
