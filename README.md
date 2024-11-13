@@ -4,13 +4,15 @@
 
 > 🎉 **This package has been adopted by the `vsce-toolroom` GitHub collective.**
 
-> *This package is in maintenance mode & the Textmate technology is superseded by `vscode-anycode`, a quicker language service which leverages the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide].*
+> *This package is in LTS mode & the Textmate technology is superseded by the [`tree-sitter` symbolic-expression parser technology][tree-sitter-parser-guide], as used in `vscode-anycode`.*
 
 Language service providers & APIs driven entirely by your Textmate grammar and one configuration file.
 
 <p align="center"><img src="https://github.com/vsce-toolroom/vscode-textmate-languageservice/raw/v3.0.1/assets/demo-outline.png" height="320"/></p>
 
-In order to generate language providers from this module, the Textmate grammar must include the following features:
+To use the API methods and tokenization / outline services, you only need a Textmate grammar. This can be from your extension or one of VS Code's built-in languages.
+
+In order to properly generate full-blown language providers from this module, the Textmate grammar must also include the following features:
 
 - meta declaration scopes for block level declarations
 - variable assignment scopes differentiated between `multiple` and `single`
@@ -79,7 +81,7 @@ Example language extension manifest - `./package.json`:
 
 Create a JSON file named `textmate-configuration.json` in the extension directory. The file accepts comments and trailing commas.
 
-If you only want to use the document and/or tokenization services, this file can be as simple as `{}`.
+If you only want to use the document and/or tokenization services, you can skip creating the file!
 
 Textmate configuration fields:
 
@@ -184,6 +186,15 @@ An example configuration file that targets Lua:
 
 ## Usage
 
+### `TextmateLanguageService`
+
+The package exports a default class named `TextmateLanguageService`.
+
+- **Parameter:** *`languageId`* - Language ID of grammar contribution in VS Code (`string`).
+- **Parameter:** *`context?`* - Extension context from `activate` entrypoint export (`vscode.ExtensionContext`).
+
+The library defaults to core behaviour when figuring out which scope name to use - last matching grammar or language wins. If the `context` parameter is supplied, the extension will first search contributions from the extension itself.
+
 ### Language extension
 
 Extension code sample - `./src/extension.ts`:
@@ -264,31 +275,31 @@ const token = await getScopeInformationAtPosition(document, position);
 
 #### `getScopeInformationAtPosition`
 
-`getScopeInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<TextmateToken>`
+`getScopeInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<TextmateToken>`
 
 Get token scope information at a specific position (caret line and character number).
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data for scope selected by caret position (`{Promise<TextmateToken>}`).
 
 #### `getScopeRangeAtPosition`
 
-`getScopeRangeAtPosition(document: LiteTextDocument, position: vscode.Position): vscode.Range;`
+`getScopeRangeAtPosition(document: vscode.TextDocument, position: vscode.Position): vscode.Range;`
 
 Get matching scope range of the Textmate token intersecting a caret position.
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position to intersect with (`vscode.Position`).
 - **Returns:** Promise resolving to character and line number of the range (`Promise<vscode.Range>`).
 
 #### `getTokenInformationAtPosition`
 
-`getTokenInformationAtPosition(document: LiteTextDocument, position: vscode.Position): Promise<vscode.TokenInformation>;`
+`getTokenInformationAtPosition(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.TokenInformation>;`
 
 VS Code compatible performant API for token information at a caret position.
 
-- **Parameter:** *document* - Document to be tokenized (`LiteTextDocument`).
+- **Parameter:** *document* - Document to be tokenized (`vscode.TextDocument`).
 - **Parameter:** *position* - Zero-indexed caret position of token in document (`vscode.Position`).
 - **Returns:** Promise resolving to token data compatible with VS Code (`Promise<vscode.TokenInformation>`).
 
@@ -296,19 +307,28 @@ VS Code compatible performant API for token information at a caret position.
 
 `getLanguageConfiguration(languageId: string): LanguageDefinition;`
 
-Get the active language point configuration of a language mode identifier.
+Get the language definition point of a language mode identifier.
 
 - **Parameter:** *languageId* - Language ID as shown in brackets in "Change Language Mode" panel (`string`).
 - **Returns:** Language contribution as configured in source VS Code extension (`LanguageDefinition`).
 
-#### `getGrammarConfiguration`
+#### `getGrammarContribution`
 
 `getGrammarConfiguration(languageId: string): GrammarLanguageDefinition;`
 
-Get the active language point configuration of a language mode identifier.
+Get the grammar definition point of a language mode identifier.
 
 - **Parameter:** *languageId* - Language identifier, shown in brackets in "Change Language Mode" panel (`string`).
 - **Returns:** Grammar contribution as configured in source VS Code extension (`GrammarLanguageDefinition`).
+
+#### `getLanguageContribution`
+
+`getLanguageConfiguration(languageId: string): LanguageDefinition;`
+
+Get the language configuration of a language mode identifier.
+
+- **Parameter:** *languageId* - Language ID as shown in brackets in "Change Language Mode" panel (`string`).
+- **Returns:** Language contribution as configured in source VS Code extension (`LanguageDefinition`).
 
 #### `getContributorExtension`
 

@@ -15,6 +15,9 @@ export function setupEnvironmentForLanguageId(languageId: string): void {
 		case 'typescript':
 			globalThis.extensionContext = new MockExtensionContext(languageId);
 			break;
+		case 'vue':
+			globalThis.extensionContext = void 0 as unknown as vscode.ExtensionContext;
+			break;
 		default:
 			break;
 	}

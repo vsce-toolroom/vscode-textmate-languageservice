@@ -34,8 +34,8 @@ export async function writeJsonFile(uri: vscode.Uri, json: PartialJsonValue): Pr
 /** `loadJsonFile` utility. */
 export const loadJsonFile = TextmateLanguageService.utils.loadJsonFile;
 
-/** `TextmateScopeSelectorMap` utility. */
-export const ResolverService = TextmateLanguageService.utils.ResolverService;
+/** `ContributorData` utility. */
+export const ContributorData = TextmateLanguageService.utils.ContributorData;
 
 /** `TextmateScopeSelector` utility. */
 export const TextmateScopeSelector = TextmateLanguageService.utils.TextmateScopeSelector;

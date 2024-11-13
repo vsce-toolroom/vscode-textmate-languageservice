@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 
-import { isGrammarLanguageDefinition } from './util/contributes';
+import { isGrammarLanguageDefinition, isGrammarInjectionContribution, ContributorData } from './util/contributes';
 import { loadJsonFile, readFileText } from './util/loader';
 import { getOniguruma } from './util/oniguruma';
 import { ConfigData } from './config';
@@ -19,7 +19,7 @@ import { TextmateWorkspaceSymbolProvider } from './workspace-symbol';
 import { getScopeInformationAtPosition, getTokenInformationAtPosition, getScopeRangeAtPosition, getGrammarContribution, getLanguageConfiguration, getLanguageContribution, getContributorExtension } from './api';
 
 import type { ConfigJson } from './config';
-import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, ConfigurationPaths, LanguageDefinition } from './util/contributes';
+import type { ExtensionManifest, ExtensionContributions, ExtensionManifestContributionKey, GrammarDefinition, GrammarInjectionContribution, GrammarLanguageDefinition, ConfigurationPaths, LanguageDefinition, EmbeddedLanguagesDefinition, TokenTypeDefinition } from './util/contributes';
 import type { GeneratorService } from './services/generators';
 import type { TextmateToken } from './services/tokenizer';
 
@@ -41,10 +41,12 @@ interface Private {
 
 export default class TextmateLanguageService {
 	public static utils = {
+		ContributorData,
 		ResolverService,
 		TextmateScopeSelector,
 		TextmateScopeSelectorMap,
 		getOniguruma,
+		isGrammarInjectionContribution,
 		isGrammarLanguageDefinition,
 		loadJsonFile,
 		readFileText
@@ -86,7 +88,16 @@ export default class TextmateLanguageService {
 		const registry = new vscodeTextmate.Registry(resolver);
 
 		const grammarData = resolver.getGrammarDefinitionFromLanguageId(languageId);
-		this[_private].grammarPromise = registry.loadGrammar(grammarData.scopeName);
+		this[_private].grammarPromise = registry.loadGrammarWithConfiguration(
+			grammarData.scopeName,
+			resolver.getEncodedLanguageId(languageId),
+			{
+				balancedBracketSelectors: grammarData.balancedBracketSelectors,
+				embeddedLanguages: resolver.getEmbeddedLanguagesFromLanguageId(languageId),
+				tokenTypes: resolver.getTokenTypesFromLanguageId(languageId),
+				unbalancedBracketSelectors: grammarData.unbalancedBracketSelectors,
+			}
+		);
 
 		const languageData = resolver.getLanguageDefinitionFromId(languageId);
 
@@ -194,6 +205,6 @@ export default class TextmateLanguageService {
 export type {
 	TextmateToken, ConfigData, ConfigJson, ExtensionManifest,
 	GrammarLanguageDefinition, GrammarInjectionContribution, GrammarDefinition, LanguageDefinition,
-	ExtensionContributions, ConfigurationPaths, ExtensionManifestContributionKey,
-	DocumentService, GeneratorService, OutlineService,
+	EmbeddedLanguagesDefinition, TokenTypeDefinition, ExtensionContributions, ConfigurationPaths,
+	ExtensionManifestContributionKey, DocumentService, GeneratorService, OutlineService,
 };

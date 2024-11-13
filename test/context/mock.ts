@@ -7,11 +7,9 @@ import { MockGlobalMemento, MockMemento } from './memento';
 import { StubSecretStorage } from './secret';
 import { MockEnvironmentVariableCollection } from './variables';
 
-import { default as TextmateLanguageService } from '../../src/main';
+import { ContributorData } from '../util/common';
 
-const resolver = new TextmateLanguageService.utils.ResolverService(
-	TextmateLanguageService.utils.getOniguruma()
-);
+const contributorData = new ContributorData();
 
 export class MockExtensionContext implements vscode.ExtensionContext {
 	public readonly subscriptions: vscode.Disposable[];
@@ -56,7 +54,7 @@ export class MockExtensionContext implements vscode.ExtensionContext {
 		this.logPath = `${codeRoot}/user-data/User/logs`;
 		this.logUri = vscode.Uri.file(this.logPath);
 
-		const extension = resolver.getExtensionFromLanguageId(id);
+		const extension = contributorData.getExtensionFromLanguageId(id);
 		if (typeof extension === 'undefined') {
 			if (globalThis.languageId === id) {
 				throw new Error('Could not find extension for language ID "' + id +'"');

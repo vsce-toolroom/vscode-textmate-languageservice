@@ -7,12 +7,12 @@ import { documentServicePromise } from '../../util/factory';
 import { BASENAMES, getSampleFileUri } from '../../util/files';
 import { jsonify } from '../../util/jsonify';
 
-import type { LiteTextDocument } from '../../../src/services/document';
+import type { FullTextDocument } from '../../../src/services/document';
 
 suite('test/suite/document.test.ts - DocumentService class (src/services/document.ts)', function() {
 	this.timeout(5000);
 
-	test('LiteTextDocument.uri', async function() {
+	test('FullTextDocument.uri', async function() {
 		void vscode.window.showInformationMessage('DocumentService class (src/services/document.ts)');
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
@@ -23,7 +23,7 @@ suite('test/suite/document.test.ts - DocumentService class (src/services/documen
 		}
 	});
 
-	test('LiteTextDocument.lineCount', async function() {
+	test('FullTextDocument.lineCount', async function() {
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
 		for (let index = 0; index < samples.length; index++) {
@@ -33,7 +33,7 @@ suite('test/suite/document.test.ts - DocumentService class (src/services/documen
 		}
 	});
 
-	test('LiteTextDocument.lineAt(line: number)', async function() {
+	test('FullTextDocument.lineAt(line: number)', async function() {
 		const { actuals, expecteds, filenames, samples } = await documentServiceOutput();
 
 		for (let index = 0; index < samples.length; index++) {
@@ -54,7 +54,7 @@ async function documentServiceOutput() {
 	const samples = BASENAMES[globalThis.languageId].map(getSampleFileUri);
 
 	const expecteds: vscode.TextDocument[] = [];
-	const actuals: LiteTextDocument[] = [];
+	const actuals: vscode.TextDocument[] = [];
 	const filenames: string[] = [];
 
 	for (const resource of samples) {

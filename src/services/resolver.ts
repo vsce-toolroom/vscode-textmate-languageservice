@@ -7,8 +7,8 @@
 import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 import { readFileText, loadMessageBundle } from '../util/loader';
-import { ContributorData, plaintextGrammarDefinition } from '../util/contributes';
-import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
+import { ContributorData, isGrammarLanguageDefinition, plaintextGrammarDefinition } from '../util/contributes';
+import type { GrammarDefinition, GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
 
 const localize = loadMessageBundle();
 
@@ -49,7 +49,15 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 			}
 		}
 
-		throw new Error('Could not load grammar for scope name "' + scopeName + '"');
+		return null;
+	}
+
+	public getInjections(scopeName: string): string[] | undefined {
+		return this._contributes.getInjections(scopeName);
+	}
+
+	public getEncodedLanguageId(languageId: string): number | undefined {
+		return this._contributes.getEncodedLanguageId(languageId);
 	}
 
 	public findLanguageByExtension(fileExtension: string): string {
@@ -76,8 +84,20 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 		return this._contributes.getLanguageDefinitionFromFilename(fileName);
 	}
 
+	public getGrammarDefinitionFromScopeName(scopeName: string): GrammarDefinition {
+		return this._contributes.getGrammarDefinitionFromScopeName(scopeName);
+	}
+
 	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {
 		return this._contributes.getGrammarDefinitionFromLanguageId(languageId);
+	}
+
+	public getEmbeddedLanguagesFromLanguageId(languageId: string): vscodeTextmate.IEmbeddedLanguagesMap | undefined  {
+		return this._contributes.getEmbeddedLanguagesFromLanguageId(languageId);
+	}
+
+	public getTokenTypesFromLanguageId(languageId: string): vscodeTextmate.ITokenTypeMap | undefined  {
+		return this._contributes.getTokenTypesFromLanguageId(languageId);
 	}
 
 	public getExtensionFromLanguageId(languageId: string): vscode.Extension<unknown> | undefined {
@@ -89,10 +109,12 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 	}
 
 	public async loadGrammarByLanguageId(languageId: string): Promise<vscodeTextmate.IRawGrammar | null> {
-		const grammar = this._contributes.grammars.find(g => g.language === languageId);
+		const grammar = this._contributes.grammars
+			.filter(isGrammarLanguageDefinition)
+			.find(g => g.language === languageId);
 
 		if (!grammar) {
-			throw new Error('Could not load grammar for language ID "' + languageId + '"');
+			return null;
 		}
 
 		return this.loadGrammar(grammar.scopeName);
