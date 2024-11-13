@@ -197,23 +197,25 @@ export class ContributorData {
 
 	constructor(context?: vscode.ExtensionContext) {
 		const manifest = context?.extension?.packageJSON as ExtensionManifest | void;
-		if (!manifest) {
-			this._languages = vscodeContributes.languages;
-			this._grammars = vscodeContributes.grammars;
-			this._sources = vscodeContributes.sources;
-			this._injections = computeInjections(this._grammars);
-			this._injectedEmbeddedLanguages = computeInjectedEmbeddedLanguages(this._grammars);
-			return;
+		this._languages = vscodeContributes.languages;
+		this._grammars = vscodeContributes.grammars;
+		this._sources = vscodeContributes.sources;
+
+		if (manifest) {
+			const priorityLanguages = manifest?.contributes?.languages;
+			const priorityGrammars = manifest?.contributes?.grammars;
+
+			if (priorityLanguages && !!priorityLanguages.length) {
+				this._languages = sortContributionsExtensionLast(priorityLanguages, this._languages, 'id');
+			}
+
+			if (priorityGrammars && !!priorityGrammars.length) {
+				this._grammars = sortContributionsExtensionLast(priorityGrammars, this._grammars, 'scopeName');
+			}
 		}
 
-		this._languages = manifest?.contributes?.languages || [];
-		this._grammars = manifest?.contributes?.grammars || [];
 		this._injections = computeInjections(this._grammars);
 		this._injectedEmbeddedLanguages = computeInjectedEmbeddedLanguages(this._grammars);
-		this._sources = {
-			grammars: Object.fromEntries(this._grammars.map(g => [g.scopeName, context.extension])),
-			languages: Object.fromEntries(this._languages.map(l => [l.id, context.extension]))
-		};
 	}
 
 	public get languages() {
@@ -451,4 +453,16 @@ function computeInjectedEmbeddedLanguages(grammars: GrammarData): Record<string,
 		}
 	}
 	return injectedEmbeddedLanguagesMap;
+}
+
+function sortContributionsExtensionLast(priorityContributions: LanguageData, contributions: LanguageData, key: 'id'): LanguageData;
+function sortContributionsExtensionLast(priorityContributions: GrammarData, contributions: GrammarData, key: 'scopeName'): GrammarData;
+function sortContributionsExtensionLast(priorityContributions: any[], contributions: any[], key: string) {
+	const priorityContributionIds = {};
+	for (const contribution of priorityContributions) {
+		priorityContributionIds[contribution[key]] = true;
+	}
+	const sortedContributions = contributions.filter(c => !priorityContributionIds[c[key]]);
+	sortedContributions.push(...priorityContributions);
+	return sortedContributions;
 }
