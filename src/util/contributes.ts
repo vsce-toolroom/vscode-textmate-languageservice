@@ -274,7 +274,7 @@ export class ContributorData {
 	}
 
 	public findLanguageIdFromScopeName(scopeName: string): string {
-		const grammarData = this.grammars.find(g => g.scopeName === scopeName);
+		const grammarData = this.getGrammarDefinitionFromScopeName(scopeName);
 		if (grammarData && isGrammarLanguageDefinition(grammarData)) {
 			return grammarData.language;
 		}
@@ -311,11 +311,20 @@ export class ContributorData {
 		if (!languageId) {
 			return plaintextLanguageDefinition;
 		}
-		const languageData = this.sources.languages[languageId];
+		const languageData = this.getExtensionFromLanguageId(languageId);
 		if (!languageData) {
 			return plaintextLanguageDefinition;
 		}
 		return languageData;
+	}
+
+	public getGrammarDefinitionFromScopeName(scopeName: string): GrammarDefinition {
+		for (const grammar of this.grammars.reverse()) {
+			if (grammar.scopeName === scopeName) {
+				return grammar;
+			}
+		}
+		return plaintextGrammarDefinition;
 	}
 
 	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {

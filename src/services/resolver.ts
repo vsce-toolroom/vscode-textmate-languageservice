@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as vscodeTextmate from 'vscode-textmate';
 import { readFileText, loadMessageBundle } from '../util/loader';
 import { ContributorData, isGrammarLanguageDefinition, plaintextGrammarDefinition } from '../util/contributes';
-import type { GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
+import type { GrammarDefinition, GrammarLanguageDefinition, LanguageDefinition } from '../util/contributes';
 
 const localize = loadMessageBundle();
 
@@ -82,6 +82,10 @@ export class ResolverService implements vscodeTextmate.RegistryOptions {
 
 	public getLanguageDefinitionFromFilename(fileName: string): LanguageDefinition {
 		return this._contributes.getLanguageDefinitionFromFilename(fileName);
+	}
+
+	public getGrammarDefinitionFromScopeName(scopeName: string): GrammarDefinition {
+		return this._contributes.getGrammarDefinitionFromScopeName(scopeName);
 	}
 
 	public getGrammarDefinitionFromLanguageId(languageId: string): GrammarLanguageDefinition {
